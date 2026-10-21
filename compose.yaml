@@ -1,0 +1,22 @@
+services:
+  elnino:
+    build: .
+    image: elnino-monitor:latest
+    container_name: elnino
+    restart: unless-stopped
+    # Only reachable from the host; Caddy on the host terminates TLS and proxies here.
+    ports:
+      - "127.0.0.1:8080:8080"
+    environment:
+      CONTACT: "${CONTACT:-admin@example.com}"   # sent in the User-Agent to data providers
+      SST_DAYS: "90"
+      RUST_LOG: "info,tower_http=warn"
+    volumes:
+      - elnino-data:/data
+    mem_limit: 256m
+    logging:
+      driver: json-file
+      options: { max-size: "10m", max-file: "3" }
+
+volumes:
+  elnino-data:

@@ -1,0 +1,32 @@
+[package]
+name = "elnino"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+anyhow = "1.0.104"
+axum = "0.8.9"
+chrono = { version = "0.4.45", features = ["serde"] }
+hex = "0.4.3"
+minijinja = { version = "2", features = ["loader"] }
+png = "0.18.1"
+r2d2 = "0.8.10"
+r2d2_sqlite = "0.35.0"
+regex = "1.13.1"
+reqwest = { version = "0.13.5", default-features = false, features = ["rustls", "gzip", "json", "query"] }
+rusqlite = { version = "0.40.2", features = ["bundled"] }
+scraper = "0.27.0"
+serde = { version = "1.0.229", features = ["derive"] }
+serde_json = "1.0.154"
+sha2 = "0.10"
+tokio = { version = "1.54.0", features = ["rt-multi-thread", "macros", "time", "signal", "fs", "net", "sync"] }
+toml = "1.1.8"
+tower-http = { version = "0.7.1", features = ["fs", "compression-gzip", "compression-zstd", "trace", "set-header"] }
+tracing = "0.1.44"
+tracing-subscriber = { version = "0.3.23", features = ["env-filter"] }
+
+[profile.release]
+opt-level = 3
+lto = "thin"
+codegen-units = 1
+strip = true

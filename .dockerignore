@@ -1,0 +1,6 @@
+target/
+data/
+.claude/
+tests/
+tools/
+.git/

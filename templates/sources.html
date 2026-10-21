@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% block title %}{{ t.nav_sources }}{% endblock %}
+{% block content %}
+<div class="page-head">
+  <h1>{{ t.sources_title }}</h1>
+  <p>{{ t.sources_intro }}</p>
+</div>
+
+<section class="card">
+  <div class="card-head"><div><h2>{{ t.data_sources }}</h2><p class="muted small">{{ t.data_sources_sub }}</p></div></div>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>{{ t.dataset }}</th><th>{{ t.publishes }}</th><th>{{ t.last_check }}</th><th>{{ t.last_new_data }}</th><th>{{ t.status }}</th></tr></thead>
+      <tbody>
+      {% for s in d.sources %}
+        <tr>
+          <td><div><a href="{{ s.url }}" rel="noopener">{{ s.name }}</a></div><div class="xsmall muted">{{ s.org }} · {{ s.license }}</div></td>
+          <td class="small">{{ s.cadence }}</td>
+          <td class="small num">{{ s.last_attempt }}</td>
+          <td class="small num">{{ s.last_change }}</td>
+          <td>
+            {% if s.status == "error" %}<span class="status status-error" title="{{ s.message }}">{{ t.status_error }}</span>
+            {% elif s.stale %}<span class="status status-stale">{{ t.status_stale }}</span>
+            {% elif s.status == "pending" %}<span class="status">{{ t.status_pending }}</span>
+            {% else %}<span class="status status-ok">{{ t.status_ok }}</span>{% endif %}
+          </td>
+        </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="section grid grid-2">
+  <div class="card">
+    <h2>{{ t.more_reading }}</h2>
+    <p class="small muted">{{ t.more_reading_sub }}</p>
+    <ul class="small">
+      {% for l in d.links %}<li><strong>{{ l.org }}</strong> — <a href="{{ l.url }}" rel="noopener">{{ l.title }}</a>{% if l.issued %} <span class="muted">({{ l.issued }})</span>{% endif %}</li>{% endfor %}
+    </ul>
+  </div>
+  <div class="card prose">
+    <h2>{{ t.method_title }}</h2>
+    <h3>{{ t.method_indices_title }}</h3><p class="small">{{ t.method_indices }}</p>
+    <h3>{{ t.method_sst_title }}</h3><p class="small">{{ t.method_sst }}</p>
+    <h3>{{ t.method_events_title }}</h3><p class="small">{{ t.method_events }}</p>
+    <h3>{{ t.method_updates_title }}</h3><p class="small">{{ t.method_updates }}</p>
+  </div>
+</section>
+{% endblock %}

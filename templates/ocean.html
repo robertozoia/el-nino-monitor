@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% block title %}{{ t.nav_ocean }}{% endblock %}
+{% block head %}<link rel="stylesheet" href="/static/vendor/maplibre-gl.css?v={{ v }}">{% endblock %}
+{% block content %}
+<div class="page-head">
+  <h1>{{ t.ocean_title }}</h1>
+  <p>{{ t.ocean_intro }}</p>
+</div>
+
+<section class="card">
+  <div class="card-head">
+    <div><h2>{{ t.sst_map_title }}</h2><p class="muted small">{{ t.sst_map_sub }}</p></div>
+    <div class="chart-tools">
+      <button class="btn" id="toggle-boxes" type="button" aria-pressed="true">{{ t.nino_regions }}</button>
+    </div>
+  </div>
+  <div id="sst-map" class="map" role="img" aria-label="{{ t.sst_map_title }}"></div>
+  <div class="map-bar">
+    <button class="btn" id="play" type="button" aria-label="{{ t.play }}">▶</button>
+    <input id="frame" type="range" min="0" max="0" value="0" aria-label="{{ t.date }}">
+    <span class="map-date" id="frame-date">—</span>
+  </div>
+  <div class="map-bar">
+    <div class="colorbar" aria-hidden="true">
+      <div class="ramp" id="ramp"></div>
+      <div class="ticks"><span>−5</span><span>−3</span><span>−1</span><span>0</span><span>+1</span><span>+3</span><span>+5 °C</span></div>
+    </div>
+    <span class="small muted" id="hover-readout">{{ t.hover_map }}</span>
+  </div>
+  <div class="card-foot">{{ t.source }}: NOAA NCEI OISST v2.1 ({{ t.preliminary }}) {{ t.via }} <a href="https://coastwatch.pfeg.noaa.gov/erddap/griddap/ncdcOisst21NrtAgg_LonPM180.html">CoastWatch ERDDAP</a>. {{ t.oisst_note }}</div>
+</section>
+
+<section class="section grid grid-2">
+  <div class="card">
+    <div class="card-head"><div><h2>{{ t.hov_title }}</h2><p class="muted small">{{ t.hov_sub }}</p></div></div>
+    <div id="chart-hov" class="chart tall loading">{{ t.loading }}</div>
+    <div class="card-foot">{{ t.hov_note }}</div>
+  </div>
+  <div class="card">
+    <div class="card-head"><div><h2>{{ t.daily_idx_title }}</h2><p class="muted small">{{ t.daily_idx_sub }}</p></div></div>
+    <div id="chart-daily" class="chart tall loading">{{ t.loading }}</div>
+    <div class="card-foot">{{ t.daily_idx_note }}</div>
+  </div>
+</section>
+{% endblock %}
+{% block scripts %}
+<script src="/static/vendor/echarts.min.js?v={{ v }}" defer></script>
+<script src="/static/vendor/maplibre-gl.js?v={{ v }}" defer></script>
+<script type="module" src="/static/js/ocean.js?v={{ v }}"></script>
+{% endblock %}

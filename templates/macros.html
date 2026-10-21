@@ -1,0 +1,31 @@
+{% macro kpi_tile(k, lang, t) %}
+<a class="card kpi{% if k.warm %} warm{% endif %}" href="/{{ lang }}/{{ k.href }}" title="{{ k.hint }}">
+  <div class="label"><span>{{ k.label }}</span>{% if k.category %}<span class="pill cat-{{ k.category }}">{{ k.category_label }}</span>{% endif %}</div>
+  <div class="value-row">
+    <div class="value num">{{ k.value }}<span class="unit">{{ k.unit }}</span></div>
+    {% if k.spark %}
+    <svg class="spark" viewBox="0 0 {{ k.spark.w }} {{ k.spark.h }}" aria-hidden="true">
+      <line class="zero" x1="0" x2="{{ k.spark.w }}" y1="{{ k.spark.zero }}" y2="{{ k.spark.zero }}"/>
+      <path class="line" d="{{ k.spark.path }}"/>
+      <circle class="end" cx="{{ k.spark.cx }}" cy="{{ k.spark.cy }}" r="3.5"/>
+    </svg>
+    {% endif %}
+  </div>
+  <div class="meta">
+    <span>{{ k.date }}</span>
+    {% if k.delta %}<span>{{ t.kpi_change }} <strong class="num">{{ k.delta }}</strong></span>{% endif %}
+    {% if k.ref97 %}<span>1997: <strong class="num">{{ k.ref97 }}</strong></span>{% endif %}
+  </div>
+  <div class="meta">{{ t.source }}: {{ k.source }}</div>
+</a>
+{% endmacro %}
+
+{% macro event_row(e, t) %}
+<div class="ev">
+  <span class="ev-icon ev-{{ e.type }}" aria-hidden="true">{{ e.type }}</span>
+  <div>
+    <div><a href="{{ e.url }}" rel="noopener" target="_blank">{{ e.name }}</a><span class="alert alert-{{ e.alert }}">{{ t["alert_" ~ e.alert] or e.alert }}</span></div>
+    <div class="muted xsmall">{{ e.type_label }} · {{ e.from }}{% if e.current %} · {{ t.ongoing }}{% endif %}</div>
+  </div>
+</div>
+{% endmacro %}
