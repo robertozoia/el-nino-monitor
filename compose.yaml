@@ -5,8 +5,9 @@ services:
     container_name: elnino
     restart: unless-stopped
     # Only reachable from the host; Caddy on the host terminates TLS and proxies here.
+    # ELNINO_PORT picks the host port Caddy connects to (default 8080).
     ports:
-      - "127.0.0.1:8080:8080"
+      - "127.0.0.1:${ELNINO_PORT:-8080}:8080"
     environment:
       CONTACT: "${CONTACT:-admin@example.com}"   # sent in the User-Agent to data providers
       SST_DAYS: "90"

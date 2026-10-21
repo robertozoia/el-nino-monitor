@@ -11,5 +11,6 @@ elnino.example.com {
 		-Server
 	}
 
+	# Must match ELNINO_PORT in the app's .env (default 8080).
 	reverse_proxy 127.0.0.1:8080
 }

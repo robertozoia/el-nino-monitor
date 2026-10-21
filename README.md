@@ -51,16 +51,16 @@ artefacts are not synced.
 
 ```sh
 git clone … /opt/elnino && cd /opt/elnino
-echo "CONTACT=you@example.com" > .env
+cp .env.example .env                     # set CONTACT and, if 8080 is taken, ELNINO_PORT
 docker compose build                     # build on the VPS: native x86_64, no emulation
 docker compose run --rm elnino backfill  # one-off: history + 90 SST frames
 docker compose up -d
-curl -s 127.0.0.1:8080/healthz           # ok
+curl -s 127.0.0.1:${ELNINO_PORT:-8080}/healthz   # ok
 ```
 
-Add `deploy/Caddyfile.example` to `/etc/caddy/Caddyfile` (change the domain) and
-`sudo systemctl reload caddy`. Caddy handles TLS and compression; the container only
-listens on `127.0.0.1:8080`.
+Add `deploy/Caddyfile.example` to `/etc/caddy/Caddyfile` (change the domain, and the
+port if you set `ELNINO_PORT`) and `sudo systemctl reload caddy`. Caddy handles TLS and
+compression; the container is published only on `127.0.0.1:${ELNINO_PORT:-8080}`.
 
 Backups: `deploy/backup.sh` (nightly cron) copies a consistent SQLite snapshot out of
 the container. The SST grids (`/data/grids`) can be re-downloaded with `backfill`.
