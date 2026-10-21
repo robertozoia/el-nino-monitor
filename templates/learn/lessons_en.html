@@ -1,0 +1,392 @@
+{# Lesson content (EN). Each <article> feeds the panel tabs, the experiment box and the
+   scene callouts; learn.js reads it. Without JavaScript it reads as a plain document. #}
+
+<article class="lesson" data-id="stage" data-scene="pacific" data-thumb="t-stage">
+  <h2>The stage: the tropical Pacific</h2>
+  <p class="short">Meet the Pacific</p>
+  <section data-tab="overview">
+    <p>El Niño happens in the equatorial Pacific, a band more than 15,000&nbsp;km long between Indonesia and South America. Normally the ocean is <strong>tilted</strong>: very warm water piles up in the west while cold water wells up off Peru and Ecuador.</p>
+    <ul class="points">
+      <li><svg class="ic"><use href="#i-thermo"/></svg><span>The western <b>warm pool</b> is above 28&nbsp;°C, the largest body of warm water on the planet.</span></li>
+      <li><svg class="ic"><use href="#i-depth"/></svg><span>The <b>thermocline</b> separates warm surface water from cold deep water: ~200&nbsp;m deep in the west, ~50&nbsp;m in the east.</span></li>
+      <li><svg class="ic"><use href="#i-loop"/></svg><span>Ocean and atmosphere are coupled: air rises and rains over warm water and sinks, dry, over cold water.</span></li>
+    </ul>
+  </section>
+  <section data-tab="deep">
+    <p><b>ENSO</b> (El Niño–Southern Oscillation) is the scientific name. It has an ocean part, El Niño and La Niña, and an atmospheric part, the <b>Southern Oscillation</b>: a pressure seesaw between Tahiti and Darwin (Australia) described by Gilbert Walker in the 1920s.</p>
+    <p>The name comes from fishermen in northern Peru, who in the late 19th century called the warm current that appeared around Christmas the "corriente del Niño" (the Christ child's current). Today it is reserved for years when that warming is much stronger and longer.</p>
+    <p>The model on the left is schematic, with the vertical exaggerated. Its front face is a cross-section along the equator and its top shows sea temperature.</p>
+  </section>
+  <section data-tab="sources">
+    <ul class="refs">
+      <li><a href="https://www.pmel.noaa.gov/elnino/what-is-el-nino">NOAA PMEL: What is El Niño?</a></li>
+      <li><a href="https://www.climate.gov/enso">NOAA Climate.gov: ENSO blog</a></li>
+      <li><a href="https://wmo.int/topics/el-nino-la-nina">WMO: El Niño / La Niña</a></li>
+    </ul>
+  </section>
+  <section data-part="experiment">
+    <p class="exp-lead">Switch the model's layers on and off. Hover over the surface to read the temperature.</p>
+    <div class="switches">
+      <label class="switch"><input type="checkbox" data-control="layer" value="atmo" checked><span>Atmosphere</span></label>
+      <label class="switch"><input type="checkbox" data-control="layer" value="sst" checked><span>Sea temperature</span></label>
+      <label class="switch"><input type="checkbox" data-control="layer" value="thermo" checked><span>Thermocline</span></label>
+    </div>
+    <dl class="readouts">
+      <div><dt>West (Indonesia)</dt><dd data-out="sst_west">—</dd></div>
+      <div><dt>East (Ecuador)</dt><dd data-out="sst_east">—</dd></div>
+      <div><dt>Difference</dt><dd data-out="sst_diff">—</dd></div>
+    </dl>
+  </section>
+  <ul data-part="callouts">
+    <li data-id="warm_pool" data-icon="thermo"><b>Warm pool</b><span>Above 28&nbsp;°C. Wind piles the water up here.</span></li>
+    <li data-id="convection" data-icon="rain"><b>Rain and rising air</b><span>Warm water heats the air, which rises into storms.</span></li>
+    <li data-id="trades" data-icon="wind"><b>Trade winds</b><span>Blow east to west along the equator.</span></li>
+    <li data-id="cold_tongue" data-icon="wave"><b>Cold tongue</b><span>Cold, nutrient-rich water off South America.</span></li>
+    <li data-id="thermocline" data-icon="depth"><b>Thermocline</b><span>Deep in the west, shallow in the east.</span></li>
+  </ul>
+</article>
+
+<article class="lesson" data-id="winds" data-scene="pacific" data-thumb="t-winds">
+  <h2>Trade winds and upwelling</h2>
+  <p class="short">Wind and upwelling</p>
+  <section data-tab="overview">
+    <p>The <strong>trade winds</strong> push surface water west, where sea level ends up about 50&nbsp;cm higher than off Ecuador. In the east, the water pushed away is replaced by cold water rising from below: <strong>upwelling</strong>.</p>
+    <ul class="points">
+      <li><svg class="ic"><use href="#i-wind"/></svg><span>More wind, more tilt: a deeper thermocline in the west and a shallower one in the east.</span></li>
+      <li><svg class="ic"><use href="#i-up"/></svg><span>Upwelling brings nutrients to the surface and feeds plankton.</span></li>
+      <li><svg class="ic"><use href="#i-fish"/></svg><span>That is why Peru's sea supports the world's largest single-species fishery: the anchoveta.</span></li>
+    </ul>
+  </section>
+  <section data-tab="deep">
+    <p>Off Peru two effects add up. Southerly winds blowing along the coast turn surface water offshore because of Earth's rotation (Ekman transport), and deep water rises to replace it. At the equator the trades spread water north and south, with the same result.</p>
+    <p>The Humboldt Current also carries cold water up from the south. That cold water chills the air above it, keeps it stable and explains why Peru's coast is a desert despite lying in the tropics.</p>
+  </section>
+  <section data-tab="sources">
+    <ul class="refs">
+      <li><a href="https://www.pmel.noaa.gov/elnino/what-is-el-nino">NOAA PMEL: normal and El Niño conditions</a></li>
+      <li><a href="https://oceanservice.noaa.gov/facts/upwelling.html">NOAA Ocean Service: What is upwelling?</a></li>
+      <li><a href="https://www.imarpe.gob.pe/">IMARPE: Peruvian Marine Research Institute</a></li>
+    </ul>
+  </section>
+  <section data-part="experiment">
+    <p class="exp-lead">Change the strength of the trades and watch the thermocline, upwelling and fish.</p>
+    <label class="range"><span>Trade-wind strength</span><input type="range" min="0" max="160" step="5" value="100" data-control="wind"><output data-out="wind">100&nbsp;%</output></label>
+    <dl class="readouts">
+      <div><dt>Sea off Ecuador</dt><dd data-out="sst_east">—</dd></div>
+      <div><dt>Thermocline in the east</dt><dd data-out="thermo_east">—</dd></div>
+      <div><dt>Upwelling</dt><dd data-out="upwelling">—</dd></div>
+      <div><dt>Anchoveta</dt><dd data-out="fish">—</dd></div>
+    </dl>
+  </section>
+  <ul data-part="callouts">
+    <li data-id="trades" data-icon="wind"><b>Trade winds</b><span>Push warm water west.</span></li>
+    <li data-id="sea_level" data-icon="wave"><b>Sea level</b><span>~50&nbsp;cm higher in the west.</span></li>
+    <li data-id="upwelling" data-icon="up"><b>Upwelling</b><span>Cold water and nutrients rise to the surface.</span></li>
+    <li data-id="fish" data-icon="fish"><b>Anchoveta</b><span>Feeds on plankton that grows on those nutrients.</span></li>
+  </ul>
+</article>
+
+<article class="lesson" data-id="kelvin" data-scene="pacific" data-thumb="t-kelvin">
+  <h2>How an El Niño starts</h2>
+  <p class="short">How it starts</p>
+  <section data-tab="overview">
+    <p>It starts when the trade winds weaken, often through <strong>westerly wind bursts</strong> over the western Pacific. The piled-up warm water is released and travels east beneath the surface as a <strong>Kelvin wave</strong>.</p>
+    <ul class="points">
+      <li><svg class="ic"><use href="#i-clock"/></svg><span>A Kelvin wave crosses the Pacific in about 2 to 3 months, pushing the thermocline down as it goes.</span></li>
+      <li><svg class="ic"><use href="#i-thermo"/></svg><span>When it reaches South America, upwelling brings up less-cold water and the sea warms.</span></li>
+      <li><svg class="ic"><use href="#i-loop"/></svg><span><b>Bjerknes feedback:</b> a warmer east weakens the trades further, so the warming grows.</span></li>
+    </ul>
+  </section>
+  <section data-tab="deep">
+    <p>In 1969 Jacob Bjerknes explained how ocean and atmosphere reinforce each other. When the east–west temperature contrast shrinks, the Walker circulation weakens, the trades slacken and the contrast shrinks even more.</p>
+    <p>Why does it end? Ocean waves travelling west (Rossby waves) reflect off the western boundary and return as cold Kelvin waves. El Niño also drains the heat stored in the equatorial Pacific toward the poles. That is why the system oscillates instead of settling into one state.</p>
+    <p>Kelvin waves are tracked with moored buoys (the TAO/TRITON array) and with satellites that measure sea level: warm water takes up more volume.</p>
+  </section>
+  <section data-tab="sources">
+    <ul class="refs">
+      <li><a href="https://doi.org/10.1175/1520-0493(1969)097%3C0163:ATFTEP%3E2.3.CO;2">Bjerknes (1969), Monthly Weather Review 97</a></li>
+      <li><a href="https://www.climate.gov/enso">NOAA Climate.gov: ENSO blog (Kelvin waves)</a></li>
+      <li><a href="https://www.pmel.noaa.gov/gtmba/">NOAA PMEL: TAO/TRITON buoy array</a></li>
+    </ul>
+  </section>
+  <section data-part="experiment">
+    <p class="exp-lead">Trigger a westerly wind burst and follow the Kelvin wave across the Pacific.</p>
+    <button type="button" class="btn primary" data-control="burst"><svg><use href="#i-play"/></svg>Trigger a wind burst</button>
+    <div class="timeline"><i data-out="timeline"></i><span class="tl-month" data-out="month">Month 0</span></div>
+    <ol class="steps">
+      <li data-step="0">The trade winds blow as usual.</li>
+      <li data-step="1">A westerly wind burst pushes warm water east.</li>
+      <li data-step="2">The Kelvin wave travels beneath the surface, pushing the thermocline down.</li>
+      <li data-step="3">It reaches South America: the sea warms and the rain moves east.</li>
+    </ol>
+  </section>
+  <ul data-part="callouts">
+    <li data-id="westerly" data-icon="wind"><b>Westerly wind burst</b><span>Gusts lasting days to weeks that stall the trades.</span></li>
+    <li data-id="kelvin" data-icon="wave"><b>Kelvin wave</b><span>A hump of warm water that pushes the thermocline down.</span></li>
+    <li data-id="cold_tongue" data-icon="thermo"><b>The east warms</b><span>Less cold water wells up.</span></li>
+  </ul>
+</article>
+
+<article class="lesson" data-id="phases" data-scene="pacific" data-thumb="t-phases">
+  <h2>El Niño, neutral and La Niña</h2>
+  <p class="short">The three phases</p>
+  <section data-tab="overview">
+    <p>ENSO swings irregularly every <strong>2 to 7 years</strong> between three states. During <strong>El Niño</strong> the central and eastern Pacific warm, the trades weaken and the rain moves east. <strong>La Niña</strong> is the opposite.</p>
+    <ul class="points">
+      <li><svg class="ic"><use href="#i-clock"/></svg><span>Events usually form between June and September and peak between November and January.</span></li>
+      <li><svg class="ic"><use href="#i-rain"/></svg><span>During El Niño the rain leaves Indonesia and Australia and settles over the central Pacific.</span></li>
+      <li><svg class="ic"><use href="#i-pulse"/></svg><span>The Southern Oscillation Index (SOI) turns negative during El Niño and positive during La Niña.</span></li>
+    </ul>
+  </section>
+  <section data-tab="deep">
+    <p>An event is defined not by absolute warmth but by the <b>anomaly</b>: the difference from the average for that time of year. A "strong" El Niño can mean the sea is 2&nbsp;°C warmer than normal in the Niño&nbsp;3.4 region.</p>
+    <p>No two events are alike. In some the strongest warming sits in the central Pacific ("Modoki" or central-Pacific El Niño); in others it is next to South America. For Peru that difference is decisive, as the coastal El Niño lesson shows.</p>
+    <p>La Niña tends to last longer than El Niño and sometimes repeats for several years in a row, as in 2020–2023.</p>
+  </section>
+  <section data-tab="sources">
+    <ul class="refs">
+      <li><a href="https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/enso_advisory/ensodisc.shtml">NOAA CPC: ENSO Diagnostic Discussion</a></li>
+      <li><a href="https://wmo.int/topics/el-nino-la-nina">WMO: El Niño / La Niña</a></li>
+      <li><a href="https://iri.columbia.edu/our-expertise/climate/enso/">IRI Columbia: ENSO</a></li>
+    </ul>
+  </section>
+  <section data-part="experiment">
+    <p class="exp-lead">Pick a phase or set the Niño&nbsp;3.4 anomaly.</p>
+    <div class="seg" data-control="phase" role="group" aria-label="Phase">
+      <button type="button" value="-1.5">La Niña</button>
+      <button type="button" value="0" aria-pressed="true">Neutral</button>
+      <button type="button" value="2">El Niño</button>
+    </div>
+    <label class="range"><span>Niño 3.4 anomaly</span><input type="range" min="-2.5" max="3" step="0.1" value="0" data-control="enso"><output data-out="enso">0.0&nbsp;°C</output></label>
+    <dl class="readouts">
+      <div><dt>Category (NOAA)</dt><dd data-out="cat_noaa">—</dd></div>
+      <div><dt>Heaviest rain over</dt><dd data-out="rain_lon">—</dd></div>
+      <div><dt>Sea off Ecuador</dt><dd data-out="sst_east">—</dd></div>
+    </dl>
+  </section>
+  <ul data-part="callouts">
+    <li data-id="convection" data-icon="rain"><b>Rain belt</b><span>Follows the warmest water.</span></li>
+    <li data-id="trades" data-icon="wind"><b>Trade winds</b><span>Weaker in El Niño, stronger in La Niña.</span></li>
+    <li data-id="thermocline" data-icon="depth"><b>Thermocline</b><span>Flattens during El Niño.</span></li>
+    <li data-id="cold_tongue" data-icon="thermo"><b>Eastern Pacific</b><span>Where the anomaly is measured.</span></li>
+  </ul>
+</article>
+
+<article class="lesson" data-id="costero" data-scene="peru" data-thumb="t-costero">
+  <h2>Coastal El Niño</h2>
+  <p class="short">Coastal El Niño</p>
+  <section data-tab="overview">
+    <p>The sea off Peru can warm sharply even when the central Pacific does not, as in 1925, 2017 and early 2023. This is the <strong>coastal El Niño</strong> ("El Niño costero"), and Peru measures it with the <strong>ICEN</strong> (Coastal El Niño Index).</p>
+    <ul class="points">
+      <li><svg class="ic"><use href="#i-thermo"/></svg><span>When the northern sea goes above about 26&nbsp;°C, the air can build storms over a desert that normally gets no rain.</span></li>
+      <li><svg class="ic"><use href="#i-mountain"/></svg><span>Heavy rain in Tumbes, Piura and Lambayeque; rivers overflow and <i>huaicos</i> (mudflows) rush down Andean ravines.</span></li>
+      <li><svg class="ic"><use href="#i-fish"/></svg><span>Anchoveta move south and deeper, and fishing seasons may be suspended.</span></li>
+    </ul>
+  </section>
+  <section data-tab="deep">
+    <p>The ICEN is the 3-month running mean of the sea temperature anomaly in the Niño&nbsp;1+2 region (0°–10°S, 90°–80°W). Peru's ENFEN (the national El Niño study committee) uses it to declare a coastal El Niño and its magnitude: <b>weak</b> from +0.4&nbsp;°C, <b>moderate</b> from +1.0, <b>strong</b> from +1.7 and <b>extraordinary</b> from +3.0&nbsp;°C.</p>
+    <p>ENFEN issues Official Statements with an alert status: "inactive", "watch" or "alert". In 2017 a strong coastal El Niño affected more than a million people in Peru while the central Pacific stayed near neutral. 2015–16 was the reverse: a very strong central-Pacific El Niño with only moderate rain on the coast.</p>
+    <p>Other impacts include dengue outbreaks (a record in 2023) and losses in farming (rice, mango, lime) and infrastructure. In the southern Andes, by contrast, El Niño tends to bring drought to the Altiplano.</p>
+  </section>
+  <section data-tab="sources">
+    <ul class="refs">
+      <li><a href="https://enfen.imarpe.gob.pe/">ENFEN: Official Statements (Spanish)</a></li>
+      <li><a href="http://met.igp.gob.pe/datos/ICEN.txt">IGP: ICEN series</a></li>
+      <li><a href="https://doi.org/10.1007/s00382-017-3702-1">Takahashi &amp; Martínez (2019): the 1925 coastal El Niño</a></li>
+      <li><a href="/en/peru">Monitor: Peru page</a></li>
+    </ul>
+  </section>
+  <section data-part="experiment">
+    <p class="exp-lead">Warm the sea off Peru and watch the rain, the rivers and the fish.</p>
+    <label class="range"><span>Coastal sea anomaly (Niño 1+2)</span><input type="range" min="-1.5" max="5" step="0.1" value="0" data-control="coastal"><output data-out="coastal">0.0&nbsp;°C</output></label>
+    <dl class="readouts">
+      <div><dt>Sea off Piura</dt><dd data-out="sst_piura">—</dd></div>
+      <div><dt>Magnitude (ENFEN)</dt><dd data-out="cat_enfen">—</dd></div>
+      <div><dt>North coast</dt><dd data-out="rain">—</dd></div>
+      <div><dt>Anchoveta</dt><dd data-out="fish">—</dd></div>
+    </dl>
+  </section>
+  <ul data-part="callouts">
+    <li data-id="humboldt" data-icon="wave"><b>Humboldt Current</b><span>Cold water flowing up from the south.</span></li>
+    <li data-id="desert" data-icon="sun"><b>Coastal desert</b><span>The cold sea keeps the air stable and dry.</span></li>
+    <li data-id="andes" data-icon="mountain"><b>Andes</b><span>Ravines funnel the rain into mudflows.</span></li>
+    <li data-id="storms" data-icon="rain"><b>Storms</b><span>Form when the sea tops ~26&nbsp;°C.</span></li>
+    <li data-id="anchoveta" data-icon="fish"><b>Anchoveta</b><span>Needs cold, nutrient-rich water.</span></li>
+  </ul>
+</article>
+
+<article class="lesson" data-id="measure" data-scene="world" data-thumb="t-measure">
+  <h2>How it is measured</h2>
+  <p class="short">Regions and indices</p>
+  <section data-tab="overview">
+    <p>Scientists watch sea temperature in four boxes along the equator. The anomaly in the <strong>Niño&nbsp;3.4</strong> region defines global events; the one in <strong>Niño&nbsp;1+2</strong>, next to Peru and Ecuador, defines coastal El Niño.</p>
+    <ul class="points">
+      <li><svg class="ic"><use href="#i-target"/></svg><span><b>ONI / RONI</b> (NOAA): 3-month mean of Niño&nbsp;3.4. El Niño starts at +0.5&nbsp;°C, sustained over several seasons.</span></li>
+      <li><svg class="ic"><use href="#i-flag"/></svg><span><b>ICEN</b> (ENFEN): 3-month mean of Niño&nbsp;1+2, with its own thresholds for the Peruvian coast.</span></li>
+      <li><svg class="ic"><use href="#i-pulse"/></svg><span>The values on the left are from the latest week (NOAA CPC).</span></li>
+    </ul>
+  </section>
+  <section data-tab="deep">
+    <p>Because the whole ocean is warming, NOAA now uses the <b>Relative ONI (RONI)</b>, which compares Niño&nbsp;3.4 with the average of the whole tropics. That keeps a globally warmer ocean from looking like a permanent El Niño.</p>
+    <p>The same number can mean different things: +1.5&nbsp;°C is a "strong" El Niño for NOAA in Niño&nbsp;3.4, but only "moderate" for ENFEN in Niño&nbsp;1+2, because the coastal sea varies much more.</p>
+    <p>The regions: Niño&nbsp;1+2 (0°–10°S, 90°–80°W), Niño&nbsp;3 (5°N–5°S, 150°–90°W), Niño&nbsp;3.4 (5°N–5°S, 170°–120°W) and Niño&nbsp;4 (5°N–5°S, 160°E–150°W).</p>
+  </section>
+  <section data-tab="sources">
+    <ul class="refs">
+      <li><a href="https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/ensostuff/ONI_v5.php">NOAA CPC: historical ONI table</a></li>
+      <li><a href="https://www.cpc.ncep.noaa.gov/data/indices/RONI.ascii.txt">NOAA CPC: RONI series</a></li>
+      <li><a href="https://enfen.imarpe.gob.pe/">ENFEN: operational definition (ICEN)</a></li>
+      <li><a href="/en/indices">Monitor: indices and forecast</a></li>
+    </ul>
+  </section>
+  <section data-part="experiment">
+    <p class="exp-lead">One number, two scales. Move the anomaly and compare.</p>
+    <label class="range"><span>Anomaly</span><input type="range" min="-2" max="4.5" step="0.1" value="1.5" data-control="anomaly"><output data-out="anomaly">+1.5&nbsp;°C</output></label>
+    <dl class="readouts">
+      <div><dt>As Niño 3.4 (NOAA)</dt><dd data-out="cat_noaa">—</dd></div>
+      <div><dt>As Niño 1+2 (ENFEN)</dt><dd data-out="cat_enfen">—</dd></div>
+    </dl>
+  </section>
+  <ul data-part="callouts">
+    <li data-id="nino4" data-icon="target"><b>Niño 4</b><span data-live="nino4_weekly">Western-central Pacific.</span></li>
+    <li data-id="nino34" data-icon="target"><b>Niño 3.4</b><span data-live="nino34_weekly">The global reference.</span></li>
+    <li data-id="nino3" data-icon="target"><b>Niño 3</b><span data-live="nino3_weekly">Eastern Pacific.</span></li>
+    <li data-id="nino12" data-icon="target"><b>Niño 1+2</b><span data-live="nino12_weekly">Off Peru and Ecuador.</span></li>
+  </ul>
+</article>
+
+<article class="lesson" data-id="global" data-scene="world" data-thumb="t-global">
+  <h2>Impacts around the world</h2>
+  <p class="short">Teleconnections</p>
+  <section data-tab="overview">
+    <p>By moving tropical rain thousands of kilometres, El Niño reshapes the circulation of the whole atmosphere. These <strong>teleconnections</strong> change rainfall and temperature far from the Pacific. They are tendencies, not certainties: every event is different.</p>
+    <ul class="points">
+      <li><svg class="ic"><use href="#i-rain"/></svg><span>Wetter: the Peru and Ecuador coast, southeastern South America, the southern US, East Africa.</span></li>
+      <li><svg class="ic"><use href="#i-sun"/></svg><span>Drier: Indonesia, Australia, southern Africa, northern South America, the Indian monsoon.</span></li>
+      <li><svg class="ic"><use href="#i-thermo"/></svg><span>The planet warms: the years after a strong El Niño often set records, like 2016 and 2024.</span></li>
+    </ul>
+  </section>
+  <section data-tab="deep">
+    <p>Heavy tropical rain releases heat into the atmosphere. When that heat source shifts to the central Pacific, it sends atmospheric waves toward the mid-latitudes that bend the jet streams.</p>
+    <p>Other typical effects: fewer Atlantic hurricanes (stronger wind shear), more central and eastern Pacific cyclones, fires in Indonesia and the Amazon, and mass coral bleaching (1998, 2010, 2016 and 2023–2025).</p>
+    <p>The map is a simplified sketch of typical patterns, not a forecast. The monitor also shows observed events (GDACS) without attributing them to El Niño.</p>
+  </section>
+  <section data-tab="sources">
+    <ul class="refs">
+      <li><a href="https://www.climate.gov/enso">NOAA Climate.gov: global ENSO impacts</a></li>
+      <li><a href="https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/ensocycle/enso_cycle.shtml">NOAA CPC: typical El Niño impacts</a></li>
+      <li><a href="https://coralreefwatch.noaa.gov/">NOAA Coral Reef Watch</a></li>
+      <li><a href="/en/impacts">Monitor: global impacts</a></li>
+    </ul>
+  </section>
+  <section data-part="experiment">
+    <p class="exp-lead">Switch season. Hover over an area to see what is typically expected there.</p>
+    <div class="seg" data-control="season" role="group" aria-label="Season">
+      <button type="button" value="djf" aria-pressed="true">Dec–Feb</button>
+      <button type="button" value="jja">Jun–Aug</button>
+    </div>
+    <ul class="legend">
+      <li><i class="sw wet"></i>Wetter than normal</li>
+      <li><i class="sw dry"></i>Drier than normal</li>
+      <li><i class="sw warm"></i>Warmer than normal</li>
+    </ul>
+  </section>
+  <ul data-part="callouts">
+    <li data-id="g_peru" data-icon="rain"><b>Peru and Ecuador</b><span>Rain on the north coast.</span></li>
+    <li data-id="g_indo" data-icon="sun"><b>Indonesia and Australia</b><span>Drought and fires.</span></li>
+    <li data-id="g_us" data-icon="rain"><b>Southern US</b><span>Wetter winters.</span></li>
+    <li data-id="g_africa" data-icon="sun"><b>Southern Africa</b><span>Drier summers.</span></li>
+  </ul>
+</article>
+
+<article class="lesson" data-id="history" data-scene="history" data-thumb="t-history">
+  <h2>A century of El Niños</h2>
+  <p class="short">History</p>
+  <section data-tab="overview">
+    <p>Each column is one year: the Niño&nbsp;3.4 anomaly (ONI) in December–February, the usual peak. Warm columns are El Niños and cool ones La Niñas. The strong events stand out: <strong>1982–83, 1997–98, 2015–16 and 2023–24</strong>.</p>
+    <ul class="points">
+      <li><svg class="ic"><use href="#i-chart"/></svg><span>Very strong El Niños (≥&nbsp;+2.0&nbsp;°C) come roughly once a decade.</span></li>
+      <li><svg class="ic"><use href="#i-mountain"/></svg><span>For Peru the most devastating were 1982–83 and 1997–98, plus the coastal events of 1925 and 2017.</span></li>
+      <li><svg class="ic"><use href="#i-pulse"/></svg><span>The last column is the current event, using the latest value.</span></li>
+    </ul>
+  </section>
+  <section data-tab="deep">
+    <p>Before 1950 there are fewer measurements, but historical and paleoclimate records (corals, sediments, colonial chronicles) show that El Niño has existed for thousands of years.</p>
+    <p>Is global warming changing El Niño? The question is still open. Several models project more extreme rainfall in the eastern Pacific during El Niño, but there is no consensus on how often events will occur. What is clear is that an El Niño on top of a warmer ocean pushes global temperatures to records more easily.</p>
+  </section>
+  <section data-tab="sources">
+    <ul class="refs">
+      <li><a href="https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/ensostuff/ONI_v5.php">NOAA CPC: ONI since 1950</a></li>
+      <li><a href="https://www.ipcc.ch/report/ar6/wg1/">IPCC AR6 WG1: ENSO and climate change</a></li>
+      <li><a href="/en/indices">Monitor: comparison with analog events</a></li>
+    </ul>
+  </section>
+  <section data-part="experiment">
+    <p class="exp-lead">Pick an event. Hover over any column to see its value.</p>
+    <div class="chips" data-control="event">
+      <button type="button" value="1972">1972–73</button>
+      <button type="button" value="1982">1982–83</button>
+      <button type="button" value="1988">1988–89</button>
+      <button type="button" value="1997">1997–98</button>
+      <button type="button" value="2010">2010–11</button>
+      <button type="button" value="2015">2015–16</button>
+      <button type="button" value="2023">2023–24</button>
+      <button type="button" value="2026">2026–27</button>
+    </div>
+    <div class="event-notes">
+      <p data-event="1972" hidden><b>1972–73.</b> Peru's anchoveta fishery, then the world's largest, collapsed under El Niño combined with overfishing.</p>
+      <p data-event="1982" hidden><b>1982–83.</b> Nobody forecast it. Floods in northern Peru and Ecuador; drought in the southern Andes, Australia and Indonesia.</p>
+      <p data-event="1988" hidden><b>1988–89.</b> A strong La Niña: cold water in the eastern Pacific, drought in the southern US, rain in Australia.</p>
+      <p data-event="1997" hidden><b>1997–98.</b> The first great El Niño forecast months ahead. Extreme rain in Piura and Tumbes and billions of dollars in losses.</p>
+      <p data-event="2010" hidden><b>2010–11.</b> One of the strongest La Niñas: floods in Queensland, Australia, and drought in the Horn of Africa.</p>
+      <p data-event="2015" hidden><b>2015–16.</b> Very strong in the central Pacific, with moderate impacts on Peru's coast. Fires in Indonesia; 2016 set a heat record.</p>
+      <p data-event="2023" hidden><b>2023–24.</b> Began as a coastal El Niño in Peru (Cyclone Yaku, record dengue, fishing suspended) and then went global. 2024 was the warmest year on record.</p>
+      <p data-event="2026" hidden><b>2026–27.</b> The current event. See the last lesson and the monitor for this week's data.</p>
+    </div>
+  </section>
+  <ul data-part="callouts"></ul>
+</article>
+
+<article class="lesson" data-id="now" data-scene="pacific" data-thumb="t-now">
+  <h2>2026–27: what is happening now</h2>
+  <p class="short">Now</p>
+  <section data-tab="overview">
+    <p>The model on the left is set to the latest data. These are the official indicators right now:</p>
+    <dl class="kpi-list">
+      {% for k in d.kpis %}{% if k.id in ["nino34_weekly", "nino12_weekly", "roni", "icen"] %}
+      <div><dt>{{ k.label }}<small>{{ k.date }} · {{ k.source }}</small></dt><dd class="{{ 'warm' if k.warm else 'cool' }}">{{ k.value }}{{ k.unit }}{% if k.category_label %}<small>{{ k.category_label }}</small>{% endif %}</dd></div>
+      {% endif %}{% endfor %}
+      {% if d.cpc %}<div><dt>NOAA CPC<small>{{ d.cpc.issued }}</small></dt><dd class="txt">{{ d.cpc.status_local }}</dd></div>{% endif %}
+      {% if d.enfen and d.enfen.status %}<div><dt>ENFEN<small>N° {{ d.enfen.status_from }}</small></dt><dd class="txt">{{ d.enfen.status }}</dd></div>{% endif %}
+    </dl>
+    {% if not d.kpis %}<p class="muted">No data downloaded yet.</p>{% endif %}
+  </section>
+  <section data-tab="deep">
+    <p>Weekly data change every Monday and the 3-month indices once a month. Official declarations (NOAA's El Niño Advisory, ENFEN's Alert) are what drive prevention measures in Peru.</p>
+    <p>To follow the event day by day, the sea temperature map, the forecasts and the comparison with 1997–98 are in the monitor.</p>
+  </section>
+  <section data-tab="sources">
+    <ul class="refs">
+      <li><a href="/en/">Monitor: current situation</a></li>
+      <li><a href="/en/ocean">Monitor: ocean map</a></li>
+      <li><a href="/en/sources">Monitor: sources and methodology</a></li>
+    </ul>
+  </section>
+  <section data-part="experiment">
+    <p class="exp-lead">Compare the current state with a neutral year.</p>
+    <div class="seg" data-control="nowmode" role="group">
+      <button type="button" value="live" aria-pressed="true">Now</button>
+      <button type="button" value="neutral">Neutral year</button>
+    </div>
+    <dl class="readouts">
+      <div><dt>Niño 3.4 in the model</dt><dd data-out="enso">—</dd></div>
+      <div><dt>Category (NOAA)</dt><dd data-out="cat_noaa">—</dd></div>
+    </dl>
+    <a class="btn" href="/en/"><svg><use href="#i-pulse"/></svg>Open the monitor</a>
+  </section>
+  <ul data-part="callouts">
+    <li data-id="convection" data-icon="rain"><b>Rain displaced</b><span>Toward the central Pacific.</span></li>
+    <li data-id="cold_tongue" data-icon="thermo"><b>Eastern Pacific</b><span data-live="nino12_weekly">Anomaly off Peru.</span></li>
+    <li data-id="thermocline" data-icon="depth"><b>Thermocline</b><span>Flatter than normal.</span></li>
+  </ul>
+</article>

@@ -1,0 +1,392 @@
+{# Lesson content (ES). Each <article> feeds the panel tabs, the experiment box and the
+   scene callouts; learn.js reads it. Without JavaScript it reads as a plain document. #}
+
+<article class="lesson" data-id="stage" data-scene="pacific" data-thumb="t-stage">
+  <h2>El escenario: el Pacífico tropical</h2>
+  <p class="short">Conoce el Pacífico</p>
+  <section data-tab="overview">
+    <p>El Niño ocurre en el océano Pacífico ecuatorial, una franja de más de 15&nbsp;000&nbsp;km entre Indonesia y Sudamérica. En condiciones normales el océano está <strong>inclinado</strong>: agua muy cálida se acumula al oeste y agua fría aflora frente a Perú y Ecuador.</p>
+    <ul class="points">
+      <li><svg class="ic"><use href="#i-thermo"/></svg><span>La <b>piscina cálida</b> del oeste supera los 28&nbsp;°C: es la mayor masa de agua cálida del planeta.</span></li>
+      <li><svg class="ic"><use href="#i-depth"/></svg><span>La <b>termoclina</b> separa el agua cálida superficial del agua fría profunda: ~200&nbsp;m al oeste, ~50&nbsp;m al este.</span></li>
+      <li><svg class="ic"><use href="#i-loop"/></svg><span>Océano y atmósfera están acoplados: el aire sube y llueve sobre el agua cálida, y baja seco sobre el agua fría.</span></li>
+    </ul>
+  </section>
+  <section data-tab="deep">
+    <p><b>ENOS</b> (El Niño–Oscilación del Sur) es el nombre científico del fenómeno. Tiene una parte oceánica, El Niño y La Niña, y una atmosférica, la <b>Oscilación del Sur</b>: un sube y baja de presión entre Tahití y Darwin (Australia) que Gilbert Walker describió en la década de 1920.</p>
+    <p>El nombre viene de los pescadores del norte del Perú, que a fines del siglo XIX llamaban «corriente del Niño» a la corriente cálida que aparecía cerca de la Navidad. Hoy se reserva para los años en que ese calentamiento es mucho más intenso y duradero.</p>
+    <p>El modelo de la izquierda es esquemático y exagera la vertical. La cara frontal es un corte a lo largo del ecuador y la superficie muestra la temperatura del mar.</p>
+  </section>
+  <section data-tab="sources">
+    <ul class="refs">
+      <li><a href="https://www.pmel.noaa.gov/elnino/what-is-el-nino">NOAA PMEL: What is El Niño?</a></li>
+      <li><a href="https://www.climate.gov/enso">NOAA Climate.gov: ENSO blog</a></li>
+      <li><a href="https://wmo.int/topics/el-nino-la-nina">OMM: El Niño / La Niña</a></li>
+    </ul>
+  </section>
+  <section data-part="experiment">
+    <p class="exp-lead">Activa y desactiva las capas del modelo. Pasa el cursor sobre la superficie para leer la temperatura.</p>
+    <div class="switches">
+      <label class="switch"><input type="checkbox" data-control="layer" value="atmo" checked><span>Atmósfera</span></label>
+      <label class="switch"><input type="checkbox" data-control="layer" value="sst" checked><span>Temperatura del mar</span></label>
+      <label class="switch"><input type="checkbox" data-control="layer" value="thermo" checked><span>Termoclina</span></label>
+    </div>
+    <dl class="readouts">
+      <div><dt>Oeste (Indonesia)</dt><dd data-out="sst_west">—</dd></div>
+      <div><dt>Este (Ecuador)</dt><dd data-out="sst_east">—</dd></div>
+      <div><dt>Diferencia</dt><dd data-out="sst_diff">—</dd></div>
+    </dl>
+  </section>
+  <ul data-part="callouts">
+    <li data-id="warm_pool" data-icon="thermo"><b>Piscina cálida</b><span>Más de 28&nbsp;°C. El agua se acumula aquí empujada por el viento.</span></li>
+    <li data-id="convection" data-icon="rain"><b>Lluvia y aire ascendente</b><span>El agua cálida calienta el aire, que sube y forma tormentas.</span></li>
+    <li data-id="trades" data-icon="wind"><b>Vientos alisios</b><span>Soplan de este a oeste a lo largo del ecuador.</span></li>
+    <li data-id="cold_tongue" data-icon="wave"><b>Lengua fría</b><span>Agua fría y rica en nutrientes frente a Sudamérica.</span></li>
+    <li data-id="thermocline" data-icon="depth"><b>Termoclina</b><span>Profunda al oeste, somera al este.</span></li>
+  </ul>
+</article>
+
+<article class="lesson" data-id="winds" data-scene="pacific" data-thumb="t-winds">
+  <h2>Vientos alisios y afloramiento</h2>
+  <p class="short">Viento y afloramiento</p>
+  <section data-tab="overview">
+    <p>Los <strong>vientos alisios</strong> empujan el agua superficial hacia el oeste. Allí el nivel del mar queda unos 50&nbsp;cm más alto que frente a Ecuador. En el este, el agua desplazada se reemplaza con agua fría que sube desde abajo: el <strong>afloramiento</strong>.</p>
+    <ul class="points">
+      <li><svg class="ic"><use href="#i-wind"/></svg><span>Más viento significa más inclinación: termoclina más profunda al oeste y más somera al este.</span></li>
+      <li><svg class="ic"><use href="#i-up"/></svg><span>El afloramiento trae nutrientes a la superficie y alimenta al plancton.</span></li>
+      <li><svg class="ic"><use href="#i-fish"/></svg><span>Por eso el mar peruano sostiene la pesquería de una sola especie más grande del mundo: la anchoveta.</span></li>
+    </ul>
+  </section>
+  <section data-tab="deep">
+    <p>Frente a Perú se suman dos efectos. Los vientos del sur, paralelos a la costa, desvían el agua mar adentro por la rotación de la Tierra (transporte de Ekman), y el agua profunda sube para reemplazarla. En el ecuador, los alisios separan el agua hacia el norte y hacia el sur, con el mismo resultado.</p>
+    <p>La corriente de Humboldt lleva además agua fría desde el sur. Esa agua fría enfría el aire, lo vuelve estable y explica por qué la costa peruana es un desierto, a pesar de estar en el trópico.</p>
+  </section>
+  <section data-tab="sources">
+    <ul class="refs">
+      <li><a href="https://www.pmel.noaa.gov/elnino/what-is-el-nino">NOAA PMEL: condiciones normales y El Niño</a></li>
+      <li><a href="https://oceanservice.noaa.gov/facts/upwelling.html">NOAA Ocean Service: ¿Qué es el afloramiento?</a></li>
+      <li><a href="https://www.imarpe.gob.pe/">IMARPE: Instituto del Mar del Perú</a></li>
+    </ul>
+  </section>
+  <section data-part="experiment">
+    <p class="exp-lead">Cambia la fuerza de los alisios y observa la termoclina, el afloramiento y la pesca.</p>
+    <label class="range"><span>Fuerza de los alisios</span><input type="range" min="0" max="160" step="5" value="100" data-control="wind"><output data-out="wind">100&nbsp;%</output></label>
+    <dl class="readouts">
+      <div><dt>Mar frente a Ecuador</dt><dd data-out="sst_east">—</dd></div>
+      <div><dt>Termoclina al este</dt><dd data-out="thermo_east">—</dd></div>
+      <div><dt>Afloramiento</dt><dd data-out="upwelling">—</dd></div>
+      <div><dt>Anchoveta</dt><dd data-out="fish">—</dd></div>
+    </dl>
+  </section>
+  <ul data-part="callouts">
+    <li data-id="trades" data-icon="wind"><b>Alisios</b><span>Empujan el agua cálida hacia el oeste.</span></li>
+    <li data-id="sea_level" data-icon="wave"><b>Nivel del mar</b><span>~50&nbsp;cm más alto en el oeste.</span></li>
+    <li data-id="upwelling" data-icon="up"><b>Afloramiento</b><span>Agua fría y nutrientes suben a la superficie.</span></li>
+    <li data-id="fish" data-icon="fish"><b>Anchoveta</b><span>Se alimenta del plancton que crece con los nutrientes.</span></li>
+  </ul>
+</article>
+
+<article class="lesson" data-id="kelvin" data-scene="pacific" data-thumb="t-kelvin">
+  <h2>Cómo nace un Niño</h2>
+  <p class="short">Cómo empieza</p>
+  <section data-tab="overview">
+    <p>Todo empieza cuando los alisios se debilitan, a menudo con <strong>estallidos de viento del oeste</strong> sobre el Pacífico occidental. El agua cálida acumulada se libera y viaja hacia el este bajo la superficie como una <strong>onda Kelvin</strong>.</p>
+    <ul class="points">
+      <li><svg class="ic"><use href="#i-clock"/></svg><span>Una onda Kelvin cruza el Pacífico en unos 2 a 3 meses, hundiendo la termoclina a su paso.</span></li>
+      <li><svg class="ic"><use href="#i-thermo"/></svg><span>Al llegar a Sudamérica, el afloramiento trae agua menos fría y el mar se calienta.</span></li>
+      <li><svg class="ic"><use href="#i-loop"/></svg><span><b>Retroalimentación de Bjerknes:</b> un este más cálido debilita aún más los alisios, y el calentamiento crece.</span></li>
+    </ul>
+  </section>
+  <section data-tab="deep">
+    <p>Jacob Bjerknes explicó en 1969 que océano y atmósfera se refuerzan mutuamente. Si el contraste de temperatura este–oeste disminuye, la circulación de Walker se debilita, los alisios aflojan y el contraste disminuye aún más.</p>
+    <p>¿Por qué termina? Las ondas oceánicas que viajan hacia el oeste (ondas Rossby) se reflejan en el borde occidental y regresan como ondas Kelvin frías. Además, El Niño libera hacia los polos el calor acumulado en el Pacífico ecuatorial. Por eso el sistema oscila en lugar de quedarse en un estado.</p>
+    <p>Las ondas Kelvin se detectan con boyas (red TAO/TRITON) y con satélites que miden el nivel del mar: el agua cálida ocupa más volumen.</p>
+  </section>
+  <section data-tab="sources">
+    <ul class="refs">
+      <li><a href="https://doi.org/10.1175/1520-0493(1969)097%3C0163:ATFTEP%3E2.3.CO;2">Bjerknes (1969), Monthly Weather Review 97</a></li>
+      <li><a href="https://www.climate.gov/enso">NOAA Climate.gov: ENSO blog (ondas Kelvin)</a></li>
+      <li><a href="https://www.pmel.noaa.gov/gtmba/">NOAA PMEL: red de boyas TAO/TRITON</a></li>
+    </ul>
+  </section>
+  <section data-part="experiment">
+    <p class="exp-lead">Lanza un estallido de viento del oeste y sigue a la onda Kelvin a través del Pacífico.</p>
+    <button type="button" class="btn primary" data-control="burst"><svg><use href="#i-play"/></svg>Lanzar estallido de viento</button>
+    <div class="timeline"><i data-out="timeline"></i><span class="tl-month" data-out="month">Mes 0</span></div>
+    <ol class="steps">
+      <li data-step="0">Los alisios soplan con normalidad.</li>
+      <li data-step="1">Un estallido de viento del oeste empuja agua cálida hacia el este.</li>
+      <li data-step="2">La onda Kelvin viaja bajo la superficie y hunde la termoclina.</li>
+      <li data-step="3">Llega a Sudamérica: el mar se calienta y la lluvia se desplaza al este.</li>
+    </ol>
+  </section>
+  <ul data-part="callouts">
+    <li data-id="westerly" data-icon="wind"><b>Estallido de viento del oeste</b><span>Ráfagas de días a semanas que frenan a los alisios.</span></li>
+    <li data-id="kelvin" data-icon="wave"><b>Onda Kelvin</b><span>Una joroba de agua cálida que hunde la termoclina.</span></li>
+    <li data-id="cold_tongue" data-icon="thermo"><b>El este se calienta</b><span>Menos afloramiento de agua fría.</span></li>
+  </ul>
+</article>
+
+<article class="lesson" data-id="phases" data-scene="pacific" data-thumb="t-phases">
+  <h2>El Niño, neutral y La Niña</h2>
+  <p class="short">Las tres fases</p>
+  <section data-tab="overview">
+    <p>ENOS oscila de forma irregular cada <strong>2 a 7 años</strong> entre tres estados. En <strong>El Niño</strong> el Pacífico central y oriental se calienta, los alisios se debilitan y la lluvia se desplaza al este. En <strong>La Niña</strong> ocurre lo contrario.</p>
+    <ul class="points">
+      <li><svg class="ic"><use href="#i-clock"/></svg><span>Los eventos suelen formarse entre junio y septiembre y alcanzan su pico entre noviembre y enero.</span></li>
+      <li><svg class="ic"><use href="#i-rain"/></svg><span>Durante El Niño, la lluvia abandona Indonesia y Australia y se instala en el Pacífico central.</span></li>
+      <li><svg class="ic"><use href="#i-pulse"/></svg><span>El Índice de Oscilación del Sur (SOI) se vuelve negativo durante El Niño y positivo durante La Niña.</span></li>
+    </ul>
+  </section>
+  <section data-tab="deep">
+    <p>Lo que define un evento no es el calor absoluto sino la <b>anomalía</b>: la diferencia con el promedio para esa época del año. Un Niño «fuerte» puede tener el mar 2&nbsp;°C más cálido que lo normal en la región Niño&nbsp;3.4.</p>
+    <p>No hay dos eventos iguales. En algunos el calentamiento máximo está en el Pacífico central (los llamados Niño «Modoki» o del Pacífico central) y en otros junto a Sudamérica. Para el Perú esa diferencia es decisiva, como se ve en la lección de El Niño costero.</p>
+    <p>La Niña suele durar más que El Niño y a veces se repite varios años seguidos, como en 2020–2023.</p>
+  </section>
+  <section data-tab="sources">
+    <ul class="refs">
+      <li><a href="https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/enso_advisory/ensodisc.shtml">NOAA CPC: Discusión diagnóstica de ENOS</a></li>
+      <li><a href="https://wmo.int/topics/el-nino-la-nina">OMM: El Niño / La Niña</a></li>
+      <li><a href="https://iri.columbia.edu/our-expertise/climate/enso/">IRI Columbia: ENSO</a></li>
+    </ul>
+  </section>
+  <section data-part="experiment">
+    <p class="exp-lead">Elige una fase o ajusta la anomalía de Niño&nbsp;3.4.</p>
+    <div class="seg" data-control="phase" role="group" aria-label="Fase">
+      <button type="button" value="-1.5">La Niña</button>
+      <button type="button" value="0" aria-pressed="true">Neutral</button>
+      <button type="button" value="2">El Niño</button>
+    </div>
+    <label class="range"><span>Anomalía Niño 3.4</span><input type="range" min="-2.5" max="3" step="0.1" value="0" data-control="enso"><output data-out="enso">0.0&nbsp;°C</output></label>
+    <dl class="readouts">
+      <div><dt>Categoría (NOAA)</dt><dd data-out="cat_noaa">—</dd></div>
+      <div><dt>Máxima lluvia sobre</dt><dd data-out="rain_lon">—</dd></div>
+      <div><dt>Mar frente a Ecuador</dt><dd data-out="sst_east">—</dd></div>
+    </dl>
+  </section>
+  <ul data-part="callouts">
+    <li data-id="convection" data-icon="rain"><b>Zona de lluvias</b><span>Sigue al agua más cálida.</span></li>
+    <li data-id="trades" data-icon="wind"><b>Alisios</b><span>Se debilitan con El Niño y se refuerzan con La Niña.</span></li>
+    <li data-id="thermocline" data-icon="depth"><b>Termoclina</b><span>Se aplana con El Niño.</span></li>
+    <li data-id="cold_tongue" data-icon="thermo"><b>Pacífico oriental</b><span>Región donde se mide la anomalía.</span></li>
+  </ul>
+</article>
+
+<article class="lesson" data-id="costero" data-scene="peru" data-thumb="t-costero">
+  <h2>El Niño costero</h2>
+  <p class="short">El Niño costero</p>
+  <section data-tab="overview">
+    <p>El mar frente al Perú puede calentarse mucho aunque el Pacífico central no lo haga, como en 1925, en 2017 y al inicio de 2023. Es el <strong>El Niño costero</strong>, y en el Perú se mide con el <strong>ICEN</strong> (Índice Costero El Niño).</p>
+    <ul class="points">
+      <li><svg class="ic"><use href="#i-thermo"/></svg><span>Cuando el mar del norte supera unos 26&nbsp;°C, el aire puede formar tormentas sobre un desierto que normalmente no recibe lluvia.</span></li>
+      <li><svg class="ic"><use href="#i-mountain"/></svg><span>Lluvias intensas en Tumbes, Piura y Lambayeque; crecidas de ríos y huaicos en las quebradas que bajan de los Andes.</span></li>
+      <li><svg class="ic"><use href="#i-fish"/></svg><span>La anchoveta se va al sur y a mayor profundidad, y las temporadas de pesca pueden suspenderse.</span></li>
+    </ul>
+  </section>
+  <section data-tab="deep">
+    <p>El ICEN es la media móvil de 3 meses de la anomalía de temperatura en la región Niño&nbsp;1+2 (0°–10°S, 90°–80°O). El ENFEN (Estudio Nacional del Fenómeno El Niño) lo usa para declarar El Niño costero y su magnitud: <b>débil</b> desde +0.4&nbsp;°C, <b>moderado</b> desde +1.0, <b>fuerte</b> desde +1.7 y <b>extraordinario</b> desde +3.0&nbsp;°C.</p>
+    <p>El ENFEN emite Comunicados Oficiales con un estado de alerta: «No activo», «Vigilancia» o «Alerta». En 2017 un Niño costero fuerte afectó a más de un millón de personas en el Perú, con el Pacífico central casi neutral. En 2015–16 ocurrió lo contrario: un Niño muy fuerte en el Pacífico central y lluvias moderadas en la costa.</p>
+    <p>Otros impactos: brotes de dengue (récord en 2023), pérdidas en agricultura (arroz, mango, limón) y en infraestructura. En el sur andino, en cambio, El Niño suele traer sequía al altiplano.</p>
+  </section>
+  <section data-tab="sources">
+    <ul class="refs">
+      <li><a href="https://enfen.imarpe.gob.pe/">ENFEN: Comunicados Oficiales</a></li>
+      <li><a href="http://met.igp.gob.pe/datos/ICEN.txt">IGP: serie del ICEN</a></li>
+      <li><a href="https://doi.org/10.1007/s00382-017-3702-1">Takahashi y Martínez (2019): El Niño costero de 1925</a></li>
+      <li><a href="/es/peru">Monitor: página de Perú</a></li>
+    </ul>
+  </section>
+  <section data-part="experiment">
+    <p class="exp-lead">Calienta el mar frente al Perú y observa la lluvia, los ríos y la pesca.</p>
+    <label class="range"><span>Anomalía del mar costero (Niño 1+2)</span><input type="range" min="-1.5" max="5" step="0.1" value="0" data-control="coastal"><output data-out="coastal">0.0&nbsp;°C</output></label>
+    <dl class="readouts">
+      <div><dt>Mar frente a Piura</dt><dd data-out="sst_piura">—</dd></div>
+      <div><dt>Magnitud (ENFEN)</dt><dd data-out="cat_enfen">—</dd></div>
+      <div><dt>Costa norte</dt><dd data-out="rain">—</dd></div>
+      <div><dt>Anchoveta</dt><dd data-out="fish">—</dd></div>
+    </dl>
+  </section>
+  <ul data-part="callouts">
+    <li data-id="humboldt" data-icon="wave"><b>Corriente de Humboldt</b><span>Agua fría que viene del sur.</span></li>
+    <li data-id="desert" data-icon="sun"><b>Desierto costero</b><span>El mar frío mantiene el aire estable y seco.</span></li>
+    <li data-id="andes" data-icon="mountain"><b>Andes</b><span>Las quebradas canalizan la lluvia en huaicos.</span></li>
+    <li data-id="storms" data-icon="rain"><b>Tormentas</b><span>Aparecen cuando el mar supera ~26&nbsp;°C.</span></li>
+    <li data-id="anchoveta" data-icon="fish"><b>Anchoveta</b><span>Necesita agua fría y rica en nutrientes.</span></li>
+  </ul>
+</article>
+
+<article class="lesson" data-id="measure" data-scene="world" data-thumb="t-measure">
+  <h2>Cómo se mide</h2>
+  <p class="short">Regiones e índices</p>
+  <section data-tab="overview">
+    <p>Los científicos vigilan la temperatura del mar en cuatro cajas a lo largo del ecuador. La anomalía en la región <strong>Niño&nbsp;3.4</strong> define los eventos globales; la de <strong>Niño&nbsp;1+2</strong>, junto a Perú y Ecuador, define El Niño costero.</p>
+    <ul class="points">
+      <li><svg class="ic"><use href="#i-target"/></svg><span><b>ONI / RONI</b> (NOAA): media de 3 meses de Niño&nbsp;3.4. Hay El Niño desde +0.5&nbsp;°C, sostenido durante varias estaciones.</span></li>
+      <li><svg class="ic"><use href="#i-flag"/></svg><span><b>ICEN</b> (ENFEN): media de 3 meses de Niño&nbsp;1+2, con umbrales propios para la costa peruana.</span></li>
+      <li><svg class="ic"><use href="#i-pulse"/></svg><span>Los valores de la izquierda son los de la semana más reciente (NOAA CPC).</span></li>
+    </ul>
+  </section>
+  <section data-tab="deep">
+    <p>Como el océano entero se está calentando, NOAA usa ahora el <b>ONI relativo (RONI)</b>: compara Niño&nbsp;3.4 con el promedio de todo el trópico. Así un océano globalmente más cálido no parece un Niño permanente.</p>
+    <p>Un mismo valor puede significar cosas distintas: +1.5&nbsp;°C es un Niño «fuerte» para NOAA en Niño&nbsp;3.4, pero solo «moderado» para el ENFEN en Niño&nbsp;1+2, porque el mar costero varía mucho más.</p>
+    <p>Las regiones: Niño&nbsp;1+2 (0°–10°S, 90°–80°O), Niño&nbsp;3 (5°N–5°S, 150°–90°O), Niño&nbsp;3.4 (5°N–5°S, 170°–120°O) y Niño&nbsp;4 (5°N–5°S, 160°E–150°O).</p>
+  </section>
+  <section data-tab="sources">
+    <ul class="refs">
+      <li><a href="https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/ensostuff/ONI_v5.php">NOAA CPC: tabla histórica del ONI</a></li>
+      <li><a href="https://www.cpc.ncep.noaa.gov/data/indices/RONI.ascii.txt">NOAA CPC: serie del RONI</a></li>
+      <li><a href="https://enfen.imarpe.gob.pe/">ENFEN: definición operacional (ICEN)</a></li>
+      <li><a href="/es/indices">Monitor: índices y pronóstico</a></li>
+    </ul>
+  </section>
+  <section data-part="experiment">
+    <p class="exp-lead">Un mismo número, dos escalas. Mueve la anomalía y compara.</p>
+    <label class="range"><span>Anomalía</span><input type="range" min="-2" max="4.5" step="0.1" value="1.5" data-control="anomaly"><output data-out="anomaly">+1.5&nbsp;°C</output></label>
+    <dl class="readouts">
+      <div><dt>Si fuera Niño 3.4 (NOAA)</dt><dd data-out="cat_noaa">—</dd></div>
+      <div><dt>Si fuera Niño 1+2 (ENFEN)</dt><dd data-out="cat_enfen">—</dd></div>
+    </dl>
+  </section>
+  <ul data-part="callouts">
+    <li data-id="nino4" data-icon="target"><b>Niño 4</b><span data-live="nino4_weekly">Pacífico occidental-central.</span></li>
+    <li data-id="nino34" data-icon="target"><b>Niño 3.4</b><span data-live="nino34_weekly">La referencia mundial.</span></li>
+    <li data-id="nino3" data-icon="target"><b>Niño 3</b><span data-live="nino3_weekly">Pacífico oriental.</span></li>
+    <li data-id="nino12" data-icon="target"><b>Niño 1+2</b><span data-live="nino12_weekly">Frente a Perú y Ecuador.</span></li>
+  </ul>
+</article>
+
+<article class="lesson" data-id="global" data-scene="world" data-thumb="t-global">
+  <h2>Impactos en el mundo</h2>
+  <p class="short">Teleconexiones</p>
+  <section data-tab="overview">
+    <p>Al mover la lluvia tropical miles de kilómetros, El Niño cambia la circulación de toda la atmósfera. Estas <strong>teleconexiones</strong> alteran la lluvia y la temperatura lejos del Pacífico. Son tendencias, no certezas: cada evento es distinto.</p>
+    <ul class="points">
+      <li><svg class="ic"><use href="#i-rain"/></svg><span>Más lluvia: costa de Perú y Ecuador, sureste de Sudamérica, sur de EE. UU., África oriental.</span></li>
+      <li><svg class="ic"><use href="#i-sun"/></svg><span>Más seco: Indonesia, Australia, África austral, norte de Sudamérica, monzón de la India.</span></li>
+      <li><svg class="ic"><use href="#i-thermo"/></svg><span>El planeta se calienta: los años posteriores a un Niño fuerte suelen batir récords, como 2016 y 2024.</span></li>
+    </ul>
+  </section>
+  <section data-tab="deep">
+    <p>La lluvia intensa libera calor en la atmósfera. Cuando esa fuente de calor se desplaza al Pacífico central, genera ondas atmosféricas que viajan hacia latitudes medias y desvían las corrientes en chorro.</p>
+    <p>Otros efectos típicos: menos huracanes en el Atlántico (más cizalladura del viento), más ciclones en el Pacífico central y oriental, incendios en Indonesia y la Amazonía, y blanqueamiento masivo de corales (1998, 2010, 2016 y 2023–2025).</p>
+    <p>El mapa es un esquema simplificado de los patrones típicos, no un pronóstico. En el monitor se muestran también los eventos observados (GDACS), sin atribuirlos a El Niño.</p>
+  </section>
+  <section data-tab="sources">
+    <ul class="refs">
+      <li><a href="https://www.climate.gov/enso">NOAA Climate.gov: impactos globales de ENSO</a></li>
+      <li><a href="https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/ensocycle/enso_cycle.shtml">NOAA CPC: impactos típicos de El Niño</a></li>
+      <li><a href="https://coralreefwatch.noaa.gov/">NOAA Coral Reef Watch</a></li>
+      <li><a href="/es/impacts">Monitor: impactos globales</a></li>
+    </ul>
+  </section>
+  <section data-part="experiment">
+    <p class="exp-lead">Cambia de estación. Pasa el cursor sobre una zona para ver qué se espera allí.</p>
+    <div class="seg" data-control="season" role="group" aria-label="Estación">
+      <button type="button" value="djf" aria-pressed="true">Dic–Feb</button>
+      <button type="button" value="jja">Jun–Ago</button>
+    </div>
+    <ul class="legend">
+      <li><i class="sw wet"></i>Más lluvia de lo normal</li>
+      <li><i class="sw dry"></i>Más seco de lo normal</li>
+      <li><i class="sw warm"></i>Más cálido de lo normal</li>
+    </ul>
+  </section>
+  <ul data-part="callouts">
+    <li data-id="g_peru" data-icon="rain"><b>Perú y Ecuador</b><span>Lluvias en la costa norte.</span></li>
+    <li data-id="g_indo" data-icon="sun"><b>Indonesia y Australia</b><span>Sequía e incendios.</span></li>
+    <li data-id="g_us" data-icon="rain"><b>Sur de EE. UU.</b><span>Inviernos más húmedos.</span></li>
+    <li data-id="g_africa" data-icon="sun"><b>África austral</b><span>Veranos más secos.</span></li>
+  </ul>
+</article>
+
+<article class="lesson" data-id="history" data-scene="history" data-thumb="t-history">
+  <h2>Un siglo de Niños</h2>
+  <p class="short">Historia</p>
+  <section data-tab="overview">
+    <p>Cada columna es un año: la anomalía de Niño&nbsp;3.4 (ONI) en diciembre–febrero, el pico típico. Las columnas cálidas son Niños y las frías, Niñas. Los eventos fuertes destacan: <strong>1982–83, 1997–98, 2015–16 y 2023–24</strong>.</p>
+    <ul class="points">
+      <li><svg class="ic"><use href="#i-chart"/></svg><span>Los Niños muy fuertes (≥&nbsp;+2.0&nbsp;°C) ocurren aproximadamente una vez por década.</span></li>
+      <li><svg class="ic"><use href="#i-mountain"/></svg><span>Para el Perú, los más devastadores fueron 1982–83 y 1997–98, además de los Niños costeros de 1925 y 2017.</span></li>
+      <li><svg class="ic"><use href="#i-pulse"/></svg><span>La última columna es el evento actual con el dato más reciente.</span></li>
+    </ul>
+  </section>
+  <section data-tab="deep">
+    <p>Antes de 1950 hay menos mediciones, pero los registros históricos y paleoclimáticos (corales, sedimentos, crónicas coloniales) muestran que El Niño existe desde hace miles de años.</p>
+    <p>¿Cambia El Niño con el calentamiento global? La pregunta sigue abierta. Varios modelos proyectan lluvias más extremas durante El Niño en el Pacífico oriental, pero no hay consenso sobre su frecuencia. Lo que sí es claro es que un Niño sobre un océano más cálido produce temperaturas récord más fácilmente.</p>
+  </section>
+  <section data-tab="sources">
+    <ul class="refs">
+      <li><a href="https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/ensostuff/ONI_v5.php">NOAA CPC: ONI desde 1950</a></li>
+      <li><a href="https://www.ipcc.ch/report/ar6/wg1/">IPCC AR6 WG1: ENSO y cambio climático</a></li>
+      <li><a href="/es/indices">Monitor: comparación con eventos análogos</a></li>
+    </ul>
+  </section>
+  <section data-part="experiment">
+    <p class="exp-lead">Elige un evento. Pasa el cursor sobre cualquier columna para ver su valor.</p>
+    <div class="chips" data-control="event">
+      <button type="button" value="1972">1972–73</button>
+      <button type="button" value="1982">1982–83</button>
+      <button type="button" value="1988">1988–89</button>
+      <button type="button" value="1997">1997–98</button>
+      <button type="button" value="2010">2010–11</button>
+      <button type="button" value="2015">2015–16</button>
+      <button type="button" value="2023">2023–24</button>
+      <button type="button" value="2026">2026–27</button>
+    </div>
+    <div class="event-notes">
+      <p data-event="1972" hidden><b>1972–73.</b> Colapso de la pesquería de anchoveta en el Perú, entonces la mayor del mundo, por la combinación de El Niño y sobrepesca.</p>
+      <p data-event="1982" hidden><b>1982–83.</b> No fue pronosticado. Inundaciones en el norte del Perú y Ecuador y sequía en el sur andino, Australia e Indonesia.</p>
+      <p data-event="1988" hidden><b>1988–89.</b> La Niña fuerte: aguas frías en el Pacífico oriental, sequía en el sur de EE. UU. y lluvias en Australia.</p>
+      <p data-event="1997" hidden><b>1997–98.</b> El primer gran Niño pronosticado con meses de antelación. Lluvias extremas en Piura y Tumbes y miles de millones de dólares en pérdidas.</p>
+      <p data-event="2010" hidden><b>2010–11.</b> Una de las Niñas más intensas: inundaciones en Australia (Queensland) y sequía en el Cuerno de África.</p>
+      <p data-event="2015" hidden><b>2015–16.</b> Muy fuerte en el Pacífico central, con impactos moderados en la costa peruana. Incendios en Indonesia y 2016, año récord de calor.</p>
+      <p data-event="2023" hidden><b>2023–24.</b> Empezó como Niño costero en el Perú (ciclón Yaku, dengue récord, pesca suspendida) y luego se volvió global. 2024, año más cálido registrado.</p>
+      <p data-event="2026" hidden><b>2026–27.</b> El evento actual. Mira la última lección y el monitor para los datos de esta semana.</p>
+    </div>
+  </section>
+  <ul data-part="callouts"></ul>
+</article>
+
+<article class="lesson" data-id="now" data-scene="pacific" data-thumb="t-now">
+  <h2>2026–27: lo que está pasando</h2>
+  <p class="short">Ahora</p>
+  <section data-tab="overview">
+    <p>El modelo de la izquierda está ajustado a los datos más recientes. Estos son los indicadores oficiales en este momento:</p>
+    <dl class="kpi-list">
+      {% for k in d.kpis %}{% if k.id in ["nino34_weekly", "nino12_weekly", "roni", "icen"] %}
+      <div><dt>{{ k.label }}<small>{{ k.date }} · {{ k.source }}</small></dt><dd class="{{ 'warm' if k.warm else 'cool' }}">{{ k.value }}{{ k.unit }}{% if k.category_label %}<small>{{ k.category_label }}</small>{% endif %}</dd></div>
+      {% endif %}{% endfor %}
+      {% if d.cpc %}<div><dt>NOAA CPC<small>{{ d.cpc.issued }}</small></dt><dd class="txt">{{ d.cpc.status_local }}</dd></div>{% endif %}
+      {% if d.enfen and d.enfen.status %}<div><dt>ENFEN<small>N° {{ d.enfen.status_from }}</small></dt><dd class="txt">{{ d.enfen.status }}</dd></div>{% endif %}
+    </dl>
+    {% if not d.kpis %}<p class="muted">Aún no hay datos descargados.</p>{% endif %}
+  </section>
+  <section data-tab="deep">
+    <p>Los datos semanales cambian todos los lunes y los índices de 3 meses cada mes. Las declaraciones oficiales (Advertencia de El Niño de NOAA, Alerta del ENFEN) son las que determinan las acciones de prevención en el Perú.</p>
+    <p>Para seguir el evento día a día: el mapa de temperatura del mar, los pronósticos y la comparación con 1997–98 están en el monitor.</p>
+  </section>
+  <section data-tab="sources">
+    <ul class="refs">
+      <li><a href="/es/">Monitor: situación actual</a></li>
+      <li><a href="/es/ocean">Monitor: mapa del océano</a></li>
+      <li><a href="/es/sources">Monitor: fuentes y metodología</a></li>
+    </ul>
+  </section>
+  <section data-part="experiment">
+    <p class="exp-lead">Compara el estado actual con un año neutral.</p>
+    <div class="seg" data-control="nowmode" role="group">
+      <button type="button" value="live" aria-pressed="true">Ahora</button>
+      <button type="button" value="neutral">Año neutral</button>
+    </div>
+    <dl class="readouts">
+      <div><dt>Niño 3.4 en el modelo</dt><dd data-out="enso">—</dd></div>
+      <div><dt>Categoría (NOAA)</dt><dd data-out="cat_noaa">—</dd></div>
+    </dl>
+    <a class="btn" href="/es/"><svg><use href="#i-pulse"/></svg>Abrir el monitor</a>
+  </section>
+  <ul data-part="callouts">
+    <li data-id="convection" data-icon="rain"><b>Lluvia desplazada</b><span>Hacia el Pacífico central.</span></li>
+    <li data-id="cold_tongue" data-icon="thermo"><b>Pacífico oriental</b><span data-live="nino12_weekly">Anomalía frente a Perú.</span></li>
+    <li data-id="thermocline" data-icon="depth"><b>Termoclina</b><span>Más plana de lo normal.</span></li>
+  </ul>
+</article>

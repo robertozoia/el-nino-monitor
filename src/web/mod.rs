@@ -18,7 +18,7 @@ use tower_http::set_header::SetResponseHeaderLayer;
 use views::{Dict, L};
 
 pub const LANGS: [&str; 2] = ["es", "en"];
-pub const PAGES: [&str; 6] = ["", "ocean", "indices", "peru", "impacts", "sources"];
+pub const PAGES: [&str; 7] = ["", "ocean", "indices", "peru", "impacts", "sources", "learn"];
 
 pub struct AppState {
     pub ctx: Ctx,
@@ -160,6 +160,21 @@ fn build_page(st: &AppState, lang: &str, page: &str) -> Result<String> {
             "links": views::links(&conn)?,
         }),
         "indices" => json!({ "cpc": views::cpc_status(&conn, &l)? }),
+        "learn" => {
+            // Latest weekly value per Niño region, for the scene's live mode.
+            let mut regions = serde_json::Map::new();
+            for id in ["nino12_weekly", "nino3_weekly", "nino34_weekly", "nino4_weekly"] {
+                if let Some((t, v)) = crate::db::latest_point(&conn, id)? {
+                    regions.insert(id.into(), json!({ "value": v, "label": views::fmt_signed(v, 1), "date": views::fmt_date(&l, &t) }));
+                }
+            }
+            json!({
+                "kpis": views::kpis(&conn, &l)?,
+                "cpc": views::cpc_status(&conn, &l)?,
+                "enfen": views::enfen_status(&conn, &l)?,
+                "regions": regions,
+            })
+        }
         _ => json!({}),
     };
 
@@ -181,6 +196,8 @@ fn build_page(st: &AppState, lang: &str, page: &str) -> Result<String> {
         t_json => serde_json::to_string(t)?,
         nav => minijinja::Value::from_serialize(&nav),
         d => minijinja::Value::from_serialize(&data),
+        // For inline <script>: "</" must not appear inside it.
+        d_json => serde_json::to_string(&data)?.replace("</", "<\\/"),
         last_update => views::last_update(&conn, &l)?,
         v => &st.asset_version,
     })?;

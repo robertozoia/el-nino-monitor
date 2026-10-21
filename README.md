@@ -9,6 +9,12 @@ its source and date.
   (self-hosted under `static/vendor`; no build step, no CDN, no API keys).
 - **Deploy:** a single Docker container behind Caddy on the host.
 
+The **Learn** page (`/es/learn`, `/en/learn`) is an interactive explainer: nine lessons
+(the tropical Pacific, trade winds and upwelling, how an event starts, the three phases,
+Peru's coastal El Niño, how it is measured, global impacts, history, and the current
+event). Each lesson drives a hand-drawn isometric SVG model with sliders and
+animations, and the last lessons use the live data from the database.
+
 ## Data sources
 
 | Source | Data | Poll |
@@ -78,7 +84,9 @@ src/
 migrations/  SQLite schema
 templates/   pages (minijinja)          i18n/  es.toml, en.toml
 static/      css, js (one module per page), vendor libs, Natural Earth countries,
-             simplified typical-impact layers (tools/make_impact_layers.py)
+             simplified typical-impact layers (tools/make_impact_layers.py),
+             learn/world.json land outline for the Learn page (tools/make_learn_world.py)
+templates/learn/  lesson content for the Learn page, one file per language
 ```
 
 ## Notes and caveats
@@ -97,8 +105,9 @@ static/      css, js (one module per page), vendor libs, Natural Earth countries
 
 Code: [MIT](LICENSE). Bundled third-party files keep their own licenses:
 Apache ECharts 5.6.0 (`static/vendor/echarts.min.js`, Apache-2.0),
-MapLibre GL JS 4.7.1 (`static/vendor/maplibre-gl.*`, BSD-3-Clause) and
-Natural Earth country boundaries (`static/geo/countries.geojson`, public domain).
+MapLibre GL JS 4.7.1 (`static/vendor/maplibre-gl.*`, BSD-3-Clause),
+Barlow, Barlow Semi Condensed and JetBrains Mono fonts (`static/vendor/fonts`, SIL OFL 1.1) and
+Natural Earth country boundaries (`static/geo/countries.geojson`, `static/learn/world.json`, public domain).
 Data shown by the site belongs to its publishers (NOAA, IGP, ENFEN, GDACS); see the
 Sources page for attribution. Files in `tests/fixtures` are samples of those public
 datasets, kept only for parser tests.

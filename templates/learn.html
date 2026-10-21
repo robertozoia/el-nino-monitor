@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="{{ lang }}" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ t.learn_title }} · {{ t.site_name }}</title>
+  <meta name="description" content="{{ t.learn_description }}">
+  <link rel="alternate" hreflang="{{ other_lang }}" href="{{ other_href }}">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='15' fill='%2318213d'/%3E%3Cpath d='M4 18c4-4 8 4 12 0s8 4 12 0' stroke='%231aa3a1' stroke-width='3' fill='none' stroke-linecap='round'/%3E%3C/svg%3E">
+  <script>
+    document.documentElement.classList.replace("no-js", "js");
+    try { var th = localStorage.getItem("theme"); if (th) document.documentElement.dataset.theme = th; } catch (e) {}
+  </script>
+  <link rel="preload" href="/static/vendor/fonts/barlow-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/static/vendor/fonts/barlow-semi-condensed-latin-600-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/static/css/learn.css?v={{ v }}">
+</head>
+<body class="learn">
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <symbol id="i-home" viewBox="0 0 24 24"><path d="M3 11.5 12 4l9 7.5V20a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z" fill="currentColor"/></symbol>
+      <symbol id="i-book" viewBox="0 0 24 24"><path d="M12 6.5C10 5 7 4.5 3.5 5v13c3.5-.5 6.5 0 8.5 1.5 2-1.5 5-2 8.5-1.5V5C17 4.5 14 5 12 6.5zm0 0v13" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"/></symbol>
+      <symbol id="i-globe" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="8.5"/><path d="M3.5 12h17M12 3.5c2.6 2.6 3.6 5.4 3.6 8.5s-1 5.9-3.6 8.5c-2.6-2.6-3.6-5.4-3.6-8.5s1-5.9 3.6-8.5z"/></g></symbol>
+      <symbol id="i-chart" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M4 20h16"/><path d="M7 16V9M12 16V5M17 16v-4"/></g></symbol>
+      <symbol id="i-wave" viewBox="0 0 24 24"><path d="M2.5 9c2.4-2.4 4.8 2.4 7.2 0s4.8 2.4 7.2 0 3.6-1.2 4.6 0M2.5 15c2.4-2.4 4.8 2.4 7.2 0s4.8 2.4 7.2 0 3.6-1.2 4.6 0" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+      <symbol id="i-wind" viewBox="0 0 24 24"><path d="M3 8h11a3 3 0 1 0-3-3M3 12h16a3 3 0 1 1-3 3M3 16h8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+      <symbol id="i-thermo" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M10 14.5V5a2 2 0 1 1 4 0v9.5a4 4 0 1 1-4 0z"/><path d="M12 9v7"/></g></symbol>
+      <symbol id="i-fish" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M3 12c3-4.5 9.5-5.5 14 0-4.5 5.5-11 4.5-14 0zM17 12l4-3.5v7z"/></g><circle cx="7.5" cy="11" r="1" fill="currentColor"/></symbol>
+      <symbol id="i-rain" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M7 15a4 4 0 0 1-.6-8A5.5 5.5 0 0 1 17 6.5 3.8 3.8 0 0 1 17.5 15z"/><path d="M8 18l-1 2.5M12 18l-1 2.5M16 18l-1 2.5"/></g></symbol>
+      <symbol id="i-mountain" viewBox="0 0 24 24"><path d="M2.5 19.5 9 8l3.5 6 2.5-3.5 6.5 9z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></symbol>
+      <symbol id="i-target" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="7" width="7" height="5" rx=".5"/><rect x="10" y="9" width="11" height="5" rx=".5"/><path d="M3 17h18" stroke-dasharray="2 2"/></g></symbol>
+      <symbol id="i-clock" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></g></symbol>
+      <symbol id="i-sun" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.3 5.3l1.4 1.4M17.3 17.3l1.4 1.4M5.3 18.7l1.4-1.4M17.3 6.7l1.4-1.4"/></g></symbol>
+      <symbol id="i-moon" viewBox="0 0 24 24"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></symbol>
+      <symbol id="i-play" viewBox="0 0 24 24"><path d="M8 5.5v13l10-6.5z" fill="currentColor"/></symbol>
+      <symbol id="i-reset" viewBox="0 0 24 24"><path d="M4.5 12a7.5 7.5 0 1 0 2.2-5.3M4.5 4v4h4" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+      <symbol id="i-expand" viewBox="0 0 24 24"><path d="M4 9V4h5M15 4h5v5M20 15v5h-5M9 20H4v-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+      <symbol id="i-chev" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+      <symbol id="i-layers" viewBox="0 0 24 24"><path d="m12 4 9 4.5-9 4.5-9-4.5zM3 13l9 4.5 9-4.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></symbol>
+      <symbol id="i-pulse" viewBox="0 0 24 24"><path d="M2.5 12h4l2.5-6 4 12 2.5-6h6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+      <symbol id="i-depth" viewBox="0 0 24 24"><path d="M3 6c3-2 6 2 9 0s6 2 9 0M12 9v11m-4-4 4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+      <symbol id="i-flag" viewBox="0 0 24 24"><path d="M5 21V4m0 0h11l-2 4 2 4H5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+      <symbol id="i-up" viewBox="0 0 24 24"><path d="M12 20V5m-6 6 6-6 6 6" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+      <symbol id="i-loop" viewBox="0 0 24 24"><path d="M6 16a6 6 0 0 1 0-8h9m0 0-3-3m3 3-3 3M18 8a6 6 0 0 1 0 8H9m0 0 3 3m-3-3 3-3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+      <symbol id="i-ext" viewBox="0 0 24 24"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+
+      <!-- Lesson thumbnails (64 × 44) -->
+      <symbol id="t-stage" viewBox="0 0 64 44"><path d="M6 22 38 10l20 8-32 13z" fill="var(--sst-warm)"/><path d="M38 10l20 8-12 5-14-7z" fill="var(--sst-cool)"/><path d="M6 22v8l20 9v-8z" fill="var(--navy-2)"/><path d="M26 31v8l32-13v-8z" fill="var(--navy)"/><path d="M6 25c6 3 12 5 20 9" stroke="var(--sst-warm)" stroke-width="1.5" fill="none"/><path d="M26 34c10-4 20-9 32-14" stroke="var(--sst-warm)" stroke-width="1.5" fill="none"/></symbol>
+      <symbol id="t-winds" viewBox="0 0 64 44"><path d="M6 32c6-4 12 4 18 0s12 4 18 0 12 4 16 0" stroke="var(--sst-cool)" stroke-width="2.5" fill="none" stroke-linecap="round"/><g stroke="var(--navy)" stroke-width="2.5" stroke-linecap="round" fill="none"><path d="M54 10H18m6-5-6 5 6 5"/><path d="M48 20H24m5-4-5 4 5 4"/></g></symbol>
+      <symbol id="t-kelvin" viewBox="0 0 64 44"><path d="M4 18h56" stroke="var(--line)" stroke-width="2"/><path d="M4 22h18c5 0 7 12 12 12s7-12 12-12h14" stroke="var(--sst-warm)" stroke-width="2.6" fill="none" stroke-linecap="round"/><path d="M40 8h14m-4-4 4 4-4 4" stroke="var(--navy)" stroke-width="2.5" fill="none" stroke-linecap="round"/></symbol>
+      <symbol id="t-phases" viewBox="0 0 64 44"><circle cx="14" cy="22" r="9" fill="var(--sst-cool)"/><circle cx="32" cy="22" r="9" fill="var(--faint)"/><circle cx="50" cy="22" r="9" fill="var(--sst-warm)"/></symbol>
+      <symbol id="t-costero" viewBox="0 0 64 44"><path d="M2 38 16 14l8 12 6-8 12 20z" fill="var(--navy-2)"/><path d="M36 38h26v-6H40z" fill="var(--sst-warm)"/><path d="M38 14a5 5 0 0 1 9-3 4 4 0 0 1 6 3 3.5 3.5 0 0 1 0 7H40a3.5 3.5 0 0 1-2-7z" fill="var(--card)" stroke="var(--navy)" stroke-width="1.8"/><path d="M42 24l-1.5 4M47 24l-1.5 4M52 24l-1.5 4" stroke="var(--teal)" stroke-width="2" stroke-linecap="round"/></symbol>
+      <symbol id="t-measure" viewBox="0 0 64 44"><rect x="4" y="14" width="56" height="16" rx="2" fill="var(--paper-ocean)"/><g fill="none" stroke-width="2"><rect x="8" y="17" width="14" height="10" stroke="var(--navy)"/><rect x="22" y="17" width="14" height="10" stroke="var(--sst-warm)"/><rect x="30" y="17" width="20" height="10" stroke="var(--teal)" stroke-dasharray="3 2"/><rect x="51" y="22" width="6" height="7" stroke="var(--navy)"/></g></symbol>
+      <symbol id="t-global" viewBox="0 0 64 44"><circle cx="32" cy="22" r="17" fill="var(--paper-ocean)" stroke="var(--navy)" stroke-width="2"/><path d="M20 14c4 1 6 4 5 8s2 6 0 9M38 9c-2 4 1 7 5 7s5 4 4 8" stroke="var(--navy)" stroke-width="2" fill="none"/><circle cx="26" cy="26" r="4" fill="var(--sst-cool)" opacity=".8"/><circle cx="42" cy="18" r="4" fill="var(--sst-warm)" opacity=".8"/></symbol>
+      <symbol id="t-history" viewBox="0 0 64 44"><path d="M4 30h56" stroke="var(--line)" stroke-width="2"/><g fill="var(--sst-warm)"><rect x="10" y="20" width="5" height="10"/><rect x="26" y="8" width="5" height="22"/><rect x="42" y="6" width="5" height="24"/><rect x="54" y="14" width="5" height="16"/></g><g fill="var(--sst-cool)"><rect x="18" y="30" width="5" height="8"/><rect x="34" y="30" width="5" height="10"/></g></symbol>
+      <symbol id="t-now" viewBox="0 0 64 44"><path d="M4 26h12l5-12 8 22 6-14 4 4h21" stroke="var(--sst-warm)" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/><circle cx="56" cy="12" r="4" fill="var(--teal)"/></symbol>
+    </defs>
+  </svg>
+
+  <div class="splash" id="splash" aria-hidden="true">
+    <svg viewBox="0 0 48 48" class="splash-mark"><use href="#logo"/></svg>
+    <div class="splash-word">EL NIÑO</div>
+    <div class="splash-bar"><i></i></div>
+    <div class="splash-note">{{ t.learn_loading }}</div>
+  </div>
+
+  <aside class="rail" aria-label="{{ t.nav_label }}">
+    <a class="rail-btn" href="/{{ lang }}/" title="{{ t.nav_now }}"><svg><use href="#i-home"/></svg><span class="visually-hidden">{{ t.nav_now }}</span></a>
+    <a class="rail-btn active" href="/{{ lang }}/learn" aria-current="page" title="{{ t.nav_learn }}"><svg><use href="#i-book"/></svg><span class="visually-hidden">{{ t.nav_learn }}</span></a>
+    <a class="rail-btn" href="/{{ lang }}/ocean" title="{{ t.nav_ocean }}"><svg><use href="#i-wave"/></svg><span class="visually-hidden">{{ t.nav_ocean }}</span></a>
+    <a class="rail-btn" href="/{{ lang }}/impacts" title="{{ t.nav_impacts }}"><svg><use href="#i-globe"/></svg><span class="visually-hidden">{{ t.nav_impacts }}</span></a>
+    <a class="rail-btn" href="/{{ lang }}/indices" title="{{ t.nav_indices }}"><svg><use href="#i-chart"/></svg><span class="visually-hidden">{{ t.nav_indices }}</span></a>
+    <div class="rail-foot">
+      <a class="rail-btn lang" href="{{ other_href }}" hreflang="{{ other_lang }}" lang="{{ other_lang }}" title="{{ t.switch_lang }}">{{ other_lang|upper }}</a>
+      <button class="rail-btn" id="theme-toggle" type="button" title="{{ t.toggle_theme }}" aria-label="{{ t.toggle_theme }}"><svg class="only-light"><use href="#i-moon"/></svg><svg class="only-dark"><use href="#i-sun"/></svg></button>
+    </div>
+  </aside>
+
+  <div class="app">
+    <header class="top">
+      <a class="logo" href="/{{ lang }}/learn">
+        <svg viewBox="0 0 48 48" aria-hidden="true">
+          <symbol id="logo" viewBox="0 0 48 48"><circle cx="24" cy="24" r="21" fill="var(--navy)"/><path d="M8 27c4-5 8 5 12 0s8 5 12 0 6-3 8-1" fill="none" stroke="var(--teal)" stroke-width="3.6" stroke-linecap="round"/><circle cx="31" cy="15" r="4.2" fill="var(--sst-warm)"/></symbol>
+          <use href="#logo"/>
+        </svg>
+        <span class="logo-text">
+          <strong>{{ t.learn_brand }}</strong>
+          <small>{{ t.learn_tagline }}</small>
+        </span>
+      </a>
+      <div class="top-cards">
+        {% set n34 = d.regions.nino34_weekly %}
+        <a class="top-card live" href="/{{ lang }}/" title="{{ t.learn_monitor }}">
+          <svg class="ic"><use href="#i-pulse"/></svg>
+          <span class="tc-body">
+            <span class="tc-label">{{ t.learn_live_n34 }}</span>
+            {% if n34 %}<span class="tc-value"><b>{{ n34.label }}&nbsp;°C</b> <em>{{ n34.date }}</em></span>
+            {% else %}<span class="tc-value"><em>{{ t.learn_no_data }}</em></span>{% endif %}
+          </span>
+        </a>
+        <div class="top-card progress">
+          <svg class="ic"><use href="#i-book"/></svg>
+          <span class="tc-body">
+            <span class="tc-label">{{ t.learn_progress }}</span>
+            <span class="tc-meter"><i id="progress-bar"></i></span>
+          </span>
+          <span class="tc-count" id="progress-count">0/9</span>
+        </div>
+      </div>
+    </header>
+
+    <main class="workspace" id="main">
+      <section class="stage" id="stage" aria-label="{{ t.learn_stage_label }}">
+        <svg id="scene" class="scene" role="img" aria-labelledby="scene-title"><title id="scene-title"></title></svg>
+        <svg id="leaders" class="leaders" aria-hidden="true"></svg>
+        <div id="callouts" class="callouts"></div>
+        <div id="tooltip" class="tooltip" role="status" hidden></div>
+        <div class="stage-hint" id="stage-hint">{{ t.learn_hint }}</div>
+        <div class="stage-tools">
+          <button type="button" id="btn-prev" title="{{ t.learn_prev }}" aria-label="{{ t.learn_prev }}"><svg style="transform:scaleX(-1)"><use href="#i-chev"/></svg></button>
+          <button type="button" id="btn-next" title="{{ t.learn_next }}" aria-label="{{ t.learn_next }}"><svg><use href="#i-chev"/></svg></button>
+          <span class="sep"></span>
+          <button type="button" id="btn-labels" aria-pressed="true" title="{{ t.learn_labels }}" aria-label="{{ t.learn_labels }}"><svg><use href="#i-layers"/></svg></button>
+          <button type="button" id="btn-full" title="{{ t.learn_expand }}" aria-label="{{ t.learn_expand }}"><svg><use href="#i-expand"/></svg></button>
+        </div>
+      </section>
+
+      <div class="panel">
+        <section class="card info">
+          <div class="tabs" role="tablist">
+            <button role="tab" type="button" data-tab="overview" aria-selected="true">{{ t.learn_tab_overview }}</button>
+            <button role="tab" type="button" data-tab="deep" aria-selected="false">{{ t.learn_tab_deep }}</button>
+            <button role="tab" type="button" data-tab="sources" aria-selected="false">{{ t.learn_tab_sources }}</button>
+          </div>
+          <div class="info-body" role="tabpanel" id="info-body" tabindex="0"></div>
+        </section>
+        <section class="card experiment">
+          <div class="card-head">
+            <h2><svg class="ic"><use href="#i-loop"/></svg>{{ t.learn_experiment }}</h2>
+            <div class="head-tools">
+              <button type="button" class="tool" id="exp-reset" title="{{ t.learn_reset }}" aria-label="{{ t.learn_reset }}"><svg><use href="#i-reset"/></svg></button>
+            </div>
+          </div>
+          <div class="exp-body" id="exp-body"></div>
+        </section>
+      </div>
+
+      <nav class="lessons" aria-label="{{ t.learn_lessons }}">
+        <h2>{{ t.learn_lessons }}</h2>
+        <div class="lesson-strip" id="lesson-strip"></div>
+      </nav>
+    </main>
+  </div>
+
+  <div class="lesson-source" id="lesson-source">
+    {% include "learn/lessons_" ~ lang ~ ".html" %}
+  </div>
+
+  <script>
+    window.LANG = "{{ lang }}";
+    window.I18N = {{ t_json|safe }};
+    window.LIVE = {{ d_json|safe }};
+  </script>
+  <script type="module" src="/static/js/learn.js?v={{ v }}"></script>
+</body>
+</html>
