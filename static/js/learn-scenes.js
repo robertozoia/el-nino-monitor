@@ -6,7 +6,7 @@ const T = window.I18N || {};
 const tr = (k) => T[k] ?? k;
 
 // ------------------------------------------------------------------ geometry
-// Scene axes: X east (or offshore in the Peru scene), Y up, Z north.
+// Scene axes: X east, Y up, Z north.
 const UX = [0.94, 0.30];
 const VZ = [0.60, -0.40];
 
@@ -359,23 +359,29 @@ function makePacific(root) {
 
 // ================================================================== Peru
 
-const PERU = { X: 64, C: 30, Zn: 50, D: 14, S: 10 };
+// Ocean in the west (X 0..C), coast at X = C, Andes towards the east edge (X).
+const PERU = { X: 64, C: 34, Zn: 50, D: 14, S: 10 };
 const CITIES = [["Tumbes", 49.6], ["Piura", 44], ["Chiclayo", 38.6], ["Trujillo", 34], ["Chimbote", 31], ["Lima", 20.5], ["Pisco", 14.8]];
 const RIVERS = [49, 44.6, 38, 33.4, 20];
 
 export function peruModel(st) {
   const c = st.coastal ?? 0;
-  const { C, X, Zn } = PERU;
-  const sst = (x, z) => 17 + 9.5 * Math.pow(clamp(z / Zn), 1.6) + 2.3 * ((x - C) / (X - C)) - 1.6 * gauss(x - C, 0, 3.5) * (1 - clamp(c / 4)) + c * (0.75 + 0.35 * z / Zn);
-  const north = sst(C + 3, 45);
+  const { C, Zn } = PERU;
+  // d = distance offshore.
+  const sst = (x, z) => {
+    const d = C - x;
+    return 17 + 9.5 * Math.pow(clamp(z / Zn), 1.6) + 2.3 * (d / C) - 1.6 * gauss(d, 0, 3.5) * (1 - clamp(c / 4)) + c * (0.75 + 0.35 * z / Zn);
+  };
+  const north = sst(C - 3, 45);
   const rain = clamp((north - 25.8) / 2.5, 0, 1.4);
   const fishLevel = clamp(1 - (c - 0.4) / 2.6, 0.08, 1);
-  return { coastal: c, sst, north, rain, fishLevel, piura: sst(C + 3, 44) };
+  return { coastal: c, sst, north, rain, fishLevel, piura: sst(C - 3, 44) };
 }
 
 function terrain(x, z) {
-  const andes = 15 * gauss(x, 8, 6.5) * (0.78 + 0.18 * Math.sin(z * 0.33) + 0.08 * Math.sin(z * 1.27));
-  return 0.8 + 1.4 * clamp(1 - x / PERU.C) + andes;
+  const u = PERU.X - x;   // distance from the eastern edge of the block
+  const andes = 15 * gauss(u, 8, 6.5) * (0.78 + 0.18 * Math.sin(z * 0.33) + 0.08 * Math.sin(z * 1.27));
+  return 0.8 + 1.4 * clamp(1 - u / (PERU.X - PERU.C)) + andes;
 }
 
 function makePeru(root) {
@@ -389,25 +395,25 @@ function makePeru(root) {
   function render(state) {
     const m = (model = peruModel(state));
     let s = "";
-    const a = P(C, 0, 0), b = P(X, 0, 0);
+    const a = P(0, 0, 0), b = P(C, 0, 0);
     s += `<defs><linearGradient id="g-warm-pe" gradientUnits="userSpaceOnUse" x1="${f2(a[0])}" y1="${f2(a[1])}" x2="${f2(b[0])}" y2="${f2(b[1])}">`;
-    for (let i = 0; i <= 6; i++) s += `<stop offset="${i / 6}" stop-color="${rgb(sstColor(m.sst(C + (i / 6) * (X - C), 2)))}"/>`;
+    for (let i = 0; i <= 6; i++) s += `<stop offset="${i / 6}" stop-color="${rgb(sstColor(m.sst((i / 6) * C, 2)))}"/>`;
     s += `</linearGradient></defs>`;
 
     // Sea surface.
     const nx = 12, nz = 14;
     for (let j = nz - 1; j >= 0; j--) {
       for (let i = 0; i < nx; i++) {
-        const x0 = C + (i / nx) * (X - C), x1 = C + ((i + 1) / nx) * (X - C), z0 = (j / nz) * Zn, z1 = ((j + 1) / nz) * Zn;
+        const x0 = (i / nx) * C, x1 = ((i + 1) / nx) * C, z0 = (j / nz) * Zn, z1 = ((j + 1) / nz) * Zn;
         const c = rgb(sstColor(m.sst((x0 + x1) / 2, (z0 + z1) / 2)));
         s += `<polygon class="cell" fill="${c}" stroke="${c}" stroke-width=".6" points="${poly(P, [[x0, 0, z0], [x1, 0, z0], [x1, 0, z1], [x0, 0, z1]])}"/>`;
       }
     }
-    s += `<polygon class="edge" points="${poly(P, [[C, 0, 0], [X, 0, 0], [X, 0, Zn], [C, 0, Zn]])}"/>`;
+    s += `<polygon class="edge" points="${poly(P, [[0, 0, 0], [C, 0, 0], [C, 0, Zn], [0, 0, Zn]])}"/>`;
 
     // Humboldt Current flowing north, fading as the coast warms.
     const hop = f2(clamp(1 - m.coastal / 3.5, 0.12, 1));
-    for (const x of [44, 54]) {
+    for (const x of [C - 14, C - 24]) {
       for (let z = 4; z < 44; z += 13) {
         s += `<g opacity="${hop}">` + arrow(P(x, 0.3, z), P(x, 0.3, z + 8), "flow", 2.2, "var(--sst-cool)") + `</g>`;
       }
@@ -417,26 +423,26 @@ function makePeru(root) {
     const nf = Math.round(9 * m.fishLevel);
     const shift = clamp(m.coastal, 0, 4) * 4;
     for (let i = 0; i < nf; i++) {
-      const q = P(C + 2.5 + (i % 3) * 2.6, 0, Math.max(1.5, 30 - shift - i * 3));
+      const q = P(C - 2.5 - (i % 3) * 2.6, 0, Math.max(1.5, 30 - shift - i * 3));
       s += fish(q[0], q[1], 8, i % 2 === 0);
     }
 
-    // Front face: ocean cross-section.
+    // Front face: ocean cross-section, thermocline shallow at the coast.
     const h = 3 + 2.2 * Math.max(m.coastal, 0);
     const N = 16, top = [], tl = [];
     for (let i = 0; i <= N; i++) {
-      const x = C + (i / N) * (X - C);
+      const x = (i / N) * C;
       top.push([x, 0, 0]);
-      tl.push([x, -(h * (0.55 + 0.45 * (i / N))), 0]);
+      tl.push([x, -(h * (0.55 + 0.45 * (1 - i / N))), 0]);
     }
-    s += `<polygon class="deep" points="${poly(P, [[C, 0, 0], [X, 0, 0], [X, -D, 0], [C, -D, 0]])}"/>`;
+    s += `<polygon class="deep" points="${poly(P, [[0, 0, 0], [C, 0, 0], [C, -D, 0], [0, -D, 0]])}"/>`;
     s += `<polygon fill="url(#g-warm-pe)" points="${poly(P, top.concat(tl.slice().reverse()))}"/>`;
     s += `<path class="thermo-line" d="M${tl.map((q) => pt(P(...q))).join("L")}"/>`;
-    s += `<polygon class="edge" points="${poly(P, [[C, 0, 0], [X, 0, 0], [X, -D, 0], [C, -D, 0]])}"/>`;
+    s += `<polygon class="edge" points="${poly(P, [[0, 0, 0], [C, 0, 0], [C, -D, 0], [0, -D, 0]])}"/>`;
     // Coastal upwelling.
     const up = clamp(1 - m.coastal / 3.2, 0, 1);
     if (up > 0.05) {
-      for (const [x0, dx] of [[C + 9, -4], [C + 5, -2.5]]) {
+      for (const [x0, dx] of [[C - 9, 4], [C - 5, 2.5]]) {
         const pts = [];
         for (let k = 0; k <= 10; k++) { const t = k / 10; pts.push(P(x0 + dx * t * t, -(h + 5) * (1 - t) - 0.3 * t, 0)); }
         s += `<g opacity="${f2(clamp(up, 0.2, 1))}"><path class="arrow flow-slow" d="M${pts.map(pt).join("L")}" stroke="var(--sst-cool)" stroke-width="3"/>` + arrow(pts[8], pts[10], "", 0.01, "var(--sst-cool)", 0.9) + `</g>`;
@@ -450,58 +456,63 @@ function makePeru(root) {
     const placed = new Set();
     for (let z = Zn; z >= 0; z -= 2.5) {
       const prof = [];
-      for (let x = 0; x <= C; x += 1) prof.push([x, terrain(x, z), z]);
+      for (let x = C; x <= X; x += 1) prof.push([x, terrain(x, z), z]);
       const isFront = z === 0;
-      const body = prof.concat([[C, 0, z], [C, isFront ? -D : 0, z], [0, isFront ? -D : 0, z]]);
+      const bottom = isFront ? -D : 0;
+      const body = [[C, 0, z]].concat(prof, [[X, bottom, z], [C, bottom, z]]);
       s += `<polygon class="${isFront ? "land-side" : "land-top"}" points="${poly(P, body)}"/>`;
       s += `<path d="M${prof.map((q) => pt(P(...q))).join("L")}" fill="none" stroke="var(--land-line)" stroke-width="1"/>`;
       RIVERS.forEach((rz, i) => {
         if (placed.has(`r${i}`) || rz < z - 2.5) return;
         placed.add(`r${i}`);
         const pts = [];
-        for (let x = 4; x <= C; x += 1) pts.push(P(x, terrain(x, rz) + 0.15, rz + 0.8 * Math.sin(x * 0.6 + i)));
+        for (let x = X - 4; x >= C; x -= 1) pts.push(P(x, terrain(x, rz) + 0.15, rz + 0.8 * Math.sin(x * 0.6 + i)));
         s += `<path class="river" d="M${pts.map(pt).join("L")}" stroke="${riverCol}" stroke-width="${f2(riverW)}" opacity="${f2(0.55 + 0.4 * clamp(m.rain))}"/>`;
       });
       CITIES.forEach(([name, cz]) => {
         if (placed.has(name) || cz < z - 2.5) return;
         placed.add(name);
-        const q = P(C - 1.2, terrain(C - 1.2, cz) + 0.2, cz);
+        const q = P(C + 1.2, terrain(C + 1.2, cz) + 0.2, cz);
         s += `<g class="city"><circle cx="${f2(q[0])}" cy="${f2(q[1])}" r="3.6"/>${label([q[0] - 7, q[1] + 4], name, "", "end")}</g>`;
       });
     }
-    s += label(P(6, terrain(6, 4), 4), tr("learn_s_andes"), "lbl-strong", "middle", -26);
-    s += label(P(X, -D, 0), tr("learn_s_pacific"), "lbl-strong", "end", 22);
+    // East face of the land block (the far side of the Andes).
+    const east = [];
+    for (let z = 0; z <= Zn; z += 2.5) east.push([X, terrain(X, z), z]);
+    s += `<polygon class="land-side2" points="${poly(P, [[X, -D, 0]].concat(east, [[X, -D, Zn]]))}"/>`;
+    s += label(P(X - 6, terrain(X - 6, 4), 4), tr("learn_s_andes"), "lbl-strong", "middle", -26);
+    s += label(P(0, -D, 0), tr("learn_s_pacific"), "lbl-strong", "start", 22);
 
     // Storms over the warm northern coast.
     if (m.rain > 0.02) {
-      for (const [x, z, r] of [[36, 46, 10], [33, 40, 8.5], [41, 36, 7]].slice(0, m.rain > 0.5 ? 3 : 2)) {
-        const c = P(x, 15 + 3 * m.rain, z), floor = P(x - 4, 1, z)[1];
+      for (const [x, z, r] of [[C - 6, 46, 10], [C - 3, 40, 8.5], [C - 11, 36, 7]].slice(0, m.rain > 0.5 ? 3 : 2)) {
+        const c = P(x, 15 + 3 * m.rain, z), floor = P(x + 4, 1, z)[1];
         s += storm(c[0], c[1], 2.3 * r * (0.75 + 0.35 * clamp(m.rain)), m.rain, floor);
       }
     } else if (m.coastal < 0.5) {
-      const q = P(20, 14, 42); s += sun(q[0], q[1], 11);
+      const q = P(X - 20, 14, 42); s += sun(q[0], q[1], 11);
     }
     g.innerHTML = s;
   }
 
   const anchors = {
-    humboldt: () => P(54, 0.3, 20),
-    desert: () => P(24, terrain(24, 28), 28),
-    andes: () => P(8, terrain(8, 30), 30),
-    storms: () => { const q = P(36, 18, 46); return [q[0], q[1] - 40]; },
-    anchoveta: () => P(C + 4, 0, Math.max(2, 26 - clamp(model.coastal, 0, 4) * 4)),
+    humboldt: () => P(C - 24, 0.3, 20),
+    desert: () => P(X - 24, terrain(X - 24, 28), 28),
+    andes: () => P(X - 8, terrain(X - 8, 30), 30),
+    storms: () => { const q = P(C - 6, 18, 46); return [q[0], q[1] - 40]; },
+    anchoveta: () => P(C - 4, 0, Math.max(2, 26 - clamp(model.coastal, 0, 4) * 4)),
   };
 
   function hit(ux, uy) {
     const [x, z] = inv(ux, uy, 0);
-    if (x < C || x > X || z < 0 || z > Zn) return null;
+    if (x < 0 || x > C || z < 0 || z > Zn) return null;
     const lat = 18 - (z / Zn) * 14.5;
     return `<b>${tr("learn_sea_temp")}</b><br>${model.sst(x, z).toFixed(1)}&nbsp;°C · ${lat.toFixed(1)}°S`;
   }
 
   function view() {
-    const c = [[0, -D - 3, 0], [X, -D - 3, 0], [0, 20, Zn], [X, 0, Zn], [X, -D, Zn], [0, 22, 0]].map((q) => P(...q));
-    return bbox(c, 0.08, 0.06);
+    const c = [[0, -D - 3, 0], [X, -D - 3, 0], [0, 22, Zn], [X, 22, Zn], [X, -D, Zn], [0, 22, 0], [X, 22, 0]].map((q) => P(...q));
+    return bbox(c, 0.06, 0.06);
   }
 
   return { g, render, anchors, hit, view };

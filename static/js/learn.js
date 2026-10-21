@@ -55,7 +55,7 @@ const PLACE = {
   warm_pool: [-0.1, 0.34], convection: [-0.12, -0.16], trades: [0.02, -0.34], cold_tongue: [0.12, -0.26],
   thermocline: [0.1, 0.3], upwelling: [0.04, 0.26], fish: [0.16, -0.08], sea_level: [0.0, 0.3],
   westerly: [-0.04, -0.3], kelvin: [0.06, 0.26],
-  humboldt: [0.14, 0.12], desert: [-0.22, 0.18], andes: [-0.08, -0.26], storms: [0.2, -0.1], anchoveta: [0.1, 0.24],
+  humboldt: [-0.1, -0.24], desert: [0.18, 0.2], andes: [0.08, -0.28], storms: [-0.2, -0.12], anchoveta: [-0.06, 0.28],
   nino4: [-0.16, -0.24], nino34: [-0.02, -0.3], nino3: [0.04, 0.26], nino12: [0.16, 0.12],
   g_peru: [0.14, 0.16], g_indo: [-0.12, 0.22], g_us: [0.08, -0.26], g_africa: [-0.12, 0.22],
 };
