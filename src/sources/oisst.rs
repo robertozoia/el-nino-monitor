@@ -11,7 +11,11 @@ use rusqlite::params;
 use std::collections::HashSet;
 use std::path::PathBuf;
 
-const ERDDAP: &str = "https://coastwatch.pfeg.noaa.gov/erddap/griddap/ncdcOisst21NrtAgg_LonPM180";
+const ERDDAP: &[&str] = &[
+    "https://coastwatch.pfeg.noaa.gov/erddap/griddap/ncdcOisst21NrtAgg_LonPM180",
+    // Same dataset on NOAA SWFSC's ERDDAP; used when the primary host is unreachable.
+    "https://upwell.pfeg.noaa.gov/erddap/griddap/ncdcOisst21NrtAgg_LonPM180",
+];
 pub const DATASET: &str = "oisst";
 /// Frames downloaded per scheduled run; the backfill command loops until complete.
 const PER_RUN: usize = 12;
@@ -21,23 +25,52 @@ pub fn grid_path(ctx: &Ctx, date: &str) -> PathBuf {
 }
 
 async fn latest_date(ctx: &Ctx) -> Result<NaiveDate> {
-    let body = fetch::get_plain(ctx, &format!("{ERDDAP}.csv?time%5B(last)%5D")).await?;
-    let text = String::from_utf8_lossy(&body);
-    let last = text.lines().last().context("empty time response")?;
-    NaiveDate::parse_from_str(last.get(..10).unwrap_or_default(), "%Y-%m-%d")
-        .with_context(|| format!("unexpected time value {last:?}"))
+    let mut last_err = None;
+    for base in ERDDAP {
+        let url = format!("{base}.csv?time%5B(last)%5D");
+        let body = match fetch::get_plain(ctx, &url).await {
+            Ok(b) => b,
+            Err(e) => {
+                last_err = Some(e);
+                continue;
+            }
+        };
+        let text = String::from_utf8_lossy(&body);
+        let Some(last) = text.lines().last() else {
+            last_err = Some(anyhow::anyhow!("empty time response from {base}"));
+            continue;
+        };
+        match NaiveDate::parse_from_str(last.get(..10).unwrap_or_default(), "%Y-%m-%d") {
+            Ok(d) => return Ok(d),
+            Err(e) => {
+                last_err = Some(e).map(|e| anyhow::anyhow!("unexpected time value {last:?} from {base}: {e}"));
+                continue;
+            }
+        }
+    }
+    Err(last_err.unwrap_or_else(|| anyhow::anyhow!("no ERDDAP mirror reachable")))
 }
 
-fn frame_url(date: NaiveDate) -> String {
+fn frame_url(base: &str, date: NaiveDate) -> String {
     // Stride 4 on the 0.25° grid gives 1° cells: 360 x 180.
     format!(
-        "{ERDDAP}.esriAscii?anom%5B({date}T12:00:00Z)%5D%5B(0.0)%5D%5B(-89.875):4:(89.875)%5D%5B(-179.875):4:(179.875)%5D"
+        "{base}.esriAscii?anom%5B({date}T12:00:00Z)%5D%5B(0.0)%5D%5B(-89.875):4:(89.875)%5D%5B(-179.875):4:(179.875)%5D"
     )
 }
 
 async fn fetch_frame(ctx: &Ctx, date: NaiveDate) -> Result<Grid> {
-    let body = fetch::get_plain(ctx, &frame_url(date)).await?;
-    Grid::parse_esri_ascii(&String::from_utf8_lossy(&body)).with_context(|| format!("parsing OISST frame {date}"))
+    let mut last_err = None;
+    for base in ERDDAP {
+        let url = frame_url(base, date);
+        match fetch::get_plain(ctx, &url).await {
+            Ok(body) => {
+                return Grid::parse_esri_ascii(&String::from_utf8_lossy(&body))
+                    .with_context(|| format!("parsing OISST frame {date}"));
+            }
+            Err(e) => last_err = Some(e),
+        }
+    }
+    Err(last_err.unwrap_or_else(|| anyhow::anyhow!("all ERDDAP mirrors failed for {date}")))
 }
 
 /// Downloads up to `limit` missing frames (newest first). Returns how many were stored.

@@ -18,6 +18,46 @@ const USAGE: &str = "usage:
                                     add a curated publication link (WMO, BoM, ...)
   elnino sources                    list source ids";
 
+/// Runs a frame source's `sync` in batches until complete. An unreachable provider
+/// must not abort the whole deployment: after a few failed attempts we log and move
+/// on, leaving the scheduler to retry with backoff.
+async fn backfill_frames(ctx: &fetch::Ctx, source: &str, per_batch: usize) -> Result<()> {
+    let sync = |ctx: &fetch::Ctx, n: usize| {
+        let ctx = ctx.clone();
+        async move {
+            match source {
+                "oisst" => sources::oisst::sync(&ctx, n).await,
+                "chirps" => sources::chirps::sync(&ctx, n).await,
+                _ => unreachable!("backfill_frames: {source}"),
+            }
+        }
+    };
+    let mut failures = 0;
+    loop {
+        match sync(ctx, per_batch).await {
+            Ok(0) => break,
+            Ok(n) => {
+                failures = 0;
+                tracing::info!(source, frames = n, "backfill batch");
+            }
+            Err(e) if failures < 5 => {
+                failures += 1;
+                tracing::warn!(source, error = %format!("{e:#}"), "backfill error; retrying in 30 s");
+                tokio::time::sleep(std::time::Duration::from_secs(30)).await;
+            }
+            Err(e) => {
+                // Records the failure in source_status like a scheduled run would.
+                let _ = sources::run_and_record(ctx, source).await;
+                tracing::error!(source, error = %format!("{e:#}"), "backfill gave up; the scheduler will keep retrying");
+                break;
+            }
+        }
+    }
+    // Records the source status like a scheduled run would.
+    sources::run_and_record(ctx, source).await?;
+    Ok(())
+}
+
 #[tokio::main]
 async fn main() -> Result<()> {
     tracing_subscriber::fmt()
@@ -55,35 +95,8 @@ async fn main() -> Result<()> {
             for d in sources::REGISTRY.iter().filter(|d| !matches!(d.id, "oisst" | "chirps")) {
                 let _ = sources::run_and_record(&ctx, d.id).await;
             }
-            let mut failures = 0;
-            loop {
-                match sources::oisst::sync(&ctx, 30).await {
-                    Ok(0) => break,
-                    Ok(n) => tracing::info!(frames = n, "SST backfill batch"),
-                    Err(e) if failures < 5 => {
-                        failures += 1;
-                        tracing::warn!(error = %format!("{e:#}"), "SST backfill error; retrying in 30 s");
-                        tokio::time::sleep(std::time::Duration::from_secs(30)).await;
-                    }
-                    Err(e) => return Err(e),
-                }
-            }
-            // Records the SST source status like a scheduled run would.
-            sources::run_and_record(&ctx, "oisst").await?;
-            let mut failures = 0;
-            loop {
-                match sources::chirps::sync(&ctx, 30).await {
-                    Ok(0) => break,
-                    Ok(n) => tracing::info!(frames = n, "CHIRPS backfill batch"),
-                    Err(e) if failures < 5 => {
-                        failures += 1;
-                        tracing::warn!(error = %format!("{e:#}"), "CHIRPS backfill error; retrying in 30 s");
-                        tokio::time::sleep(std::time::Duration::from_secs(30)).await;
-                    }
-                    Err(e) => return Err(e),
-                }
-            }
-            sources::run_and_record(&ctx, "chirps").await?;
+            backfill_frames(&ctx, "oisst", 30).await?;
+            backfill_frames(&ctx, "chirps", 30).await?;
             Ok(())
         }
         "add-link" => {
