@@ -11,6 +11,8 @@ pub struct Config {
     pub scheduler: bool,
     /// How many daily SST frames to keep and backfill.
     pub sst_days: i64,
+    /// How many daily precipitation frames to keep and backfill.
+    pub precip_days: i64,
 }
 
 impl Config {
@@ -24,6 +26,7 @@ impl Config {
             assets_dir: env("ASSETS_DIR", ".").into(),
             scheduler: env("SCHEDULER", "on") != "off",
             sst_days: env("SST_DAYS", "90").parse().unwrap_or(90),
+            precip_days: env("PRECIP_DAYS", "120").parse().unwrap_or(120),
         }
     }
 }

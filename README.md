@@ -24,6 +24,7 @@ animations, and the last lessons use the live data from the database.
 | NOAA PSL | MEI.v2 | 12 h |
 | NOAA NCEI | Daily OISST v2.1 (preliminary) anomaly via CoastWatch ERDDAP, 1° | 6 h |
 | NOAA NCEI | Global land+ocean temperature anomaly (Climate at a Glance) | 12 h |
+| UCSB CHC | Daily precipitation (CHIRPS v3.0 preliminary), 0.05°, Peru departments | 12 h |
 | IGP / ENFEN | ICEN (Índice Costero El Niño) | 12 h |
 | ENFEN | Comunicados oficiales (WordPress API + homepage PDF list) | 6 h |
 | GDACS | Orange/red flood, drought, cyclone and wildfire alerts | 30 min |
@@ -48,7 +49,7 @@ DATA_DIR=./data cargo run --release      # http://127.0.0.1:8080
 
 Environment variables: `DATA_DIR` (./data), `BIND` (127.0.0.1:8080), `ASSETS_DIR` (.),
 `CONTACT` (put in the User-Agent so data providers can reach you), `SST_DAYS` (90),
-`SCHEDULER=off` (serve without fetching), `RUST_LOG`.
+`PRECIP_DAYS` (120), `SCHEDULER=off` (serve without fetching), `RUST_LOG`.
 
 Tip: if the repo lives in Dropbox, set `CARGO_TARGET_DIR` outside it so build
 artefacts are not synced.
@@ -85,6 +86,7 @@ migrations/  SQLite schema
 templates/   pages (minijinja)          i18n/  es.toml, en.toml
 static/      css, js (one module per page), vendor libs, Natural Earth countries,
              simplified typical-impact layers (tools/make_impact_layers.py),
+             Peru department mask (tools/make_peru_mask.py),
              learn/world.json land outline for the Learn page (tools/make_learn_world.py)
 templates/learn/  lesson content for the Learn page, one file per language
 ```
@@ -93,13 +95,19 @@ templates/learn/  lesson content for the Learn page, one file per language
 
 - OISST anomalies use a 1971–2000 base, so they run warmer than CPC's 1991–2020
   indices; the daily Niño 3.4 / 1+2 derived from them are labelled unofficial.
+- Precipitation comes from CHIRPS v3.0 preliminary (UCSB CHC), a satellite estimate,
+  not official SENAMHI data: daily values are 5-day pentad totals disaggregated with
+  IMERG timing and are published ~2 days after each pentad ends (2–7 day lag). Department
+  means use a mask built from Natural Earth 10m admin-1 boundaries (`tools/make_peru_mask.py`,
+  committed as `static/geo/peru_mask.bin`); tiny departments (e.g. Callao) cover very few
+  grid cells. Backfilling history from the CHIRPS v3.0 final archive is planned for later.
 - ENFEN publishes recent comunicados only as PDFs; their alert state is taken from the
   latest comunicado that states it in its title, and the UI says which one.
 - The typical-impact map is a deliberately coarse sketch (ellipses), labelled as such.
 - GDACS events are shown as "consistent with typical El Niño impacts", never as
   attributed to El Niño.
-- Phase 2 candidates: NASA FIRMS fires, NOAA Coral Reef Watch, FEWS NET, CHIRPS
-  rainfall, SENAMHI avisos, ReliefWeb, TAO/TRITON subsurface, Peru anchoveta seasons.
+- Phase 2 candidates: NASA FIRMS fires, NOAA Coral Reef Watch, FEWS NET,
+  SENAMHI avisos, ReliefWeb, TAO/TRITON subsurface, Peru anchoveta seasons.
 
 ## License
 

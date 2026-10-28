@@ -153,6 +153,7 @@ fn build_page(st: &AppState, lang: &str, page: &str) -> Result<String> {
             "kpis": views::kpis(&conn, &l)?.into_iter()
                 .filter(|k| matches!(k["id"].as_str(), Some("icen" | "nino12_weekly")))
                 .collect::<Vec<_>>(),
+            "precip": views::peru_precip(&conn, &l)?,
         }),
         "impacts" => json!({ "regions": views::region_cards(&conn, &l)? }),
         "sources" => json!({

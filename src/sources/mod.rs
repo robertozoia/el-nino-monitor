@@ -1,3 +1,4 @@
+pub mod chirps;
 pub mod cpc_products;
 pub mod enfen;
 pub mod gdacs;
@@ -127,6 +128,18 @@ pub static REGISTRY: &[SourceDef] = &[
         cadence_es: "Diaria (~1 día de retraso)",
     },
     SourceDef {
+        id: "chirps",
+        org: "UCSB Climate Hazards Center (CHIRPS)",
+        name_en: "Daily precipitation estimates (CHIRPS v3.0 preliminary)",
+        name_es: "Estimación diaria de precipitación (CHIRPS v3.0 preliminar)",
+        url: "https://www.chc.ucsb.edu/data/chirps3",
+        license: "Public domain / CC BY 4.0 (UCSB CHC)",
+        poll: 12 * HOUR,
+        expected: 8 * DAY,
+        cadence_en: "Daily, 2–7 day lag (pentads)",
+        cadence_es: "Diaria, retraso de 2–7 días (pentadas)",
+    },
+    SourceDef {
         id: "gdacs",
         org: "GDACS (European Commission JRC / UN OCHA)",
         name_en: "Global disaster alerts: floods, droughts, cyclones, wildfires",
@@ -167,6 +180,7 @@ async fn dispatch(ctx: &Ctx, id: &str) -> Result<bool> {
         "igp_icen" => indices::run_icen(ctx).await,
         "enfen" => enfen::run(ctx).await,
         "oisst" => oisst::run(ctx).await,
+        "chirps" => chirps::run(ctx).await,
         "gdacs" => gdacs::run(ctx).await,
         "ncei_global" => indices::run_ncei_global(ctx).await,
         _ => bail!("unknown source {id}"),

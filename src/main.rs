@@ -52,7 +52,7 @@ async fn main() -> Result<()> {
             Ok(())
         }
         "backfill" => {
-            for d in sources::REGISTRY.iter().filter(|d| d.id != "oisst") {
+            for d in sources::REGISTRY.iter().filter(|d| !matches!(d.id, "oisst" | "chirps")) {
                 let _ = sources::run_and_record(&ctx, d.id).await;
             }
             let mut failures = 0;
@@ -70,6 +70,20 @@ async fn main() -> Result<()> {
             }
             // Records the SST source status like a scheduled run would.
             sources::run_and_record(&ctx, "oisst").await?;
+            let mut failures = 0;
+            loop {
+                match sources::chirps::sync(&ctx, 30).await {
+                    Ok(0) => break,
+                    Ok(n) => tracing::info!(frames = n, "CHIRPS backfill batch"),
+                    Err(e) if failures < 5 => {
+                        failures += 1;
+                        tracing::warn!(error = %format!("{e:#}"), "CHIRPS backfill error; retrying in 30 s");
+                        tokio::time::sleep(std::time::Duration::from_secs(30)).await;
+                    }
+                    Err(e) => return Err(e),
+                }
+            }
+            sources::run_and_record(&ctx, "chirps").await?;
             Ok(())
         }
         "add-link" => {

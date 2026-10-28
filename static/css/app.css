@@ -237,6 +237,19 @@ a.kpi:hover { text-decoration: none; border-color: var(--border-strong); }
 }
 .seg button:last-child { border-right: 0; }
 .seg button[aria-pressed="true"] { background: var(--accent-soft); color: var(--text-primary); }
+
+/* Department chips (Peru precipitation chart) */
+.chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+.chip {
+  border: 1px solid var(--border); background: var(--surface-1); color: var(--text-secondary);
+  border-radius: 999px; padding: 3px 11px; font: 600 .76rem var(--font); cursor: pointer;
+}
+.chip:hover { border-color: var(--border-strong); }
+.chip[aria-pressed="true"] { background: var(--accent-soft); color: var(--text-primary); border-color: var(--border-strong); }
+.precip-spark { width: 84px; height: 24px; }
+.precip-spark .line { fill: none; stroke: var(--series-6); stroke-width: 1.5; }
+.precip-spark .zero { stroke: var(--border-strong); stroke-dasharray: 2 3; }
+.precip-spark .end { fill: var(--series-6); stroke: var(--surface-1); stroke-width: 2; }
 .loading { display: grid; place-items: center; color: var(--text-muted); font-size: .85rem; }
 .empty { padding: 24px; text-align: center; color: var(--text-muted); font-size: .9rem; }
 

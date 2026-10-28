@@ -101,6 +101,12 @@ pub async fn get_plain(ctx: &Ctx, url: &str) -> Result<Vec<u8>> {
     Ok(reply.body)
 }
 
+/// HEAD request without caching, for probing whether a URL currently exists.
+pub async fn head(ctx: &Ctx, url: &str) -> Result<StatusCode> {
+    let reply = send_with_retry(url, || ctx.http.head(url)).await?;
+    Ok(reply.status)
+}
+
 /// Pauses before each retry of a transient failure (so up to 3 attempts in total).
 #[cfg(not(test))]
 const RETRY_DELAYS: [Duration; 2] = [Duration::from_secs(3), Duration::from_secs(10)];

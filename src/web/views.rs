@@ -250,6 +250,76 @@ pub fn kpis(conn: &Connection, l: &L) -> Result<Vec<Value>> {
     Ok(out)
 }
 
+// ------------------------------------------------------------------ peru precipitation
+
+/// Department daily precipitation rows for the Peru page: latest day, 7/30-day totals,
+/// sparkline, plus the department list (with chart defaults) and overall freshness.
+pub fn peru_precip(conn: &Connection, l: &L) -> Result<Value> {
+    use crate::sources::chirps;
+    let depts = chirps::departments();
+    let today = chrono::Utc::now().date_naive();
+    fn name<'a>(l: &L, d: &'a chirps::Department) -> &'a str {
+        if l.es() { d.name_es.as_str() } else { d.name_en.as_str() }
+    }
+    let mm = |v: f64| format!("{v:.1}");
+
+    let mut rows = Vec::new();
+    let mut series = Vec::new();
+    let mut latest_all: Option<String> = None;
+    for d in depts {
+        let id = chirps::series_id(d);
+        series.push(json!({
+            "code": d.code,
+            "name": name(l, d),
+            "default": matches!(d.code.as_str(), "tumbes" | "piura" | "lambayeque" | "la_libertad" | "ancash" | "lima"),
+        }));
+        let latest: Option<(String, f64)> = conn
+            .query_row(
+                "SELECT t, value FROM observation WHERE series_id=?1 ORDER BY t DESC LIMIT 1",
+                [&id],
+                |r| Ok((r.get(0)?, r.get(1)?)),
+            )
+            .optional()?;
+        let Some((t, v)) = latest else {
+            rows.push(json!({ "code": d.code, "name": name(l, d), "latest": null, "last7": null, "last30": null, "spark": null }));
+            continue;
+        };
+        if latest_all.as_deref() < Some(t.as_str()) {
+            latest_all = Some(t.clone());
+        }
+        let since = |days: i64| (parse_date(&t).unwrap() - chrono::Duration::days(days)).to_string();
+        let total = |days: i64| -> Result<f64> {
+            Ok(conn
+                .query_row(
+                    "SELECT COALESCE(SUM(value), 0) FROM observation WHERE series_id=?1 AND t > ?2",
+                    params![id, since(days)],
+                    |r| r.get(0),
+                )?)
+        };
+        let spark_pts: Vec<f64> = {
+            let mut stmt = conn.prepare("SELECT value FROM observation WHERE series_id=?1 ORDER BY t DESC LIMIT 60")?;
+            let mut v: Vec<f64> = stmt.query_map([&id], |r| r.get(0))?.collect::<rusqlite::Result<_>>()?;
+            v.reverse();
+            v
+        };
+        rows.push(json!({
+            "code": d.code,
+            "name": name(l, d),
+            "latest": mm(v),
+            "last7": mm(total(7)?),
+            "last30": mm(total(30)?),
+            "spark": sparkline(&spark_pts),
+        }));
+    }
+    let lag_days = latest_all.as_deref().and_then(parse_date).map(|d| (today - d).num_days());
+    Ok(json!({
+        "latest": latest_all.as_deref().map(|t| fmt_date(l, t)),
+        "lag_days": lag_days,
+        "series": series,
+        "rows": rows,
+    }))
+}
+
 // ------------------------------------------------------------------ official status
 
 pub fn cpc_status(conn: &Connection, l: &L) -> Result<Value> {

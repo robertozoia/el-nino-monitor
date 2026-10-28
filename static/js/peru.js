@@ -73,5 +73,63 @@ async function n12Chart() {
   }));
 }
 
+/** Daily precipitation by department: bars with chip toggles (CHIRPS v3.0). */
+async function precipChart() {
+  const meta = window.DATA?.precip;
+  const chartEl = document.getElementById("chart-precip");
+  if (!meta?.series?.length || !chartEl) return;
+  const from = new Date(Date.now() - 130 * 864e5).toISOString().slice(0, 10);
+  const selected = new Set(meta.series.filter((s) => s.default).map((s) => s.code));
+  const byCode = new Map();
+  try {
+    const all = await Promise.all(
+      meta.series.map((s) => getJSON(`/api/series/precip_${s.code}?from=${from}`).catch(() => ({ points: [] }))),
+    );
+    meta.series.forEach((s, i) => byCode.set(s.code, all[i]));
+  } catch (e) {
+    return showError("chart-precip");
+  }
+  if (![...byCode.values()].some((s) => s.points.length)) return showError("chart-precip");
+
+  const chart = mountChart("chart-precip", (k) => ({
+    ...base(k),
+    grid: { left: 44, right: 16, top: 30, bottom: 34 },
+    legend: { show: false },
+    tooltip: {
+      ...base(k).tooltip,
+      formatter: (ps) => {
+        if (!ps.length) return "";
+        return `<div style="font-weight:700;margin-bottom:4px">${fmtDate(ps[0].value[0])}</div>` +
+          ps.map((p) => tipRow(p.color, p.seriesName, `${Number(p.value[1]).toFixed(1)} ${t("js_mm_day")}`)).join("");
+      },
+    },
+    xAxis: timeAxis(k),
+    yAxis: valueAxis(k, { unit: " mm" }),
+    series: meta.series
+      .filter((s) => selected.has(s.code))
+      .map((s, i) => ({
+        name: s.name,
+        type: "bar",
+        data: byCode.get(s.code).points,
+        barGap: "0%",
+        barCategoryGap: "30%",
+        itemStyle: { color: k.series[i % k.series.length] },
+      })),
+  }));
+
+  const chips = document.getElementById("precip-chips");
+  if (!chips || !chart) return;
+  chips.querySelectorAll(".chip").forEach((b) => {
+    b.addEventListener("click", () => {
+      const code = b.dataset.code;
+      if (selected.has(code)) selected.delete(code);
+      else selected.add(code);
+      b.setAttribute("aria-pressed", String(selected.has(code)));
+      chart.rerender();
+    });
+  });
+}
+
 icenChart();
 n12Chart();
+precipChart();
