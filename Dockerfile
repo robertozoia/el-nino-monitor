@@ -10,6 +10,8 @@ RUN mkdir src && echo 'fn main() {}' > src/main.rs \
 
 COPY src src
 COPY migrations migrations
+# Compiled into the binary (include_bytes!/include_str! in src/sources/chirps.rs).
+COPY static/geo static/geo
 RUN cargo build --release
 
 # --- runtime -----------------------------------------------------------------
