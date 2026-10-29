@@ -1,0 +1,1049 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self'; frame-src http: https:;"> -->
+    <link rel="icon" href="favicon.ico">
+
+    <title>SENAMHI - Estaciones</title>
+    <link href="https://fonts.googleapis.com/css?family=Raleway:400,500,600,700,800,900" rel="stylesheet">
+    <!-- <link href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto:100,300,400,500,600,700,800,900"
+          rel="stylesheet"> -->
+
+    <!-- Bootstrap core CSS -->
+    <link href="public/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template
+    <link href="public/css/product.css" rel="stylesheet">-->
+
+    <!-- estilos -->
+    <link href="public/css/style.css" rel="stylesheet">
+
+    <!--menu
+    <style type="text/css">
+        .dropdown:hover>.dropdown-menu {
+            display: block;
+        }
+    </style>-->
+
+    <script src="public/lib/jquery/jquery-3.2.1.min.js"></script>
+
+    <!-- google -->
+    <!--      <script>
+                (function (i, s, o, g, r, a, m) {
+                    i['GoogleAnalyticsObject'] = r;
+                    i[r] = i[r] || function () {
+                        (i[r].q = i[r].q || []).push(arguments)
+                    }, i[r].l = 1 * new Date();
+                    a = s.createElement(o),
+                            m = s.getElementsByTagName(o)[0];
+                    a.async = 1;
+                    a.src = g;
+                    m.parentNode.insertBefore(a, m)
+                })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+                ga('create', 'UA-9445737-1', 'auto');
+                ga('send', 'pageview');
+            </script>-->
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-8407SG8D31"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+
+        gtag('config', 'G-8407SG8D31');
+    </script>
+
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-7G3WVK3HHH"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+
+        gtag('config', 'G-7G3WVK3HHH');
+    </script>
+
+    <!-- Google Tag Manager -->
+    <script>(function (w, d, s, l, i) {
+            w[l] = w[l] || [];
+            w[l].push({
+                'gtm.start':
+                    new Date().getTime(), event: 'gtm.js'
+            });
+            var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+            j.async = true;
+            j.src =
+                'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+            f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-W2TVBHD');</script>
+    <!-- End Google Tag Manager -->
+
+    <script type="text/javascript">
+        var pagInicio = 'estaciones';
+        $(document).ready(function () {
+            if (pagInicio == 'nacional_msj') {
+            }
+        });
+    </script>
+
+</head>
+
+
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript>
+    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W2TVBHD"
+            height="0" width="0" style="display:none;visibility:hidden"></iframe>
+</noscript>
+<!-- End Google Tag Manager (noscript) -->
+<div id="cabeweb" class="container bg-header d-none d-sm-block cabe-web">
+    <div class="row">
+        <div class="col-sm-8">
+            <a class="navbar-brand" href="https://www.gob.pe/minam" target="_blank"><img
+                        src="public/images/logo-minam.png" height="45px" class="logo d-inline-block align-middle"
+                        alt="logo MINAM"/></a>
+            <a class="navbar-brand" href="https://www.senamhi.gob.pe"><img src="public/images/logo-senamhi.svg"
+                                                                           height="48px"
+                                                                           class="logo align-middle d-none d-xl-inline-block"
+                                                                           alt="logo SENAMHI"/></a>
+        </div>
+        <div class="col-sm-4 text-right">
+            <a class="navbar-brand"
+               href="http://www.transparencia.gob.pe/enlaces/pte_transparencia_enlaces.aspx?id_entidad=87#.XG9BzKIzaUl"
+               target="_blank"><img src="public/images/logo-portal-pte.png" height="39px"
+                                    class="logo d-inline-block align-middle" alt="logo Portal de Transparencia"/></a>
+        </div>
+    </div>
+</div>
+
+<!DOCTYPE html>
+<html>
+<style>
+        :root {
+                --snm-bg: #e6e6e6;
+                --snm-text: #4a4a4a;
+                --snm-hover-text: #1a1a1a;
+                --snm-border: #cccccc;
+                --snm-dropdown-bg: #ffffff;
+                --snm-dropdown-text: #505050;
+                --snm-dropdown-hover-bg: #f5f8fc;
+                --snm-dropdown-hover-text: #0056b3;
+                --snm-speed: 0.25s;
+        }
+
+        .snm-nav *,
+        .snm-nav *::before,
+        .snm-nav *::after {
+                box-sizing: border-box;
+                margin: 0;
+                padding: 0;
+        }
+
+        .snm-nav {
+                background-color: var(--snm-bg);
+                border-bottom: 1px solid var(--snm-border);
+                position: relative;
+                z-index: 1002;
+        }
+
+        .snm-nav__container {
+                max-width: 1200px;
+                margin: 0 auto;
+                display: flex;
+                align-items: center;
+                flex-wrap: wrap;
+                padding: 0 16px;
+        }
+
+        .snm-nav__brand {
+                display: none;
+        }
+
+        .snm-nav__brand img {
+                height: 44px;
+                width: auto;
+        }
+
+        .snm-nav__toggle {
+                display: none;
+                background: transparent;
+                border: none;
+                box-shadow: none;
+                cursor: pointer;
+                padding: 16px;
+                flex-direction: column;
+                gap: 5px;
+                margin-right: auto;
+                margin-left: 0;
+                outline: none !important;
+                -webkit-tap-highlight-color: transparent;
+                align-items: flex-start;
+                text-decoration: none;
+        }
+
+        .snm-nav__toggle-bar {
+                display: block;
+                width: 26px;
+                height: 3px;
+                background-color: var(--snm-text);
+                border-radius: 2px;
+                transition: all 0.3s ease-in-out;
+        }
+
+        .snm-nav__toggle.snm-is-active .snm-nav__toggle-bar:nth-child(1) {
+                transform: translateY(8px) rotate(45deg);
+        }
+
+        .snm-nav__toggle.snm-is-active .snm-nav__toggle-bar:nth-child(2) {
+                opacity: 0;
+        }
+
+        .snm-nav__toggle.snm-is-active .snm-nav__toggle-bar:nth-child(3) {
+                transform: translateY(-8px) rotate(-45deg);
+        }
+
+        .snm-nav__list {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-between;
+                list-style: none;
+                margin: 0;
+                padding: 0;
+                width: 100%;
+        }
+
+        .snm-nav__item {
+                position: relative;
+                display: flex;
+        }
+
+
+
+        .snm-nav__item--select {
+                display: flex;
+                align-items: center;
+                margin-left: 0.5rem;
+                margin-right: 0.25rem;
+                padding: 12px 0;
+        }
+
+        .snm-select {
+                appearance: none;
+                -webkit-appearance: none;
+                background-color: #ffffff;
+                border: 1px solid #ced4da;
+                border-radius: 6px;
+                padding: 6px 28px 6px 10px;
+                font-size: 13.5px;
+                font-weight: 500;
+                color: #495057;
+                cursor: pointer;
+                outline: none;
+                transition: background-color 0.2s, color 0.2s, border-color 0.2s, box-shadow 0.2s;
+                background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="%236c757d"><path d="M7 10l5 5 5-5z"/></svg>');
+                background-repeat: no-repeat;
+                background-position: right 10px center;
+                background-size: 18px;
+        }
+
+        .snm-select:hover {
+                border-color: #3b82f6;
+        }
+
+        .snm-select:focus {
+                outline: 0 none;
+                box-shadow: 0 0 0 0.2rem #bfdbfe;
+                border-color: #3b82f6;
+        }
+
+        .snm-nav__link {
+                display: flex;
+                align-items: center;
+                padding: 18px 10px;
+                color: var(--snm-text);
+                text-decoration: none !important;
+                outline: none !important;
+                font-size: 13.5px;
+                font-weight: 500;
+                white-space: nowrap;
+                transition: color var(--snm-speed);
+        }
+
+        .snm-nav__link:hover {
+                color: var(--snm-hover-text);
+                text-decoration: none !important;
+        }
+
+        .snm-nav__arrow {
+                margin-left: 4px;
+                font-size: 18px;
+                line-height: 1;
+                transition: transform 0.3s ease;
+                opacity: 0.9;
+        }
+
+        .snm-nav__dropdown {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                background-color: var(--snm-dropdown-bg);
+                min-width: 280px;
+                border: 1px solid var(--snm-border);
+                border-radius: 0 0 6px 6px;
+                opacity: 0;
+                visibility: hidden;
+                transform: translateY(12px);
+                transition: opacity var(--snm-speed) ease, transform var(--snm-speed) ease, visibility var(--snm-speed);
+                list-style: none;
+                margin: 0;
+                padding: 0;
+                z-index: 99999;
+        }
+
+        .snm-nav__item:nth-last-child(-n+3) .snm-nav__dropdown {
+                left: auto;
+                right: 0;
+        }
+
+        .snm-nav__item--has-dropdown::after {
+                content: '';
+                position: absolute;
+                bottom: -12px;
+                left: 0;
+                width: 100%;
+                height: 12px;
+        }
+
+        @media screen and (min-width: 1201px) {
+                .snm-nav__item--has-dropdown:hover .snm-nav__dropdown {
+                        opacity: 1;
+                        visibility: visible;
+                        transform: translateY(0);
+                }
+
+                .snm-nav__item--has-dropdown:hover .snm-nav__arrow {
+                        transform: rotate(180deg);
+                }
+        }
+
+        .snm-nav__dropdown-item {
+                border-bottom: 1px solid #f2f2f2;
+        }
+
+        .snm-nav__dropdown-item:last-child {
+                border-bottom: none;
+        }
+
+        .snm-nav__dropdown-link {
+                display: block;
+                padding: 11px 20px;
+                color: var(--snm-dropdown-text);
+                text-decoration: none !important;
+                outline: none !important;
+                font-size: 13.5px;
+                transition: all var(--snm-speed);
+        }
+
+        .snm-nav__dropdown-link:hover {
+                background-color: var(--snm-dropdown-hover-bg);
+                color: var(--snm-dropdown-hover-text);
+                text-decoration: none !important;
+        }
+
+        @media screen and (max-width: 1200px) {
+                .snm-nav__brand {
+                        display: flex;
+                        align-items: center;
+                        position: absolute;
+                        top: 0;
+                        height: 51px;
+                        left: 50%;
+                        transform: translateX(-50%);
+                        pointer-events: none;
+                }
+
+                .snm-nav__container {
+                        position: relative;
+                }
+
+                .snm-nav__toggle {
+                        display: flex;
+                }
+
+                .snm-nav__list {
+                        display: none;
+                        width: 100%;
+                        flex-direction: column;
+                        background-color: #ffffff;
+                        border-top: 1px solid var(--snm-border);
+                        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+                }
+
+                .snm-nav__list.snm-is-active {
+                        display: flex;
+                }
+
+                .snm-nav__item {
+                        width: 100%;
+                        flex-direction: column;
+                        border-bottom: 1px solid #eeeeee;
+                }
+
+                .snm-nav__item:last-child {
+                        border-bottom: none;
+                }
+
+                .snm-nav__item--select {
+                        margin: 0;
+                        padding: 16px 24px;
+                        background-color: #fdfdfd;
+                        border-left: 4px solid #2a2a2a;
+                        border-bottom: 1px solid #eeeeee;
+                }
+
+                .snm-select {
+                        width: 100%;
+                }
+
+                .snm-nav__link {
+                        padding: 14px 20px;
+                        justify-content: space-between;
+                        text-align: left;
+                        width: 100%;
+                }
+
+                .snm-nav__dropdown {
+                        position: static;
+                        width: 100%;
+                        box-shadow: none;
+                        border: none;
+                        border-top: 1px solid #f0f0f0;
+                        border-radius: 0;
+                        background-color: #f8fbff;
+                        display: none;
+                        opacity: 1;
+                        visibility: visible;
+                        transform: none;
+                }
+
+                .snm-nav__item.snm-is-open .snm-nav__dropdown {
+                        display: block;
+                }
+
+                .snm-nav__item.snm-is-open .snm-nav__arrow {
+                        transform: rotate(180deg);
+                }
+
+                .snm-nav__item.snm-is-open .snm-nav__link {
+                        background-color: #f2f7fc;
+                        color: var(--snm-dropdown-hover-text);
+                }
+
+                .snm-nav__dropdown-link {
+                        padding: 12px 24px 12px 32px;
+                }
+
+                .snm-nav__dropdown-link:hover {
+                        background-color: #ebf2fa;
+                }
+
+                .snm-nav__item--has-dropdown::after {
+                        display: none;
+                }
+        }
+
+        .alert
+        {
+            margin-bottom: 2px !important;
+        }        
+</style>
+
+<!-- <div class="alert alert-warning alert-dismissible fade show" role="alert">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <span class="icon mr-2 flex-shrink-0">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22" fill="none" class="w-6 h-6">
+                        <path d="M11 0C4.928 0 0 4.928 0 11C0 17.072 4.928 22 11 22C17.072 22 22 17.072 22 11C22 4.928 17.072 0 11 0ZM12.1 16.5H9.9V9.9H12.1V16.5ZM12.1 7.7H9.9V5.5H12.1V7.7Z" fill="#0056AC"></path>
+                    </svg>
+                </span>
+                <a href="https://observatorio.senamhi.gob.pe/" target="_blank" rel="noopener"><strong><span style="background:linear-gradient(90deg,#2E8B3A,#1F4063);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;">A partir de ahora  puedes acceder a nuestros productos y servicios a través del OBSERVATORIO NACIONAL DEL TIEMPO, AGUA Y CLIMA DEL PERÚ</span>   </strong> </a>
+                 
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div> -->
+
+<div class="alert alert-warning alert-dismissible fade show" role="alert">
+    <div class="container"> 
+        <div class="row"> 
+            <div class="col-sm-12">
+                <span class="icon mr-2 flex-shrink-0">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22" fill="none" class="w-6 h-6">
+                        <path d="M11 0C4.928 0 0 4.928 0 11C0 17.072 4.928 22 11 22C17.072 22 22 17.072 22 11C22 4.928 17.072 0 11 0ZM12.1 16.5H9.9V9.9H12.1V16.5ZM12.1 7.7H9.9V5.5H12.1V7.7Z" fill="#0056AC"></path>
+                    </svg>
+                </span>                
+                <strong>Infórmate sobre el Fenómeno El Niño 2026-2027   </strong> <a href="?p=fenomeno-el-nino"> VER MÁS </a>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<nav class="snm-nav">
+        <div class="snm-nav__container">
+                <button class="snm-nav__toggle" id="snm-toggle" aria-label="Alternar menú">
+                        <span class="snm-nav__toggle-bar"></span>
+                        <span class="snm-nav__toggle-bar"></span>
+                        <span class="snm-nav__toggle-bar"></span>
+                </button>
+                <a href="#" class="snm-nav__brand">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/c/c0/Logo_SENAMHI.svg" alt="SENAMHI">
+                </a>
+                <ul class="snm-nav__list" id="snm-menu-list">
+                        <li class="snm-nav__item snm-nav__item--select">
+                                <select class="snm-select" id="snm-region-select" aria-label="Seleccionar departamento">
+                                </select>
+                        </li>
+                </ul>
+        </div>
+</nav>
+
+<script>
+        const BASE_URL = 'https://www.senamhi.gob.pe/';
+
+        const regions = [
+                { value: '', label: 'Perú' },
+                { value: 'amazonas', label: 'Amazonas' },
+                { value: 'ancash', label: 'Áncash' },
+                { value: 'apurimac', label: 'Apurímac' },
+                { value: 'arequipa', label: 'Arequipa' },
+                { value: 'ayacucho', label: 'Ayacucho' },
+                { value: 'cajamarca', label: 'Cajamarca' },
+                { value: 'cusco', label: 'Cusco' },
+                { value: 'huancavelica', label: 'Huancavelica' },
+                { value: 'huanuco', label: 'Huánuco' },
+                { value: 'ica', label: 'Ica' },
+                { value: 'junin', label: 'Junín' },
+                { value: 'la-libertad', label: 'La Libertad' },
+                { value: 'lambayeque', label: 'Lambayeque' },
+                { value: 'lima', label: 'Lima / Callao' },
+                { value: 'loreto', label: 'Loreto' },
+                { value: 'madre-de-dios', label: 'Madre de Dios' },
+                { value: 'moquegua', label: 'Moquegua' },
+                { value: 'pasco', label: 'Pasco' },
+                { value: 'piura', label: 'Piura' },
+                { value: 'puno', label: 'Puno' },
+                { value: 'san-martin', label: 'San Martín' },
+                { value: 'tacna', label: 'Tacna' },
+                { value: 'tumbes', label: 'Tumbes' },
+                { value: 'ucayali', label: 'Ucayali' }
+        ];
+
+        document.addEventListener('DOMContentLoaded', () => {
+                const menuList = document.getElementById('snm-menu-list');
+                const regionSelect = document.getElementById('snm-region-select');
+                const hamburger = document.getElementById('snm-toggle');
+
+                // Populate region select
+                const currentRegion = new URLSearchParams(window.location.search).get('dp') || '';
+                regions.forEach(region => {
+                        const option = document.createElement('option');
+                        option.value = region.value;
+                        option.textContent = region.label;
+                        if (region.value === currentRegion) option.selected = true;
+                        regionSelect.appendChild(option);
+                });
+
+                regionSelect.addEventListener('change', () => {
+                        const params = new URLSearchParams(window.location.search);
+                        if (regionSelect.value) {
+                                params.set('dp', regionSelect.value);
+                        } else {
+                                params.delete('dp');
+                        }
+                        const queryString = params.toString();
+                        window.location.href = window.location.pathname + (queryString ? '?' + queryString : '');
+                });
+
+                const menuData = [
+                        { title: 'Avisos', url: BASE_URL + '?p=monitoreo-regional' },
+                        {
+                                title: 'Tiempo', url: null,
+                                dropdown: [
+                                        { title: 'Monitoreo de temperatura', url: BASE_URL + '?p=monitoreo-de-temperatura' },
+                                        { title: 'Pronóstico meteorológico', url: BASE_URL + '?p=pronostico-meteorologico' },
+                                        { title: 'Pronóstico y tiempo actual Lima', url: BASE_URL + '?p=pronostico-lima' },
+                                        { title: 'Monitoreo meteorológico', url: BASE_URL + '?p=monitoreo-meteorologico' },
+                                        { title: 'Aviso de lluvia a muy corto plazo', url: BASE_URL + '?p=reportes-nowcasting' },
+                                        { title: 'Aviso de lluvia a corto plazo (24 H)', url: BASE_URL + '?p=aviso-24H' },
+                                        { title: 'Aviso meteorológico', url: BASE_URL + '?p=aviso-meteorologico' },
+                                        { title: 'Radiación UV', url: BASE_URL + '?p=radiacion-uv-monitoreo' },
+                                        { title: 'Calidad del aire', url: BASE_URL + '?p=calidad-del-aire' },
+                                        { title: 'Imágenes de satélites, radares y sondajes', url: BASE_URL + '?p=satelites-goes19' },
+                                        { title: 'Vigilancia de volcanes', url: BASE_URL + 'site/volcan/' },
+                                        { title: 'Incendios forestales', url: BASE_URL + 'site/incendio/' },
+                                        { title: 'Aviso ambiental atmosférico', url: BASE_URL + '?p=incendio-urbano' }
+                                ]
+                        },
+                        { title: 'Clima', url: BASE_URL + 'site/vigilancia-climatica' },
+                        {
+                                title: 'Predicción numérica', url: null,
+                                dropdown: [
+                                        { title: 'Predicción numérica del tiempo', url: BASE_URL + '?p=prediccion-tiempo' },
+                                        { title: 'Predicción numérica del clima', url: BASE_URL + '?p=prediccion-clima' },
+                                        { title: 'Predicción numérica de calidad del aire', url: BASE_URL + '?p=pronostico-numerico-calidad-de-aire' },
+                                        { title: 'HPC - NUNA', url: BASE_URL + 'hpcnuna/' },
+                                        { title: 'IUV', url: BASE_URL + '?p=pronostico-radiacion-uv-numerico' },
+                                        { title: 'Volcanes', url: BASE_URL + 'site/volcan/?p=___Sabancaya' },
+                                        { title: 'Tendhis', url: BASE_URL + 'tendenciashistoricas/' },
+                                        { title: 'Cambio climático', url: 'https://idesep.senamhi.gob.pe/geovisoridesep/go?accion=06.13.001.03.001.513.0000.00.00' }
+                                ]
+                        },
+                        {
+                                title: 'Hidrología', url: null,
+                                dropdown: [
+                                        { title: 'Aviso hidrológico - PHISIS', url: BASE_URL + '?p=avisos-hidrologicos' },
+                                        { title: 'Monitoreo hidrológico - PHISIS', url: BASE_URL + '?p=monitoreo-hidrologico' },
+                                        { title: 'Pronóstico de caudales - PHISIS', url: BASE_URL + '?p=pronostico-hidrologico' },
+                                        { title: 'Anomalías de caudal', url: BASE_URL + '?p=mapa-anomalias' },
+                                        { title: 'Reservorios - PHISIS', url: BASE_URL + '?p=mapa-reservorios' },
+                                        { title: 'CHIRILU - PHISIS', url: BASE_URL + '?p=monitoreo-chirilu' },
+                                        { title: 'Urubamba - PHISIS', url: BASE_URL + '?p=monitoreo-urubamba' },
+                                        { title: 'Piura - PHISIS', url: BASE_URL + '?p=monitoreo-piura' },
+                                        { title: 'Aviso ante posible activación de quebradas', url: BASE_URL + '?p=aviso-activacion-quebrada' },
+                                        { title: 'Pronóstico de inundaciones fluviales - SONICS-PBI', url: BASE_URL + '?p=sonics-pbi' },
+                                        { title: 'Pronóstico de inundaciones urbanas - ARES', url: BASE_URL + '?p=ares' },
+                                        { title: 'Indicadores de sequías', url: BASE_URL + '?p=sequias' },
+                                        { title: 'Visor (curvas de intensidad-duración-frecuencia)', url: 'https://idesep.senamhi.gob.pe/dhi-idf/' }
+                                ]
+                        },
+                        {
+                                title: 'Agrometeorología', url: null,
+                                dropdown: [
+                                        { title: 'Monitoreo agroclimático', url: BASE_URL + '?p=boletin-agro' },
+                                        { title: 'Pronóstico y monitoreo agrometeorológico', url: BASE_URL + '?p=impacto-en-la-agricultura' },
+                                        { title: 'Pronóstico de riesgo agroclimático', url: BASE_URL + '?p=riesgo-agro' },
+                                        { title: 'Sistema de información agrometeorológica - SIA', url: 'http://sia.senamhi.gob.pe/' }
+                                ]
+                        },
+                        {
+                                title: 'Datos', url: null,
+                                dropdown: [
+                                        { title: 'Datos espaciales - IDESEP', url: 'https://idesep.senamhi.gob.pe/portalidesep/' },
+                                        { title: 'Datos de radiosondeo', url: BASE_URL + '?p=estaciones-radiosondeo' },
+                                        { title: 'Datos hidrometeorológicos', url: BASE_URL + '?p=estaciones' },
+                                        { title: 'Descarga de datos', url: BASE_URL + 'site/descarga-datos/' },
+                                        { title: 'Solicitud de datos', url: BASE_URL + '?p=solicitud-servicio' }
+                                ]
+                        },
+                        {
+                                title: 'Servicios al ciudadano', url: null,
+                                dropdown: [
+                                        { title: 'Servicios (TUSNE)', url: BASE_URL + '?p=tusne' },
+                                        { title: 'Servicios con fines académicos', url: BASE_URL + '?p=tusne-tesis' },
+                                        { title: 'Evaluación de documentos técnicos', url: BASE_URL + '?p=servicios-sea' },
+                                        { title: 'ASP - 8 UIT', url: BASE_URL + '?p=contrataciones-8uit' },
+                                        { title: 'TUPA', url: BASE_URL + '?p=tupa' },
+                                        // { title: 'Libro de reclamaciones', url: 'https://reclamos.servicios.gob.pe/?institution_id=203' },
+                                        { title: 'Libro de reclamaciones', url: BASE_URL + '?p=libro-reclamaciones' },
+                                        { title: 'Consulta tu trámite', url: 'https://www.senamhi.gob.pe/consultatutramite/inicio.do' },
+                                        { title: 'Estudios e investigaciones', url: BASE_URL + '?p=estudios' },
+                                        { title: 'Boletines', url: BASE_URL + '?p=boletines' },
+                                        { title: 'Material gráfico', url: BASE_URL + '?p=material-grafico' },
+                                        { title: 'Repositorio institucional', url: 'https://repositorio.senamhi.gob.pe/' }
+                                ]
+                        }
+                ];
+
+                const menuHTML = menuData.map(menuItem => {
+                        if (menuItem.dropdown) {
+                                const parentHref = menuItem.url || 'javascript:void(0)';
+                                return `
+                                <li class="snm-nav__item snm-nav__item--has-dropdown">
+                                        <a href="${parentHref}" class="snm-nav__link">${menuItem.title} <span class="snm-nav__arrow">▾</span></a>
+                                        <ul class="snm-nav__dropdown">
+                                                ${menuItem.dropdown.map(subItem => `
+                                                        <li class="snm-nav__dropdown-item"><a href="${subItem.url}" class="snm-nav__dropdown-link">${subItem.title}</a></li>
+                                                `).join('')}
+                                        </ul>
+                                </li>`;
+                        }
+                        return `<li class="snm-nav__item"><a href="${menuItem.url}" class="snm-nav__link">${menuItem.title}</a></li>`;
+                }).join('');
+
+                menuList.insertAdjacentHTML('beforeend', menuHTML);
+
+                const dropdownItems = document.querySelectorAll('.snm-nav__item--has-dropdown');
+
+                hamburger.addEventListener('click', () => {
+                        hamburger.classList.toggle('snm-is-active');
+                        menuList.classList.toggle('snm-is-active');
+                });
+
+                dropdownItems.forEach(dropdownItem => {
+                        const trigger = dropdownItem.querySelector('.snm-nav__link');
+                        trigger.addEventListener('click', (e) => {
+                                if (window.innerWidth <= 1200) {
+                                        e.preventDefault();
+                                        dropdownItems.forEach(other => {
+                                                if (other !== dropdownItem) other.classList.remove('snm-is-open');
+                                        });
+                                        dropdownItem.classList.toggle('snm-is-open');
+                                }
+                        });
+                });
+
+                window.addEventListener('resize', () => {
+                        if (window.innerWidth > 1200) {
+                                hamburger.classList.remove('snm-is-active');
+                                menuList.classList.remove('snm-is-active');
+                                dropdownItems.forEach(dropdownItem => dropdownItem.classList.remove('snm-is-open'));
+                        }
+                });
+        });
+</script>
+<div class="modal" tabindex="-1" role="dialog" id="ModalNowcasting">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title"><strong>Página en mantenimiento</strong></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Lamentamos las molestias y agradecemos su comprensión</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(window).on('load', function () {
+        //$('#ModalNowcasting').modal('show');
+    });
+
+    $(document).ready(function () {
+        //$('#ModalNowcasting').modal('show');
+        //$('#myModal').modal('show');
+    });
+
+</script>
+
+<!-- Leyenda con los iconos de la Red Observacional (mismos que usa mapas/mapa-estaciones-ms) -->
+<style>
+    .ico-leyenda-ms-convencional-m,
+    .ico-leyenda-ms-automatica-m,
+    .ico-leyenda-ms-convencional-h,
+    .ico-leyenda-ms-automatica-h {
+        background-repeat: no-repeat;
+        background-position: 0 50%;
+    }
+    .ico-leyenda-ms-convencional-m { background-image: url("mapas/mapa-estaciones-ms/images/M_C.svg"); }
+    .ico-leyenda-ms-automatica-m   { background-image: url("mapas/mapa-estaciones-ms/images/M_A.svg"); }
+    .ico-leyenda-ms-convencional-h { background-image: url("mapas/mapa-estaciones-ms/images/H_C.svg"); }
+    .ico-leyenda-ms-automatica-h   { background-image: url("mapas/mapa-estaciones-ms/images/H_A.svg"); }
+</style>
+
+<div class="container-fluid box-bg box-bg-estacion-color">
+    <div class="row">
+
+        <div class="container">
+            <div class="row box-conten-int">
+                <h1>Datos / Datos Hidrometeorol&oacute;gicos</h1>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="container box-conten-int">
+    <div class="row">
+        <div class="col-12">
+            <!--inicio contenido-->
+            <div class="col-12 col-md-12 col-lg-12">
+                                <h2>Datos Hidrometeorol&oacute;gicos a nivel nacional </h2>
+            </div>
+
+
+            <!--<iframe class="" src="mapas/mapa-estaciones/mapadepesta-func.php?" allowfullscreen width="100%" height="800" frameborder="0"></iframe>-->
+            <!--<iframe class="" src="mapas/mapa-estaciones/mapadepesta1.php?" allowfullscreen width="100%" height="800" frameborder="0"></iframe>-->
+
+
+            <link href="https://unpkg.com/maplibre-gl@5.24.0/dist/maplibre-gl.css" rel="stylesheet"/>
+<link href="/mapas/mapa-estaciones-ms/css/mapa.css?v=1792683046" rel="stylesheet" type="text/css"/>
+<script src="https://unpkg.com/maplibre-gl@5.24.0/dist/maplibre-gl.js"></script>
+<script src="/mapas/mapa-estaciones-ms/js/mapa-estaciones-ms.js?v=1792683046"></script>
+        <div class="mapa-ems" id="mapa-estaciones-ms" style="height: 80vh;">
+    <div class="mapa-ems__mapa"></div>
+
+    <!-- Panel: buscador y filtros por tipo de recepcion -->
+    <div class="mapa-ems__panel">
+        <div class="mapa-ems__buscador" role="search">
+            <svg class="lupa" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+            <input type="text" class="mapa-ems__buscar" placeholder="Buscar estaci&oacute;n o c&oacute;digo" autocomplete="off"
+                   role="combobox" aria-expanded="false" aria-controls="mapa-estaciones-ms-resultados" aria-autocomplete="list">
+            <button type="button" class="mapa-ems__limpiar" aria-label="Borrar b&uacute;squeda" hidden>&times;</button>
+            <ul class="mapa-ems__resultados" id="mapa-estaciones-ms-resultados" role="listbox"></ul>
+        </div>
+
+        <div class="mapa-ems__capas" role="group" aria-label="Tipo de estaci&oacute;n">
+            <button type="button" class="filtro" data-capa="REAL" aria-pressed="true"
+                    title="Estaciones convencionales con recepci&oacute;n de datos en tiempo real">
+                <span class="iconos"><img src="/mapas/mapa-estaciones-ms/images/M_C.svg" alt=""><img src="/mapas/mapa-estaciones-ms/images/H_C.svg" alt=""></span>
+                <span class="texto">Estaciones Convencionales con recepci&oacute;n de datos en tiempo real*</span>
+                <span class="total" data-total="REAL"></span>
+            </button>
+            <button type="button" class="filtro" data-capa="DIFERIDO" aria-pressed="true"
+                    title="Estaciones convencionales con recepci&oacute;n de datos en tiempo diferido">
+                <span class="iconos"><img src="/mapas/mapa-estaciones-ms/images/M_C.svg" alt=""><img src="/mapas/mapa-estaciones-ms/images/H_C.svg" alt=""></span>
+                <span class="texto">Estaciones Convencionales con recepci&oacute;n de datos en tiempo diferido</span>
+                <span class="total" data-total="DIFERIDO"></span>
+            </button>
+            <button type="button" class="filtro" data-capa="AUTOMATICA" aria-pressed="true"
+                    title="Estaciones autom&aacute;ticas">
+                <span class="iconos"><img src="/mapas/mapa-estaciones-ms/images/M_A.svg" alt=""><img src="/mapas/mapa-estaciones-ms/images/H_A.svg" alt=""></span>
+                <span class="texto">Estaciones Autom&aacute;ticas</span>
+                <span class="total" data-total="AUTOMATICA"></span>
+            </button>
+            <p class="nota">* : En Horas Establecidas 07, 13 y 19h.</p>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    MapaEstacionesMs.iniciar(document.getElementById("mapa-estaciones-ms"), {"config":{"departamento":"","geoUrl":"https://servicios.senamhi.gob.pe/api/geo","estiloUrl":"https://api.maptiler.com/maps/streets-v2/style.json?key=a7UGsQidAGvNlzYmd4Em"},"puntos":[{"nom":"12 DE OCTUBRE","cate":"EAMA","lat":-10.60641,"lon":-76.529269999999997,"ico":"M","cod":"110137","estado":"AUTOMATICA"},{"nom":"ACJANACO","cate":"EMA","lat":-13.196719999999999,"lon":-71.619410000000002,"ico":"M","cod":"4722A338","estado":"AUTOMATICA"},{"nom":"ACOBAMBA","cate":"MAP","lat":-12.84361,"lon":-74.561599999999999,"ico":"M","cod":"112067","estado":"REAL"},{"nom":"ACOPALCA","cate":"CO","lat":-11.987299999999999,"lon":-75.103499999999997,"ico":"M","cod":"111174","estado":"DIFERIDO"},{"nom":"ACOSTAMBO","cate":"CO","lat":-12.36079,"lon":-75.057249999999996,"ico":"M","cod":"112051","estado":"REAL"},{"nom":"AGUAYTIA","cate":"CO","lat":-9.0422499999999992,"lon":-75.506240000000005,"ico":"M","cod":"108028","estado":"REAL"},{"nom":"AIJA","cate":"CO","lat":-9.7816399999999994,"lon":-77.606740000000002,"ico":"M","cod":"109016","estado":"REAL"},{"nom":"ALAMOR","cate":"PLU","lat":-4.4774900000000004,"lon":-80.397900000000007,"ico":"M","cod":"104044","estado":"DIFERIDO"},{"nom":"ALAMOR","cate":"HLM","lat":-4.4740099999999998,"lon":-80.399150000000006,"ico":"H","cod":"200322","estado":"DIFERIDO"},{"nom":"ALAMOR","cate":"EHA","lat":-4.4774900000000004,"lon":-80.397880000000001,"ico":"H","cod":"47E0D438","estado":"AUTOMATICA"},{"nom":"ALAO","cate":"CO","lat":-6.5170000000000003,"lon":-76.738060000000004,"ico":"M","cod":"106092","estado":"REAL"},{"nom":"ALCANTARILLA","cate":"EMA","lat":-11.06061,"lon":-77.550060000000002,"ico":"M","cod":"111300","estado":"AUTOMATICA"},{"nom":"ALCANTARILLA","cate":"MAP","lat":-11.06068,"lon":-77.550110000000004,"ico":"M","cod":"111004","estado":"REAL"},{"nom":"ALTO DE POCLUS","cate":"EMA","lat":-4.9169099999999997,"lon":-79.890519999999995,"ico":"M","cod":"104114","estado":"AUTOMATICA"},{"nom":"ALTO DE POCLUS","cate":"CP","lat":-4.9169,"lon":-79.890469999999993,"ico":"M","cod":"104097","estado":"REAL"},{"nom":"AMAZONAS","cate":"HLM","lat":-3.76668,"lon":-73.253079999999997,"ico":"H","cod":"240503","estado":"DIFERIDO"},{"nom":"AMAZONAS","cate":"EMA","lat":-3.76397,"lon":-73.254919999999998,"ico":"M","cod":"103065","estado":"AUTOMATICA"},{"nom":"AMAZONAS","cate":"CO","lat":-3.76397,"lon":-73.254919999999998,"ico":"M","cod":"103057","estado":"DIFERIDO"},{"nom":"AMBAR","cate":"PLU","lat":-10.75484,"lon":-77.266800000000003,"ico":"M","cod":"110042","estado":"DIFERIDO"},{"nom":"ANANEA","cate":"CO","lat":-14.676299999999999,"lon":-69.533900000000003,"ico":"M","cod":"114050","estado":"REAL"},{"nom":"ANANSAYA -PUNA","cate":"EMA","lat":-14.33386,"lon":-70.523340000000005,"ico":"M","cod":"114134","estado":"AUTOMATICA"},{"nom":"ANCACHURO","cate":"EMA","lat":-13.4724,"lon":-72.218800000000002,"ico":"M","cod":"113252","estado":"AUTOMATICA"},{"nom":"ANCOAQUE","cate":"EHA","lat":-17.199719999999999,"lon":-69.939170000000004,"ico":"H","cod":"117059","estado":"AUTOMATICA"},{"nom":"ANDAGUA","cate":"CO","lat":-15.5009,"lon":-72.355099999999993,"ico":"M","cod":"115085","estado":"REAL"},{"nom":"ANDAHUAYLAS","cate":"CO","lat":-13.648630000000001,"lon":-73.366789999999995,"ico":"M","cod":"113025","estado":"REAL"},{"nom":"ANDAJES","cate":"PLU","lat":-10.783329999999999,"lon":-76.900000000000006,"ico":"M","cod":"110057","estado":"DIFERIDO"},{"nom":"ANGAMOS","cate":"HLM","lat":-5.1512000000000002,"lon":-72.875200000000007,"ico":"H","cod":"240401","estado":"DIFERIDO"},{"nom":"ANGAMOS","cate":"CO","lat":-5.1497999999999999,"lon":-72.877099999999999,"ico":"M","cod":"105078","estado":"DIFERIDO"},{"nom":"ANTA ANCACHURO","cate":"CO","lat":-13.47242,"lon":-72.218760000000003,"ico":"M","cod":"113035","estado":"REAL"},{"nom":"ANTAPUCRO","cate":"HLG","lat":-12.0314,"lon":-76.624369999999999,"ico":"H","cod":"203003","estado":"REAL"},{"nom":"ANTIOQUIA","cate":"PE","lat":-12.06617,"lon":-76.528840000000002,"ico":"M","cod":"112124","estado":"DIFERIDO"},{"nom":"ANTONIO RAYMONDI","cate":"EMA","lat":-11.776059999999999,"lon":-77.151390000000006,"ico":"M","cod":"472A218A","estado":"AUTOMATICA"},{"nom":"APATA","cate":"EAMA","lat":-11.85277,"lon":-75.363569999999996,"ico":"M","cod":"111293","estado":"AUTOMATICA"},{"nom":"APLAO","cate":"CO","lat":-16.072880000000001,"lon":-72.492260000000002,"ico":"M","cod":"116014","estado":"REAL"},{"nom":"ARAHUAY","cate":"PLU","lat":-11.62091,"lon":-76.670339999999996,"ico":"M","cod":"111057","estado":"DIFERIDO"},{"nom":"ARAMANGO","cate":"CO","lat":-5.4199400000000004,"lon":-78.43553,"ico":"M","cod":"105075","estado":"REAL"},{"nom":"ARAPA","cate":"CO","lat":-15.178599999999999,"lon":-70.108999999999995,"ico":"M","cod":"115035","estado":"REAL"},{"nom":"AREQUIPA UV","cate":"EMA","lat":-16.404199999999999,"lon":-71.551550000000006,"ico":"M","cod":"116085","estado":"AUTOMATICA"},{"nom":"ARICOTA","cate":"CO","lat":-17.329129999999999,"lon":-70.237309999999994,"ico":"M","cod":"117054","estado":"DIFERIDO"},{"nom":"ASHANAKU","cate":"EMA","lat":-13.58048,"lon":-71.58878,"ico":"M","cod":"113247","estado":"AUTOMATICA"},{"nom":"ASUNCION","cate":"CO","lat":-7.3260399999999999,"lon":-78.515820000000005,"ico":"M","cod":"107018","estado":"REAL"},{"nom":"AUCAYACU","cate":"CO","lat":-8.9298699999999993,"lon":-76.111710000000002,"ico":"M","cod":"108033","estado":"REAL"},{"nom":"AUGUSTO WEBERBAUER","cate":"MAP","lat":-7.1675000000000004,"lon":-78.493089999999995,"ico":"M","cod":"107028","estado":"REAL"},{"nom":"AUTISHA","cate":"HLM","lat":-11.73523,"lon":-76.606589999999997,"ico":"H","cod":"202903","estado":"DIFERIDO"},{"nom":"AUTISHA","cate":"PLU","lat":-11.738149999999999,"lon":-76.61103,"ico":"M","cod":"111077","estado":"DIFERIDO"},{"nom":"AYABACA","cate":"CP","lat":-4.6377600000000001,"lon":-79.710769999999997,"ico":"M","cod":"104058","estado":"REAL"},{"nom":"AYAVIRI","cate":"PLU","lat":-12.38208,"lon":-76.136719999999997,"ico":"M","cod":"112128","estado":"DIFERIDO"},{"nom":"AYAVIRI","cate":"CO","lat":-14.8688,"lon":-70.5916,"ico":"M","cod":"114038","estado":"REAL"},{"nom":"AYLAMBO","cate":"PE","lat":-7.1934500000000003,"lon":-78.510120000000001,"ico":"M","cod":"107033","estado":"DIFERIDO"},{"nom":"AYMARAES","cate":"CO","lat":-14.290559999999999,"lon":-73.251679999999993,"ico":"M","cod":"114117","estado":"REAL"},{"nom":"AYMAÑA","cate":"EMA","lat":-13.87279,"lon":-70.667590000000004,"ico":"M","cod":"4721AAE4","estado":"AUTOMATICA"},{"nom":"AYO","cate":"CO","lat":-15.683299999999999,"lon":-72.270399999999995,"ico":"M","cod":"115088","estado":"DIFERIDO"},{"nom":"AZANGARO","cate":"CO","lat":-14.917199999999999,"lon":-70.190460000000002,"ico":"M","cod":"114041","estado":"REAL"},{"nom":"BAGAZAN","cate":"PE","lat":-4.7240000000000002,"lon":-73.5321,"ico":"M","cod":"104067","estado":"DIFERIDO"},{"nom":"BAGUA","cate":"EAMA","lat":-5.6614500000000003,"lon":-78.534030000000001,"ico":"M","cod":"472C57D4","estado":"AUTOMATICA"},{"nom":"BAGUA CHICA","cate":"CP","lat":-5.6614800000000001,"lon":-78.533959999999993,"ico":"M","cod":"105068","estado":"REAL"},{"nom":"BALSAS","cate":"EHMA","lat":-6.8446100000000003,"lon":-78.030249999999995,"ico":"H","cod":"472501F4","estado":"AUTOMATICA"},{"nom":"BALZAS","cate":"HLM","lat":-6.8446499999999997,"lon":-78.030240000000006,"ico":"H","cod":"221303","estado":"REAL"},{"nom":"BAMBAMARCA","cate":"CP","lat":-6.6765499999999998,"lon":-78.518339999999995,"ico":"M","cod":"100015","estado":"REAL"},{"nom":"BAMBAMARCA H","cate":"EHA","lat":-6.6697499999999996,"lon":-78.54119,"ico":"H","cod":"4726D092","estado":"AUTOMATICA"},{"nom":"BAMBAMARCA M","cate":"EMA","lat":-6.6798099999999998,"lon":-78.52346,"ico":"M","cod":"472680EE","estado":"AUTOMATICA"},{"nom":"BELLAVISTA","cate":"EMA","lat":-7.0551700000000004,"lon":-76.558359999999993,"ico":"M","cod":"107142","estado":"AUTOMATICA"},{"nom":"BELLAVISTA","cate":"CO","lat":-7.0551700000000004,"lon":-76.558359999999993,"ico":"M","cod":"107012","estado":"REAL"},{"nom":"BELLAVISTA","cate":"HLM","lat":-3.4786000000000001,"lon":-73.067999999999998,"ico":"H","cod":"240111","estado":"DIFERIDO"},{"nom":"BERNAL","cate":"CO","lat":-5.4545000000000003,"lon":-80.742620000000002,"ico":"M","cod":"105012","estado":"REAL"},{"nom":"BERNAL","cate":"EMA","lat":-5.4544899999999998,"lon":-80.742620000000002,"ico":"M","cod":"105144","estado":"AUTOMATICA"},{"nom":"BETA SANTIAGO","cate":"EMA","lat":-14.23739,"lon":-75.67022,"ico":"M","cod":"472A446C","estado":"AUTOMATICA"},{"nom":"BIAVO","cate":"HLG","lat":-7.2549700000000001,"lon":-76.477779999999996,"ico":"H","cod":"221804","estado":"DIFERIDO"},{"nom":"BILINGURSTH","cate":"EHMA","lat":-12.560829999999999,"lon":-69.189490000000006,"ico":"H","cod":"260700","estado":"AUTOMATICA"},{"nom":"BOCATOMA","cate":"CO","lat":-17.580200000000001,"lon":-69.626720000000006,"ico":"M","cod":"100016","estado":"DIFERIDO"},{"nom":"BOCATOMA CHIPILLICO","cate":"EHA","lat":-4.7141999999999999,"lon":-80.118250000000003,"ico":"H","cod":"47E0E1A2","estado":"AUTOMATICA"},{"nom":"BOCATOMA EL AYRO","cate":"EMA","lat":-17.580190000000002,"lon":-69.626729999999995,"ico":"M","cod":"47E2B42A","estado":"AUTOMATICA"},{"nom":"BORJA","cate":"PLU","lat":-4.4695999999999998,"lon":-77.548299999999998,"ico":"M","cod":"104061","estado":"DIFERIDO"},{"nom":"BORJA","cate":"HLM","lat":-4.4699999999999998,"lon":-77.548000000000002,"ico":"H","cod":"220107","estado":"DIFERIDO"},{"nom":"BOYADERO","cate":"EHA","lat":-16.58989,"lon":-72.008859999999999,"ico":"H","cod":"47E26242","estado":"AUTOMATICA"},{"nom":"BRETAÑA","cate":"PE","lat":-5.2538999999999998,"lon":-74.344399999999993,"ico":"M","cod":"105090","estado":"DIFERIDO"},{"nom":"BUENA VISTA","cate":"CO","lat":-9.4337099999999996,"lon":-78.208250000000007,"ico":"M","cod":"109014","estado":"DIFERIDO"},{"nom":"BUENA VISTA","cate":"EMA","lat":-9.4337199999999992,"lon":-78.208280000000002,"ico":"M","cod":"109096","estado":"AUTOMATICA"},{"nom":"CABALLOCOCHA","cate":"CO","lat":-3.9112,"lon":-70.511899999999997,"ico":"M","cod":"103031","estado":"REAL"},{"nom":"CABALLOCOCHA","cate":"EMA","lat":-3.9112499999999999,"lon":-70.512060000000005,"ico":"M","cod":"4727547C","estado":"AUTOMATICA"},{"nom":"CABANA","cate":"CP","lat":-8.3905799999999999,"lon":-78.00461,"ico":"M","cod":"108064","estado":"REAL"},{"nom":"CABANACONDE","cate":"CO","lat":-15.6226,"lon":-71.974090000000004,"ico":"M","cod":"115041","estado":"REAL"},{"nom":"CABANILLAS","cate":"CO","lat":-15.639110000000001,"lon":-70.346609999999998,"ico":"M","cod":"115033","estado":"REAL"},{"nom":"CABANILLAS","cate":"EMA","lat":-15.639089999999999,"lon":-70.346609999999998,"ico":"M","cod":"115156","estado":"AUTOMATICA"},{"nom":"CABO INGA","cate":"CO","lat":-3.97594,"lon":-80.401820000000001,"ico":"M","cod":"103043","estado":"DIFERIDO"},{"nom":"CABO INGA","cate":"HLM","lat":-3.9786000000000001,"lon":-80.399249999999995,"ico":"H","cod":"200203","estado":"DIFERIDO"},{"nom":"CABO INGA H","cate":"EHA","lat":-3.9787300000000001,"lon":-80.399379999999994,"ico":"H","cod":"47E01126","estado":"AUTOMATICA"},{"nom":"CABO INGA M","cate":"EMA","lat":-3.97878,"lon":-80.399439999999998,"ico":"M","cod":"472F00A6","estado":"AUTOMATICA"},{"nom":"CACAO","cate":"HLM","lat":-5.8837000000000002,"lon":-78.962500000000006,"ico":"H","cod":"220405","estado":"DIFERIDO"},{"nom":"CACHACHI","cate":"PE","lat":-7.45106,"lon":-78.268550000000005,"ico":"M","cod":"107068","estado":"REAL"},{"nom":"CACHICADAN","cate":"CO","lat":-8.0918399999999995,"lon":-78.149379999999994,"ico":"M","cod":"108045","estado":"REAL"},{"nom":"CACHICOTO","cate":"EMA","lat":-9.2193100000000001,"lon":-76.212940000000003,"ico":"M","cod":"47E845FC","estado":"AUTOMATICA"},{"nom":"CACHUELA","cate":"EHMA","lat":-12.604419999999999,"lon":-69.183040000000005,"ico":"H","cod":"260403","estado":"AUTOMATICA"},{"nom":"CAHUA","cate":"HLG","lat":-10.606,"lon":-77.343890000000002,"ico":"H","cod":"202404","estado":"DIFERIDO"},{"nom":"CAICAY","cate":"CO","lat":-13.59999,"lon":-71.695809999999994,"ico":"M","cod":"113122","estado":"REAL"},{"nom":"CAIRANI","cate":"CO","lat":-17.281210000000002,"lon":-70.362690000000001,"ico":"M","cod":"117030","estado":"DIFERIDO"},{"nom":"CAJABAMBA","cate":"CO","lat":-7.6216600000000003,"lon":-78.051310000000001,"ico":"M","cod":"107008","estado":"REAL"},{"nom":"CAJABAMBA","cate":"EMA","lat":-7.6216699999999999,"lon":-78.051109999999994,"ico":"M","cod":"4729F0EC","estado":"AUTOMATICA"},{"nom":"CAJAMARQUILLA","cate":"CO","lat":-9.6320399999999999,"lon":-77.74136,"ico":"M","cod":"109046","estado":"REAL"},{"nom":"CAJATAMBO","cate":"CO","lat":-10.477880000000001,"lon":-76.989710000000002,"ico":"M","cod":"110019","estado":"REAL"},{"nom":"CALACOA","cate":"CO","lat":-16.739879999999999,"lon":-70.687650000000005,"ico":"M","cod":"116051","estado":"REAL"},{"nom":"CALANA","cate":"CP","lat":-17.97458,"lon":-70.193200000000004,"ico":"M","cod":"117003","estado":"REAL"},{"nom":"CALCA","cate":"EMA","lat":-13.33333,"lon":-71.955240000000003,"ico":"M","cod":"472976F8","estado":"AUTOMATICA"},{"nom":"CALIENTES","cate":"CO","lat":-17.884,"lon":-70.142499999999998,"ico":"M","cod":"117015","estado":"REAL"},{"nom":"CALLACAME","cate":"PLU","lat":-16.57225,"lon":-69.316969999999998,"ico":"M","cod":"116075","estado":"DIFERIDO"},{"nom":"CALLANCAS","cate":"CO","lat":-7.7674700000000003,"lon":-78.477270000000004,"ico":"M","cod":"107054","estado":"REAL"},{"nom":"CALLANCAS","cate":"EMA","lat":-7.7675000000000001,"lon":-78.477289999999996,"ico":"M","cod":"472D8346","estado":"AUTOMATICA"},{"nom":"CALLERIA","cate":"EMA","lat":-7.89825,"lon":-74.498859999999993,"ico":"M","cod":"47E86310","estado":"AUTOMATICA"},{"nom":"CAMACANI","cate":"EAMA","lat":-15.949809999999999,"lon":-69.858750000000001,"ico":"M","cod":"115152","estado":"AUTOMATICA"},{"nom":"CAMANA","cate":"CO","lat":-16.64395,"lon":-72.704319999999996,"ico":"M","cod":"116013","estado":"REAL"},{"nom":"CAMAY","cate":"CO","lat":-10.912940000000001,"lon":-77.648899999999998,"ico":"M","cod":"110017","estado":"REAL"},{"nom":"CAMPAMENTO SEDE","cate":"EMA","lat":-3.5511499999999998,"lon":-80.42962,"ico":"M","cod":"472EF2D8","estado":"AUTOMATICA"},{"nom":"CAMPANILLA","cate":"CO","lat":-7.4843400000000004,"lon":-76.653109999999998,"ico":"M","cod":"100019","estado":"DIFERIDO"},{"nom":"CAMPO DE MARTE","cate":"CP","lat":-12.07053,"lon":-77.043170000000003,"ico":"M","cod":"112171","estado":"REAL"},{"nom":"CAMPO DE MARTE","cate":"EMA","lat":-12.07056,"lon":-77.043139999999994,"ico":"M","cod":"112181","estado":"AUTOMATICA"},{"nom":"CANAL UCHUSUMA","cate":"HLG","lat":-17.5807,"lon":-69.626400000000004,"ico":"H","cod":"215000","estado":"DIFERIDO"},{"nom":"CANCHAN","cate":"CO","lat":-9.9209499999999995,"lon":-76.309619999999995,"ico":"M","cod":"100020","estado":"REAL"},{"nom":"CANCHAQUE","cate":"EMA","lat":-5.40055,"lon":-79.605199999999996,"ico":"M","cod":"472F86B2","estado":"AUTOMATICA"},{"nom":"CANDARAVE","cate":"EMA","lat":-17.268000000000001,"lon":-70.254090000000005,"ico":"M","cod":"47E2C2BA","estado":"AUTOMATICA"},{"nom":"CANDARAVE","cate":"CO","lat":-17.267759999999999,"lon":-70.255369999999999,"ico":"M","cod":"117019","estado":"REAL"},{"nom":"CANTA","cate":"CP","lat":-11.471209999999999,"lon":-76.625690000000006,"ico":"M","cod":"111026","estado":"REAL"},{"nom":"CAPACHICA","cate":"CO","lat":-15.613440000000001,"lon":-69.842219999999998,"ico":"M","cod":"100021","estado":"REAL"},{"nom":"CAPACHIQUE","cate":"EMA","lat":-7.85642,"lon":-78.311840000000004,"ico":"M","cod":"472EB1D2","estado":"AUTOMATICA"},{"nom":"CAPAZO","cate":"CO","lat":-17.182700000000001,"lon":-69.739099999999993,"ico":"M","cod":"117041","estado":"DIFERIDO"},{"nom":"CAPLINA","cate":"EHA","lat":-17.6921,"lon":-69.925110000000004,"ico":"H","cod":"47E143A0","estado":"AUTOMATICA"},{"nom":"CARABAYLLO","cate":"EMA","lat":-11.902189999999999,"lon":-77.033640000000005,"ico":"M","cod":"111286","estado":"AUTOMATICA"},{"nom":"CARAC","cate":"EMA","lat":-11.190049999999999,"lon":-76.77937,"ico":"M","cod":"47E323B2","estado":"AUTOMATICA"},{"nom":"CARAL LAS MINAS","cate":"EHA","lat":-10.909610000000001,"lon":-77.467889999999997,"ico":"H","cod":"212200","estado":"AUTOMATICA"},{"nom":"CARAMPOMA","cate":"PLU","lat":-11.65503,"lon":-76.515140000000002,"ico":"M","cod":"111091","estado":"DIFERIDO"},{"nom":"CARANIA","cate":"PE","lat":-12.3444,"lon":-75.872150000000005,"ico":"M","cod":"112133","estado":"DIFERIDO"},{"nom":"CARANIA","cate":"EAMA","lat":-12.3444,"lon":-75.872150000000005,"ico":"M","cod":"472364DC","estado":"AUTOMATICA"},{"nom":"CARAVELI","cate":"CO","lat":-15.775679999999999,"lon":-73.362589999999997,"ico":"M","cod":"115018","estado":"REAL"},{"nom":"CARHUACAYAN","cate":"PLU","lat":-11.202669999999999,"lon":-76.285049999999998,"ico":"M","cod":"111070","estado":"DIFERIDO"},{"nom":"CARPISH","cate":"CO","lat":-9.7056799999999992,"lon":-76.094239999999999,"ico":"M","cod":"109020","estado":"REAL"},{"nom":"CARUMAS","cate":"CO","lat":-16.811499999999999,"lon":-70.695400000000006,"ico":"M","cod":"116025","estado":"REAL"},{"nom":"CASACCANCHA","cate":"EMA","lat":-13.989229999999999,"lon":-72.298320000000004,"ico":"M","cod":"472A1410","estado":"AUTOMATICA"},{"nom":"CASAGRANDE","cate":"EMA","lat":-7.7503099999999998,"lon":-79.188689999999994,"ico":"M","cod":"472D30C8","estado":"AUTOMATICA"},{"nom":"CASAPALCA","cate":"EMA","lat":-11.638,"lon":-76.233249999999998,"ico":"M","cod":"472D73C2","estado":"AUTOMATICA"},{"nom":"CASAPALCA","cate":"PLU","lat":-11.63804,"lon":-76.233320000000006,"ico":"M","cod":"111114","estado":"DIFERIDO"},{"nom":"CASCABAMBA","cate":"HLM","lat":-7.3833200000000003,"lon":-78.733770000000007,"ico":"H","cod":"201301","estado":"DIFERIDO"},{"nom":"CASCABAMBA","cate":"EMA","lat":-7.3840700000000004,"lon":-78.726820000000004,"ico":"M","cod":"472C92CA","estado":"AUTOMATICA"},{"nom":"CASCAS","cate":"EMA","lat":-7.47987,"lon":-78.823670000000007,"ico":"M","cod":"472EA2A4","estado":"AUTOMATICA"},{"nom":"CAYALTI","cate":"CP","lat":-6.8807999999999998,"lon":-79.546999999999997,"ico":"M","cod":"106042","estado":"REAL"},{"nom":"CAYLLOMA","cate":"CO","lat":-15.18882,"lon":-71.770189999999999,"ico":"M","cod":"115022","estado":"REAL"},{"nom":"CAYMA","cate":"EMA","lat":-16.316890000000001,"lon":-71.52919,"ico":"M","cod":"116083","estado":"AUTOMATICA"},{"nom":"CAÑAD","cate":"EHMA","lat":-6.6493399999999996,"lon":-78.997330000000005,"ico":"H","cod":"47E1C5B4","estado":"AUTOMATICA"},{"nom":"CAÑAVERAL","cate":"CO","lat":-3.9390999999999998,"lon":-80.650580000000005,"ico":"M","cod":"103042","estado":"REAL"},{"nom":"CAÑAVERAL","cate":"EMA","lat":-3.9390499999999999,"lon":-80.650549999999996,"ico":"M","cod":"472F13D0","estado":"AUTOMATICA"},{"nom":"CAÑETE","cate":"EMA","lat":-13.07475,"lon":-76.330420000000004,"ico":"M","cod":"113249","estado":"AUTOMATICA"},{"nom":"CCATCCA","cate":"CO","lat":-13.60988,"lon":-71.560100000000006,"ico":"M","cod":"113041","estado":"REAL"},{"nom":"CCONTACC","cate":"EMA","lat":-14.542299999999999,"lon":-74.264200000000002,"ico":"M","cod":"114122","estado":"AUTOMATICA"},{"nom":"CELENDIN","cate":"CO","lat":-6.8529200000000001,"lon":-78.144850000000005,"ico":"M","cod":"106010","estado":"REAL"},{"nom":"CELENDIN","cate":"EMA","lat":-6.8530300000000004,"lon":-78.144869999999997,"ico":"M","cod":"4726631C","estado":"AUTOMATICA"},{"nom":"CERES","cate":"EMA","lat":-12.02867,"lon":-76.927109999999999,"ico":"M","cod":"112278","estado":"AUTOMATICA"},{"nom":"CERRO BLANCO","cate":"EHA","lat":-17.968730000000001,"lon":-70.15231,"ico":"H","cod":"47E13530","estado":"AUTOMATICA"},{"nom":"CERRO DE ARENA","cate":"CO","lat":-5.9246100000000004,"lon":-80.204629999999995,"ico":"M","cod":"105122","estado":"DIFERIDO"},{"nom":"CERRO DE PASCO","cate":"CO","lat":-10.69341,"lon":-76.264210000000006,"ico":"M","cod":"110037","estado":"REAL"},{"nom":"CHACAPALPA","cate":"EMA","lat":-11.7525,"lon":-75.742260000000002,"ico":"M","cod":"111288","estado":"AUTOMATICA"},{"nom":"CHACCHAN","cate":"PLU","lat":-9.5351900000000001,"lon":-77.775360000000006,"ico":"M","cod":"109045","estado":"DIFERIDO"},{"nom":"CHACHAPOYAS","cate":"CO","lat":-6.2083000000000004,"lon":-77.86712,"ico":"M","cod":"106011","estado":"REAL"},{"nom":"CHACHAS","cate":"CO","lat":-15.5025,"lon":-72.268600000000006,"ico":"M","cod":"115087","estado":"DIFERIDO"},{"nom":"CHACLLABAMBA","cate":"HLM","lat":-13.106769999999999,"lon":-71.720299999999995,"ico":"H","cod":"250301","estado":"REAL"},{"nom":"CHACLLABAMBA","cate":"CO","lat":-13.108549999999999,"lon":-71.719999999999999,"ico":"M","cod":"113139","estado":"DIFERIDO"},{"nom":"CHAGLLA","cate":"CO","lat":-9.8500800000000002,"lon":-75.907060000000001,"ico":"M","cod":"109021","estado":"REAL"},{"nom":"CHALACO","cate":"EMA","lat":-5.0338900000000004,"lon":-79.829999999999998,"ico":"M","cod":"472FB328","estado":"AUTOMATICA"},{"nom":"CHALACO","cate":"CP","lat":-5.0386499999999996,"lon":-79.791679999999999,"ico":"M","cod":"105016","estado":"REAL"},{"nom":"CHALLABAMBA","cate":"CO","lat":-13.21754,"lon":-71.649379999999994,"ico":"M","cod":"100024","estado":"REAL"},{"nom":"CHALLACA","cate":"EHMA","lat":-13.7898,"lon":-75.417000000000002,"ico":"H","cod":"47284198","estado":"AUTOMATICA"},{"nom":"CHALLACA","cate":"HLM","lat":-13.783329999999999,"lon":-75.400000000000006,"ico":"H","cod":"213502","estado":"REAL"},{"nom":"CHALLACA","cate":"CO","lat":-13.790469999999999,"lon":-75.38212,"ico":"M","cod":"113128","estado":"DIFERIDO"},{"nom":"CHALLACA M","cate":"EMA","lat":-13.7905,"lon":-75.382099999999994,"ico":"M","cod":"472811E4","estado":"AUTOMATICA"},{"nom":"CHALLACA PLU","cate":"PLU","lat":-13.7896,"lon":-75.400289999999998,"ico":"M","cod":"100025","estado":"DIFERIDO"},{"nom":"CHALLATA","cate":"EHA","lat":-17.81542,"lon":-70.098960000000005,"ico":"H","cod":"47E195C8","estado":"AUTOMATICA"},{"nom":"CHAMANA","cate":"CO","lat":-10.20739,"lon":-77.558719999999994,"ico":"M","cod":"110039","estado":"REAL"},{"nom":"CHANCAY BAÑOS","cate":"EMA","lat":-6.5748899999999999,"lon":-78.86721,"ico":"M","cod":"47E3055E","estado":"AUTOMATICA"},{"nom":"CHANCAY BAÑOS","cate":"CO","lat":-6.5750000000000002,"lon":-78.867220000000003,"ico":"M","cod":"106022","estado":"DIFERIDO"},{"nom":"CHAPARRA","cate":"CO","lat":-15.74765,"lon":-73.870890000000003,"ico":"M","cod":"100026","estado":"REAL"},{"nom":"CHAQUICOCHA","cate":"CO","lat":-12.02731,"lon":-75.509100000000004,"ico":"M","cod":"112283","estado":"DIFERIDO"},{"nom":"CHARCANI","cate":"HLM","lat":-16.3109,"lon":-71.494900000000001,"ico":"H","cod":"204710","estado":"DIFERIDO"},{"nom":"CHARCANI","cate":"EHA","lat":-16.310860000000002,"lon":-71.495109999999997,"ico":"H","cod":"472147C4","estado":"AUTOMATICA"},{"nom":"CHAVIN","cate":"EAMA","lat":-9.5859799999999993,"lon":-77.175290000000004,"ico":"M","cod":"4725A10C","estado":"AUTOMATICA"},{"nom":"CHAVIN","cate":"CO","lat":-9.5859799999999993,"lon":-77.175259999999994,"ico":"M","cod":"109019","estado":"REAL"},{"nom":"CHAZUTA","cate":"CO","lat":-6.5711899999999996,"lon":-76.131500000000003,"ico":"M","cod":"106101","estado":"REAL"},{"nom":"CHERREPE","cate":"CO","lat":-7.1188700000000003,"lon":-79.561179999999993,"ico":"M","cod":"100028","estado":"REAL"},{"nom":"CHICHAS","cate":"CO","lat":-15.548109999999999,"lon":-72.918310000000005,"ico":"M","cod":"115078","estado":"DIFERIDO"},{"nom":"CHIGUATA","cate":"PLU","lat":-16.40645,"lon":-71.409139999999994,"ico":"M","cod":"116077","estado":"AUTOMATICA"},{"nom":"CHIGUATA","cate":"CO","lat":-16.40644,"lon":-71.409130000000005,"ico":"M","cod":"116020","estado":"REAL"},{"nom":"CHILCA","cate":"EHA","lat":-13.2235,"lon":-72.340559999999996,"ico":"H","cod":"472A9204","estado":"AUTOMATICA"},{"nom":"CHILCAYOC","cate":"CO","lat":-13.882999999999999,"lon":-73.726799999999997,"ico":"M","cod":"113101","estado":"DIFERIDO"},{"nom":"CHILETE","cate":"PLU","lat":-7.2196800000000003,"lon":-78.837990000000005,"ico":"M","cod":"107058","estado":"REAL"},{"nom":"CHINCHAVITO","cate":"HLM","lat":-9.5150000000000006,"lon":-75.942499999999995,"ico":"H","cod":"230003","estado":"DIFERIDO"},{"nom":"CHINCHAVITO","cate":"EHA","lat":-9.5150000000000006,"lon":-75.942499999999995,"ico":"H","cod":"472D0552","estado":"AUTOMATICA"},{"nom":"CHIQUIAN","cate":"CO","lat":-10.147629999999999,"lon":-77.159490000000005,"ico":"M","cod":"110018","estado":"REAL"},{"nom":"CHIRANI","cate":"HLM","lat":-10.86167,"lon":-75.006320000000002,"ico":"H","cod":"250502","estado":"DIFERIDO"},{"nom":"CHIRANI","cate":"PLU","lat":-10.86167,"lon":-75.006320000000002,"ico":"M","cod":"110143","estado":"DIFERIDO"},{"nom":"CHIRIACO","cate":"CO","lat":-5.1614399999999998,"lon":-78.288060000000002,"ico":"M","cod":"105104","estado":"DIFERIDO"},{"nom":"CHIRINOS","cate":"CO","lat":-5.3085000000000004,"lon":-78.897589999999994,"ico":"M","cod":"105074","estado":"REAL"},{"nom":"CHIVAY","cate":"EAMA","lat":-15.641629999999999,"lon":-71.601690000000005,"ico":"M","cod":"4723D752","estado":"AUTOMATICA"},{"nom":"CHIVAY","cate":"CO","lat":-15.641629999999999,"lon":-71.601690000000005,"ico":"M","cod":"115025","estado":"REAL"},{"nom":"CHOCLOCOCHA","cate":"CO","lat":-13.158799999999999,"lon":-75.071449999999999,"ico":"M","cod":"113091","estado":"DIFERIDO"},{"nom":"CHOCO","cate":"CO","lat":-15.5771,"lon":-72.129599999999996,"ico":"M","cod":"115089","estado":"REAL"},{"nom":"CHONTACHACA","cate":"CO","lat":-13.02389,"lon":-71.467780000000005,"ico":"M","cod":"100030","estado":"DIFERIDO"},{"nom":"CHONTALI","cate":"CO","lat":-5.6438899999999999,"lon":-79.090000000000003,"ico":"M","cod":"105065","estado":"REAL"},{"nom":"CHOSICA","cate":"EHMA","lat":-11.92986,"lon":-76.689639999999997,"ico":"H","cod":"47278214","estado":"AUTOMATICA"},{"nom":"CHOSICA","cate":"PLU","lat":-11.92986,"lon":-76.689750000000004,"ico":"M","cod":"111060","estado":"REAL"},{"nom":"CHOSICA","cate":"HLG","lat":-11.929830000000001,"lon":-76.689729999999997,"ico":"H","cod":"202906","estado":"REAL"},{"nom":"CHOTA","cate":"CO","lat":-6.5471300000000001,"lon":-78.648629999999997,"ico":"M","cod":"106034","estado":"REAL"},{"nom":"CHOTA","cate":"EMA","lat":-6.5540500000000002,"lon":-78.675880000000006,"ico":"M","cod":"4726C3E4","estado":"AUTOMATICA"},{"nom":"CHOTANO LAJAS","cate":"PLU","lat":-6.5621999999999998,"lon":-78.738900000000001,"ico":"M","cod":"106084","estado":"DIFERIDO"},{"nom":"CHOTANO LAJAS","cate":"HLG","lat":-6.5597200000000004,"lon":-78.741110000000006,"ico":"H","cod":"220611","estado":"REAL"},{"nom":"CHUAPALCA","cate":"HLM","lat":-17.298100000000002,"lon":-69.646799999999999,"ico":"H","cod":"270900","estado":"DIFERIDO"},{"nom":"CHUAPALCA","cate":"CO","lat":-17.308800000000002,"lon":-69.661799999999999,"ico":"M","cod":"117013","estado":"DIFERIDO"},{"nom":"CHUAPALCA","cate":"EMA","lat":-17.308820000000001,"lon":-69.661789999999996,"ico":"M","cod":"47E292C6","estado":"AUTOMATICA"},{"nom":"CHUAPALCA ALTERNATIVA ALTA","cate":"HLM","lat":-17.287269999999999,"lon":-69.643500000000003,"ico":"H","cod":"117060","estado":"DIFERIDO"},{"nom":"CHUGUR","cate":"PLU","lat":-6.6687799999999999,"lon":-78.738,"ico":"M","cod":"106077","estado":"DIFERIDO"},{"nom":"CHUGUR","cate":"EMA","lat":-6.6687799999999999,"lon":-78.738,"ico":"M","cod":"4727F484","estado":"AUTOMATICA"},{"nom":"CHULUCANAS","cate":"EMA","lat":-5.1084399999999999,"lon":-80.169539999999998,"ico":"M","cod":"472F6540","estado":"AUTOMATICA"},{"nom":"CHULUCANAS","cate":"CO","lat":-5.1084300000000002,"lon":-80.169560000000004,"ico":"M","cod":"105070","estado":"REAL"},{"nom":"CHUMBEMENIQUE","cate":"EMA","lat":-6.8642799999999999,"lon":-79.377139999999997,"ico":"M","cod":"106146","estado":"DIFERIDO"},{"nom":"CHUQUIBAMBA","cate":"CO","lat":-15.846019999999999,"lon":-72.650649999999999,"ico":"M","cod":"115020","estado":"REAL"},{"nom":"CHUQUIBAMBILLA","cate":"CP","lat":-14.7879,"lon":-70.728499999999997,"ico":"M","cod":"114035","estado":"DIFERIDO"},{"nom":"CHUSIS","cate":"EMA","lat":-5.51694,"lon":-80.833609999999993,"ico":"M","cod":"105120","estado":"AUTOMATICA"},{"nom":"CHUSIS","cate":"CO","lat":-5.5275600000000003,"lon":-80.812749999999994,"ico":"M","cod":"105105","estado":"REAL"},{"nom":"CIRATO","cate":"HLG","lat":-6.6557899999999997,"lon":-79.073949999999996,"ico":"H","cod":"106122","estado":"DIFERIDO"},{"nom":"CIRATO","cate":"EHMA","lat":-6.6558299999999999,"lon":-79.073840000000004,"ico":"H","cod":"4724D566","estado":"AUTOMATICA"},{"nom":"COCHABAMBA","cate":"CO","lat":-6.4600900000000001,"lon":-78.888599999999997,"ico":"M","cod":"106058","estado":"REAL"},{"nom":"COCHABAMBA GRANDE","cate":"EMA","lat":-12.19238,"lon":-74.514930000000007,"ico":"M","cod":"112269","estado":"AUTOMATICA"},{"nom":"COCHALAN","cate":"PLU","lat":-5.4653999999999998,"lon":-78.988799999999998,"ico":"M","cod":"105111","estado":"DIFERIDO"},{"nom":"COCHALAN","cate":"HLG","lat":-5.4650999999999996,"lon":-78.988500000000002,"ico":"H","cod":"220814","estado":"DIFERIDO"},{"nom":"COCHAMARCA","cate":"EAMA","lat":-12.99,"lon":-75.510189999999994,"ico":"M","cod":"4720CDF8","estado":"AUTOMATICA"},{"nom":"COJATA","cate":"CO","lat":-15.011799999999999,"lon":-69.361199999999997,"ico":"M","cod":"115053","estado":"DIFERIDO"},{"nom":"COLCABAMBA","cate":"CO","lat":-12.414999999999999,"lon":-74.683499999999995,"ico":"M","cod":"112163","estado":"REAL"},{"nom":"COLQUEPATA","cate":"CO","lat":-13.36313,"lon":-71.673360000000002,"ico":"M","cod":"113116","estado":"REAL"},{"nom":"COMAS","cate":"CO","lat":-11.74794,"lon":-75.130120000000005,"ico":"M","cod":"111031","estado":"REAL"},{"nom":"CONDORCERRO","cate":"EHA","lat":-8.6579300000000003,"lon":-78.261719999999997,"ico":"H","cod":"211408","estado":"AUTOMATICA"},{"nom":"CONTA","cate":"HLG","lat":-13.43942,"lon":-75.975139999999996,"ico":"H","cod":"203501","estado":"DIFERIDO"},{"nom":"CONTA M","cate":"EMA","lat":-13.439360000000001,"lon":-75.975170000000006,"ico":"M","cod":"4728A26A","estado":"AUTOMATICA"},{"nom":"CONTAMANA","cate":"HLM","lat":-7.3517999999999999,"lon":-75.010900000000007,"ico":"H","cod":"251102","estado":"DIFERIDO"},{"nom":"CONTAMANA","cate":"CO","lat":-7.3525999999999998,"lon":-75.006399999999999,"ico":"M","cod":"100034","estado":"DIFERIDO"},{"nom":"CONTAMANA","cate":"EAMA","lat":-7.3525400000000003,"lon":-75.006320000000002,"ico":"M","cod":"47287402","estado":"AUTOMATICA"},{"nom":"CONTUMAZA","cate":"CO","lat":-7.3652100000000003,"lon":-78.822730000000007,"ico":"M","cod":"107052","estado":"REAL"},{"nom":"COPARA","cate":"CP","lat":-14.975009999999999,"lon":-74.890820000000005,"ico":"M","cod":"114018","estado":"REAL"},{"nom":"CORACHAY II","cate":"EHA","lat":-17.114350000000002,"lon":-70.288380000000004,"ico":"H","cod":"47E1654C","estado":"AUTOMATICA"},{"nom":"CORACORA","cate":"CO","lat":-15.011939999999999,"lon":-73.779449999999997,"ico":"M","cod":"115015","estado":"REAL"},{"nom":"CORDOVA","cate":"PLU","lat":-14.040609999999999,"lon":-75.186980000000005,"ico":"M","cod":"114065","estado":"DIFERIDO"},{"nom":"CORDOVA","cate":"EMA","lat":-14.033329999999999,"lon":-75.166669999999996,"ico":"M","cod":"4728F216","estado":"AUTOMATICA"},{"nom":"COROPUNA","cate":"EMA","lat":-15.535970000000001,"lon":-72.610560000000007,"ico":"M","cod":"115150","estado":"AUTOMATICA"},{"nom":"CORRAL DEL MEDIO","cate":"EHA","lat":-5.1887100000000004,"lon":-79.891480000000001,"ico":"H","cod":"47E037CA","estado":"AUTOMATICA"},{"nom":"CORRAL QUEMADO","cate":"EHA","lat":-5.7546099999999996,"lon":-78.692080000000004,"ico":"H","cod":"472B607A","estado":"AUTOMATICA"},{"nom":"CORUCA","cate":"HLG","lat":-17.633120000000002,"lon":-70.454560000000001,"ico":"H","cod":"214901","estado":"REAL"},{"nom":"COSPAN","cate":"CO","lat":-7.4285699999999997,"lon":-78.541060000000002,"ico":"M","cod":"100037","estado":"REAL"},{"nom":"COTACOTA","cate":"EMA","lat":-15.21331,"lon":-71.38955,"ico":"M","cod":"47E8A60E","estado":"AUTOMATICA"},{"nom":"COTAHUASI","cate":"EAMA","lat":-15.21134,"lon":-72.89331,"ico":"M","cod":"47280292","estado":"AUTOMATICA"},{"nom":"COTAHUASI","cate":"CO","lat":-15.21134,"lon":-72.893249999999995,"ico":"M","cod":"115019","estado":"REAL"},{"nom":"CRISNEJAS","cate":"EHA","lat":-7.4638999999999998,"lon":-78.113100000000003,"ico":"H","cod":"472A32FC","estado":"AUTOMATICA"},{"nom":"CRUCERO","cate":"CO","lat":-14.364190000000001,"lon":-70.025919999999999,"ico":"M","cod":"114058","estado":"REAL"},{"nom":"CRUCERO ALTO","cate":"CO","lat":-15.7643,"lon":-70.911299999999997,"ico":"M","cod":"115044","estado":"REAL"},{"nom":"CUCHUANCA","cate":"EHA","lat":-11.20158,"lon":-76.7881,"ico":"H","cod":"47E2323E","estado":"AUTOMATICA"},{"nom":"CUEVA BLANCA","cate":"PLU","lat":-6.1313000000000004,"lon":-79.404499999999999,"ico":"M","cod":"106060","estado":"DIFERIDO"},{"nom":"CUMBA","cate":"EHA","lat":-5.9413499999999999,"lon":-78.66413,"ico":"H","cod":"472B3006","estado":"AUTOMATICA"},{"nom":"CUMBAZA","cate":"HLG","lat":-6.4725099999999998,"lon":-76.381990000000002,"ico":"H","cod":"221801","estado":"DIFERIDO"},{"nom":"CUNYAC","cate":"PLU","lat":-13.56334,"lon":-72.575940000000003,"ico":"M","cod":"113136","estado":"DIFERIDO"},{"nom":"CURAHUASI","cate":"CP","lat":-13.552530000000001,"lon":-72.734870000000001,"ico":"M","cod":"113029","estado":"REAL"},{"nom":"CURAHUASI","cate":"EMA","lat":-13.5526,"lon":-72.734899999999996,"ico":"M","cod":"113253","estado":"AUTOMATICA"},{"nom":"CURPAHUASI","cate":"CO","lat":-14.062799999999999,"lon":-72.666899999999998,"ico":"M","cod":"114108","estado":"REAL"},{"nom":"CUSHI","cate":"EMA","lat":-10.33924,"lon":-76.073210000000003,"ico":"M","cod":"110148","estado":"AUTOMATICA"},{"nom":"CUSICANCHA","cate":"CO","lat":-13.50399,"lon":-75.296250000000001,"ico":"M","cod":"113086","estado":"DIFERIDO"},{"nom":"CUSICANCHA","cate":"EMA","lat":-13.48333,"lon":-75.299999999999997,"ico":"M","cod":"4728C78C","estado":"AUTOMATICA"},{"nom":"CUTERVO","cate":"CO","lat":-6.3796400000000002,"lon":-78.805120000000002,"ico":"M","cod":"106057","estado":"REAL"},{"nom":"CUTERVO","cate":"EMA","lat":-6.3791399999999996,"lon":-78.813389999999998,"ico":"M","cod":"4726A602","estado":"AUTOMATICA"},{"nom":"CUYAU","cate":"EHA","lat":-15.21794,"lon":-72.935640000000006,"ico":"H","cod":"115151","estado":"AUTOMATICA"},{"nom":"CUYAU","cate":"HLM","lat":-15.2182,"lon":-72.935900000000004,"ico":"H","cod":"204506","estado":"DIFERIDO"},{"nom":"CUYO CUYO","cate":"CO","lat":-14.488799999999999,"lon":-69.549999999999997,"ico":"M","cod":"114096","estado":"DIFERIDO"},{"nom":"CUZCO-BIAVO","cate":"PLU","lat":-7.2544199999999996,"lon":-76.477099999999993,"ico":"M","cod":"107095","estado":"DIFERIDO"},{"nom":"CUÑUMBUQUE","cate":"PLU","lat":-6.5082500000000003,"lon":-76.48075,"ico":"M","cod":"106094","estado":"DIFERIDO"},{"nom":"DESAGUADERO","cate":"CO","lat":-16.563269999999999,"lon":-69.036820000000006,"ico":"M","cod":"116060","estado":"DIFERIDO"},{"nom":"DESAGUADERO","cate":"EHA","lat":-16.563639999999999,"lon":-69.036670000000001,"ico":"H","cod":"270001","estado":"AUTOMATICA"},{"nom":"DOS DE MAYO","cate":"CO","lat":-9.7171000000000003,"lon":-76.773740000000004,"ico":"M","cod":"109077","estado":"REAL"},{"nom":"EL ALTO","cate":"CO","lat":-4.2619800000000003,"lon":-81.218149999999994,"ico":"M","cod":"104080","estado":"REAL"},{"nom":"EL CHIRA","cate":"EAMA","lat":-4.8551900000000003,"lon":-80.73433,"ico":"M","cod":"104109","estado":"AUTOMATICA"},{"nom":"EL CIRUELO","cate":"EHA","lat":-4.2989899999999999,"lon":-80.167299999999997,"ico":"H","cod":"47E9177A","estado":"AUTOMATICA"},{"nom":"EL ESTRECHO","cate":"HLM","lat":-2.4529999999999998,"lon":-72.681200000000004,"ico":"H","cod":"240402","estado":"DIFERIDO"},{"nom":"EL ESTRECHO","cate":"CO","lat":-2.4466999999999999,"lon":-72.664299999999997,"ico":"M","cod":"102006","estado":"DIFERIDO"},{"nom":"EL FRAYLE","cate":"CO","lat":-16.154820000000001,"lon":-71.189099999999996,"ico":"M","cod":"116022","estado":"DIFERIDO"},{"nom":"EL LIMON","cate":"CO","lat":-5.9177799999999996,"lon":-79.317220000000006,"ico":"M","cod":"105057","estado":"DIFERIDO"},{"nom":"EL MARONAL","cate":"CP","lat":-8.4499899999999997,"lon":-75.096810000000005,"ico":"M","cod":"108027","estado":"DIFERIDO"},{"nom":"EL PALTO","cate":"CO","lat":-6.0003900000000003,"lon":-78.470969999999994,"ico":"M","cod":"106121","estado":"DIFERIDO"},{"nom":"EL PINTOR","cate":"PLU","lat":-5.7561999999999998,"lon":-78.522859999999994,"ico":"M","cod":"105040","estado":"DIFERIDO"},{"nom":"EL PORVENIR","cate":"EAMA","lat":-6.5890599999999999,"lon":-76.318240000000003,"ico":"M","cod":"4723013A","estado":"AUTOMATICA"},{"nom":"EL PORVENIR","cate":"MAP","lat":-6.5890300000000002,"lon":-76.318250000000006,"ico":"M","cod":"106040","estado":"REAL"},{"nom":"EL SALTO","cate":"CO","lat":-3.4517099999999998,"lon":-80.280199999999994,"ico":"M","cod":"103041","estado":"DIFERIDO"},{"nom":"EL TAMBO","cate":"EHMA","lat":-7.5739799999999997,"lon":-78.706549999999993,"ico":"H","cod":"47E0A2A8","estado":"AUTOMATICA"},{"nom":"EL TAMBO","cate":"HLM","lat":-7.5739799999999997,"lon":-78.706549999999993,"ico":"H","cod":"211003","estado":"DIFERIDO"},{"nom":"EL TIGRE","cate":"EHMA","lat":-3.7686999999999999,"lon":-80.456890000000001,"ico":"H","cod":"4724A3F6","estado":"AUTOMATICA"},{"nom":"EL TIGRE","cate":"HLG","lat":-3.7684799999999998,"lon":-80.456850000000003,"ico":"H","cod":"200202","estado":"REAL"},{"nom":"EL VIRREY","cate":"EMA","lat":-5.5357900000000004,"lon":-79.984160000000003,"ico":"M","cod":"472F50DA","estado":"AUTOMATICA"},{"nom":"EL VIRREY","cate":"PLU","lat":-5.5336999999999996,"lon":-79.982330000000005,"ico":"M","cod":"105013","estado":"REAL"},{"nom":"ENAFER","cate":"EHA","lat":-15.83647,"lon":-70.016000000000005,"ico":"H","cod":"47256412","estado":"AUTOMATICA"},{"nom":"ENAPU PERU","cate":"HLM","lat":-3.72722,"lon":-73.236940000000004,"ico":"H","cod":"240102","estado":"DIFERIDO"},{"nom":"ENAPU PERU","cate":"EHMA","lat":-3.72722,"lon":-73.236940000000004,"ico":"H","cod":"47252718","estado":"AUTOMATICA"},{"nom":"ENTAZ","cate":"EMA","lat":-10.797549999999999,"lon":-75.277959999999993,"ico":"M","cod":"110149","estado":"AUTOMATICA"},{"nom":"ENTAZ","cate":"HLM","lat":-10.722440000000001,"lon":-75.262379999999993,"ico":"H","cod":"250503","estado":"DIFERIDO"},{"nom":"FLOR DE PUNGA","cate":"PE","lat":-5.4055,"lon":-74.159099999999995,"ico":"M","cod":"105092","estado":"DIFERIDO"},{"nom":"FLOR DE PUNGA","cate":"HLM","lat":-5.4077000000000002,"lon":-74.156899999999993,"ico":"H","cod":"251100","estado":"DIFERIDO"},{"nom":"FONAGRO","cate":"EAMA","lat":-13.459350000000001,"lon":-76.152429999999995,"ico":"M","cod":"4728B11C","estado":"AUTOMATICA"},{"nom":"FONAGRO (CHINCHA)","cate":"MAP","lat":-13.459350000000001,"lon":-76.152429999999995,"ico":"M","cod":"100043","estado":"REAL"},{"nom":"FRANCISCO ORELLANA","cate":"CO","lat":-3.42333,"lon":-72.766670000000005,"ico":"M","cod":"103024","estado":"REAL"},{"nom":"GENARO HERRERA","cate":"CP","lat":-4.9100299999999999,"lon":-73.669439999999994,"ico":"M","cod":"104071","estado":"REAL"},{"nom":"GENARO HERRERA","cate":"HLM","lat":-4.9020000000000001,"lon":-73.671499999999995,"ico":"H","cod":"251104","estado":"DIFERIDO"},{"nom":"GORGOR","cate":"PLU","lat":-10.621359999999999,"lon":-77.040270000000007,"ico":"M","cod":"110041","estado":"DIFERIDO"},{"nom":"GRANJA KAYRA","cate":"MAP","lat":-13.556749999999999,"lon":-71.875169999999997,"ico":"M","cod":"100044","estado":"REAL"},{"nom":"GRANJA PORCON","cate":"CO","lat":-7.0375300000000003,"lon":-78.633399999999995,"ico":"M","cod":"107002","estado":"REAL"},{"nom":"GRANJA SAN ANTONIO","cate":"EAMA","lat":-13.60492,"lon":-72.856930000000006,"ico":"M","cod":"47263360","estado":"AUTOMATICA"},{"nom":"GRANJA SAN ANTONIO","cate":"MAP","lat":-13.604900000000001,"lon":-72.856899999999996,"ico":"M","cod":"113225","estado":"REAL"},{"nom":"GUEPPI","cate":"EMA","lat":-0.1172,"lon":-75.250299999999996,"ico":"M","cod":"101004","estado":"AUTOMATICA"},{"nom":"GUZMANGO","cate":"EMA","lat":-7.3813300000000002,"lon":-78.903300000000002,"ico":"M","cod":"472C81BC","estado":"AUTOMATICA"},{"nom":"HACIENDA BARRIOS","cate":"EHA","lat":-5.2895000000000003,"lon":-79.699089999999998,"ico":"H","cod":"47E074C0","estado":"AUTOMATICA"},{"nom":"HACIENDA BERNALES","cate":"CO","lat":-13.74114,"lon":-75.966409999999996,"ico":"M","cod":"100046","estado":"REAL"},{"nom":"HACIENDA BIGOTE","cate":"PLU","lat":-5.3209,"lon":-79.785700000000006,"ico":"M","cod":"105015","estado":"DIFERIDO"},{"nom":"HACIENDA BIGOTE","cate":"EMA","lat":-5.3208900000000003,"lon":-79.785690000000002,"ico":"M","cod":"472F95C4","estado":"AUTOMATICA"},{"nom":"HACIENDA PAMPATA","cate":"HLG","lat":-16.541930000000001,"lon":-72.699569999999994,"ico":"H","cod":"204621","estado":"REAL"},{"nom":"HACIENDA PUCARA","cate":"PLU","lat":-6.0416699999999999,"lon":-79.133889999999994,"ico":"M","cod":"106065","estado":"DIFERIDO"},{"nom":"HACIENDA SHUMAYA","cate":"PLU","lat":-5.3649199999999997,"lon":-79.360560000000007,"ico":"M","cod":"105024","estado":"DIFERIDO"},{"nom":"HUAC-HUAS","cate":"CO","lat":-14.132400000000001,"lon":-74.941000000000003,"ico":"M","cod":"114055","estado":"REAL"},{"nom":"HUAC-HUAS","cate":"EMA","lat":-14.12861,"lon":-74.945830000000001,"ico":"M","cod":"47290068","estado":"AUTOMATICA"},{"nom":"HUACAMARCANGA","cate":"PE","lat":-8.1220999999999997,"lon":-78.293700000000001,"ico":"M","cod":"108048","estado":"DIFERIDO"},{"nom":"HUACAMARCANGA","cate":"HLM","lat":-8.1081000000000003,"lon":-78.287599999999998,"ico":"H","cod":"201717","estado":"DIFERIDO"},{"nom":"HUACHIPA","cate":"EHA","lat":-12.012829999999999,"lon":-76.895420000000001,"ico":"H","cod":"212607","estado":"AUTOMATICA"},{"nom":"HUACHOS","cate":"EMA","lat":-13.216670000000001,"lon":-75.533330000000007,"ico":"M","cod":"47292684","estado":"AUTOMATICA"},{"nom":"HUACHOS","cate":"CO","lat":-13.220599999999999,"lon":-75.533479999999997,"ico":"M","cod":"113067","estado":"DIFERIDO"},{"nom":"HUALCUY","cate":"EMA","lat":-4.7470100000000004,"lon":-79.607290000000006,"ico":"M","cod":"47E281B0","estado":"AUTOMATICA"},{"nom":"HUALLAPE","cate":"EHA","lat":-5.4507700000000003,"lon":-78.695790000000002,"ico":"H","cod":"472A571A","estado":"AUTOMATICA"},{"nom":"HUALLPOCA","cate":"HLG","lat":-14.632009999999999,"lon":-74.955879999999993,"ico":"H","cod":"230712","estado":"REAL"},{"nom":"HUALLPOCA","cate":"PLU","lat":-14.632,"lon":-74.9559,"ico":"M","cod":"114106","estado":"DIFERIDO"},{"nom":"HUAMACHUCO","cate":"CO","lat":-7.8191600000000001,"lon":-78.040130000000005,"ico":"M","cod":"107009","estado":"REAL"},{"nom":"HUAMANI","cate":"CO","lat":-13.843,"lon":-75.607039999999998,"ico":"M","cod":"113010","estado":"REAL"},{"nom":"HUAMANI EL TAMBO","cate":"HLM","lat":-13.843579999999999,"lon":-75.589280000000002,"ico":"H","cod":"213504","estado":"DIFERIDO"},{"nom":"HUAMANI EL TAMBO","cate":"EHMA","lat":-13.843859999999999,"lon":-75.589439999999996,"ico":"H","cod":"213503","estado":"AUTOMATICA"},{"nom":"HUAMANTANGA","cate":"PLU","lat":-11.502470000000001,"lon":-76.746750000000006,"ico":"M","cod":"111085","estado":"DIFERIDO"},{"nom":"HUAMBO","cate":"CO","lat":-15.732010000000001,"lon":-72.106930000000006,"ico":"M","cod":"115090","estado":"REAL"},{"nom":"HUAMBOS","cate":"EMA","lat":-6.45364,"lon":-78.963189999999997,"ico":"M","cod":"47E94706","estado":"AUTOMATICA"},{"nom":"HUAMBOS","cate":"CP","lat":-6.4536800000000003,"lon":-78.963149999999999,"ico":"M","cod":"106054","estado":"REAL"},{"nom":"HUANCA","cate":"EMA","lat":-16.034579999999998,"lon":-71.881079999999997,"ico":"M","cod":"47E3A5A6","estado":"AUTOMATICA"},{"nom":"HUANCA","cate":"CO","lat":-16.034579999999998,"lon":-71.881079999999997,"ico":"M","cod":"116058","estado":"REAL"},{"nom":"HUANCABAMBA","cate":"CP","lat":-5.24681,"lon":-79.453990000000005,"ico":"M","cod":"105055","estado":"REAL"},{"nom":"HUANCABAMBA","cate":"EMA","lat":-5.24681,"lon":-79.453990000000005,"ico":"M","cod":"472FE354","estado":"AUTOMATICA"},{"nom":"HUANCALPI","cate":"CO","lat":-12.58029,"lon":-75.241789999999995,"ico":"M","cod":"112142","estado":"DIFERIDO"},{"nom":"HUANCANE","cate":"CO","lat":-15.20687,"lon":-69.758300000000006,"ico":"M","cod":"115037","estado":"REAL"},{"nom":"HUANCANO","cate":"CO","lat":-13.601179999999999,"lon":-75.621020000000001,"ico":"M","cod":"113009","estado":"DIFERIDO"},{"nom":"HUANCAPI","cate":"CO","lat":-13.749000000000001,"lon":-74.068100000000001,"ico":"M","cod":"113022","estado":"REAL"},{"nom":"HUANCASANCOS","cate":"CO","lat":-13.91694,"lon":-74.333609999999993,"ico":"M","cod":"100055","estado":"DIFERIDO"},{"nom":"HUANCASAYA","cate":"EHMA","lat":-15.143079999999999,"lon":-69.214669999999998,"ico":"H","cod":"210003","estado":"AUTOMATICA"},{"nom":"HUANCATA","cate":"PLU","lat":-12.18618,"lon":-76.240660000000005,"ico":"M","cod":"112080","estado":"DIFERIDO"},{"nom":"HUANCAVELICA","cate":"EMA","lat":-12.77163,"lon":-75.012370000000004,"ico":"M","cod":"472722EC","estado":"AUTOMATICA"},{"nom":"HUANCAVELICA","cate":"CO","lat":-12.7715,"lon":-75.0124,"ico":"M","cod":"112061","estado":"REAL"},{"nom":"HUANGACOCHA","cate":"PLU","lat":-7.9375,"lon":-78.068100000000001,"ico":"M","cod":"107092","estado":"DIFERIDO"},{"nom":"HUANGASCAR","cate":"PE","lat":-12.898580000000001,"lon":-75.833650000000006,"ico":"M","cod":"112134","estado":"REAL"},{"nom":"HUANTA","cate":"CO","lat":-12.911300000000001,"lon":-74.283199999999994,"ico":"M","cod":"112068","estado":"DIFERIDO"},{"nom":"HUANUCO","cate":"CP","lat":-9.9520099999999996,"lon":-76.248559999999998,"ico":"M","cod":"109003","estado":"REAL"},{"nom":"HUANUCO","cate":"EMA","lat":-9.9377999999999993,"lon":-76.247929999999997,"ico":"M","cod":"109082","estado":"AUTOMATICA"},{"nom":"HUARAYA MOHO","cate":"CO","lat":-15.3881,"lon":-69.484200000000001,"ico":"M","cod":"115038","estado":"REAL"},{"nom":"HUARMACA","cate":"CO","lat":-5.5647900000000003,"lon":-79.519750000000002,"ico":"M","cod":"105064","estado":"REAL"},{"nom":"HUARMACA","cate":"EAMA","lat":-5.5658599999999998,"lon":-79.525440000000003,"ico":"M","cod":"472761E6","estado":"AUTOMATICA"},{"nom":"HUARMEY","cate":"CO","lat":-10.06812,"lon":-78.162319999999994,"ico":"M","cod":"110016","estado":"REAL"},{"nom":"HUAROCHIRI","cate":"CO","lat":-12.138859999999999,"lon":-76.234290000000001,"ico":"M","cod":"112055","estado":"REAL"},{"nom":"HUAROS","cate":"PLU","lat":-11.40743,"lon":-76.575800000000001,"ico":"M","cod":"111089","estado":"DIFERIDO"},{"nom":"HUAROS","cate":"EAMA","lat":-11.407439999999999,"lon":-76.575839999999999,"ico":"M","cod":"4725F170","estado":"AUTOMATICA"},{"nom":"HUASACACHE","cate":"CO","lat":-16.457740000000001,"lon":-71.56635,"ico":"M","cod":"116003","estado":"REAL"},{"nom":"HUASAHUASI","cate":"CO","lat":-11.2677,"lon":-75.639099999999999,"ico":"M","cod":"111030","estado":"REAL"},{"nom":"HUASAPAMPA","cate":"HLG","lat":-14.26667,"lon":-73.950000000000003,"ico":"H","cod":"230705","estado":"DIFERIDO"},{"nom":"HUASIMO","cate":"EMA","lat":-3.9981499999999999,"lon":-80.503919999999994,"ico":"M","cod":"472F43AC","estado":"AUTOMATICA"},{"nom":"HUATIAPA","cate":"HLG","lat":-16.00806,"lon":-72.483549999999994,"ico":"H","cod":"204617","estado":"REAL"},{"nom":"HUAYABAMBA","cate":"PLU","lat":-7.26356,"lon":-76.734939999999995,"ico":"M","cod":"107101","estado":"DIFERIDO"},{"nom":"HUAYABAMBA","cate":"HLG","lat":-7.2687099999999996,"lon":-76.737009999999998,"ico":"H","cod":"230504","estado":"REAL"},{"nom":"HUAYABAMBA","cate":"EHA","lat":-7.2689000000000004,"lon":-76.736980000000003,"ico":"H","cod":"212600","estado":"AUTOMATICA"},{"nom":"HUAYAN","cate":"CO","lat":-11.452809999999999,"lon":-77.122,"ico":"M","cod":"111022","estado":"REAL"},{"nom":"HUAYAO","cate":"CP","lat":-12.0402,"lon":-75.320490000000007,"ico":"M","cod":"112056","estado":"REAL"},{"nom":"HUAYHUAHUASI","cate":"EAMA","lat":-14.672420000000001,"lon":-71.519909999999996,"ico":"M","cod":"114124","estado":"AUTOMATICA"},{"nom":"HUAYLLABAMBA","cate":"EMA","lat":-13.26581,"lon":-72.448809999999995,"ico":"M","cod":"4727C11E","estado":"AUTOMATICA"},{"nom":"HUAYTAPALLANA","cate":"EMA","lat":-11.92717,"lon":-75.061859999999996,"ico":"M","cod":"472DF5D6","estado":"AUTOMATICA"},{"nom":"HUAÑEC","cate":"PLU","lat":-12.29359,"lon":-76.139020000000002,"ico":"M","cod":"112127","estado":"DIFERIDO"},{"nom":"HUERTAS","cate":"HLM","lat":-10.1265,"lon":-76.205110000000005,"ico":"H","cod":"230717","estado":"DIFERIDO"},{"nom":"HURAY HUMA","cate":"EMA","lat":-14.564,"lon":-73.555800000000005,"ico":"M","cod":"114121","estado":"AUTOMATICA"},{"nom":"ICHUÑA","cate":"CO","lat":-16.141089999999998,"lon":-70.542699999999996,"ico":"M","cod":"100059","estado":"DIFERIDO"},{"nom":"ILABAYA","cate":"CO","lat":-17.417829999999999,"lon":-70.512810000000002,"ico":"M","cod":"117016","estado":"REAL"},{"nom":"ILAVE","cate":"CO","lat":-16.059940000000001,"lon":-69.640389999999996,"ico":"M","cod":"116027","estado":"REAL"},{"nom":"ILAVE","cate":"EHMA","lat":-16.088249999999999,"lon":-69.625919999999994,"ico":"M","cod":"472E112A","estado":"AUTOMATICA"},{"nom":"ILLPA","cate":"EMA","lat":-15.68726,"lon":-70.079880000000003,"ico":"M","cod":"472E4156","estado":"AUTOMATICA"},{"nom":"ILLPA","cate":"EAMA","lat":-15.6821,"lon":-70.076059999999998,"ico":"M","cod":"115153","estado":"AUTOMATICA"},{"nom":"ILO","cate":"CO","lat":-17.623809999999999,"lon":-71.271879999999996,"ico":"M","cod":"117007","estado":"REAL"},{"nom":"IMATA","cate":"EMA","lat":-15.84266,"lon":-71.090620000000001,"ico":"M","cod":"47E3834A","estado":"AUTOMATICA"},{"nom":"IMATA","cate":"CO","lat":-15.84266,"lon":-71.090620000000001,"ico":"M","cod":"115029","estado":"REAL"},{"nom":"INCAHUASI","cate":"CP","lat":-6.2338899999999997,"lon":-79.318060000000003,"ico":"M","cod":"106037","estado":"DIFERIDO"},{"nom":"INGENIO","cate":"CO","lat":-11.875209999999999,"lon":-75.29665,"ico":"M","cod":"111097","estado":"REAL"},{"nom":"INTIHUATANA H","cate":"EHA","lat":-13.185169999999999,"lon":-72.52319,"ico":"H","cod":"472935F2","estado":"AUTOMATICA"},{"nom":"INTIHUATANA M","cate":"EMA","lat":-13.17418,"lon":-72.560360000000003,"ico":"M","cod":"472852EE","estado":"AUTOMATICA"},{"nom":"ISLA SOTO","cate":"CO","lat":-15.56221,"lon":-69.488979999999998,"ico":"M","cod":"100065","estado":"DIFERIDO"},{"nom":"ISLA SUANA","cate":"CO","lat":-16.329899999999999,"lon":-68.850340000000003,"ico":"M","cod":"116009","estado":"DIFERIDO"},{"nom":"ISLA TAQUILE","cate":"CO","lat":-15.770189999999999,"lon":-69.691069999999996,"ico":"M","cod":"115049","estado":"REAL"},{"nom":"ITE","cate":"CO","lat":-17.86008,"lon":-70.951689999999999,"ico":"M","cod":"117012","estado":"REAL"},{"nom":"IÑAPARI","cate":"CO","lat":-10.95589,"lon":-69.578000000000003,"ico":"M","cod":"110129","estado":"REAL"},{"nom":"IÑAPARI","cate":"EAMA","lat":-10.95589,"lon":-69.578000000000003,"ico":"M","cod":"472587E0","estado":"AUTOMATICA"},{"nom":"JACAS CHICO","cate":"CO","lat":-9.8847400000000007,"lon":-76.50094,"ico":"M","cod":"109022","estado":"REAL"},{"nom":"JACAS GRANDE","cate":"CO","lat":-9.5433000000000003,"lon":-76.760419999999996,"ico":"M","cod":"109085","estado":"DIFERIDO"},{"nom":"JAEN","cate":"EMA","lat":-5.6766699999999997,"lon":-78.774180000000001,"ico":"M","cod":"47269398","estado":"AUTOMATICA"},{"nom":"JAEN","cate":"CP","lat":-5.6766399999999999,"lon":-78.774159999999995,"ico":"M","cod":"105067","estado":"REAL"},{"nom":"JAMALCA","cate":"CO","lat":-5.8926999999999996,"lon":-78.233900000000006,"ico":"M","cod":"105042","estado":"REAL"},{"nom":"JAUJA","cate":"CO","lat":-11.786630000000001,"lon":-75.486869999999996,"ico":"M","cod":"111005","estado":"REAL"},{"nom":"JAYANCA","cate":"CO","lat":-6.3315900000000003,"lon":-79.768690000000007,"ico":"M","cod":"106047","estado":"REAL"},{"nom":"JAZAN","cate":"CO","lat":-5.9448499999999997,"lon":-77.97569,"ico":"M","cod":"105079","estado":"REAL"},{"nom":"JEPELACIO","cate":"CO","lat":-6.1127500000000001,"lon":-76.907610000000005,"ico":"M","cod":"106088","estado":"REAL"},{"nom":"JESUS","cate":"CO","lat":-7.2457000000000003,"lon":-78.388409999999993,"ico":"M","cod":"107016","estado":"REAL"},{"nom":"JESUS DE LAURICOCHA","cate":"EMA","lat":-10.078189999999999,"lon":-76.631190000000004,"ico":"M","cod":"110140","estado":"AUTOMATICA"},{"nom":"JESUS TUNEL","cate":"HLG","lat":-7.2206400000000004,"lon":-78.403760000000005,"ico":"H","cod":"220205","estado":"REAL"},{"nom":"JORGE BASADRE","cate":"MAP","lat":-18.026890000000002,"lon":-70.251530000000002,"ico":"M","cod":"118004","estado":"REAL"},{"nom":"JOSE OLAYA","cate":"CO","lat":-7.4071100000000003,"lon":-76.413889999999995,"ico":"M","cod":"107069","estado":"DIFERIDO"},{"nom":"JULCAN","cate":"PLU","lat":-8.0422899999999995,"lon":-78.486069999999998,"ico":"M","cod":"108043","estado":"DIFERIDO"},{"nom":"JULI","cate":"CO","lat":-16.203779999999998,"lon":-69.459919999999997,"ico":"M","cod":"116061","estado":"REAL"},{"nom":"JULIACA","cate":"EMA","lat":-15.47106,"lon":-70.171220000000005,"ico":"M","cod":"472CF72C","estado":"AUTOMATICA"},{"nom":"JULIACA","cate":"CO","lat":-15.444100000000001,"lon":-70.207800000000006,"ico":"M","cod":"115138","estado":"DIFERIDO"},{"nom":"JUNIN","cate":"CO","lat":-11.143280000000001,"lon":-75.988780000000006,"ico":"M","cod":"111583","estado":"REAL"},{"nom":"LA ARDILLA","cate":"EHA","lat":-4.4909400000000002,"lon":-80.388189999999994,"ico":"H","cod":"47E09732","estado":"AUTOMATICA"},{"nom":"LA CAPILLA","cate":"HLG","lat":-12.521940000000001,"lon":-76.496369999999999,"ico":"H","cod":"203101","estado":"REAL"},{"nom":"LA CASCARILLA","cate":"CO","lat":-5.6717500000000003,"lon":-78.897670000000005,"ico":"M","cod":"105062","estado":"REAL"},{"nom":"LA CRUZ","cate":"CP","lat":-3.6282899999999998,"lon":-80.569270000000003,"ico":"M","cod":"100072","estado":"REAL"},{"nom":"LA DIVISORIA","cate":"CO","lat":-9.2009100000000004,"lon":-75.813929999999999,"ico":"M","cod":"108025","estado":"REAL"},{"nom":"LA ENCAÑADA","cate":"CO","lat":-7.1232699999999998,"lon":-78.33314,"ico":"M","cod":"107093","estado":"REAL"},{"nom":"LA ESPERANZA","cate":"CP","lat":-4.9211400000000003,"lon":-81.059690000000003,"ico":"M","cod":"104090","estado":"REAL"},{"nom":"LA FORTUNA","cate":"EMA","lat":-7.67042,"lon":-78.402420000000006,"ico":"M","cod":"107131","estado":"AUTOMATICA"},{"nom":"LA FRONTERA","cate":"CO","lat":-17.382400000000001,"lon":-69.486400000000003,"ico":"M","cod":"117049","estado":"DIFERIDO"},{"nom":"LA HACIENDITA","cate":"CO","lat":-16.9986,"lon":-71.600800000000007,"ico":"M","cod":"117006","estado":"DIFERIDO"},{"nom":"LA JOYA","cate":"MAP","lat":-16.583590000000001,"lon":-71.924639999999997,"ico":"M","cod":"116005","estado":"REAL"},{"nom":"LA LIBERTAD","cate":"HLM","lat":-3.4863,"lon":-73.233900000000006,"ico":"H","cod":"240112","estado":"DIFERIDO"},{"nom":"LA LIBERTAD","cate":"PLU","lat":-3.4863,"lon":-73.233699999999999,"ico":"M","cod":"103014","estado":"DIFERIDO"},{"nom":"LA MUCHALA","cate":"EMA","lat":-6.4799800000000003,"lon":-79.224059999999994,"ico":"M","cod":"47E35522","estado":"AUTOMATICA"},{"nom":"LA OROYA","cate":"CO","lat":-11.571770000000001,"lon":-75.957620000000006,"ico":"M","cod":"111046","estado":"REAL"},{"nom":"LA PAMPILLA","cate":"EMA","lat":-16.41384,"lon":-71.534520000000001,"ico":"M","cod":"116065","estado":"AUTOMATICA"},{"nom":"LA PAMPILLA","cate":"MAP","lat":-16.413799999999998,"lon":-71.534530000000004,"ico":"M","cod":"116017","estado":"REAL"},{"nom":"LA PASCANA","cate":"HLG","lat":-16.999359999999999,"lon":-71.63879,"ico":"H","cod":"204905","estado":"REAL"},{"nom":"LA QUINUA","cate":"CO","lat":-13.055479999999999,"lon":-74.141589999999994,"ico":"M","cod":"113021","estado":"REAL"},{"nom":"LA UNION","cate":"CO","lat":-7.1631900000000002,"lon":-76.492750000000001,"ico":"M","cod":"107013","estado":"DIFERIDO"},{"nom":"LA VICTORIA","cate":"PE","lat":-7.1911899999999997,"lon":-78.459469999999996,"ico":"M","cod":"107035","estado":"DIFERIDO"},{"nom":"LA YARADA","cate":"CP","lat":-18.210699999999999,"lon":-70.525899999999993,"ico":"M","cod":"118002","estado":"REAL"},{"nom":"LACHAQUI","cate":"PLU","lat":-11.554,"lon":-76.62706,"ico":"M","cod":"111088","estado":"DIFERIDO"},{"nom":"LAGARTERA","cate":"EHA","lat":-4.7285000000000004,"lon":-80.069559999999996,"ico":"H","cod":"47E0F2D4","estado":"AUTOMATICA"},{"nom":"LAGUNA ARICOTA","cate":"EHA","lat":-17.370930000000001,"lon":-70.30847,"ico":"H","cod":"47E12646","estado":"AUTOMATICA"},{"nom":"LAGUNA COCHAQUILLO","cate":"PLU","lat":-10.803940000000001,"lon":-76.655370000000005,"ico":"M","cod":"110092","estado":"DIFERIDO"},{"nom":"LAGUNA HUANGACOCHA","cate":"HLM","lat":-7.9325000000000001,"lon":-78.067049999999995,"ico":"H","cod":"220204","estado":"DIFERIDO"},{"nom":"LAGUNA SURASACA","cate":"HLG","lat":-10.5213,"lon":-76.788499999999999,"ico":"H","cod":"202601","estado":"DIFERIDO"},{"nom":"LAGUNA SURASACA","cate":"PLU","lat":-10.5238,"lon":-76.786699999999996,"ico":"M","cod":"110059","estado":"DIFERIDO"},{"nom":"LAGUNAS","cate":"PLU","lat":-5.2194000000000003,"lon":-75.6661,"ico":"M","cod":"100080","estado":"DIFERIDO"},{"nom":"LAGUNAS","cate":"HLM","lat":-5.2171000000000003,"lon":-75.667900000000003,"ico":"H","cod":"230603","estado":"REAL"},{"nom":"LAIVE","cate":"CO","lat":-12.25229,"lon":-75.360529999999997,"ico":"M","cod":"112059","estado":"REAL"},{"nom":"LAMAS","cate":"CO","lat":-6.4187399999999997,"lon":-76.527940000000001,"ico":"M","cod":"106016","estado":"REAL"},{"nom":"LAMBAYEQUE","cate":"CP","lat":-6.7343799999999998,"lon":-79.908940000000001,"ico":"M","cod":"106108","estado":"REAL"},{"nom":"LAMPA","cate":"PLU","lat":-15.18468,"lon":-73.347859999999997,"ico":"M","cod":"115076","estado":"DIFERIDO"},{"nom":"LAMPA","cate":"EMA","lat":-15.362959999999999,"lon":-70.373429999999999,"ico":"M","cod":"115157","estado":"AUTOMATICA"},{"nom":"LAMPA","cate":"CO","lat":-15.361090000000001,"lon":-70.37415,"ico":"M","cod":"100081","estado":"REAL"},{"nom":"LAMPA","cate":"HLM","lat":-15.4437,"lon":-70.209199999999996,"ico":"H","cod":"210405","estado":"REAL"},{"nom":"LANCONES","cate":"CO","lat":-4.6428799999999999,"lon":-80.547169999999994,"ico":"M","cod":"104016","estado":"REAL"},{"nom":"LANCONES","cate":"EMA","lat":-4.6429,"lon":-80.547160000000005,"ico":"M","cod":"472FD6CE","estado":"AUTOMATICA"},{"nom":"LANGA","cate":"PLU","lat":-12.12645,"lon":-76.421080000000003,"ico":"M","cod":"112082","estado":"DIFERIDO"},{"nom":"LARAQUERI","cate":"EMA","lat":-16.135919999999999,"lon":-70.04589,"ico":"M","cod":"472CB426","estado":"AUTOMATICA"},{"nom":"LARAQUERI","cate":"CO","lat":-16.13599,"lon":-70.045869999999994,"ico":"M","cod":"116033","estado":"REAL"},{"nom":"LAS PALMAS","cate":"EMA","lat":-12.156750000000001,"lon":-77.013030000000001,"ico":"M","cod":"112281","estado":"AUTOMATICA"},{"nom":"LAS SALINAS","cate":"CO","lat":-16.320599999999999,"lon":-71.152100000000004,"ico":"M","cod":"116046","estado":"DIFERIDO"},{"nom":"LAS VIÃ±AS (TACAMA)","cate":"CO","lat":-13.999779999999999,"lon":-75.720519999999993,"ico":"M","cod":"113058","estado":"REAL"},{"nom":"LETRAYOC","cate":"HLG","lat":-13.657730000000001,"lon":-75.744960000000006,"ico":"H","cod":"203601","estado":"REAL"},{"nom":"LETRAYOC","cate":"EHA","lat":-13.657730000000001,"lon":-75.744960000000006,"ico":"H","cod":"213403","estado":"AUTOMATICA"},{"nom":"LETRAYOC","cate":"PLU","lat":-13.657730000000001,"lon":-75.744960000000006,"ico":"M","cod":"113153","estado":"DIFERIDO"},{"nom":"LIMBANI","cate":"CO","lat":-14.139699999999999,"lon":-69.686999999999998,"ico":"M","cod":"114049","estado":"DIFERIDO"},{"nom":"LIMBANI","cate":"HLG","lat":-14.148099999999999,"lon":-69.690200000000004,"ico":"H","cod":"260501","estado":"DIFERIDO"},{"nom":"LIRCAY","cate":"CO","lat":-12.9815,"lon":-74.718100000000007,"ico":"M","cod":"112065","estado":"REAL"},{"nom":"LIVES","cate":"PLU","lat":-7.0801999999999996,"lon":-79.040450000000007,"ico":"M","cod":"107055","estado":"DIFERIDO"},{"nom":"LLALLY","cate":"CO","lat":-14.952859999999999,"lon":-70.880520000000004,"ico":"M","cod":"114034","estado":"REAL"},{"nom":"LLAMA","cate":"CO","lat":-6.5144299999999999,"lon":-79.122619999999998,"ico":"M","cod":"106053","estado":"REAL"},{"nom":"LLAPA","cate":"CO","lat":-6.9783299999999997,"lon":-78.811189999999996,"ico":"M","cod":"106019","estado":"REAL"},{"nom":"LLAUCANO CORELLAMA","cate":"HLG","lat":-6.6865600000000001,"lon":-78.518230000000003,"ico":"H","cod":"221106","estado":"REAL"},{"nom":"LLAUTA","cate":"HLG","lat":-14.239979999999999,"lon":-74.921350000000004,"ico":"H","cod":"213600","estado":"REAL"},{"nom":"LLAUTA","cate":"PLU","lat":-14.246600000000001,"lon":-74.9255,"ico":"M","cod":"114067","estado":"DIFERIDO"},{"nom":"LOCUMBA","cate":"HLM","lat":-17.617899999999999,"lon":-70.760999999999996,"ico":"H","cod":"205010","estado":"REAL"},{"nom":"LOMAS","cate":"CO","lat":-15.57119,"lon":-74.850300000000004,"ico":"M","cod":"115133","estado":"REAL"},{"nom":"LOMAS DE LACHAY","cate":"CO","lat":-11.360139999999999,"lon":-77.368390000000005,"ico":"M","cod":"111018","estado":"REAL"},{"nom":"LOS MOLINOS","cate":"EHA","lat":-13.9102,"lon":-75.666960000000003,"ico":"H","cod":"213506","estado":"AUTOMATICA"},{"nom":"LOS MOLINOS","cate":"PLU","lat":-13.924799999999999,"lon":-75.678600000000003,"ico":"M","cod":"113244","estado":"DIFERIDO"},{"nom":"LOS MOLINOS (ALEJANDRO PLAZA GARCIA)","cate":"HLG","lat":-13.92475,"lon":-75.678690000000003,"ico":"H","cod":"213500","estado":"REAL"},{"nom":"LOS NARANJOS","cate":"HLG","lat":-5.7556799999999999,"lon":-78.431539999999998,"ico":"H","cod":"221501","estado":"REAL"},{"nom":"LOS UROS","cate":"CO","lat":-15.82039,"lon":-69.974130000000002,"ico":"M","cod":"100088","estado":"REAL"},{"nom":"LPO PUCALLPA","cate":"HLM","lat":-8.3821399999999997,"lon":-74.525670000000005,"ico":"H","cod":"240504","estado":"DIFERIDO"},{"nom":"LUCANAS","cate":"PLU","lat":-14.6204,"lon":-74.232799999999997,"ico":"M","cod":"114072","estado":"DIFERIDO"},{"nom":"LUCMA","cate":"EMA","lat":-7.6433299999999997,"lon":-78.551349999999999,"ico":"M","cod":"472D552E","estado":"AUTOMATICA"},{"nom":"MACHAHUAY","cate":"CO","lat":-15.65321,"lon":-72.503219999999999,"ico":"M","cod":"115129","estado":"REAL"},{"nom":"MACHU PICCHU","cate":"CO","lat":-13.166550000000001,"lon":-72.545850000000002,"ico":"M","cod":"113031","estado":"REAL"},{"nom":"MACHUPICCHU","cate":"EMA","lat":-13.166550000000001,"lon":-72.545850000000002,"ico":"M","cod":"472897F0","estado":"AUTOMATICA"},{"nom":"MACUSANI","cate":"EMA","lat":-14.066750000000001,"lon":-70.422060000000002,"ico":"M","cod":"114138","estado":"AUTOMATICA"},{"nom":"MACUSANI","cate":"CO","lat":-14.066739999999999,"lon":-70.422049999999999,"ico":"M","cod":"114039","estado":"REAL"},{"nom":"MADRIGAL","cate":"CO","lat":-15.60999,"lon":-71.806539999999998,"ico":"M","cod":"115092","estado":"DIFERIDO"},{"nom":"MAGDALENA","cate":"CO","lat":-7.2534599999999996,"lon":-78.652609999999996,"ico":"M","cod":"107017","estado":"REAL"},{"nom":"MAGUNCHAL","cate":"EHA","lat":-5.8898700000000002,"lon":-78.188760000000002,"ico":"H","cod":"472B2370","estado":"AUTOMATICA"},{"nom":"MAGUNCHAL","cate":"PLU","lat":-5.8903999999999996,"lon":-78.189099999999996,"ico":"M","cod":"105046","estado":"DIFERIDO"},{"nom":"MAGUNCHAL","cate":"HLG","lat":-5.8898000000000001,"lon":-78.188599999999994,"ico":"H","cod":"221506","estado":"DIFERIDO"},{"nom":"MALACASI","cate":"EMA","lat":-5.3397699999999997,"lon":-79.857939999999999,"ico":"M","cod":"472FA05E","estado":"AUTOMATICA"},{"nom":"MALACASI","cate":"CP","lat":-5.3397699999999997,"lon":-79.857939999999999,"ico":"M","cod":"108007","estado":"REAL"},{"nom":"MALINOWSKY","cate":"EMA","lat":-12.93411,"lon":-69.517499999999998,"ico":"M","cod":"47E8336C","estado":"AUTOMATICA"},{"nom":"MALLARES","cate":"CP","lat":-4.8557399999999999,"lon":-80.735560000000007,"ico":"M","cod":"104079","estado":"REAL"},{"nom":"MALVAS","cate":"CO","lat":-9.9272299999999998,"lon":-77.655190000000005,"ico":"M","cod":"109038","estado":"REAL"},{"nom":"MANITI","cate":"PE","lat":-3.5203000000000002,"lon":-72.840900000000005,"ico":"M","cod":"103009","estado":"DIFERIDO"},{"nom":"MANTARO","cate":"EAMA","lat":-11.833819999999999,"lon":-75.390730000000005,"ico":"M","cod":"111296","estado":"AUTOMATICA"},{"nom":"MARCA CUNKA","cate":"EMA","lat":-14.498469999999999,"lon":-72.089519999999993,"ico":"M","cod":"114123","estado":"AUTOMATICA"},{"nom":"MARCAPOMACOCHA","cate":"EMA","lat":-11.40443,"lon":-76.32508,"ico":"M","cod":"472D9030","estado":"AUTOMATICA"},{"nom":"MARCELINO SERNA (PAMPAS)","cate":"HLG","lat":-13.434530000000001,"lon":-73.827910000000003,"ico":"H","cod":"251001","estado":"REAL"},{"nom":"MARMOT","cate":"EMA","lat":-7.7634999999999996,"lon":-78.667249999999996,"ico":"M","cod":"472CC2B6","estado":"AUTOMATICA"},{"nom":"MASHCON","cate":"HLG","lat":-7.165,"lon":-78.47833,"ico":"H","cod":"220213","estado":"REAL"},{"nom":"MATAPALO","cate":"PLU","lat":-3.6827700000000001,"lon":-80.198570000000004,"ico":"M","cod":"103008","estado":"DIFERIDO"},{"nom":"MATAPALO","cate":"EMA","lat":-3.68276,"lon":-80.198509999999999,"ico":"M","cod":"472F353C","estado":"AUTOMATICA"},{"nom":"MATUCANA","cate":"EMA","lat":-11.83911,"lon":-76.378,"ico":"M","cod":"472CE45A","estado":"AUTOMATICA"},{"nom":"MATUCANA","cate":"CO","lat":-11.839130000000001,"lon":-76.377920000000003,"ico":"M","cod":"111027","estado":"REAL"},{"nom":"MAYORARCA","cate":"PLU","lat":-10.15775,"lon":-77.348889999999997,"ico":"M","cod":"110040","estado":"DIFERIDO"},{"nom":"MAZAN","cate":"CP","lat":-3.4881700000000002,"lon":-73.081819999999993,"ico":"M","cod":"103044","estado":"REAL"},{"nom":"MAZO CRUZ","cate":"CO","lat":-16.738880000000002,"lon":-69.715440000000001,"ico":"M","cod":"116026","estado":"REAL"},{"nom":"MAÑAZO","cate":"CO","lat":-15.799440000000001,"lon":-70.339489999999998,"ico":"M","cod":"115051","estado":"REAL"},{"nom":"MILLOC","cate":"HLM","lat":-11.570460000000001,"lon":-76.350170000000006,"ico":"H","cod":"202902","estado":"DIFERIDO"},{"nom":"MILLOC","cate":"PLU","lat":-11.57131,"lon":-76.349950000000007,"ico":"M","cod":"111144","estado":"DIFERIDO"},{"nom":"MIRAFLORES","cate":"EMA","lat":-5.1752799999999999,"lon":-80.616540000000001,"ico":"M","cod":"105112","estado":"AUTOMATICA"},{"nom":"MIRAFLORES","cate":"MAP","lat":-5.1752799999999999,"lon":-80.616540000000001,"ico":"M","cod":"105100","estado":"DIFERIDO"},{"nom":"MOLLEPATA","cate":"PE","lat":-8.1913699999999992,"lon":-77.953969999999998,"ico":"M","cod":"108046","estado":"DIFERIDO"},{"nom":"MONTEGRANDE","cate":"CO","lat":-7.22499,"lon":-79.153229999999994,"ico":"M","cod":"100090","estado":"DIFERIDO"},{"nom":"MOQUEGUA","cate":"EMA","lat":-17.178740000000001,"lon":-70.932670000000002,"ico":"M","cod":"4723F1BE","estado":"AUTOMATICA"},{"nom":"MOQUEGUA","cate":"CP","lat":-17.178750000000001,"lon":-70.932689999999994,"ico":"M","cod":"117002","estado":"REAL"},{"nom":"MORALILLO","cate":"CP","lat":-3.89967,"lon":-73.338329999999999,"ico":"M","cod":"103023","estado":"DIFERIDO"},{"nom":"MORROPON","cate":"CO","lat":-5.1946500000000002,"lon":-79.971069999999997,"ico":"M","cod":"105106","estado":"REAL"},{"nom":"MORROPON","cate":"EMA","lat":-5.1946500000000002,"lon":-79.971069999999997,"ico":"M","cod":"472F7636","estado":"AUTOMATICA"},{"nom":"MOYOBAMBA","cate":"CO","lat":-6.04481,"lon":-76.968220000000002,"ico":"M","cod":"106014","estado":"REAL"},{"nom":"MUELLE LAGO","cate":"HLM","lat":-15.83361,"lon":-70.016940000000005,"ico":"H","cod":"270500","estado":"DIFERIDO"},{"nom":"MUQUI","cate":"EAMA","lat":-11.821020000000001,"lon":-75.431010000000001,"ico":"M","cod":"111294","estado":"AUTOMATICA"},{"nom":"MUÑANI","cate":"CO","lat":-14.76694,"lon":-69.951809999999995,"ico":"M","cod":"114042","estado":"REAL"},{"nom":"NAMBALLE","cate":"CO","lat":-4.99953,"lon":-79.088620000000006,"ico":"M","cod":"105107","estado":"REAL"},{"nom":"NAMORA","cate":"CO","lat":-7.2005999999999997,"lon":-78.327820000000003,"ico":"M","cod":"107037","estado":"REAL"},{"nom":"NAMORA BOCATOMA","cate":"HLG","lat":-7.2426199999999996,"lon":-78.294719999999998,"ico":"H","cod":"220206","estado":"REAL"},{"nom":"NARANJILLO","cate":"EAMA","lat":-5.8096199999999998,"lon":-77.393209999999996,"ico":"M","cod":"4724851A","estado":"AUTOMATICA"},{"nom":"NARANJILLO","cate":"CO","lat":-5.8096399999999999,"lon":-77.39264,"ico":"M","cod":"105103","estado":"DIFERIDO"},{"nom":"NARANJITO","cate":"EHA","lat":-5.81968,"lon":-78.275980000000004,"ico":"H","cod":"220907","estado":"AUTOMATICA"},{"nom":"NAUTA","cate":"CO","lat":-4.5133599999999996,"lon":-73.583749999999995,"ico":"M","cod":"104056","estado":"REAL"},{"nom":"NAUTA","cate":"HLM","lat":-4.5145999999999997,"lon":-73.583100000000002,"ico":"H","cod":"221402","estado":"DIFERIDO"},{"nom":"NIEPOS","cate":"CO","lat":-6.9251100000000001,"lon":-79.129019999999997,"ico":"M","cod":"100092","estado":"REAL"},{"nom":"NUEVO LIMA","cate":"CO","lat":-7.0962800000000001,"lon":-76.472329999999999,"ico":"M","cod":"107089","estado":"DIFERIDO"},{"nom":"NUEVO PACHACOTO","cate":"PLU","lat":-9.8524200000000004,"lon":-77.40607,"ico":"M","cod":"109095","estado":"DIFERIDO"},{"nom":"NUEVO PISAC","cate":"EHMA","lat":-13.422639999999999,"lon":-71.853880000000004,"ico":"H","cod":"472A6280","estado":"AUTOMATICA"},{"nom":"OBRAJILLO","cate":"PLU","lat":-11.452640000000001,"lon":-76.622060000000005,"ico":"M","cod":"111159","estado":"DIFERIDO"},{"nom":"OBRAJILLO","cate":"HLG","lat":-11.45293,"lon":-76.622169999999997,"ico":"H","cod":"202802","estado":"REAL"},{"nom":"OCOÑA","cate":"EHMA","lat":-16.427,"lon":-73.114500000000007,"ico":"H","cod":"472D23BE","estado":"AUTOMATICA"},{"nom":"OCOÑA","cate":"HLG","lat":-16.427,"lon":-73.114500000000007,"ico":"H","cod":"204504","estado":"REAL"},{"nom":"OCROS","cate":"PLU","lat":-10.40457,"lon":-77.40025,"ico":"M","cod":"110051","estado":"DIFERIDO"},{"nom":"OCUCAJE","cate":"CO","lat":-14.378439999999999,"lon":-75.682079999999999,"ico":"M","cod":"114020","estado":"REAL"},{"nom":"OMATE","cate":"CO","lat":-16.67531,"lon":-70.979249999999993,"ico":"M","cod":"116023","estado":"REAL"},{"nom":"ORCOPAMPA","cate":"CO","lat":-15.2639,"lon":-72.340999999999994,"ico":"M","cod":"115086","estado":"REAL"},{"nom":"OTORA","cate":"HLG","lat":-17.007300000000001,"lon":-70.8536,"ico":"H","cod":"214700","estado":"DIFERIDO"},{"nom":"OTORA","cate":"PLU","lat":-17.004100000000001,"lon":-70.850399999999993,"ico":"M","cod":"117024","estado":"DIFERIDO"},{"nom":"OXAPAMPA","cate":"EMA","lat":-10.59417,"lon":-75.384169999999997,"ico":"M","cod":"4725D79C","estado":"AUTOMATICA"},{"nom":"OXAPAMPA","cate":"CO","lat":-10.5642,"lon":-75.418400000000005,"ico":"M","cod":"110028","estado":"REAL"},{"nom":"OYON","cate":"CO","lat":-10.66769,"lon":-76.768699999999995,"ico":"M","cod":"110020","estado":"DIFERIDO"},{"nom":"OYOTUN","cate":"CO","lat":-6.8639400000000004,"lon":-79.320620000000005,"ico":"M","cod":"106109","estado":"REAL"},{"nom":"PACARAN","cate":"HLM","lat":-12.86096,"lon":-76.054789999999997,"ico":"H","cod":"203303","estado":"REAL"},{"nom":"PACARAN","cate":"CO","lat":-12.86689,"lon":-76.057929999999999,"ico":"M","cod":"112058","estado":"REAL"},{"nom":"PACAYMAYO","cate":"EMA","lat":-13.23419,"lon":-72.498410000000007,"ico":"M","cod":"4729950A","estado":"AUTOMATICA"},{"nom":"PACAYZAPA","cate":"CO","lat":-6.2817999999999996,"lon":-76.761709999999994,"ico":"M","cod":"110127","estado":"DIFERIDO"},{"nom":"PACCHO","cate":"PLU","lat":-10.956020000000001,"lon":-76.934730000000002,"ico":"M","cod":"110056","estado":"DIFERIDO"},{"nom":"PACHACOTO","cate":"EMA","lat":-9.85243,"lon":-77.40607,"ico":"M","cod":"47E89394","estado":"AUTOMATICA"},{"nom":"PACHAMACHAY","cate":"PLU","lat":-11.065250000000001,"lon":-76.914100000000005,"ico":"M","cod":"111084","estado":"DIFERIDO"},{"nom":"PACHIZA","cate":"CO","lat":-7.2932199999999998,"lon":-76.770920000000004,"ico":"M","cod":"107010","estado":"REAL"},{"nom":"PAIMAS","cate":"EMA","lat":-4.6343899999999998,"lon":-79.945809999999994,"ico":"M","cod":"472FC5B8","estado":"AUTOMATICA"},{"nom":"PALCA","cate":"CO","lat":-17.777950000000001,"lon":-69.958640000000003,"ico":"M","cod":"117037","estado":"REAL"},{"nom":"PALCA","cate":"EMA","lat":-15.235900000000001,"lon":-70.593130000000002,"ico":"M","cod":"472E37C6","estado":"AUTOMATICA"},{"nom":"PALPA","cate":"CO","lat":-14.549390000000001,"lon":-75.189260000000004,"ico":"M","cod":"114021","estado":"REAL"},{"nom":"PALPA","cate":"PE","lat":-14.54935,"lon":-75.189210000000003,"ico":"M","cod":"114136","estado":"AUTOMATICA"},{"nom":"PAMPA BLANCA","cate":"PE","lat":-14.237310000000001,"lon":-75.104069999999993,"ico":"M","cod":"114066","estado":"REAL"},{"nom":"PAMPA BLANCA","cate":"EMA","lat":-17.07161,"lon":-71.724530000000001,"ico":"M","cod":"117061","estado":"AUTOMATICA"},{"nom":"PAMPA BLANCA","cate":"EMA","lat":-14.237220000000001,"lon":-75.103890000000007,"ico":"M","cod":"114140","estado":"AUTOMATICA"},{"nom":"PAMPA BLANCA","cate":"CP","lat":-17.0716,"lon":-71.724500000000006,"ico":"M","cod":"117005","estado":"REAL"},{"nom":"PAMPA CANGALLO","cate":"EMA","lat":-13.56184,"lon":-74.198890000000006,"ico":"M","cod":"4729D600","estado":"AUTOMATICA"},{"nom":"PAMPA DE ARRIEROS","cate":"CO","lat":-16.066500000000001,"lon":-71.591399999999993,"ico":"M","cod":"116043","estado":"DIFERIDO"},{"nom":"PAMPA DE MAJES","cate":"MAP","lat":-16.335699999999999,"lon":-72.152500000000003,"ico":"M","cod":"116006","estado":"REAL"},{"nom":"PAMPA DE MAJES","cate":"EMA","lat":-16.335650000000001,"lon":-72.152659999999997,"ico":"M","cod":"4729E39A","estado":"AUTOMATICA"},{"nom":"PAMPA GALERAS","cate":"EMA","lat":-14.669169999999999,"lon":-74.40361,"ico":"M","cod":"114127","estado":"AUTOMATICA"},{"nom":"PAMPA LIBRE","cate":"CO","lat":-10.865780000000001,"lon":-76.969999999999999,"ico":"M","cod":"110053","estado":"DIFERIDO"},{"nom":"PAMPA UMALZO (TITIJONES)","cate":"CO","lat":-16.843900000000001,"lon":-70.549400000000006,"ico":"M","cod":"116052","estado":"DIFERIDO"},{"nom":"PAMPACOLCA","cate":"CO","lat":-15.716699999999999,"lon":-72.568299999999994,"ico":"M","cod":"115021","estado":"REAL"},{"nom":"PAMPAHUTA","cate":"EMA","lat":-15.483689999999999,"lon":-70.675989999999999,"ico":"M","cod":"472DE6A0","estado":"AUTOMATICA"},{"nom":"PAMPAHUTA","cate":"CO","lat":-15.483700000000001,"lon":-70.676000000000002,"ico":"M","cod":"115027","estado":"REAL"},{"nom":"PAMPAS","cate":"CO","lat":-13.43488,"lon":-73.824269999999999,"ico":"M","cod":"113138","estado":"REAL"},{"nom":"PAMPAS","cate":"CO","lat":-12.40203,"lon":-74.884140000000002,"ico":"M","cod":"112012","estado":"REAL"},{"nom":"PANANGA","cate":"PLU","lat":-4.5155599999999998,"lon":-80.739450000000005,"ico":"M","cod":"104014","estado":"DIFERIDO"},{"nom":"PANTANOS DE VILLA","cate":"EMA","lat":-12.21142,"lon":-76.987970000000004,"ico":"M","cod":"112277","estado":"AUTOMATICA"},{"nom":"PAPAYAL","cate":"CO","lat":-3.56732,"lon":-80.233239999999995,"ico":"M","cod":"103040","estado":"REAL"},{"nom":"PARIACANCHA","cate":"PLU","lat":-11.39315,"lon":-76.502939999999995,"ico":"M","cod":"111067","estado":"DIFERIDO"},{"nom":"PARIACANCHA","cate":"HLM","lat":-11.39315,"lon":-76.502440000000007,"ico":"H","cod":"202801","estado":"DIFERIDO"},{"nom":"PARIACOTO","cate":"CO","lat":-9.5523900000000008,"lon":-77.887609999999995,"ico":"M","cod":"109040","estado":"REAL"},{"nom":"PARQUIN","cate":"PLU","lat":-10.96665,"lon":-76.719830000000002,"ico":"M","cod":"110063","estado":"DIFERIDO"},{"nom":"PARTIDOR","cate":"CO","lat":-4.7319699999999996,"lon":-80.279820000000001,"ico":"M","cod":"104084","estado":"REAL"},{"nom":"PARTIDOR","cate":"EMA","lat":-4.7319699999999996,"lon":-80.279780000000002,"ico":"M","cod":"104113","estado":"AUTOMATICA"},{"nom":"PARURO","cate":"CO","lat":-13.76698,"lon":-71.844700000000003,"ico":"M","cod":"113037","estado":"REAL"},{"nom":"PASABAR","cate":"CP","lat":-5.8372200000000003,"lon":-79.81908,"ico":"M","cod":"105076","estado":"REAL"},{"nom":"PASABAR","cate":"EAMA","lat":-5.8371399999999998,"lon":-79.819109999999995,"ico":"M","cod":"4726F67E","estado":"AUTOMATICA"},{"nom":"PASAJE SUR","cate":"CO","lat":-5.9174100000000003,"lon":-79.97184,"ico":"M","cod":"105121","estado":"DIFERIDO"},{"nom":"PATAHUASI","cate":"EMA","lat":-16.055420000000002,"lon":-71.414810000000003,"ico":"M","cod":"47E360B8","estado":"AUTOMATICA"},{"nom":"PATAHUASI-AREQUIPA","cate":"CO","lat":-16.055420000000002,"lon":-71.414810000000003,"ico":"M","cod":"116073","estado":"DIFERIDO"},{"nom":"PAUCARANI","cate":"CO","lat":-17.532910000000001,"lon":-69.780389999999997,"ico":"M","cod":"117043","estado":"DIFERIDO"},{"nom":"PAUCARAY","cate":"CO","lat":-14.043900000000001,"lon":-73.638599999999997,"ico":"M","cod":"114044","estado":"REAL"},{"nom":"PAUCARBAMBA","cate":"CO","lat":-12.555730000000001,"lon":-74.535920000000004,"ico":"M","cod":"112066","estado":"DIFERIDO"},{"nom":"PAUCARTAMBO","cate":"CO","lat":-13.303470000000001,"lon":-71.596680000000006,"ico":"M","cod":"100100","estado":"REAL"},{"nom":"PAUCARTAMBO","cate":"HLG","lat":-13.3177,"lon":-71.597399999999993,"ico":"H","cod":"250405","estado":"REAL"},{"nom":"PAUZA","cate":"PE","lat":-15.275,"lon":-73.340829999999997,"ico":"M","cod":"115155","estado":"AUTOMATICA"},{"nom":"PAUZA","cate":"CO","lat":-15.2753,"lon":-73.341099999999997,"ico":"M","cod":"115017","estado":"REAL"},{"nom":"PAYAPUNKU","cate":"EMA","lat":-14.4261,"lon":-71.281450000000007,"ico":"M","cod":"114126","estado":"AUTOMATICA"},{"nom":"PEBAS","cate":"EAMA","lat":-3.3179099999999999,"lon":-71.859620000000007,"ico":"M","cod":"47288486","estado":"AUTOMATICA"},{"nom":"PEBAS","cate":"CO","lat":-3.3188,"lon":-71.858800000000002,"ico":"M","cod":"103054","estado":"REAL"},{"nom":"PELEJO","cate":"CO","lat":-6.2153099999999997,"lon":-75.802499999999995,"ico":"M","cod":"106112","estado":"DIFERIDO"},{"nom":"PICHANAKI","cate":"CO","lat":-10.93352,"lon":-74.866810000000001,"ico":"M","cod":"110008","estado":"REAL"},{"nom":"PICHARI","cate":"EMA","lat":-12.522959999999999,"lon":-73.839560000000006,"ico":"M","cod":"47E880E2","estado":"AUTOMATICA"},{"nom":"PICOTA","cate":"PLU","lat":-6.9198899999999997,"lon":-76.330219999999997,"ico":"M","cod":"106095","estado":"DIFERIDO"},{"nom":"PICOTA","cate":"HLG","lat":-6.9194899999999997,"lon":-76.327200000000005,"ico":"H","cod":"230715","estado":"REAL"},{"nom":"PICOY","cate":"CO","lat":-10.921620000000001,"lon":-76.737009999999998,"ico":"M","cod":"110021","estado":"REAL"},{"nom":"PICOY","cate":"EHA","lat":-10.92159,"lon":-76.737030000000004,"ico":"H","cod":"110139","estado":"AUTOMATICA"},{"nom":"PICOY","cate":"HLG","lat":-10.92164,"lon":-76.736699999999999,"ico":"H","cod":"202607","estado":"REAL"},{"nom":"PILCHACA","cate":"CO","lat":-12.39939,"lon":-75.084119999999999,"ico":"M","cod":"112060","estado":"REAL"},{"nom":"PILLONES","cate":"EMA","lat":-15.97861,"lon":-71.213329999999999,"ico":"M","cod":"47E373CE","estado":"AUTOMATICA"},{"nom":"PILLONES","cate":"CO","lat":-15.98124,"lon":-71.216700000000003,"ico":"M","cod":"115126","estado":"DIFERIDO"},{"nom":"PILLUANA","cate":"CO","lat":-6.7763099999999996,"lon":-76.290559999999999,"ico":"M","cod":"106098","estado":"REAL"},{"nom":"PIRA","cate":"PLU","lat":-9.5852799999999991,"lon":-77.707189999999997,"ico":"M","cod":"109048","estado":"DIFERIDO"},{"nom":"PIRCA","cate":"EMA","lat":-11.232839999999999,"lon":-76.655140000000003,"ico":"M","cod":"47E34654","estado":"AUTOMATICA"},{"nom":"PIRCA","cate":"PLU","lat":-11.232799999999999,"lon":-76.65513,"ico":"M","cod":"111087","estado":"DIFERIDO"},{"nom":"PISAC","cate":"CO","lat":-13.419510000000001,"lon":-71.85087,"ico":"M","cod":"100101","estado":"REAL"},{"nom":"PISAC","cate":"HLM","lat":-13.422599999999999,"lon":-71.853899999999996,"ico":"H","cod":"250303","estado":"REAL"},{"nom":"PISCOBAMBA II","cate":"CO","lat":-8.8704499999999999,"lon":-77.350719999999995,"ico":"M","cod":"108103","estado":"REAL"},{"nom":"PIZACOMA","cate":"CO","lat":-16.904299999999999,"lon":-69.369500000000002,"ico":"M","cod":"116029","estado":"REAL"},{"nom":"PLAYA HERMOSA","cate":"EAMA","lat":-5.9161599999999996,"lon":-76.987189999999998,"ico":"M","cod":"105137","estado":"AUTOMATICA"},{"nom":"POMABAMBA","cate":"CO","lat":-8.8216999999999999,"lon":-77.457329999999999,"ico":"M","cod":"108017","estado":"REAL"},{"nom":"POMACANCHI","cate":"EMA","lat":-14.027799999999999,"lon":-71.572599999999994,"ico":"M","cod":"114132","estado":"AUTOMATICA"},{"nom":"POMACANCHI","cate":"CO","lat":-14.027810000000001,"lon":-71.572580000000002,"ico":"M","cod":"114046","estado":"REAL"},{"nom":"PONGO DE CAYNARACHI","cate":"CO","lat":-6.33047,"lon":-76.281750000000002,"ico":"M","cod":"100104","estado":"REAL"},{"nom":"PONGO DE MAINIQUE","cate":"EMA","lat":-12.24986,"lon":-72.824470000000005,"ico":"M","cod":"112264","estado":"AUTOMATICA"},{"nom":"PORCULLA","cate":"PLU","lat":-5.8396400000000002,"lon":-79.505719999999997,"ico":"M","cod":"100105","estado":"DIFERIDO"},{"nom":"PORPERA","cate":"CO","lat":-15.3142,"lon":-71.306399999999996,"ico":"M","cod":"115101","estado":"DIFERIDO"},{"nom":"POTSOTENI","cate":"EMA","lat":-11.41316,"lon":-74.147229999999993,"ico":"M","cod":"111299","estado":"AUTOMATICA"},{"nom":"PROGRESO","cate":"CO","lat":-14.6717,"lon":-70.367800000000003,"ico":"M","cod":"114040","estado":"DIFERIDO"},{"nom":"PUCA PUCA","cate":"EAMA","lat":-9.8789499999999997,"lon":-76.590900000000005,"ico":"M","cod":"109094","estado":"AUTOMATICA"},{"nom":"PUCALLPA","cate":"CP","lat":-8.4132300000000004,"lon":-74.571849999999998,"ico":"M","cod":"108021","estado":"DIFERIDO"},{"nom":"PUCALLPA - HUIMBAYOC","cate":"PLU","lat":-6.4527799999999997,"lon":-75.845560000000006,"ico":"M","cod":"106110","estado":"DIFERIDO"},{"nom":"PUCARA","cate":"CO","lat":-15.045669999999999,"lon":-70.366630000000001,"ico":"M","cod":"115046","estado":"REAL"},{"nom":"PUCHACA","cate":"HLG","lat":-6.37317,"lon":-79.466970000000003,"ico":"H","cod":"200801","estado":"DIFERIDO"},{"nom":"PUCHACA","cate":"EHA","lat":-6.3735299999999997,"lon":-79.466729999999998,"ico":"H","cod":"106138","estado":"AUTOMATICA"},{"nom":"PUCHACA","cate":"CO","lat":-6.3736100000000002,"lon":-79.46951,"ico":"M","cod":"106120","estado":"DIFERIDO"},{"nom":"PUENTE  AZANGARO","cate":"HLG","lat":-14.919750000000001,"lon":-70.189359999999994,"ico":"H","cod":"210102","estado":"REAL"},{"nom":"PUENTE  MAYGASBAMBA","cate":"HLG","lat":-6.6741099999999998,"lon":-78.524370000000005,"ico":"H","cod":"221110","estado":"DIFERIDO"},{"nom":"PUENTE AGUAYTIA","cate":"HLG","lat":-9.0373800000000006,"lon":-75.504490000000004,"ico":"H","cod":"231201","estado":"REAL"},{"nom":"PUENTE AMBAN","cate":"EHMA","lat":-6.5827099999999996,"lon":-78.912620000000004,"ico":"H","cod":"47E1E358","estado":"AUTOMATICA"},{"nom":"PUENTE ANTAPUCRO","cate":"EHA","lat":-12.033300000000001,"lon":-76.633300000000006,"ico":"H","cod":"212700","estado":"AUTOMATICA"},{"nom":"PUENTE AYAVIRI","cate":"HLM","lat":-14.89249,"lon":-70.585440000000006,"ico":"H","cod":"210103","estado":"DIFERIDO"},{"nom":"PUENTE AZANGARO","cate":"EHMA","lat":-14.921390000000001,"lon":-70.188609999999997,"ico":"H","cod":"270202","estado":"AUTOMATICA"},{"nom":"PUENTE BELLA","cate":"HLM","lat":-9.3241099999999992,"lon":-76.029349999999994,"ico":"H","cod":"230004","estado":"DIFERIDO"},{"nom":"PUENTE BELLA","cate":"EHA","lat":-9.3241099999999992,"lon":-76.029349999999994,"ico":"H","cod":"472DA5AA","estado":"AUTOMATICA"},{"nom":"PUENTE BREÑA","cate":"HLM","lat":-12.052160000000001,"lon":-75.24051,"ico":"H","cod":"230931","estado":"REAL"},{"nom":"PUENTE CAHUA","cate":"EHA","lat":-10.605969999999999,"lon":-77.343879999999999,"ico":"H","cod":"472182DA","estado":"AUTOMATICA"},{"nom":"PUENTE CALLANTAMA","cate":"EHA","lat":-11.2989,"lon":-76.851799999999997,"ico":"H","cod":"47E22148","estado":"AUTOMATICA"},{"nom":"PUENTE CARRETERA HUANCANE","cate":"HLG","lat":-15.21588,"lon":-69.792619999999999,"ico":"H","cod":"210201","estado":"REAL"},{"nom":"PUENTE CARRETERA RAMIS","cate":"HLG","lat":-15.2553,"lon":-69.873800000000003,"ico":"H","cod":"210101","estado":"REAL"},{"nom":"PUENTE CARRETERA RAMIS","cate":"EHMA","lat":-15.25544,"lon":-69.873810000000006,"ico":"H","cod":"47251282","estado":"AUTOMATICA"},{"nom":"PUENTE CHILETE","cate":"HLG","lat":-7.2196899999999999,"lon":-78.837990000000005,"ico":"H","cod":"201207","estado":"REAL"},{"nom":"PUENTE CHILETE","cate":"EHMA","lat":-7.2196800000000003,"lon":-78.837980000000002,"ico":"H","cod":"4727470A","estado":"AUTOMATICA"},{"nom":"PUENTE COINA","cate":"HLM","lat":-7.79636,"lon":-78.380120000000005,"ico":"H","cod":"211004","estado":"DIFERIDO"},{"nom":"PUENTE COINA","cate":"EHMA","lat":-7.79636,"lon":-78.380120000000005,"ico":"H","cod":"472E74CC","estado":"AUTOMATICA"},{"nom":"PUENTE COLGANTE-SIBAYO","cate":"HLG","lat":-15.494199999999999,"lon":-71.463700000000003,"ico":"H","cod":"204604","estado":"DIFERIDO"},{"nom":"PUENTE CRISNEJAS","cate":"HLM","lat":-7.4635400000000001,"lon":-78.113129999999998,"ico":"H","cod":"220201","estado":"REAL"},{"nom":"PUENTE CUNYAC","cate":"HLM","lat":-13.563000000000001,"lon":-72.575199999999995,"ico":"H","cod":"230503","estado":"REAL"},{"nom":"PUENTE DEL DIABLO","cate":"HLG","lat":-16.42679,"lon":-71.675030000000007,"ico":"H","cod":"204707","estado":"REAL"},{"nom":"PUENTE DEL DIABLO","cate":"EHA","lat":-16.426649999999999,"lon":-71.675070000000005,"ico":"H","cod":"4722E032","estado":"AUTOMATICA"},{"nom":"PUENTE HERRERA","cate":"EHMA","lat":-12.61361,"lon":-69.194130000000001,"ico":"H","cod":"260402","estado":"AUTOMATICA"},{"nom":"PUENTE HIGUERAS","cate":"HLM","lat":-9.9222000000000001,"lon":-76.309380000000004,"ico":"H","cod":"221811","estado":"REAL"},{"nom":"PUENTE HUACHIPA","cate":"HLM","lat":-12.01281,"lon":-76.894409999999993,"ico":"H","cod":"202910","estado":"REAL"},{"nom":"PUENTE ILAVE","cate":"HLG","lat":-16.088200000000001,"lon":-69.631699999999995,"ico":"H","cod":"210301","estado":"REAL"},{"nom":"PUENTE INAMBARI","cate":"HLM","lat":-13.18638,"lon":-70.384010000000004,"ico":"H","cod":"113251","estado":"DIFERIDO"},{"nom":"PUENTE INTERNACIONAL DESAGUADERO","cate":"HLG","lat":-16.563800000000001,"lon":-69.036299999999997,"ico":"H","cod":"270700","estado":"REAL"},{"nom":"PUENTE ISLA CABANILLAS","cate":"HLM","lat":-15.4718,"lon":-70.224000000000004,"ico":"H","cod":"210406","estado":"DIFERIDO"},{"nom":"PUENTE ITAYA","cate":"HLM","lat":-4.2251300000000001,"lon":-73.482510000000005,"ico":"H","cod":"240502","estado":"DIFERIDO"},{"nom":"PUENTE MACARA","cate":"EHA","lat":-4.3933799999999996,"lon":-79.964119999999994,"ico":"H","cod":"47E0C74E","estado":"AUTOMATICA"},{"nom":"PUENTE MAGDALENA","cate":"HLG","lat":-11.69463,"lon":-76.837190000000007,"ico":"H","cod":"111151","estado":"REAL"},{"nom":"PUENTE PALMIRA","cate":"HLM","lat":-7.5491900000000003,"lon":-78.810509999999994,"ico":"H","cod":"211002","estado":"DIFERIDO"},{"nom":"PUENTE PALMIRA","cate":"EHMA","lat":-7.5491900000000003,"lon":-78.810509999999994,"ico":"H","cod":"472E5220","estado":"AUTOMATICA"},{"nom":"PUENTE PAMPAS GORE APU","cate":"EHA","lat":-13.43493,"lon":-73.827370000000002,"ico":"H","cod":"250900","estado":"AUTOMATICA"},{"nom":"PUENTE PEREZ","cate":"EHA","lat":-9.34694,"lon":-75.982500000000002,"ico":"H","cod":"472D1624","estado":"AUTOMATICA"},{"nom":"PUENTE PEREZ","cate":"HLM","lat":-9.34694,"lon":-75.982500000000002,"ico":"H","cod":"230001","estado":"DIFERIDO"},{"nom":"PUENTE PIEDRA","cate":"EMA","lat":-11.863250000000001,"lon":-77.074129999999997,"ico":"M","cod":"111287","estado":"AUTOMATICA"},{"nom":"PUENTE SAN CARLOS","cate":"EHMA","lat":-6.6151499999999999,"lon":-79.271360000000001,"ico":"H","cod":"47E1D6C2","estado":"AUTOMATICA"},{"nom":"PUENTE SIMON RODRIGUEZ","cate":"EHA","lat":-4.8799900000000003,"lon":-81.020380000000003,"ico":"H","cod":"47E0B1DE","estado":"AUTOMATICA"},{"nom":"PUENTE TALAPALCA","cate":"EHA","lat":-17.474869999999999,"lon":-70.172650000000004,"ico":"H","cod":"47E150D6","estado":"AUTOMATICA"},{"nom":"PUENTE TARUCA","cate":"EHA","lat":-9.8505599999999998,"lon":-76.151899999999998,"ico":"H","cod":"472B730C","estado":"AUTOMATICA"},{"nom":"PUENTE TOCACHE","cate":"HLG","lat":-8.1847499999999993,"lon":-76.507890000000003,"ico":"H","cod":"230700","estado":"REAL"},{"nom":"PUENTE TUMBES","cate":"EHA","lat":-3.5709,"lon":-80.460899999999995,"ico":"H","cod":"47E024BC","estado":"AUTOMATICA"},{"nom":"PUENTE UNOCOLLA COATA","cate":"HLG","lat":-15.450850000000001,"lon":-70.191329999999994,"ico":"H","cod":"210407","estado":"REAL"},{"nom":"PUENTE VIEJO","cate":"EHA","lat":-17.617560000000001,"lon":-70.76097,"ico":"H","cod":"47E186BE","estado":"AUTOMATICA"},{"nom":"PUENTE YOROHOCO CALLACAME","cate":"HLG","lat":-16.570650000000001,"lon":-69.322779999999995,"ico":"H","cod":"210502","estado":"REAL"},{"nom":"PUENTE ÑACARA","cate":"EHA","lat":-5.1128,"lon":-80.172960000000003,"ico":"H","cod":"47E0415A","estado":"AUTOMATICA"},{"nom":"PUERTO ALEGRIA","cate":"HLM","lat":-4.1149100000000001,"lon":-70.053910000000002,"ico":"H","cod":"240005","estado":"DIFERIDO"},{"nom":"PUERTO ALMENDRA","cate":"HLM","lat":-3.8274300000000001,"lon":-73.377409999999998,"ico":"H","cod":"240302","estado":"DIFERIDO"},{"nom":"PUERTO ALMENDRA","cate":"CO","lat":-3.8285999999999998,"lon":-73.376999999999995,"ico":"M","cod":"103046","estado":"REAL"},{"nom":"PUERTO BERMUDEZ","cate":"EAMA","lat":-10.28619,"lon":-74.943560000000005,"ico":"M","cod":"109093","estado":"AUTOMATICA"},{"nom":"PUERTO ESPERANZA","cate":"EMA","lat":-9.7708300000000001,"lon":-70.706659999999999,"ico":"M","cod":"47E87066","estado":"AUTOMATICA"},{"nom":"PUERTO INCA","cate":"HLM","lat":-9.3827099999999994,"lon":-74.967920000000007,"ico":"H","cod":"231101","estado":"REAL"},{"nom":"PUERTO INCA","cate":"EAMA","lat":-9.3850999999999996,"lon":-74.963759999999994,"ico":"M","cod":"4727A4F8","estado":"AUTOMATICA"},{"nom":"PUERTO INCA","cate":"CO","lat":-9.3850999999999996,"lon":-74.963759999999994,"ico":"M","cod":"109032","estado":"REAL"},{"nom":"PUERTO MALDONADO","cate":"EMA","lat":-12.587300000000001,"lon":-69.208799999999997,"ico":"M","cod":"112279","estado":"AUTOMATICA"},{"nom":"PUERTO MALDONADO","cate":"CP","lat":-12.587300000000001,"lon":-69.208799999999997,"ico":"M","cod":"100109","estado":"REAL"},{"nom":"PUERTO OCOPA","cate":"CO","lat":-11.146699999999999,"lon":-74.305099999999996,"ico":"M","cod":"111039","estado":"DIFERIDO"},{"nom":"PUERTO PIZARRO","cate":"EMA","lat":-3.5039600000000002,"lon":-80.395380000000003,"ico":"M","cod":"103068","estado":"AUTOMATICA"},{"nom":"PUERTO PIZARRO","cate":"CO","lat":-3.5039600000000002,"lon":-80.395380000000003,"ico":"M","cod":"103038","estado":"REAL"},{"nom":"PULLHUAY (AYAHUASI)","cate":"CO","lat":-15.145899999999999,"lon":-72.743899999999996,"ico":"M","cod":"115084","estado":"DIFERIDO"},{"nom":"PUNCHANA","cate":"PE","lat":-3.6903000000000001,"lon":-73.255600000000001,"ico":"M","cod":"103015","estado":"REAL"},{"nom":"PUNO","cate":"EMA","lat":-15.82625,"lon":-70.012079999999997,"ico":"M","cod":"472DD33A","estado":"AUTOMATICA"},{"nom":"PUNO","cate":"CP","lat":-15.82625,"lon":-70.012079999999997,"ico":"M","cod":"100110","estado":"REAL"},{"nom":"PUNTA ATICO","cate":"CO","lat":-16.231739999999999,"lon":-73.696380000000005,"ico":"M","cod":"116011","estado":"REAL"},{"nom":"PUNTA COLES","cate":"CO","lat":-17.698619999999998,"lon":-71.373310000000004,"ico":"M","cod":"117008","estado":"REAL"},{"nom":"PUQUINA","cate":"CO","lat":-16.62978,"lon":-71.184759999999997,"ico":"M","cod":"116021","estado":"REAL"},{"nom":"PUQUIO","cate":"CO","lat":-14.69928,"lon":-74.131600000000006,"ico":"M","cod":"114023","estado":"REAL"},{"nom":"PUTINA","cate":"CO","lat":-14.920999999999999,"lon":-69.875699999999995,"ico":"M","cod":"114093","estado":"REAL"},{"nom":"PUYCA","cate":"CO","lat":-15.060549999999999,"lon":-72.692620000000005,"ico":"M","cod":"115082","estado":"DIFERIDO"},{"nom":"QUEBRADA SHUGAR","cate":"PLU","lat":-6.6877800000000001,"lon":-78.456940000000003,"ico":"M","cod":"100113","estado":"DIFERIDO"},{"nom":"QUEBRADA YANATILE","cate":"CO","lat":-12.678800000000001,"lon":-72.278499999999994,"ico":"M","cod":"112154","estado":"REAL"},{"nom":"QUILCATE","cate":"CO","lat":-6.8227500000000001,"lon":-78.744,"ico":"M","cod":"106039","estado":"REAL"},{"nom":"QUINCEMIL","cate":"EMA","lat":-13.228899999999999,"lon":-70.754400000000004,"ico":"M","cod":"113254","estado":"AUTOMATICA"},{"nom":"QUINCEMIL","cate":"CO","lat":-13.22893,"lon":-70.754400000000004,"ico":"M","cod":"100114","estado":"REAL"},{"nom":"QUINISTAQUILLAS","cate":"CO","lat":-16.74971,"lon":-70.878579999999999,"ico":"M","cod":"116049","estado":"REAL"},{"nom":"QUIRUVILCA","cate":"EMA","lat":-8.0041899999999995,"lon":-78.307900000000004,"ico":"M","cod":"4727319A","estado":"AUTOMATICA"},{"nom":"QUIRUVILCA","cate":"PLU","lat":-8.0042200000000001,"lon":-78.307910000000007,"ico":"M","cod":"108044","estado":"DIFERIDO"},{"nom":"QUISCA","cate":"EMA","lat":-10.089219999999999,"lon":-76.215559999999996,"ico":"M","cod":"110146","estado":"AUTOMATICA"},{"nom":"QUISOQUEPINA","cate":"EMA","lat":-13.79505,"lon":-70.886219999999994,"ico":"M","cod":"472E025C","estado":"AUTOMATICA"},{"nom":"RAMIS","cate":"PLU","lat":-15.255800000000001,"lon":-69.873900000000006,"ico":"M","cod":"270200","estado":"DIFERIDO"},{"nom":"RECUAY","cate":"EMA","lat":-9.7291899999999991,"lon":-77.453649999999996,"ico":"M","cod":"47259496","estado":"AUTOMATICA"},{"nom":"REPRESA JARUMAS","cate":"EHA","lat":-17.369199999999999,"lon":-69.948629999999994,"ico":"H","cod":"47E1B324","estado":"AUTOMATICA"},{"nom":"REPRESA PAUCARANI","cate":"EHA","lat":-17.53436,"lon":-69.764989999999997,"ico":"H","cod":"47E113DC","estado":"AUTOMATICA"},{"nom":"REQUE","cate":"CO","lat":-6.8861299999999996,"lon":-79.835499999999996,"ico":"M","cod":"106046","estado":"REAL"},{"nom":"REQUENA","cate":"HLM","lat":-5.0411000000000001,"lon":-73.840000000000003,"ico":"H","cod":"250101","estado":"DIFERIDO"},{"nom":"REQUENA","cate":"CO","lat":-5.0430799999999998,"lon":-73.836119999999994,"ico":"M","cod":"105095","estado":"DIFERIDO"},{"nom":"RICA PLAYA","cate":"EMA","lat":-3.8133300000000001,"lon":-80.457499999999996,"ico":"M","cod":"472F264A","estado":"AUTOMATICA"},{"nom":"RICA PLAYA","cate":"CO","lat":-3.8119000000000001,"lon":-80.505459999999999,"ico":"M","cod":"103036","estado":"REAL"},{"nom":"RICRAN","cate":"CO","lat":-11.539999999999999,"lon":-75.527299999999997,"ico":"M","cod":"111095","estado":"REAL"},{"nom":"RINCON DE LA CRUZ","cate":"EAMA","lat":-15.99019,"lon":-69.809579999999997,"ico":"M","cod":"115154","estado":"AUTOMATICA"},{"nom":"RINCON DE LA CRUZ","cate":"CO","lat":-15.990170000000001,"lon":-69.809610000000006,"ico":"M","cod":"115052","estado":"REAL"},{"nom":"RIO BLANCO","cate":"PLU","lat":-11.73447,"lon":-76.25967,"ico":"M","cod":"111061","estado":"DIFERIDO"},{"nom":"RIO BLANCO","cate":"HLG","lat":-11.734500000000001,"lon":-76.259379999999993,"ico":"H","cod":"202904","estado":"REAL"},{"nom":"RIO GRANDE","cate":"CO","lat":-14.526479999999999,"lon":-75.213059999999999,"ico":"M","cod":"114006","estado":"REAL"},{"nom":"RIO GRANDE","cate":"EHA","lat":-7.0909399999999998,"lon":-78.52073,"ico":"H","cod":"472210B6","estado":"AUTOMATICA"},{"nom":"RIO PALLANGA","cate":"HLM","lat":-11.186500000000001,"lon":-76.325689999999994,"ico":"H","cod":"230801","estado":"DIFERIDO"},{"nom":"RIO TULUMAYO","cate":"HLM","lat":-11.209099999999999,"lon":-75.334800000000001,"ico":"H","cod":"250501","estado":"REAL"},{"nom":"RIO TULUMAYO","cate":"PLU","lat":-11.209099999999999,"lon":-75.334800000000001,"ico":"M","cod":"111281","estado":"DIFERIDO"},{"nom":"RIO VERDE","cate":"HLG","lat":-15.68427,"lon":-70.600020000000001,"ico":"H","cod":"270300","estado":"REAL"},{"nom":"RIOJA","cate":"CO","lat":-6.0472799999999998,"lon":-77.171970000000002,"ico":"M","cod":"106013","estado":"REAL"},{"nom":"RUMICHACA","cate":"HLM","lat":-11.69886,"lon":-76.106390000000005,"ico":"H","cod":"230803","estado":"DIFERIDO"},{"nom":"RUNATULLO","cate":"CO","lat":-11.618119999999999,"lon":-75.012240000000006,"ico":"M","cod":"100119","estado":"REAL"},{"nom":"SALALA","cate":"CP","lat":-5.1115300000000001,"lon":-79.463489999999993,"ico":"M","cod":"105096","estado":"REAL"},{"nom":"SALAMANCA","cate":"CO","lat":-15.502940000000001,"lon":-72.83202,"ico":"M","cod":"115043","estado":"REAL"},{"nom":"SALAMANCA","cate":"HLM","lat":-15.503299999999999,"lon":-72.831800000000001,"ico":"H","cod":"204501","estado":"DIFERIDO"},{"nom":"SALCABAMBA","cate":"CO","lat":-12.204000000000001,"lon":-74.779399999999995,"ico":"M","cod":"100120","estado":"REAL"},{"nom":"SALCCA","cate":"HLM","lat":-14.16963,"lon":-71.231719999999996,"ico":"H","cod":"250308","estado":"REAL"},{"nom":"SALCCA","cate":"EHA","lat":-14.16991,"lon":-71.231859999999998,"ico":"H","cod":"114118","estado":"AUTOMATICA"},{"nom":"SALCCA","cate":"PE","lat":-14.169969999999999,"lon":-71.231870000000001,"ico":"M","cod":"114131","estado":"DIFERIDO"},{"nom":"SALIDA TUNEL KOVIRE","cate":"EHA","lat":-17.238040000000002,"lon":-70.008539999999996,"ico":"H","cod":"47E1763A","estado":"AUTOMATICA"},{"nom":"SALINAR","cate":"EHA","lat":-7.6606899999999998,"lon":-78.961089999999999,"ico":"H","cod":"211001","estado":"AUTOMATICA"},{"nom":"SALITRAL","cate":"EHA","lat":-5.3460200000000002,"lon":-79.837609999999998,"ico":"H","cod":"47E067B6","estado":"AUTOMATICA"},{"nom":"SALLIQUE","cate":"CO","lat":-5.6588599999999998,"lon":-79.312640000000002,"ico":"M","cod":"105053","estado":"REAL"},{"nom":"SALPO","cate":"CO","lat":-8.00535,"lon":-78.607100000000003,"ico":"M","cod":"108001","estado":"REAL"},{"nom":"SALVACION","cate":"EMA","lat":-12.831200000000001,"lon":-71.364459999999994,"ico":"M","cod":"47E8201A","estado":"AUTOMATICA"},{"nom":"SAMA GRANDE","cate":"CO","lat":-17.787579999999998,"lon":-70.489620000000002,"ico":"M","cod":"117018","estado":"REAL"},{"nom":"SAN ALEJANDRO","cate":"HLM","lat":-8.8309099999999994,"lon":-75.212810000000005,"ico":"H","cod":"250103","estado":"REAL"},{"nom":"SAN ALEJANDRO","cate":"CO","lat":-8.8344400000000007,"lon":-75.216390000000004,"ico":"M","cod":"100121","estado":"REAL"},{"nom":"SAN ANTONIO","cate":"CO","lat":-6.4127400000000003,"lon":-76.407200000000003,"ico":"M","cod":"106096","estado":"DIFERIDO"},{"nom":"SAN BENITO","cate":"CO","lat":-7.4281899999999998,"lon":-78.926730000000006,"ico":"M","cod":"107057","estado":"REAL"},{"nom":"SAN BORJA","cate":"EMA","lat":-12.10859,"lon":-77.007689999999997,"ico":"M","cod":"112193","estado":"AUTOMATICA"},{"nom":"SAN CAMILO","cate":"MAP","lat":-14.073309999999999,"lon":-75.711010000000002,"ico":"M","cod":"114008","estado":"REAL"},{"nom":"SAN FRANCISCO","cate":"EMA","lat":-16.385190000000001,"lon":-71.490440000000007,"ico":"M","cod":"116082","estado":"AUTOMATICA"},{"nom":"SAN GABAN","cate":"CO","lat":-13.460900000000001,"lon":-70.409999999999997,"ico":"M","cod":"113119","estado":"REAL"},{"nom":"SAN IGNACIO","cate":"CO","lat":-5.1470799999999999,"lon":-78.99512,"ico":"M","cod":"105058","estado":"REAL"},{"nom":"SAN IGNACIO","cate":"EMA","lat":-5.1442199999999998,"lon":-78.999889999999994,"ico":"M","cod":"4726706A","estado":"AUTOMATICA"},{"nom":"SAN JACINTO","cate":"EHA","lat":-9.141,"lon":-78.202299999999994,"ico":"H","cod":"211601","estado":"AUTOMATICA"},{"nom":"SAN JOSE DE PARAC","cate":"PLU","lat":-11.80053,"lon":-76.258110000000002,"ico":"M","cod":"111093","estado":"DIFERIDO"},{"nom":"SAN JOSE DE UZUNA","cate":"EMA","lat":-16.581029999999998,"lon":-71.328360000000004,"ico":"M","cod":"47E3B6D0","estado":"AUTOMATICA"},{"nom":"SAN JOSE DE VILLA RICA","cate":"EAMA","lat":-10.75108,"lon":-75.298739999999995,"ico":"M","cod":"110142","estado":"AUTOMATICA"},{"nom":"SAN JUAN","cate":"CO","lat":-7.2975599999999998,"lon":-78.491060000000004,"ico":"M","cod":"107005","estado":"REAL"},{"nom":"SAN JUAN DE CASTROVIRREYNA","cate":"CO","lat":-13.211980000000001,"lon":-75.627579999999995,"ico":"M","cod":"113082","estado":"DIFERIDO"},{"nom":"SAN JUAN DE JARPA","cate":"CO","lat":-12.12454,"lon":-75.431780000000003,"ico":"M","cod":"112028","estado":"REAL"},{"nom":"SAN JUAN DE LURIGANCHO","cate":"EMA","lat":-11.981640000000001,"lon":-76.999250000000004,"ico":"M","cod":"112267","estado":"AUTOMATICA"},{"nom":"SAN JUAN DE YANAC","cate":"CO","lat":-13.21058,"lon":-75.786969999999997,"ico":"M","cod":"113081","estado":"REAL"},{"nom":"SAN LAZARO DE ESCOMARCA","cate":"CO","lat":-12.18088,"lon":-76.352069999999998,"ico":"M","cod":"112126","estado":"REAL"},{"nom":"SAN LORENZO","cate":"CO","lat":-4.8295399999999997,"lon":-76.554770000000005,"ico":"M","cod":"104057","estado":"REAL"},{"nom":"SAN LORENZO","cate":"HLM","lat":-4.8322000000000003,"lon":-76.555400000000006,"ico":"H","cod":"220108","estado":"REAL"},{"nom":"SAN MARCOS","cate":"EAMA","lat":-7.3224900000000002,"lon":-78.172690000000003,"ico":"M","cod":"4725E206","estado":"AUTOMATICA"},{"nom":"SAN MARCOS","cate":"CO","lat":-7.3224900000000002,"lon":-78.172700000000006,"ico":"M","cod":"107006","estado":"REAL"},{"nom":"SAN MARTIN","cate":"EMA","lat":-9.4038500000000003,"lon":-76.76482,"ico":"M","cod":"4720EB14","estado":"AUTOMATICA"},{"nom":"SAN MARTIN DE PORRES","cate":"EMA","lat":-12.008889999999999,"lon":-77.084469999999996,"ico":"M","cod":"112265","estado":"AUTOMATICA"},{"nom":"SAN MATEO","cate":"EHA","lat":-11.760120000000001,"lon":-76.301109999999994,"ico":"H","cod":"212605","estado":"AUTOMATICA"},{"nom":"SAN MATEO","cate":"HLG","lat":-11.760120000000001,"lon":-76.301109999999994,"ico":"H","cod":"202905","estado":"REAL"},{"nom":"SAN MATEO DE HUANCHOR","cate":"PLU","lat":-11.76017,"lon":-76.301000000000002,"ico":"M","cod":"111175","estado":"REAL"},{"nom":"SAN MATEO DE OTAO","cate":"EMA","lat":-11.847,"lon":-76.563590000000005,"ico":"M","cod":"472EC742","estado":"AUTOMATICA"},{"nom":"SAN MATEO DE OTAO","cate":"PLU","lat":-11.847,"lon":-76.563599999999994,"ico":"M","cod":"111291","estado":"DIFERIDO"},{"nom":"SAN MIGUEL","cate":"MAP","lat":-5.2462,"lon":-80.684359999999998,"ico":"M","cod":"105063","estado":"REAL"},{"nom":"SAN MIGUEL","cate":"EAMA","lat":-5.2400599999999997,"lon":-78.911379999999994,"ico":"M","cod":"105142","estado":"DIFERIDO"},{"nom":"SAN MIGUEL","cate":"EMA","lat":-5.2461900000000004,"lon":-80.684250000000006,"ico":"M","cod":"105143","estado":"AUTOMATICA"},{"nom":"SAN MIGUEL","cate":"CO","lat":-6.9968399999999997,"lon":-78.853080000000006,"ico":"M","cod":"106038","estado":"REAL"},{"nom":"SAN PABLO","cate":"EMA","lat":-13.02506,"lon":-72.619879999999995,"ico":"M","cod":"4729658E","estado":"AUTOMATICA"},{"nom":"SAN PABLO","cate":"CO","lat":-7.11775,"lon":-78.830830000000006,"ico":"M","cod":"107036","estado":"REAL"},{"nom":"SAN PABLO","cate":"CO","lat":-6.8095600000000003,"lon":-76.576250000000002,"ico":"M","cod":"106091","estado":"REAL"},{"nom":"SAN PEDRO","cate":"EHA","lat":-5.0795399999999997,"lon":-80.016199999999998,"ico":"H","cod":"47E08444","estado":"AUTOMATICA"},{"nom":"SAN PEDRO","cate":"HLG","lat":-5.0796000000000001,"lon":-80.016239999999996,"ico":"H","cod":"200415","estado":"REAL"},{"nom":"SAN PEDRO","cate":"PLU","lat":-5.0795399999999997,"lon":-80.016210000000001,"ico":"M","cod":"100126","estado":"REAL"},{"nom":"SAN PEDRO","cate":"HLM","lat":-9.6077600000000007,"lon":-77.509630000000001,"ico":"H","cod":"211404","estado":"DIFERIDO"},{"nom":"SAN PEDRO DE CACHI","cate":"CO","lat":-13.08742,"lon":-74.39067,"ico":"M","cod":"100127","estado":"REAL"},{"nom":"SAN PEDRO DE HUACARPANA","cate":"EMA","lat":-13.04889,"lon":-75.648060000000001,"ico":"M","cod":"4728E160","estado":"AUTOMATICA"},{"nom":"SAN PEDRO DE HUACARPANA","cate":"CO","lat":-13.0479,"lon":-75.6464,"ico":"M","cod":"113061","estado":"REAL"},{"nom":"SAN PEDRO DE PILAS","cate":"PLU","lat":-12.454800000000001,"lon":-76.225589999999997,"ico":"M","cod":"112081","estado":"DIFERIDO"},{"nom":"SAN RAFAEL","cate":"CO","lat":-10.32926,"lon":-76.176580000000001,"ico":"M","cod":"110025","estado":"REAL"},{"nom":"SAN RAFAEL","cate":"HLM","lat":-10.3399,"lon":-76.182400000000001,"ico":"H","cod":"221309","estado":"REAL"},{"nom":"SAN REGIS","cate":"EMA","lat":-4.5130100000000004,"lon":-73.907510000000002,"ico":"M","cod":"104112","estado":"AUTOMATICA"},{"nom":"SAN REGIS","cate":"HLM","lat":-4.5132000000000003,"lon":-73.907600000000002,"ico":"H","cod":"220105","estado":"DIFERIDO"},{"nom":"SAN REGIS","cate":"PE","lat":-4.5130100000000004,"lon":-73.907510000000002,"ico":"M","cod":"104098","estado":"DIFERIDO"},{"nom":"SAN ROQUE","cate":"CP","lat":-3.78667,"lon":-73.293329999999997,"ico":"M","cod":"103052","estado":"DIFERIDO"},{"nom":"SANTA ANA","cate":"MAP","lat":-12.009550000000001,"lon":-75.221580000000003,"ico":"M","cod":"112083","estado":"REAL"},{"nom":"SANTA ANA","cate":"EMA","lat":-8.4976299999999991,"lon":-75.562740000000005,"ico":"M","cod":"47E8568A","estado":"AUTOMATICA"},{"nom":"SANTA ANITA","cate":"EMA","lat":-12.04302,"lon":-76.971440000000001,"ico":"M","cod":"112208","estado":"AUTOMATICA"},{"nom":"SANTA CLOTILDE","cate":"CO","lat":-2.4875699999999998,"lon":-73.679190000000006,"ico":"M","cod":"102009","estado":"DIFERIDO"},{"nom":"SANTA CLOTILDE","cate":"HLM","lat":-2.4870000000000001,"lon":-73.679000000000002,"ico":"H","cod":"240110","estado":"DIFERIDO"},{"nom":"SANTA CRUZ","cate":"PLU","lat":-11.198270000000001,"lon":-76.634870000000006,"ico":"M","cod":"111081","estado":"DIFERIDO"},{"nom":"SANTA CRUZ","cate":"CO","lat":-6.6165700000000003,"lon":-78.947609999999997,"ico":"M","cod":"106056","estado":"REAL"},{"nom":"SANTA CRUZ","cate":"HLM","lat":-3.5172500000000002,"lon":-73.154110000000003,"ico":"H","cod":"240109","estado":"DIFERIDO"},{"nom":"SANTA CRUZ","cate":"EMA","lat":-11.198270000000001,"lon":-76.634870000000006,"ico":"M","cod":"47E330C4","estado":"AUTOMATICA"},{"nom":"SANTA CRUZ","cate":"PLU","lat":-3.5169000000000001,"lon":-73.152600000000007,"ico":"M","cod":"103013","estado":"DIFERIDO"},{"nom":"SANTA CRUZ DE HOSPICIO","cate":"EAMA","lat":-13.4383,"lon":-74.799300000000002,"ico":"M","cod":"113248","estado":"AUTOMATICA"},{"nom":"SANTA EULALIA","cate":"HLM","lat":-11.919840000000001,"lon":-76.666780000000003,"ico":"H","cod":"202930","estado":"REAL"},{"nom":"SANTA EULALIA","cate":"EHMA","lat":-11.92,"lon":-76.666640000000001,"ico":"H","cod":"472E24B0","estado":"AUTOMATICA"},{"nom":"SANTA EULALIA","cate":"PLU","lat":-11.92,"lon":-76.666640000000001,"ico":"M","cod":"111086","estado":"REAL"},{"nom":"SANTA LUCIA","cate":"CO","lat":-15.694100000000001,"lon":-70.599299999999999,"ico":"M","cod":"115140","estado":"DIFERIDO"},{"nom":"SANTA MARIA DE NANAY","cate":"HLM","lat":-3.8891,"lon":-73.696100000000001,"ico":"H","cod":"240001","estado":"DIFERIDO"},{"nom":"SANTA MARIA DE NIEVA","cate":"CO","lat":-4.8303900000000004,"lon":-77.939279999999997,"ico":"M","cod":"104060","estado":"REAL"},{"nom":"SANTA RITA DE CASTILLA","cate":"PE","lat":-4.5922000000000001,"lon":-74.380600000000001,"ico":"M","cod":"104065","estado":"DIFERIDO"},{"nom":"SANTA ROSA","cate":"HLM","lat":-4.2241999999999997,"lon":-69.953500000000005,"ico":"H","cod":"240108","estado":"DIFERIDO"},{"nom":"SANTA ROSA","cate":"PLU","lat":-4.2263599999999997,"lon":-69.956289999999996,"ico":"M","cod":"104010","estado":"DIFERIDO"},{"nom":"SANTA ROSA","cate":"CO","lat":-14.617800000000001,"lon":-70.792779999999993,"ico":"M","cod":"114047","estado":"DIFERIDO"},{"nom":"SANTIAGO DE CHOCORVOS","cate":"CO","lat":-13.833080000000001,"lon":-75.250829999999993,"ico":"M","cod":"113088","estado":"DIFERIDO"},{"nom":"SANTIAGO DE CHOCORVOS","cate":"EMA","lat":-13.83333,"lon":-75.25,"ico":"M","cod":"4729131E","estado":"AUTOMATICA"},{"nom":"SANTIAGO DE TUNA","cate":"PLU","lat":-11.9832,"lon":-76.524199999999993,"ico":"M","cod":"111092","estado":"DIFERIDO"},{"nom":"SANTIAGO DE TUNA","cate":"EMA","lat":-11.9832,"lon":-76.524199999999993,"ico":"M","cod":"472CA750","estado":"AUTOMATICA"},{"nom":"SANTO DOMINGO","cate":"EHMA","lat":-11.369999999999999,"lon":-77.028329999999997,"ico":"H","cod":"47E214D2","estado":"AUTOMATICA"},{"nom":"SANTO DOMINGO","cate":"CO","lat":-5.0382499999999997,"lon":-79.870490000000004,"ico":"M","cod":"100131","estado":"REAL"},{"nom":"SANTO DOMINGO","cate":"HLG","lat":-11.370089999999999,"lon":-77.028229999999994,"ico":"H","cod":"202701","estado":"REAL"},{"nom":"SANTO TOMAS","cate":"EMA","lat":-14.44896,"lon":-72.096450000000004,"ico":"M","cod":"4729A090","estado":"AUTOMATICA"},{"nom":"SANTO TOMAS","cate":"CO","lat":-14.39878,"lon":-72.087739999999997,"ico":"M","cod":"114030","estado":"REAL"},{"nom":"SANTO TOMAS PUNCHANA","cate":"HLM","lat":-3.69279,"lon":-73.256249999999994,"ico":"H","cod":"240304","estado":"DIFERIDO"},{"nom":"SAPILLICA","cate":"PLU","lat":-4.7781700000000003,"lon":-79.981780000000001,"ico":"M","cod":"104019","estado":"REAL"},{"nom":"SAPILLICA","cate":"EMA","lat":-4.7963899999999997,"lon":-79.999719999999996,"ico":"M","cod":"472FF022","estado":"AUTOMATICA"},{"nom":"SAPOSOA","cate":"CO","lat":-6.94313,"lon":-76.768230000000003,"ico":"M","cod":"106032","estado":"REAL"},{"nom":"SATIPO","cate":"CO","lat":-11.2247,"lon":-74.608699999999999,"ico":"M","cod":"111038","estado":"REAL"},{"nom":"SATIPO","cate":"EMA","lat":-11.2247,"lon":-74.608699999999999,"ico":"M","cod":"4725C4EA","estado":"AUTOMATICA"},{"nom":"SAUCEPAMPA","cate":"EMA","lat":-9.0309000000000008,"lon":-77.776300000000006,"ico":"M","cod":"109091","estado":"AUTOMATICA"},{"nom":"SAUSAYA","cate":"EMA","lat":-14.529310000000001,"lon":-71.358310000000003,"ico":"M","cod":"114125","estado":"AUTOMATICA"},{"nom":"SAUZAL","cate":"EHMA","lat":-5.7716799999999999,"lon":-79.397689999999997,"ico":"H","cod":"105136","estado":"AUTOMATICA"},{"nom":"SAYAN","cate":"HLM","lat":-11.13476,"lon":-77.198319999999995,"ico":"H","cod":"212301","estado":"REAL"},{"nom":"SAYAN","cate":"EHMA","lat":-11.13472,"lon":-77.198329999999999,"ico":"H","cod":"4724966C","estado":"AUTOMATICA"},{"nom":"SEDA LORETO","cate":"HLM","lat":-3.7528000000000001,"lon":-73.281000000000006,"ico":"H","cod":"240106","estado":"DIFERIDO"},{"nom":"SHAMBOYACU","cate":"PLU","lat":-7.0223000000000004,"lon":-76.129109999999997,"ico":"M","cod":"107091","estado":"REAL"},{"nom":"SHAMBOYACU","cate":"HLG","lat":-7.0230199999999998,"lon":-76.129519999999999,"ico":"H","cod":"221813","estado":"REAL"},{"nom":"SHANAO","cate":"PLU","lat":-6.4131200000000002,"lon":-76.600279999999998,"ico":"M","cod":"106115","estado":"DIFERIDO"},{"nom":"SHANAO","cate":"HLG","lat":-6.4129100000000001,"lon":-76.600009999999997,"ico":"H","cod":"221802","estado":"DIFERIDO"},{"nom":"SHANUSI","cate":"CO","lat":-6.0670299999999999,"lon":-76.250500000000002,"ico":"M","cod":"100132","estado":"DIFERIDO"},{"nom":"SHAQUEK","cate":"EMA","lat":-10.071160000000001,"lon":-77.525040000000004,"ico":"M","cod":"110138","estado":"AUTOMATICA"},{"nom":"SHEQUE","cate":"PLU","lat":-11.66095,"lon":-76.502300000000005,"ico":"M","cod":"111062","estado":"DIFERIDO"},{"nom":"SIBAYO","cate":"EHA","lat":-15.49422,"lon":-71.463800000000006,"ico":"H","cod":"47265686","estado":"AUTOMATICA"},{"nom":"SIBAYO","cate":"CO","lat":-15.4892,"lon":-71.456959999999995,"ico":"M","cod":"115024","estado":"REAL"},{"nom":"SIBINACOCHA","cate":"EMA","lat":-13.922140000000001,"lon":-71.018230000000003,"ico":"M","cod":"47E8B578","estado":"AUTOMATICA"},{"nom":"SICUANI","cate":"EAMA","lat":-14.237360000000001,"lon":-71.236689999999996,"ico":"M","cod":"4726158C","estado":"AUTOMATICA"},{"nom":"SICUANI","cate":"CO","lat":-14.237360000000001,"lon":-71.236699999999999,"ico":"M","cod":"114033","estado":"REAL"},{"nom":"SIHUAS","cate":"CO","lat":-8.5666700000000002,"lon":-77.650000000000006,"ico":"M","cod":"108047","estado":"REAL"},{"nom":"SINSICAP","cate":"PLU","lat":-7.8502099999999997,"lon":-78.755030000000005,"ico":"M","cod":"107059","estado":"DIFERIDO"},{"nom":"SIPAN","cate":"CO","lat":-6.8014099999999997,"lon":-79.600020000000001,"ico":"M","cod":"106036","estado":"REAL"},{"nom":"SOCOSANI","cate":"EHA","lat":-16.259440000000001,"lon":-71.720560000000006,"ico":"H","cod":"47E27134","estado":"AUTOMATICA"},{"nom":"SOCSI","cate":"HLG","lat":-13.0283,"lon":-76.19453,"ico":"H","cod":"203302","estado":"REAL"},{"nom":"SOCSI","cate":"EHA","lat":-13.02825,"lon":-76.194500000000005,"ico":"H","cod":"472191AC","estado":"AUTOMATICA"},{"nom":"SOCSI CAÑETE","cate":"PE","lat":-13.03051,"lon":-76.200270000000003,"ico":"M","cod":"113140","estado":"REAL"},{"nom":"SONDOR-MATARA","cate":"CO","lat":-7.2368699999999997,"lon":-78.212620000000001,"ico":"M","cod":"107038","estado":"REAL"},{"nom":"SONDORILLO","cate":"CO","lat":-5.3398000000000003,"lon":-79.431370000000001,"ico":"M","cod":"105022","estado":"REAL"},{"nom":"SONDORILLO","cate":"HLM","lat":-5.3392200000000001,"lon":-79.415750000000003,"ico":"H","cod":"220509","estado":"DIFERIDO"},{"nom":"SORAYPAMPA","cate":"EMA","lat":-13.3955,"lon":-72.573599999999999,"ico":"M","cod":"47294362","estado":"AUTOMATICA"},{"nom":"SORITOR","cate":"CO","lat":-6.1420000000000003,"lon":-77.091790000000003,"ico":"M","cod":"106083","estado":"REAL"},{"nom":"SUMBAY","cate":"EHA","lat":-15.81667,"lon":-71.116669999999999,"ico":"H","cod":"472ED434","estado":"AUTOMATICA"},{"nom":"SUMBAY","cate":"HLG","lat":-15.841200000000001,"lon":-71.114599999999996,"ico":"H","cod":"204702","estado":"DIFERIDO"},{"nom":"SUSAPAYA","cate":"CO","lat":-17.347709999999999,"lon":-70.134720000000002,"ico":"M","cod":"117033","estado":"REAL"},{"nom":"TABACONAS","cate":"HLG","lat":-5.3222100000000001,"lon":-79.287790000000001,"ico":"H","cod":"220812","estado":"DIFERIDO"},{"nom":"TABACONAS","cate":"CO","lat":-5.31515,"lon":-79.284880000000001,"ico":"M","cod":"105056","estado":"REAL"},{"nom":"TABALOSOS","cate":"CO","lat":-6.3953300000000004,"lon":-76.625330000000005,"ico":"M","cod":"106043","estado":"REAL"},{"nom":"TAHUACO - YUNGUYO","cate":"CO","lat":-16.307829999999999,"lon":-69.074719999999999,"ico":"M","cod":"116030","estado":"DIFERIDO"},{"nom":"TALABAYA","cate":"CO","lat":-17.552600000000002,"lon":-69.986800000000002,"ico":"M","cod":"117039","estado":"DIFERIDO"},{"nom":"TALLA (GUADALUPE)","cate":"CP","lat":-7.2800500000000001,"lon":-79.4191,"ico":"M","cod":"100136","estado":"DIFERIDO"},{"nom":"TAMANCO","cate":"PLU","lat":-5.7920999999999996,"lon":-74.289000000000001,"ico":"M","cod":"105091","estado":"DIFERIDO"},{"nom":"TAMBO","cate":"CO","lat":-13.69163,"lon":-75.274180000000001,"ico":"M","cod":"113087","estado":"DIFERIDO"},{"nom":"TAMBO GRANDE","cate":"EHA","lat":-4.9384800000000002,"lon":-80.347030000000004,"ico":"H","cod":"47E0522C","estado":"AUTOMATICA"},{"nom":"TAMBOBAMBA","cate":"CO","lat":-13.94492,"lon":-72.175219999999996,"ico":"M","cod":"113059","estado":"REAL"},{"nom":"TAMBOPATA","cate":"EHA","lat":-12.592499999999999,"lon":-69.175290000000004,"ico":"H","cod":"260002","estado":"AUTOMATICA"},{"nom":"TAMBOPATA","cate":"CO","lat":-14.225289999999999,"lon":-69.161779999999993,"ico":"M","cod":"114043","estado":"DIFERIDO"},{"nom":"TAMSHIYACU","cate":"CO","lat":-4.0035600000000002,"lon":-73.161119999999997,"ico":"M","cod":"103049","estado":"REAL"},{"nom":"TAMSHIYACU","cate":"HLM","lat":-4.0031600000000003,"lon":-73.1614,"ico":"H","cod":"240103","estado":"REAL"},{"nom":"TANANTA","cate":"CP","lat":-8.11524,"lon":-76.580489999999998,"ico":"M","cod":"100137","estado":"REAL"},{"nom":"TANCAYLLO","cate":"EMA","lat":-13.63523,"lon":-73.690039999999996,"ico":"M","cod":"113246","estado":"AUTOMATICA"},{"nom":"TANTA","cate":"PE","lat":-12.116669999999999,"lon":-76.016670000000005,"ico":"M","cod":"112130","estado":"DIFERIDO"},{"nom":"TARACO","cate":"CO","lat":-15.311669999999999,"lon":-69.972470000000001,"ico":"M","cod":"115047","estado":"DIFERIDO"},{"nom":"TARAPOTO","cate":"CO","lat":-6.4759700000000002,"lon":-76.37039,"ico":"M","cod":"100138","estado":"REAL"},{"nom":"TARATA","cate":"EMA","lat":-17.479369999999999,"lon":-70.036649999999995,"ico":"M","cod":"47E2D1CC","estado":"AUTOMATICA"},{"nom":"TARATA","cate":"CO","lat":-17.47935,"lon":-70.036630000000002,"ico":"M","cod":"117020","estado":"REAL"},{"nom":"TARMA","cate":"CO","lat":-11.396699999999999,"lon":-75.689899999999994,"ico":"M","cod":"111029","estado":"REAL"},{"nom":"TARMA","cate":"EAMA","lat":-11.396699999999999,"lon":-75.689899999999994,"ico":"M","cod":"47257764","estado":"AUTOMATICA"},{"nom":"TARUCA","cate":"HLM","lat":-9.8503799999999995,"lon":-76.152360000000002,"ico":"H","cod":"230002","estado":"DIFERIDO"},{"nom":"TICAPAMPA","cate":"EHA","lat":-17.476590000000002,"lon":-70.542630000000003,"ico":"H","cod":"214800","estado":"AUTOMATICA"},{"nom":"TICAPAMPA","cate":"EMA","lat":-7.9164099999999999,"lon":-77.901480000000006,"ico":"M","cod":"107130","estado":"AUTOMATICA"},{"nom":"TIMICURILLO","cate":"HLM","lat":-3.5236999999999998,"lon":-73.083399999999997,"ico":"H","cod":"240202","estado":"DIFERIDO"},{"nom":"TINAJONES","cate":"CP","lat":-6.6549300000000002,"lon":-79.427899999999994,"ico":"M","cod":"106049","estado":"DIFERIDO"},{"nom":"TINAJONES","cate":"EMA","lat":-6.65489,"lon":-79.42792,"ico":"M","cod":"47E2F720","estado":"AUTOMATICA"},{"nom":"TINGO DE PONAZA","cate":"PE","lat":-6.9372199999999999,"lon":-76.252669999999995,"ico":"M","cod":"106145","estado":"AUTOMATICA"},{"nom":"TINGO DE PONAZA","cate":"CO","lat":-6.9372199999999999,"lon":-76.252669999999995,"ico":"M","cod":"106119","estado":"REAL"},{"nom":"TINGO GRANDE","cate":"EHA","lat":-16.45992,"lon":-71.574309999999997,"ico":"H","cod":"472EE1AE","estado":"AUTOMATICA"},{"nom":"TINGO GRANDE","cate":"HLG","lat":-16.45992,"lon":-71.574309999999997,"ico":"H","cod":"204708","estado":"REAL"},{"nom":"TINGO MARIA","cate":"EHMA","lat":-9.2960100000000008,"lon":-76.002070000000003,"ico":"H","cod":"47270400","estado":"AUTOMATICA"},{"nom":"TINGO MARIA","cate":"CP","lat":-9.3101599999999998,"lon":-76.000489999999999,"ico":"M","cod":"109027","estado":"REAL"},{"nom":"TINGO MARIA","cate":"HLG","lat":-9.2960100000000008,"lon":-76.002070000000003,"ico":"H","cod":"221820","estado":"REAL"},{"nom":"TISCO","cate":"CO","lat":-15.34577,"lon":-71.447019999999995,"ico":"M","cod":"115098","estado":"DIFERIDO"},{"nom":"TOCACHE","cate":"EHMA","lat":-8.1847499999999993,"lon":-76.507890000000003,"ico":"H","cod":"47E2E456","estado":"AUTOMATICA"},{"nom":"TOCMOCHE","cate":"CO","lat":-6.4100999999999999,"lon":-79.355699999999999,"ico":"M","cod":"106061","estado":"REAL"},{"nom":"TONGOD","cate":"EHMA","lat":-6.7445599999999999,"lon":-78.813919999999996,"ico":"H","cod":"47E207A4","estado":"AUTOMATICA"},{"nom":"TONGORRAPE","cate":"EMA","lat":-6.0669199999999996,"lon":-79.682029999999997,"ico":"M","cod":"47201542","estado":"AUTOMATICA"},{"nom":"TOURNAVISTA","cate":"CO","lat":-8.9274900000000006,"lon":-74.708820000000003,"ico":"M","cod":"108034","estado":"REAL"},{"nom":"TRUJILLO","cate":"CO","lat":-8.1120300000000007,"lon":-78.985100000000003,"ico":"M","cod":"108068","estado":"REAL"},{"nom":"TUCTUMPAYA","cate":"PLU","lat":-16.48827,"lon":-71.334630000000004,"ico":"M","cod":"116078","estado":"AUTOMATICA"},{"nom":"TULUCE","cate":"PLU","lat":-5.4771799999999997,"lon":-79.34742,"ico":"M","cod":"105023","estado":"DIFERIDO"},{"nom":"TULUMAYO","cate":"MAP","lat":-9.1470599999999997,"lon":-76.009439999999998,"ico":"M","cod":"109028","estado":"REAL"},{"nom":"TUMILACA","cate":"HLG","lat":-17.12838,"lon":-70.836889999999997,"ico":"H","cod":"204804","estado":"REAL"},{"nom":"TUMILACA","cate":"PLU","lat":-17.127700000000001,"lon":-70.8369,"ico":"M","cod":"117031","estado":"DIFERIDO"},{"nom":"TUNEL CERO","cate":"CO","lat":-13.259320000000001,"lon":-75.08596,"ico":"M","cod":"113016","estado":"DIFERIDO"},{"nom":"TUNEL CHOTANO","cate":"EHMA","lat":-6.5404900000000001,"lon":-78.784319999999994,"ico":"H","cod":"47E1F02E","estado":"AUTOMATICA"},{"nom":"UBINAS","cate":"CO","lat":-16.3888,"lon":-70.854100000000003,"ico":"M","cod":"100142","estado":"REAL"},{"nom":"UDIMA","cate":"CO","lat":-6.8147399999999996,"lon":-79.093770000000006,"ico":"M","cod":"106068","estado":"REAL"},{"nom":"UNC CAJAMARCA","cate":"EMA","lat":-7.1674699999999998,"lon":-78.493070000000003,"ico":"M","cod":"472645F0","estado":"AUTOMATICA"},{"nom":"UNJF SANCHEZ CARRION - HUACHO","cate":"CP","lat":-11.123860000000001,"lon":-77.606030000000004,"ico":"M","cod":"111163","estado":"REAL"},{"nom":"UPINA","cate":"EAMA","lat":-13.884919999999999,"lon":-70.082809999999995,"ico":"M","cod":"4721B992","estado":"AUTOMATICA"},{"nom":"URUBAMBA","cate":"CP","lat":-13.30517,"lon":-72.124549999999999,"ico":"M","cod":"113034","estado":"REAL"},{"nom":"USQUIL","cate":"EMA","lat":-7.8186,"lon":-78.414969999999997,"ico":"M","cod":"472D60B4","estado":"AUTOMATICA"},{"nom":"VILACOTA","cate":"HLM","lat":-17.078600000000002,"lon":-70.042400000000001,"ico":"H","cod":"211705","estado":"DIFERIDO"},{"nom":"VILACOTA","cate":"EMA","lat":-17.079090000000001,"lon":-70.043019999999999,"ico":"M","cod":"47E2A75C","estado":"AUTOMATICA"},{"nom":"VILACOTA","cate":"CO","lat":-17.079059999999998,"lon":-70.043019999999999,"ico":"M","cod":"117014","estado":"DIFERIDO"},{"nom":"VILCA","cate":"PE","lat":-12.114570000000001,"lon":-75.826170000000005,"ico":"M","cod":"112135","estado":"DIFERIDO"},{"nom":"VILCASHUAMAN","cate":"CO","lat":-13.66882,"lon":-73.952380000000005,"ico":"M","cod":"113100","estado":"REAL"},{"nom":"VILLA MARIA DEL TRIUNFO","cate":"EMA","lat":-12.16639,"lon":-76.920000000000002,"ico":"M","cod":"472A0766","estado":"AUTOMATICA"},{"nom":"VIQUES","cate":"CO","lat":-12.156029999999999,"lon":-75.228300000000004,"ico":"M","cod":"112037","estado":"REAL"},{"nom":"VISCA VISCA","cate":"EMA","lat":-14.722799999999999,"lon":-71.978700000000003,"ico":"M","cod":"114119","estado":"AUTOMATICA"},{"nom":"VISTA FLORIDA","cate":"EMA","lat":-6.7277500000000003,"lon":-79.780879999999996,"ico":"M","cod":"106140","estado":"AUTOMATICA"},{"nom":"VON HUMBOLDT","cate":"EMA","lat":-12.08221,"lon":-76.939440000000005,"ico":"M","cod":"472AC278","estado":"AUTOMATICA"},{"nom":"WAYLLAPAMPA","cate":"CO","lat":-13.076499999999999,"lon":-74.21651,"ico":"M","cod":"112069","estado":"REAL"},{"nom":"YACANGO","cate":"CO","lat":-17.090779999999999,"lon":-70.866990000000001,"ico":"M","cod":"100150","estado":"REAL"},{"nom":"YANAHUANCA","cate":"CO","lat":-10.489599999999999,"lon":-76.512900000000002,"ico":"M","cod":"110007","estado":"REAL"},{"nom":"YANAQUIHUA","cate":"CO","lat":-15.776490000000001,"lon":-72.875839999999997,"ico":"M","cod":"115128","estado":"DIFERIDO"},{"nom":"YANTAC","cate":"CO","lat":-11.345829999999999,"lon":-76.404529999999994,"ico":"M","cod":"111076","estado":"REAL"},{"nom":"YAULI","cate":"PLU","lat":-11.66667,"lon":-76.083330000000004,"ico":"M","cod":"111099","estado":"DIFERIDO"},{"nom":"YAURICOCHA","cate":"PLU","lat":-12.314780000000001,"lon":-75.712090000000003,"ico":"M","cod":"112096","estado":"DIFERIDO"},{"nom":"YAUYOS","cate":"CO","lat":-12.49173,"lon":-75.910390000000007,"ico":"M","cod":"112057","estado":"REAL"},{"nom":"YONAN GORE","cate":"EHA","lat":-7.2559199999999997,"lon":-79.099090000000004,"ico":"H","cod":"4726E508","estado":"AUTOMATICA"},{"nom":"YONAN GORE","cate":"HLM","lat":-7.2559199999999997,"lon":-79.099080000000001,"ico":"H","cod":"201204","estado":"DIFERIDO"},{"nom":"YUNGAY","cate":"CO","lat":-9.1418900000000001,"lon":-77.749979999999994,"ico":"M","cod":"109018","estado":"REAL"},{"nom":"YURA","cate":"PLU","lat":-16.302710000000001,"lon":-71.623949999999994,"ico":"M","cod":"116081","estado":"AUTOMATICA"},{"nom":"ZAPATILLA","cate":"HLM","lat":-16.1386,"lon":-69.578699999999998,"ico":"H","cod":"270503","estado":"REAL"},{"nom":"ÑAÑA","cate":"CO","lat":-11.987439999999999,"lon":-76.841939999999994,"ico":"M","cod":"111023","estado":"REAL"},{"nom":"ÑAÑA","cate":"EMA","lat":-11.987439999999999,"lon":-76.841939999999994,"ico":"M","cod":"111290","estado":"AUTOMATICA"}],"base":"/mapas/mapa-estaciones-ms/"});
+</script>
+    
+
+
+
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-3 col-lg-3">
+                        <div class="ico-leyenda-ms-convencional-m m-1 p-4 tex" style="font-size: 14px;">
+                            Estaci&oacute;n Meteorol&oacute;gica Convencional
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-lg-3">
+                        <div class="ico-leyenda-ms-automatica-m m-1 p-4" style="font-size: 14px;">
+                            Estaci&oacute;n Meteorol&oacute;gica Autom&aacute;tica
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-lg-3">
+                        <div class="ico-leyenda-ms-convencional-h m-1 p-4" style="font-size: 14px;">
+                            Estaci&oacute;n Hidrol&oacute;gica Convencional
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-lg-3">
+                        <div class="ico-leyenda-ms-automatica-h m-1 p-4" style="font-size: 14px;">
+                            Estaci&oacute;n Hidrol&oacute;gica Autom&aacute;tica
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--fin contenido-->
+        </div>
+    </div>
+</div>
+
+<footer class="container-fluid box-bg box-bg-footer footer-web">
+    <div class="row">
+        
+<div class="container pt-5">   
+    <div class="row">
+        <div class="col-lg-6 col-md-12 col-sm-12 py-5">
+            <section>
+                <iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyA0s1a7phLN0iaD6-UE7m4qP-z21pH0eSc&q=SENAMHI+lima+peru"
+                    width="100%" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+            </section>
+        </div>
+        <div class="col-lg-6 col-md-12 col-sm-12">
+            <div class="box-conten-footer">
+                <div class="col-12 col-md-12 col-lg-12">
+                    <h2 class="tittle-line">Contáctenos</h2>
+                </div> 
+                <address>
+                    <strong class="black">SENAMHI - Sede Central</strong><br/>
+                    <span>Jr. Cahuide 785, Jesús María - Lima</span><br/>
+                    <abbr title="Phone" class="black">Central telefónica: </abbr> <a href="tel:+511 6141414">(01) 614 1414</a><br/>
+                    <abbr title="Phone" class="black">Atención al ciudadano: </abbr> <a href="tel:+511 4702867">(01) 470 2867</a> / <a href="tel:+511 998487805">(01) 998 487 805</a><br/>
+                    <abbr title="Phone" class="black">Pronóstico del tiempo: </abbr> <a href="tel:+511 2658798">(01) 265 8798</a> / <a href="tel:+511 996369766">(01) 996 369 766</a><br/>
+                    <abbr title="mail" class="black">Consultas: </abbr> <a href="mailto:atencionalciudadano@senamhi.gob.pe">atencionalciudadano@senamhi.gob.pe</a><br/>
+                    <abbr title="working" class="black">Horario de atención: </abbr>
+                    <br/>Atención al ciudadano: De lunes a viernes de 8:30 a 17:15 Hrs.
+                    <br/>Mesa de partes: De lunes a viernes de 8:30 a 16:45 Hrs. <br/>
+                    <abbr title="working" class="black">Registra tus documentos: </abbr>
+                    <a href="https://www.senamhi.gob.pe/mesadepartesdigital/inicio.do" target="_blank">https://www.senamhi.gob.pe/mesadepartesdigital/inicio.do</a><br/>
+                    <abbr title="mail" class="black">Consulta tu trámite: </abbr>
+                    <a href="https://www.senamhi.gob.pe/consultatutramite/inicio.do" target="_blank">https://www.senamhi.gob.pe/consultatutramite/inicio.do</a><br/>
+                    <a href="tel:+511 982958271">(01) 982 958 271</a>
+                </address> 
+                 
+                <div class="row"> 
+                    <div class="col-8"> 
+                        <aside>
+                            <a href="https://www.facebook.com/senamhiperu" target="_blank" title="enlace facebook puno">
+                               <img src="https://www.senamhi.gob.pe/public/images/logo-bn-rs-facebook.svg" height="25px" class="mr-3"/></a>
+                            <a href="https://twitter.com/senamhiperu" target="_blank" title="enlace twitter puno">
+                               <img src="https://www.senamhi.gob.pe/public/images/logo-bn-rs-twitter.svg" height="25px" class="ml-2 mr-3"/></a>
+                            <a href="https://www.youtube.com/channel/UCSy_etV_nlGLFlq7KTx1e9Q" target="_blank" title="enlace youtube SENAMHI">
+                               <img src="https://www.senamhi.gob.pe/public/images/logo-bn-rs-youtube.svg" height="25px" class="ml-2 mr-3"/></a>
+                            <a href="https://www.flickr.com/photos/senamhiperu/" target="_blank" title="enlace flicker SENAMHI">
+                               <img src="https://www.senamhi.gob.pe/public/images/logo-bn-rs-flickr.svg" height="15px" class="ml-2 mr-3"/></a>
+                            <a href="https://issuu.com/senamhi_peru" target="_blank" title="enlace issuu SENAMHI">
+                               <img src="https://www.senamhi.gob.pe/public/images/logo-bn-rs-issuu.svg" height="25px" class="ml-3"/></a>
+                        </aside> 
+                    </div> 
+                    <div class="col-4 pt-4 m-0">
+                        <a href="https://www.senamhi.gob.pe/?p=libro-reclamaciones">
+                            <img class="img-thumbnail" src="https://www.senamhi.gob.pe/public/images/logo-libro-reclamaciones.jpg"  width="120">
+                        </a>
+                    </div> 
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+        
+<div class="container-fluid box-bg-footer" style="padding: 50px 0 35px 0; background: #062243; min-height: 400px;">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 col-md-4 col-lg-4">
+                <div class="box-conten-footer">
+                    <div class="col-12 col-md-12 col-lg-12">
+                        <h3 class="tittle-line">Institución</h3>
+                    </div>
+                    <ul>
+                        <li><a href="https://www.senamhi.gob.pe/?&p=senamhi">&iquest;Quienes Somos?</a></li>
+                        <li><a href="https://www.senamhi.gob.pe/?&p=organigrama">Organigrama</a></li>
+                        <li><a href="https://www.senamhi.gob.pe/?&p=funcionarios">Funcionarios</a></li>
+                        <li><a href="https://www.senamhi.gob.pe/?&p=sedes">Sedes</a></li>
+                        <li><a href="https://www.senamhi.gob.pe/?&p=normas">Normas Emitidas</a></li>
+                        <li><a href="https://www.senamhi.gob.pe/?&p=control-interno">Control Interno</a></li>
+                        <li><a href="https://www.senamhi.gob.pe/?&p=codigo-de-etica">Codigo de ética</a></li>
+                        <li><a href="https://www.senamhi.gob.pe/?&p=convocatorias">Convocatorias de Empleo</a></li>
+                        <li><a href="https://www.senamhi.gob.pe/?&p=programas-y-proyectos">Programas y Proyectos</a></li>
+                        <li><a href="https://www.senamhi.gob.pe/?&p=prensa">Prensa</a></li>
+                        <li><a href="https://www.senamhi.gob.pe/intranetsenamhi/login.php" target="_blank">Intranet</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-4 col-lg-4">
+                <div class="box-conten-footer">
+                    <div class="col-12 col-md-12 col-lg-12">
+                        <h3 class="tittle-line">Herramientas</h3>
+                    </div>
+                    <ul>
+                    	<li><a href="https://idesep.senamhi.gob.pe/" title="IDESEP" target="_blank"><strong>Infraestructura de Datos Espaciales del SENAMHI PERú - IDESEP</a></strong></li>
+                        <li><a href="https://idesep.senamhi.gob.pe/dhi-idf/" target="_blank">VISOR (Curvas de Intensidad-Duración-Frecuencia)</a></li>
+                        <li><a href="https://www.senamhi.gob.pe/?&p=sinoptica" title="Análisis Meteorológico">Análisis Meteorológico</a></li>
+                        <li><a href="https://www.senamhi.gob.pe/?&p=aviso-meteorologico-historico" title="Análisis Meteorológico">Avisos Meteorológicos anteriores</a></li>
+                        <li><a href="https://www.senamhi.gob.pe/?&p=articulos" title="Art&iacute;culos Cient&iacute;ficos">Art&iacute;culos Cient&iacute;ficos</a></li>
+                        <li><a href="site/incendio" target="_blank" title="Incendios Forestales">Vigilancia Atmosférica de Incendios Forestales</a></li>
+                        <li><a href="https://www.senamhi.gob.pe/site/volcan/" target="_blank" title="Vigilancia de Volcanes">Vigilancia de Volcanes</a></li>
+                        <li><a href="https://www.senamhi.gob.pe/?&p=cambio-climatico" target="_parent" title="Cambio Climático">Cambio Climático</a></li>
+                        <li><a href="http://idesep.senamhi.gob.pe/indicadores/" target="_blank" title="Indicadores Climáticos">Indicadores Climáticos</a></li>
+                        <li><a href="https://web2.senamhi.gob.pe" title="Versión Web anterior">Versión Web anterior</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-4 col-lg-4">
+                <div class="box-conten-footer">
+                    <div class="col-12 col-md-12 col-lg-12">
+                        <h3 class="tittle-line">Enlaces de Interés</h3>
+                    </div>
+                    <ul>
+                        <li><a href="https://www.senamhi.gob.pe/?p=contrataciones-8uit" target="_blank">ASP - 8 UIT</a></li>
+                        <li><a href="https://www.gob.pe/8901" target="_blank">Integridad y Transparencia durante la emergencia sanitaria</a></li>
+                        <li><a href="https://www.minam.gob.pe/" target="_blank">Ministerio del Ambiente</a></li>
+                        <li><a href="https://www.wmo.int/pages/index_es.html" target="_blank">OMM</a></li>
+                        <li><a href="https://erecruit.wmo.int/public/" target="_blank">Anuncios OMM</a></li>
+                        <li><a href="https://www.peru.gob.pe/" target="_blank">Portal del Estado Peruano</a></li>
+                        <li><a href="https://www.congreso.gob.pe/" target="_blank">Congreso de la República</a></li>
+                        <li><a href="https://www.sanciones.gob.pe:8081/transparencia/" target="_blank">RNSDD</a></li>
+                        <li><a href="https://cloudatlas.wmo.int/es/home.html" target="_blank">Atlas Internacional de Nubes - Manual de Observación de nubes y otros meteoros</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>    </div>
+</footer>
+
+<div class="modal" tabindex="-1" role="dialog" id="myModal">
+    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-light text-dark d-none">
+                <!--<h5 class="modal-title"><strong>COMUNICADO</strong></h5>-->
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <img class="img-fluid" src="public/images/banner-www.gob.pe.senamhi.jpg">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+
+<!-- <script>window.jQuery || document.write('<script src="js/vendor/jquery-slim.min.js"><\/script>')</script>-->
+<script src="public/lib/vendor/popper.min.js"></script>
+<script src="public/lib/bootstrap/js/bootstrap.min.js"></script>
+<script src="public/lib/vendor/holder.min.js"></script>
+<script>
+    Holder.addTheme('thumb', {
+        bg: '#55595c',
+        fg: '#eceeef',
+        text: 'Thumbnail'
+    });
+</script>
+<script>
+    //            $(window).scroll(function () {
+    //                if ($("#menu").offset().top > 25) {
+    //                    $("#menu img").css("margin-top", "0");
+    //                    $("#menu img").css("margin-bottom", "0");
+    //                    $(".logo").css("height", "25px");
+    //                    $("nav").css("border-bottom", "4px solid #E93400");
+    //                } else {
+    //                    $("#menu").removeClass("bg-inverse");
+    //                    $("#menu img").css("margin-top", "3px");
+    //                    $("#menu img").css("margin-bottom", "3px");
+    //                    $(".logo").css("height", "35px");
+    //                }
+    //            });
+</script>
+</body>
+</html>

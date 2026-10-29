@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>SENAMHI</title>
+    <link href="/public/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/dashboard.css" rel="stylesheet">
+    <style>
+        .body01 { font-family: Arial, Helvetica, sans-serif; font-size: 10px; text-align: left; font-weight: bold; color: #072C54 }
+    </style>
+    <script src="/public/lib/jquery/jquery-3.2.1.min.js"></script>
+    <script src="/public/lib/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/public/lib/highcharts/highcharts-4.1.7.js"></script>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <ul class="nav nav-tabs" id="tab" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" id="grafico-tab" data-toggle="tab" href="#grafico" role="tab">Gr&aacute;fico</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="tabla-tab" data-toggle="tab" href="#tabla" role="tab">Tabla</a>
+                    </li>
+                </ul>
+                <div class="tab-content" id="tabContent">
+                    <div class="tab-pane fade show active" id="grafico" role="tabpanel">
+                        <div id="container" style="min-width: 300px; height: 300px; margin: 0 auto;"></div>
+                    </div>
+
+                    <div class="tab-pane fade" id="tabla" role="tabpanel">
+                        <div id="captcha-section">
+                            <div class="alert alert-info mt-3" role="alert">
+                                Por favor, verifica que no eres un robot para continuar.
+                            </div>
+                            <div class="cf-turnstile"
+                                data-sitekey="0x4AAAAAAB2uOxvM6ouZ9Hqw"
+                                data-theme="light"
+                                data-size="normal"
+                                data-callback="onCaptchaSuccess">
+                            </div>
+                        </div>
+
+                        <div id="data-section" style="display: none;">
+                            <form name="frmData" id="frmData" method="post" action="datos.php" target="contenedor">
+                                <table width="750" border="0" class="body01" bordercolor="#999999" cellpadding="1" cellspacing="1" align="center">
+                                    <tr>
+                                        <td colspan="7" height="5"></td>
+                                    </tr>
+                                    <tr aling=center bgcolor=#003366>
+                                        <td colspan="7" bgcolor=#666666>
+                                            <div align=center>
+                                                <b>
+                                                    <font color=#F4F4F4>Estaci&oacute;n : MIRAFLORES</font>
+                                                </b>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr aling=center>
+                                        <td><div align="right">Departamento&nbsp;:&nbsp;</div></td>
+                                        <td>PIURA</td>
+                                        <td><div align="right">Provincia&nbsp;:&nbsp;</div></td>
+                                        <td>PIURA</td>
+                                        <td><div align="right">Distrito&nbsp;:&nbsp;</div></td>
+                                        <td>CASTILLA</td>
+                                        <td>
+                                            <div align="center">
+                                                                                                    Ir :
+                                                    <select name="CBOFiltro" id="CBOFiltro" class="dire" onChange="javascript:submit()">
+                                                                                                                    <option value="202610">2026-10</option>
+                                                                                                                    <option value="202609">2026-09</option>
+                                                                                                                    <option value="202608">2026-08</option>
+                                                                                                                    <option value="202607">2026-07</option>
+                                                                                                                    <option value="202606">2026-06</option>
+                                                                                                                    <option value="202605">2026-05</option>
+                                                                                                                    <option value="202604">2026-04</option>
+                                                                                                                    <option value="202603">2026-03</option>
+                                                                                                                    <option value="202602">2026-02</option>
+                                                                                                                    <option value="202601">2026-01</option>
+                                                                                                                    <option value="202512">2025-12</option>
+                                                                                                                    <option value="202511">2025-11</option>
+                                                                                                                    <option value="202510">2025-10</option>
+                                                                                                                    <option value="202105">2021-05</option>
+                                                                                                            </select>
+                                                                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr aling=center>
+                                        <td><div align="right">Latitud&nbsp;:&nbsp;</div></td>
+                                        <td>5°10'31''</td>
+                                        <td><div align="right">Longitud&nbsp;:&nbsp;</div></td>
+                                        <td>80°36'59.55''</td>
+                                        <td><div align="right">Altitud&nbsp;:&nbsp;</div></td>
+                                        <td>34 msnm.</td>
+                                    </tr>
+                                    <tr aling=center>
+                                        <td><div align="right">Tipo&nbsp;:&nbsp;</div></td>
+                                        <td>Automática - Meteorológica</td>
+                                        <td><div align="right">Codigo&nbsp;:&nbsp;</div></td>
+                                        <td>105112</td>
+                                        <td>
+                                            <input type="hidden" name="cf-turnstile-response" id="cf-turnstile-response">
+                                            <input name="estaciones" id="estaciones" type="hidden" value="105112">
+                                        </td>
+                                    </tr>
+                                </table>
+                                <table width=450 align="center">
+                                    <tr>
+                                        <td>
+                                            <div id="frame">
+                                                <iframe id="contenedor" name="contenedor" width="750" marginwidth="0" height="900"
+                                                    marginheight="0" scrolling="YES" align="center" frameborder="0">
+                                                </iframe>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+    <script>
+        function onCaptchaSuccess(token) {
+            document.getElementById("cf-turnstile-response").value = token;
+
+            $('#captcha-section').hide();
+            $('#data-section').show();
+
+            document.getElementById("frmData").submit();
+        }
+
+        $(function () {
+            var titulo = "ESTACIÓN: MIRAFLORES";
+            var subtitulo = "Dep.: PIURA, Prov.: PIURA, Dist.: CASTILLA\u003Cbr\u003ELat.: 5°10\u002731\u0027\u0027 S Long.: 80°36\u002759.55\u0027\u0027 W Alt.: 34 msnm.\u003Cbr\u003ETipo: Automática - Meteorológica\u003Cbr\u003ECódigo: 105112";
+            var categorias = ["2026\/10\/27 - 09","2026\/10\/27 - 10","2026\/10\/27 - 11","2026\/10\/27 - 12","2026\/10\/27 - 13","2026\/10\/27 - 14","2026\/10\/27 - 15","2026\/10\/27 - 16","2026\/10\/27 - 17","2026\/10\/27 - 18","2026\/10\/27 - 19","2026\/10\/27 - 20","2026\/10\/27 - 21","2026\/10\/27 - 22","2026\/10\/27 - 23","2026\/10\/28 - 00","2026\/10\/28 - 01","2026\/10\/28 - 02","2026\/10\/28 - 03","2026\/10\/28 - 04","2026\/10\/28 - 05","2026\/10\/28 - 06","2026\/10\/28 - 07","2026\/10\/28 - 08","2026\/10\/28 - 09","2026\/10\/28 - 10","2026\/10\/28 - 11","2026\/10\/28 - 12","2026\/10\/28 - 13","2026\/10\/28 - 14","2026\/10\/28 - 15","2026\/10\/28 - 16","2026\/10\/28 - 17","2026\/10\/28 - 18","2026\/10\/28 - 19","2026\/10\/28 - 20","2026\/10\/28 - 21","2026\/10\/28 - 22","2026\/10\/28 - 23","2026\/10\/29 - 00","2026\/10\/29 - 01","2026\/10\/29 - 02","2026\/10\/29 - 03","2026\/10\/29 - 04","2026\/10\/29 - 05","2026\/10\/29 - 06","2026\/10\/29 - 07","2026\/10\/29 - 08"];
+
+                        $('#container').highcharts({
+                chart: { zoomType: 'xy' },
+                title: { text: titulo },
+                subtitle: { text: subtitulo },
+                credits: { enabled: false },
+                xAxis: [{ categories: categorias, crosshair: true, labels: { style: { fontSize: '20px' } } }],
+                yAxis: [{
+                    labels: { format: '{value}', style: { color: Highcharts.getOptions().colors[1] } },
+                    title: { text: '<b>Temperatura horaria</b> (°C)', style: { color: Highcharts.getOptions().colors[1] } }
+                }, {
+                    title: { text: '<b>Precipitación horaria</b> (mm/hora)', style: { color: Highcharts.getOptions().colors[0] }, rotation: 270 },
+                    labels: { format: '{value}', style: { color: Highcharts.getOptions().colors[0] } },
+                    opposite: true
+                }],
+                tooltip: { shared: true },
+                series: [{
+                    name: 'Precipitación horaria (mm/hora)',
+                    type: 'column',
+                    yAxis: 1,
+                    data: [0.20000000000000001,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2.6000000000000001,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+                    tooltip: { valueSuffix: ' mm' }
+                }, {
+                    name: 'Temperatura horaria (°C)',
+                    lineWidth: 1,
+                    type: 'spline',
+                    marker: { radius: 2, fillColor: 'white', lineWidth: 2, lineColor: 'red' },
+                    color: 'rgba(247,10,08, .9)',
+                    data: [24.100000000000001,24.800000000000001,27,28.399999999999999,29.699999999999999,29.899999999999999,30.899999999999999,30.5,30,29.800000000000001,28.699999999999999,27,26,26,25.800000000000001,24.600000000000001,24.100000000000001,24.199999999999999,24.300000000000001,24.100000000000001,24.100000000000001,24,24.199999999999999,24.600000000000001,25.199999999999999,26.399999999999999,27.5,29.699999999999999,30.699999999999999,31.699999999999999,32,32.200000000000003,31.300000000000001,30,28.300000000000001,27.100000000000001,26.5,26.300000000000001,25.899999999999999,25.899999999999999,25.800000000000001,25.699999999999999,25.5,25.300000000000001,25.199999999999999,25.100000000000001,25,25.600000000000001],
+                    tooltip: { valueSuffix: '°C' }
+                }]
+            });
+                    });
+    </script>
+</body>
+
+</html>

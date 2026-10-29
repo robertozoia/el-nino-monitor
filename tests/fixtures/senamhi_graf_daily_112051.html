@@ -1,0 +1,281 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>SENAMHI</title>
+    <link href="/public/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/dashboard.css" rel="stylesheet">
+    <style>
+        .body01 { font-family: Arial, Helvetica, sans-serif; font-size: 10px; text-align: left; font-weight: bold; color: #072C54 }
+    </style>
+    <script src="/public/lib/jquery/jquery-3.2.1.min.js"></script>
+    <script src="/public/lib/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/public/lib/highcharts/highcharts-4.1.7.js"></script>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <ul class="nav nav-tabs" id="tab" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" id="grafico-tab" data-toggle="tab" href="#grafico" role="tab">Gr&aacute;fico</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="tabla-tab" data-toggle="tab" href="#tabla" role="tab">Tabla</a>
+                    </li>
+                </ul>
+                <div class="tab-content" id="tabContent">
+                    <div class="tab-pane fade show active" id="grafico" role="tabpanel">
+                        <div id="container" style="min-width: 300px; height: 300px; margin: 0 auto;"></div>
+                    </div>
+
+                    <div class="tab-pane fade" id="tabla" role="tabpanel">
+                        <div id="captcha-section">
+                            <div class="alert alert-info mt-3" role="alert">
+                                Por favor, verifica que no eres un robot para continuar.
+                            </div>
+                            <div class="cf-turnstile"
+                                data-sitekey="0x4AAAAAAB2uOxvM6ouZ9Hqw"
+                                data-theme="light"
+                                data-size="normal"
+                                data-callback="onCaptchaSuccess">
+                            </div>
+                        </div>
+
+                        <div id="data-section" style="display: none;">
+                            <form name="frmData" id="frmData" method="post" action="datos.php" target="contenedor">
+                                <table width="750" border="0" class="body01" bordercolor="#999999" cellpadding="1" cellspacing="1" align="center">
+                                    <tr>
+                                        <td colspan="7" height="5"></td>
+                                    </tr>
+                                    <tr aling=center bgcolor=#003366>
+                                        <td colspan="7" bgcolor=#666666>
+                                            <div align=center>
+                                                <b>
+                                                    <font color=#F4F4F4>Estaci&oacute;n : ACOSTAMBO</font>
+                                                </b>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr aling=center>
+                                        <td><div align="right">Departamento&nbsp;:&nbsp;</div></td>
+                                        <td>HUANCAVELICA</td>
+                                        <td><div align="right">Provincia&nbsp;:&nbsp;</div></td>
+                                        <td>TAYACAJA</td>
+                                        <td><div align="right">Distrito&nbsp;:&nbsp;</div></td>
+                                        <td>ACOSTAMBO</td>
+                                        <td>
+                                            <div align="center">
+                                                                                                    Ir :
+                                                    <select name="CBOFiltro" id="CBOFiltro" class="dire" onChange="javascript:submit()">
+                                                                                                                    <option value="202610">2026-10</option>
+                                                                                                                    <option value="202609">2026-09</option>
+                                                                                                                    <option value="202608">2026-08</option>
+                                                                                                                    <option value="202607">2026-07</option>
+                                                                                                                    <option value="202606">2026-06</option>
+                                                                                                                    <option value="202605">2026-05</option>
+                                                                                                                    <option value="202604">2026-04</option>
+                                                                                                                    <option value="202603">2026-03</option>
+                                                                                                                    <option value="202602">2026-02</option>
+                                                                                                                    <option value="202601">2026-01</option>
+                                                                                                                    <option value="202512">2025-12</option>
+                                                                                                                    <option value="202511">2025-11</option>
+                                                                                                                    <option value="202510">2025-10</option>
+                                                                                                                    <option value="202509">2025-09</option>
+                                                                                                                    <option value="202508">2025-08</option>
+                                                                                                                    <option value="202507">2025-07</option>
+                                                                                                                    <option value="202506">2025-06</option>
+                                                                                                                    <option value="202505">2025-05</option>
+                                                                                                                    <option value="202504">2025-04</option>
+                                                                                                                    <option value="202503">2025-03</option>
+                                                                                                                    <option value="202502">2025-02</option>
+                                                                                                                    <option value="202501">2025-01</option>
+                                                                                                                    <option value="202412">2024-12</option>
+                                                                                                                    <option value="202411">2024-11</option>
+                                                                                                                    <option value="202410">2024-10</option>
+                                                                                                                    <option value="202409">2024-09</option>
+                                                                                                                    <option value="202408">2024-08</option>
+                                                                                                                    <option value="202407">2024-07</option>
+                                                                                                                    <option value="202406">2024-06</option>
+                                                                                                                    <option value="202405">2024-05</option>
+                                                                                                                    <option value="202404">2024-04</option>
+                                                                                                                    <option value="202403">2024-03</option>
+                                                                                                                    <option value="202402">2024-02</option>
+                                                                                                                    <option value="202401">2024-01</option>
+                                                                                                                    <option value="202312">2023-12</option>
+                                                                                                                    <option value="202310">2023-10</option>
+                                                                                                                    <option value="202309">2023-09</option>
+                                                                                                                    <option value="202308">2023-08</option>
+                                                                                                                    <option value="202307">2023-07</option>
+                                                                                                                    <option value="202306">2023-06</option>
+                                                                                                                    <option value="202305">2023-05</option>
+                                                                                                                    <option value="202304">2023-04</option>
+                                                                                                                    <option value="202303">2023-03</option>
+                                                                                                                    <option value="202302">2023-02</option>
+                                                                                                                    <option value="202301">2023-01</option>
+                                                                                                                    <option value="202212">2022-12</option>
+                                                                                                                    <option value="202211">2022-11</option>
+                                                                                                                    <option value="202210">2022-10</option>
+                                                                                                                    <option value="202209">2022-09</option>
+                                                                                                                    <option value="202208">2022-08</option>
+                                                                                                                    <option value="202207">2022-07</option>
+                                                                                                                    <option value="202206">2022-06</option>
+                                                                                                                    <option value="202205">2022-05</option>
+                                                                                                                    <option value="202204">2022-04</option>
+                                                                                                                    <option value="202203">2022-03</option>
+                                                                                                                    <option value="202202">2022-02</option>
+                                                                                                                    <option value="202201">2022-01</option>
+                                                                                                                    <option value="202112">2021-12</option>
+                                                                                                                    <option value="202111">2021-11</option>
+                                                                                                                    <option value="202110">2021-10</option>
+                                                                                                                    <option value="202109">2021-09</option>
+                                                                                                                    <option value="202108">2021-08</option>
+                                                                                                                    <option value="202107">2021-07</option>
+                                                                                                                    <option value="202106">2021-06</option>
+                                                                                                                    <option value="202105">2021-05</option>
+                                                                                                                    <option value="202104">2021-04</option>
+                                                                                                                    <option value="202103">2021-03</option>
+                                                                                                                    <option value="202102">2021-02</option>
+                                                                                                                    <option value="202101">2021-01</option>
+                                                                                                                    <option value="202012">2020-12</option>
+                                                                                                                    <option value="202011">2020-11</option>
+                                                                                                                    <option value="202010">2020-10</option>
+                                                                                                                    <option value="202009">2020-09</option>
+                                                                                                                    <option value="202008">2020-08</option>
+                                                                                                                    <option value="202007">2020-07</option>
+                                                                                                                    <option value="202006">2020-06</option>
+                                                                                                                    <option value="202005">2020-05</option>
+                                                                                                                    <option value="202004">2020-04</option>
+                                                                                                                    <option value="202003">2020-03</option>
+                                                                                                                    <option value="202002">2020-02</option>
+                                                                                                                    <option value="202001">2020-01</option>
+                                                                                                                    <option value="201912">2019-12</option>
+                                                                                                                    <option value="201911">2019-11</option>
+                                                                                                                    <option value="201910">2019-10</option>
+                                                                                                                    <option value="201909">2019-09</option>
+                                                                                                                    <option value="201908">2019-08</option>
+                                                                                                                    <option value="201907">2019-07</option>
+                                                                                                                    <option value="201906">2019-06</option>
+                                                                                                                    <option value="201905">2019-05</option>
+                                                                                                                    <option value="201904">2019-04</option>
+                                                                                                                    <option value="201903">2019-03</option>
+                                                                                                                    <option value="201902">2019-02</option>
+                                                                                                                    <option value="201901">2019-01</option>
+                                                                                                                    <option value="201812">2018-12</option>
+                                                                                                                    <option value="201811">2018-11</option>
+                                                                                                                    <option value="201810">2018-10</option>
+                                                                                                                    <option value="201809">2018-09</option>
+                                                                                                                    <option value="201808">2018-08</option>
+                                                                                                                    <option value="201807">2018-07</option>
+                                                                                                                    <option value="201806">2018-06</option>
+                                                                                                                    <option value="201805">2018-05</option>
+                                                                                                                    <option value="201804">2018-04</option>
+                                                                                                                    <option value="201803">2018-03</option>
+                                                                                                                    <option value="201802">2018-02</option>
+                                                                                                                    <option value="201801">2018-01</option>
+                                                                                                                    <option value="201712">2017-12</option>
+                                                                                                            </select>
+                                                                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr aling=center>
+                                        <td><div align="right">Latitud&nbsp;:&nbsp;</div></td>
+                                        <td>12°21'38.8''</td>
+                                        <td><div align="right">Longitud&nbsp;:&nbsp;</div></td>
+                                        <td>75°3'26.1''</td>
+                                        <td><div align="right">Altitud&nbsp;:&nbsp;</div></td>
+                                        <td>3603 msnm.</td>
+                                    </tr>
+                                    <tr aling=center>
+                                        <td><div align="right">Tipo&nbsp;:&nbsp;</div></td>
+                                        <td>Convencional - Meteorológica</td>
+                                        <td><div align="right">Codigo&nbsp;:&nbsp;</div></td>
+                                        <td>000625</td>
+                                        <td>
+                                            <input type="hidden" name="cf-turnstile-response" id="cf-turnstile-response">
+                                            <input name="estaciones" id="estaciones" type="hidden" value="112051">
+                                        </td>
+                                    </tr>
+                                </table>
+                                <table width=450 align="center">
+                                    <tr>
+                                        <td>
+                                            <div id="frame">
+                                                <iframe id="contenedor" name="contenedor" width="750" marginwidth="0" height="900"
+                                                    marginheight="0" scrolling="YES" align="center" frameborder="0">
+                                                </iframe>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+    <script>
+        function onCaptchaSuccess(token) {
+            document.getElementById("cf-turnstile-response").value = token;
+
+            $('#captcha-section').hide();
+            $('#data-section').show();
+
+            document.getElementById("frmData").submit();
+        }
+
+        $(function () {
+            var titulo = "ESTACIÓN: ACOSTAMBO";
+            var subtitulo = "Dep.: HUANCAVELICA, Prov.: TAYACAJA, Dist.: ACOSTAMBO\u003Cbr\u003ELat.: 12°21\u002738.8\u0027\u0027 S Long.: 75°3\u002726.1\u0027\u0027 W Alt.: 3603 msnm.\u003Cbr\u003ETipo: Convencional - Meteorológica\u003Cbr\u003ECódigo: 000625";
+            var categorias = ["2026-09-27","2026-09-28","2026-09-29","2026-09-30","2026-10-01","2026-10-02","2026-10-03","2026-10-04","2026-10-05","2026-10-06","2026-10-07","2026-10-08","2026-10-09","2026-10-10","2026-10-11","2026-10-12","2026-10-13","2026-10-14","2026-10-15","2026-10-16","2026-10-17","2026-10-18","2026-10-19","2026-10-20","2026-10-21","2026-10-22","2026-10-24","2026-10-25","2026-10-26","2026-10-27"];
+
+                        $('#container').highcharts({
+                chart: { zoomType: 'xy' },
+                title: { text: titulo },
+                subtitle: { text: subtitulo },
+                credits: { enabled: false },
+                xAxis: [{ categories: categorias, crosshair: true }],
+                yAxis: [{
+                    labels: { format: '{value}', style: { color: Highcharts.getOptions().colors[1] } },
+                    title: { text: '<b>Temperatura</b> (°C)', style: { color: Highcharts.getOptions().colors[1] } }
+                }, {
+                    title: { text: '<b>Precipitación</b> (mm/día)', style: { color: Highcharts.getOptions().colors[0] }, rotation: 270 },
+                    labels: { format: '{value}', style: { color: Highcharts.getOptions().colors[0] } },
+                    opposite: true
+                }],
+                tooltip: { shared: true },
+                series: [{
+                    name: 'Precipitación',
+                    type: 'column',
+                    yAxis: 1,
+                    data: [0,0,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2.1000000000000001,1,0.20000000000000001,0,11,0,0,1.5,5.4000000000000004,0,null],
+                    tooltip: { valueSuffix: ' mm' }
+                }, {
+                    name: 'Temp. max',
+                    lineWidth: 1,
+                    type: 'spline',
+                    marker: { radius: 2, fillColor: 'white', lineWidth: 2, lineColor: 'red' },
+                    color: 'rgba(247,10,08, .9)',
+                    data: [14.4,17.199999999999999,16.199999999999999,19.199999999999999,19.600000000000001,19.399999999999999,21,21.800000000000001,21.199999999999999,21,20,21.199999999999999,19.800000000000001,19.399999999999999,20.600000000000001,21.399999999999999,21.800000000000001,21,20.199999999999999,20.600000000000001,20.199999999999999,20.800000000000001,19.399999999999999,17.600000000000001,17.199999999999999,15.800000000000001,18.800000000000001,17.600000000000001,21.199999999999999,null],
+                    tooltip: { valueSuffix: '°C' }
+                }, {
+                    name: 'Temp. min',
+                    lineWidth: 1,
+                    type: 'spline',
+                    marker: { radius: 2, fillColor: 'white', lineWidth: 2, lineColor: 'blue' },
+                    color: 'rgba(48,69,232,.9)',
+                    data: [4.2000000000000002,6,7.5999999999999996,-2,-6.4000000000000004,-0.80000000000000004,-3.7999999999999998,-3.6000000000000001,-0.20000000000000001,-2.6000000000000001,-1.2,-0.40000000000000002,1.3999999999999999,4,1.6000000000000001,-1.3999999999999999,-3.3999999999999999,0.20000000000000001,3.6000000000000001,1.2,2.2000000000000002,1.6000000000000001,0.40000000000000002,6.5999999999999996,5.4000000000000004,5,5.2000000000000002,4.4000000000000004,3.7999999999999998,5],
+                    tooltip: { valueSuffix: '°C' }
+                }]
+            });
+                    });
+    </script>
+</body>
+
+</html>

@@ -4,6 +4,7 @@ pub mod enfen;
 pub mod gdacs;
 pub mod indices;
 pub mod oisst;
+pub mod senamhi;
 
 use crate::db;
 use crate::fetch::Ctx;
@@ -140,6 +141,18 @@ pub static REGISTRY: &[SourceDef] = &[
         cadence_es: "Diaria, retraso de 2–7 días (pentadas)",
     },
     SourceDef {
+        id: "senamhi",
+        org: "SENAMHI (Perú)",
+        name_en: "Daily rain-gauge precipitation, real-time conventional stations",
+        name_es: "Precipitación diaria de pluviómetros, estaciones convencionales en tiempo real",
+        url: "https://www.senamhi.gob.pe/?p=estaciones",
+        license: "Public data, Government of Peru — cite SENAMHI",
+        poll: DAY,
+        expected: 3 * DAY,
+        cadence_en: "Daily (~1 day lag)",
+        cadence_es: "Diaria (~1 día de retraso)",
+    },
+    SourceDef {
         id: "gdacs",
         org: "GDACS (European Commission JRC / UN OCHA)",
         name_en: "Global disaster alerts: floods, droughts, cyclones, wildfires",
@@ -181,6 +194,7 @@ async fn dispatch(ctx: &Ctx, id: &str) -> Result<bool> {
         "enfen" => enfen::run(ctx).await,
         "oisst" => oisst::run(ctx).await,
         "chirps" => chirps::run(ctx).await,
+        "senamhi" => senamhi::run(ctx).await,
         "gdacs" => gdacs::run(ctx).await,
         "ncei_global" => indices::run_ncei_global(ctx).await,
         _ => bail!("unknown source {id}"),

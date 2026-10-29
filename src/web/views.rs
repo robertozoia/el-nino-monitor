@@ -255,7 +255,7 @@ pub fn kpis(conn: &Connection, l: &L) -> Result<Vec<Value>> {
 /// Department daily precipitation rows for the Peru page: latest day, 7/30-day totals,
 /// sparkline, plus the department list (with chart defaults) and overall freshness.
 pub fn peru_precip(conn: &Connection, l: &L) -> Result<Value> {
-    use crate::sources::chirps;
+    use crate::sources::{chirps, senamhi};
     let depts = chirps::departments();
     let today = chrono::Utc::now().date_naive();
     fn name<'a>(l: &L, d: &'a chirps::Department) -> &'a str {
@@ -311,13 +311,51 @@ pub fn peru_precip(conn: &Connection, l: &L) -> Result<Value> {
             "spark": sparkline(&spark_pts),
         }));
     }
+    // SENAMHI gauge totals cover the same days as the CHIRPS columns so the two compare
+    // directly; without CHIRPS data they end at the latest gauge day instead.
+    let gauge_latest: Option<String> = conn.query_row(
+        "SELECT MAX(t) FROM observation WHERE series_id LIKE 'senamhi_precip_%'",
+        [],
+        |r| r.get(0),
+    )?;
+    let gauge_end = latest_all.clone().or_else(|| gauge_latest.clone());
+    if let Some(end) = gauge_end.as_deref() {
+        for (row, d) in rows.iter_mut().zip(depts) {
+            let total = |days| gauge_total(conn, &senamhi::dept_series_id(d), end, days);
+            let stations: Option<f64> = conn.query_row(
+                "SELECT MAX(value) FROM observation WHERE series_id=?1 AND t > ?2 AND t <= ?3",
+                params![senamhi::count_series_id(d), days_before(end, 30), end],
+                |r| r.get(0),
+            )?;
+            row["gauge7"] = json!(total(7)?.map(mm));
+            row["gauge30"] = json!(total(30)?.map(mm));
+            row["stations"] = json!(stations.map(|n| n as i64));
+        }
+    }
     let lag_days = latest_all.as_deref().and_then(parse_date).map(|d| (today - d).num_days());
     Ok(json!({
         "latest": latest_all.as_deref().map(|t| fmt_date(l, t)),
         "lag_days": lag_days,
+        "gauges": gauge_latest.is_some(),
+        "gauge_latest": gauge_latest.as_deref().map(|t| fmt_date(l, t)),
         "series": series,
         "rows": rows,
     }))
+}
+
+fn days_before(iso: &str, days: i64) -> String {
+    parse_date(iso).map_or_else(|| iso.to_string(), |d| (d - chrono::Duration::days(days)).to_string())
+}
+
+/// Sum of a department's daily gauge means over the `days` ending at `end`, or None
+/// when more than one day in seven has no station report.
+fn gauge_total(conn: &Connection, series_id: &str, end: &str, days: i64) -> Result<Option<f64>> {
+    let (n, sum): (i64, f64) = conn.query_row(
+        "SELECT COUNT(*), COALESCE(SUM(value), 0) FROM observation WHERE series_id=?1 AND t > ?2 AND t <= ?3",
+        params![series_id, days_before(end, days), end],
+        |r| Ok((r.get(0)?, r.get(1)?)),
+    )?;
+    Ok((n >= days - (days + 6) / 7).then_some(sum))
 }
 
 // ------------------------------------------------------------------ official status

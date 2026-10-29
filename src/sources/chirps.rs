@@ -120,6 +120,29 @@ pub fn series_id(dept: &Department) -> String {
     format!("precip_{}", dept.code)
 }
 
+/// Department containing a point, or the nearest department cell within `radius` cells
+/// (coastal stations can sit just outside the 0.05° land mask).
+pub fn department_at(lat: f64, lon: f64, radius: i64) -> Option<&'static Department> {
+    let m = mask();
+    let r0 = ((m.lat_top - lat) / CELL).round() as i64;
+    let c0 = ((lon - m.lon0) / CELL).round() as i64;
+    let mut best: Option<(i64, usize)> = None;
+    for dr in -radius..=radius {
+        for dc in -radius..=radius {
+            let (r, c) = (r0 + dr, c0 + dc);
+            if r < 0 || c < 0 || r >= m.nrows as i64 || c >= m.ncols as i64 {
+                continue;
+            }
+            let d = m.bytes[r as usize * m.ncols + c as usize] as usize;
+            let dist = dr * dr + dc * dc;
+            if d < m.departments.len() && best.is_none_or(|(b, _)| dist < b) {
+                best = Some((dist, d));
+            }
+        }
+    }
+    best.map(|(_, d)| &m.departments[d])
+}
+
 /// Window position inside the full grid, as (row0, col0).
 fn window_offset() -> (usize, usize) {
     let m = mask();

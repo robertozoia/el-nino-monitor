@@ -72,6 +72,22 @@
   <div class="table-wrap" style="margin-top:14px">
     <table>
       <thead>
+        {% if d.precip.gauges %}
+        <tr>
+          <th rowspan="2">{{ t.department }}</th>
+          <th rowspan="2" class="num">{{ t.precip_last }}{% if d.precip.latest %} · {{ d.precip.latest }}{% endif %}</th>
+          <th colspan="2" class="num">{{ t.precip_7d }}</th>
+          <th colspan="2" class="num">{{ t.precip_30d }}</th>
+          <th rowspan="2" class="num">{{ t.precip_stations }}</th>
+          <th rowspan="2" class="num">{{ t.precip_trend }}</th>
+        </tr>
+        <tr>
+          <th class="num">{{ t.precip_sat }}</th>
+          <th class="num">SENAMHI</th>
+          <th class="num">{{ t.precip_sat }}</th>
+          <th class="num">SENAMHI</th>
+        </tr>
+        {% else %}
         <tr>
           <th>{{ t.department }}</th>
           <th class="num">{{ t.precip_last }}{% if d.precip.latest %} · {{ d.precip.latest }}{% endif %}</th>
@@ -79,6 +95,7 @@
           <th class="num">{{ t.precip_30d }}</th>
           <th class="num">{{ t.precip_trend }}</th>
         </tr>
+        {% endif %}
       </thead>
       <tbody>
         {% for row in d.precip.rows %}
@@ -86,7 +103,10 @@
           <td>{{ row.name }}</td>
           <td class="num">{% if row.latest %}{{ row.latest }}{% else %}—{% endif %}</td>
           <td class="num">{% if row.last7 %}{{ row.last7 }}{% else %}—{% endif %}</td>
+          {% if d.precip.gauges %}<td class="num">{% if row.gauge7 %}{{ row.gauge7 }}{% else %}—{% endif %}</td>{% endif %}
           <td class="num">{% if row.last30 %}{{ row.last30 }}{% else %}—{% endif %}</td>
+          {% if d.precip.gauges %}<td class="num">{% if row.gauge30 %}{{ row.gauge30 }}{% else %}—{% endif %}</td>
+          <td class="num">{% if row.stations %}{{ row.stations }}{% else %}—{% endif %}</td>{% endif %}
           <td class="num">{% if row.spark %}
             <svg class="precip-spark" viewBox="0 0 {{ row.spark.w }} {{ row.spark.h }}" aria-hidden="true">
               <line class="zero" x1="0" x2="{{ row.spark.w }}" y1="{{ row.spark.zero }}" y2="{{ row.spark.zero }}"/>
@@ -100,7 +120,7 @@
     </table>
   </div>
   {% else %}<div class="empty">{{ t.no_data_yet }}</div>{% endif %}
-  <div class="card-foot">{{ t.source }}: <a href="https://www.chc.ucsb.edu/data/chirps3" rel="noopener">UCSB CHC — CHIRPS v3.0</a>. {{ t.precip_note }}</div>
+  <div class="card-foot">{{ t.source }}: <a href="https://www.chc.ucsb.edu/data/chirps3" rel="noopener">UCSB CHC — CHIRPS v3.0</a>{% if d.precip.gauges %}; <a href="https://www.senamhi.gob.pe/?p=estaciones" rel="noopener">SENAMHI</a>{% if d.precip.gauge_latest %} ({{ t.precip_as_of|lower }} {{ d.precip.gauge_latest }}){% endif %}{% endif %}. {{ t.precip_note }}{% if d.precip.gauges %} {{ t.precip_gauge_note }}{% endif %}</div>
 </section>
 
 <section class="section grid grid-2">
