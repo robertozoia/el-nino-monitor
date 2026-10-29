@@ -61,6 +61,12 @@
     {% if d.precip.latest %}<span class="status status-ok">{{ t.precip_as_of }} {{ d.precip.latest }}</span>{% endif %}
   </div>
   {% if d.precip.series %}
+  {% if d.precip.gauges %}
+  <div class="seg" role="group" aria-label="{{ t.precip_source }}" id="precip-source" style="margin-bottom:10px">
+    <button type="button" data-source="chirps" aria-pressed="true">{{ t.precip_sat }}</button>
+    <button type="button" data-source="senamhi" aria-pressed="false">{{ t.precip_gauges_label }}</button>
+  </div>
+  {% endif %}
   <div id="chart-precip" class="chart tall loading">{{ t.loading }}</div>
   <div class="chips" id="precip-chips">
     {% for s in d.precip.series %}

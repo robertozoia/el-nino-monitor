@@ -73,23 +73,34 @@ async function n12Chart() {
   }));
 }
 
-/** Daily precipitation by department: bars with chip toggles (CHIRPS v3.0). */
+/** Daily precipitation by department: bars with chip toggles, from the CHIRPS satellite
+ *  estimate or the SENAMHI station means (conventional and automatic gauges). */
 async function precipChart() {
   const meta = window.DATA?.precip;
   const chartEl = document.getElementById("chart-precip");
   if (!meta?.series?.length || !chartEl) return;
   const from = new Date(Date.now() - 130 * 864e5).toISOString().slice(0, 10);
   const selected = new Set(meta.series.filter((s) => s.default).map((s) => s.code));
-  const byCode = new Map();
-  try {
+  const seriesId = { chirps: (code) => `precip_${code}`, senamhi: (code) => `senamhi_precip_${code}` };
+  const loaded = { chirps: null, senamhi: null };
+  const load = async (source) => {
+    if (loaded[source]) return loaded[source];
     const all = await Promise.all(
-      meta.series.map((s) => getJSON(`/api/series/precip_${s.code}?from=${from}`).catch(() => ({ points: [] }))),
+      meta.series.map((s) => getJSON(`/api/series/${seriesId[source](s.code)}?from=${from}`).catch(() => ({ points: [] }))),
     );
-    meta.series.forEach((s, i) => byCode.set(s.code, all[i]));
+    loaded[source] = new Map(meta.series.map((s, i) => [s.code, all[i]]));
+    return loaded[source];
+  };
+  const hasData = (byCode) => [...byCode.values()].some((s) => s.points.length);
+
+  let source = "chirps";
+  try {
+    // Show the gauges first when there is no satellite data yet.
+    if (!hasData(await load("chirps")) && meta.gauges && hasData(await load("senamhi"))) source = "senamhi";
   } catch (e) {
     return showError("chart-precip");
   }
-  if (![...byCode.values()].some((s) => s.points.length)) return showError("chart-precip");
+  if (!hasData(loaded[source])) return showError("chart-precip");
 
   const chart = mountChart("chart-precip", (k) => ({
     ...base(k),
@@ -110,15 +121,32 @@ async function precipChart() {
       .map((s, i) => ({
         name: s.name,
         type: "bar",
-        data: byCode.get(s.code).points,
+        data: loaded[source].get(s.code).points,
         barGap: "0%",
         barCategoryGap: "30%",
         itemStyle: { color: k.series[i % k.series.length] },
       })),
   }));
+  if (!chart) return;
+
+  const picker = document.getElementById("precip-source");
+  const press = () => picker?.querySelectorAll("button").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.source === source)));
+  press();
+  picker?.addEventListener("click", async (e) => {
+    const b = e.target.closest("button");
+    if (!b || b.dataset.source === source) return;
+    try {
+      await load(b.dataset.source);
+    } catch (err) {
+      return;
+    }
+    source = b.dataset.source;
+    press();
+    chart.rerender();
+  });
 
   const chips = document.getElementById("precip-chips");
-  if (!chips || !chart) return;
+  if (!chips) return;
   chips.querySelectorAll(".chip").forEach((b) => {
     b.addEventListener("click", () => {
       const code = b.dataset.code;
