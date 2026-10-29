@@ -1,5 +1,6 @@
 /target
 /data
+/inbox
 /.claude
 .DS_Store
 .env

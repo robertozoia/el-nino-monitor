@@ -13,6 +13,9 @@ pub struct Config {
     pub sst_days: i64,
     /// How many daily precipitation frames to keep and backfill.
     pub precip_days: i64,
+    /// When set, the SENAMHI source imports this export file (pushed by a relay that
+    /// can reach SENAMHI) instead of fetching from SENAMHI itself.
+    pub senamhi_inbox: Option<PathBuf>,
 }
 
 impl Config {
@@ -27,6 +30,7 @@ impl Config {
             scheduler: env("SCHEDULER", "on") != "off",
             sst_days: env("SST_DAYS", "90").parse().unwrap_or(90),
             precip_days: env("PRECIP_DAYS", "120").parse().unwrap_or(120),
+            senamhi_inbox: Some(env("SENAMHI_INBOX", "")).filter(|s| !s.is_empty()).map(PathBuf::from),
         }
     }
 }

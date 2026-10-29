@@ -50,7 +50,8 @@ DATA_DIR=./data cargo run --release      # http://127.0.0.1:8080
 
 Environment variables: `DATA_DIR` (./data), `BIND` (127.0.0.1:8080), `ASSETS_DIR` (.),
 `CONTACT` (put in the User-Agent so data providers can reach you), `SST_DAYS` (90),
-`PRECIP_DAYS` (120), `SCHEDULER=off` (serve without fetching), `RUST_LOG`.
+`PRECIP_DAYS` (120), `SENAMHI_INBOX` (import a relayed SENAMHI export instead of
+fetching, see below), `SCHEDULER=off` (serve without fetching), `RUST_LOG`.
 
 Tip: if the repo lives in Dropbox, set `CARGO_TARGET_DIR` outside it so build
 artefacts are not synced.
@@ -74,6 +75,50 @@ Backups: `deploy/backup.sh` (nightly cron) copies a consistent SQLite snapshot o
 the container. The SST grids (`/data/grids`) can be re-downloaded with `backfill`.
 
 Updating: `git pull && docker compose build && docker compose up -d`.
+
+### SENAMHI relay (home box)
+
+SENAMHI drops connections from some server networks, including our VPS. A box on a
+network SENAMHI accepts (here a Linux mini PC at home) runs the fetch once a day,
+exports the stations and daily series to one JSON file, and copies it into an inbox on
+the VPS with rsync over SSH. With `SENAMHI_INBOX` set, the VPS imports that file hourly
+instead of fetching. The import validates every station, series id, date and value
+before writing anything. If the file is more than 3 days old, the source shows an error
+on the sources page.
+
+On the VPS:
+
+```sh
+mkdir -p /opt/el-nino/inbox              # before compose creates it as root
+echo 'SENAMHI_INBOX=/inbox/senamhi.json' >> .env
+docker compose up -d
+```
+
+Then add the relay's public key to `~/.ssh/authorized_keys`, restricted to writing
+files into the inbox (no shell, no forwarding). `rrsync` ships with rsync: it is in
+`/usr/bin` on recent Debian/Ubuntu, and older releases keep it in
+`/usr/share/doc/rsync/scripts/` to copy into place.
+
+```
+command="rrsync -wo /opt/el-nino/inbox",restrict ssh-ed25519 AAAA… senamhi-relay
+```
+
+On the relay box (needs Rust and rsync; files in `deploy/senamhi-relay/`):
+
+```sh
+cargo build --release && install -Dm755 target/release/elnino ~/.local/bin/elnino
+install -Dm755 deploy/senamhi-relay/senamhi-relay.sh ~/.local/bin/senamhi-relay.sh
+install -Dm644 deploy/senamhi-relay/senamhi-relay.env.example ~/.config/elnino-relay.env  # edit it
+install -Dm644 -t ~/.config/systemd/user deploy/senamhi-relay/senamhi-relay.{service,timer}
+ssh-keygen -t ed25519 -f ~/.ssh/elnino-relay -N '' -C senamhi-relay   # key for the VPS
+systemctl --user daemon-reload
+systemctl --user start senamhi-relay.service     # first run (~40 min); then check:
+journalctl --user -u senamhi-relay -e
+systemctl --user enable --now senamhi-relay.timer   # daily at 09:30 Lima time
+sudo loginctl enable-linger "$USER"                 # run the timer without a login
+```
+
+Updating the relay: `git pull`, rebuild, and reinstall the binary.
 
 ## Layout
 

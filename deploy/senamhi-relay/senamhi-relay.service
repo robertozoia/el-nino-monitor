@@ -1,0 +1,14 @@
+[Unit]
+Description=Fetch SENAMHI station data and upload it to the El Niño monitor VPS
+Wants=network-online.target
+After=network-online.target
+# Up to 3 attempts within 4 hours, 30 minutes apart.
+StartLimitIntervalSec=4h
+StartLimitBurst=3
+
+[Service]
+Type=oneshot
+ExecStart=%h/.local/bin/senamhi-relay.sh
+Restart=on-failure
+RestartSec=30min
+Environment=RUST_LOG=info

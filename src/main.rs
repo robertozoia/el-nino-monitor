@@ -16,6 +16,8 @@ const USAGE: &str = "usage:
   elnino backfill                   fetch everything, including the full SST frame window
   elnino add-link <org> <title> <url> [YYYY-MM-DD]
                                     add a curated publication link (WMO, BoM, ...)
+  elnino export-senamhi <file>      write SENAMHI stations and daily series (relay side)
+  elnino import-senamhi <file>      import a SENAMHI export by hand (see SENAMHI_INBOX)
   elnino sources                    list source ids";
 
 /// Runs a frame source's `sync` in batches until complete. An unreachable provider
@@ -110,6 +112,27 @@ async fn main() -> Result<()> {
                 rusqlite::params![org, title, url, args.get(4)],
             )?;
             println!("saved");
+            Ok(())
+        }
+        "export-senamhi" => {
+            let out = std::path::PathBuf::from(args.get(1).context(USAGE)?);
+            let since = (chrono::Utc::now().date_naive() - chrono::Duration::days(sources::senamhi::RECOMPUTE_DAYS)).to_string();
+            let conn = ctx.db.get()?;
+            let export = sources::senamhi::export(&conn, &since)?;
+            // Write then rename, so a reader never sees a partial file.
+            let tmp = out.with_extension("json.tmp");
+            std::fs::write(&tmp, serde_json::to_vec(&export)?).with_context(|| format!("writing {}", tmp.display()))?;
+            std::fs::rename(&tmp, &out).with_context(|| format!("renaming to {}", out.display()))?;
+            println!("exported {} stations, {} series to {}", export.stations.len(), export.series.len(), out.display());
+            Ok(())
+        }
+        "import-senamhi" => {
+            let path = std::path::PathBuf::from(args.get(1).context(USAGE)?);
+            let export = sources::senamhi::read_export(&path)?;
+            let mut conn = ctx.db.get()?;
+            let changed = sources::senamhi::import(&mut conn, &export)?;
+            ctx.bump();
+            println!("imported export from {}: {changed} values changed", export.generated);
             Ok(())
         }
         "sources" => {

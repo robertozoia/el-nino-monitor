@@ -178,6 +178,16 @@ pub static REGISTRY: &[SourceDef] = &[
     },
 ];
 
+/// Polling interval for a source. Importing a relayed SENAMHI export is cheap, so the
+/// inbox is checked hourly to pick up uploads soon after they land.
+pub fn poll_secs(cfg: &crate::config::Config, def: &SourceDef) -> u64 {
+    if def.id == "senamhi" && cfg.senamhi_inbox.is_some() {
+        HOUR
+    } else {
+        def.poll
+    }
+}
+
 pub fn def(id: &str) -> Option<&'static SourceDef> {
     REGISTRY.iter().find(|d| d.id == id)
 }

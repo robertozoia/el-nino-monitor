@@ -12,6 +12,8 @@ services:
       CONTACT: "${CONTACT:-admin@example.com}"   # sent in the User-Agent to data providers
       SST_DAYS: "90"
       RUST_LOG: "info,tower_http=warn"
+      # Set to /inbox/senamhi.json in .env when a relay uploads SENAMHI data (see README).
+      SENAMHI_INBOX: "${SENAMHI_INBOX:-}"
     # Public resolvers: some Peruvian government domains (igp.gob.pe, imarpe.gob.pe)
     # have flaky authoritative DNS, and VPS-provider resolvers tend to cache failures.
     dns:
@@ -20,6 +22,8 @@ services:
       - 9.9.9.9
     volumes:
       - elnino-data:/data
+      # SENAMHI relay uploads; create it (owned by the upload user) before `up`.
+      - ./inbox:/inbox:ro
     mem_limit: 256m
     logging:
       driver: json-file

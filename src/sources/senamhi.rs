@@ -13,6 +13,10 @@
 //! twice. Stations are assigned to departments through the CHIRPS mask, and each
 //! department gets a daily mean over the stations that reported that day, plus a daily
 //! count of those stations.
+//!
+//! Where SENAMHI is unreachable (it drops connections from some server networks), a
+//! relay on another network runs the fetch, writes `export` to a JSON file and copies
+//! it over; with `SENAMHI_INBOX` set, `run` imports that file instead of fetching.
 
 use crate::db;
 use crate::fetch::{self, Ctx};
@@ -21,7 +25,7 @@ use anyhow::{Context, Result, bail};
 use chrono::{Duration, NaiveDate, NaiveDateTime};
 use regex::Regex;
 use rusqlite::params;
-use serde::Deserialize;
+use serde::{Deserialize, Serialize};
 use std::collections::BTreeMap;
 use std::sync::LazyLock;
 
@@ -31,7 +35,7 @@ const CHART_URL: &str = "https://www.senamhi.gob.pe/mapas/mapa-estaciones-ms/map
 /// Pause between station requests: ~450 stations take about 30 minutes in all.
 const PAUSE: std::time::Duration = std::time::Duration::from_secs(2);
 /// Department means are recomputed for this many recent days on every run.
-const RECOMPUTE_DAYS: i64 = 45;
+pub const RECOMPUTE_DAYS: i64 = 45;
 /// Hourly readings from automatic stations are kept this long (days).
 const HOURLY_KEEP_DAYS: i64 = 10;
 /// Stations off the land mask snap to a department cell this many cells (0.05°) away.
@@ -220,7 +224,21 @@ async fn fetch_station(ctx: &Ctx, cod: &str) -> Result<Chart> {
     parse_chart(&String::from_utf8_lossy(&body)).with_context(|| format!("station {cod}"))
 }
 
+fn upsert_station(conn: &rusqlite::Connection, st: &ExportStation) -> Result<()> {
+    conn.execute(
+        "INSERT INTO station (id, source_id, code, name, kind, dept, lat, lon, updated)
+         VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9)
+         ON CONFLICT(id) DO UPDATE SET name=excluded.name, kind=excluded.kind, dept=excluded.dept,
+           lat=excluded.lat, lon=excluded.lon, updated=excluded.updated",
+        params![st.id, DATASET, st.code, st.name, st.kind, st.dept, st.lat, st.lon, db::now()],
+    )?;
+    Ok(())
+}
+
 pub async fn run(ctx: &Ctx) -> Result<bool> {
+    if let Some(path) = &ctx.cfg.senamhi_inbox {
+        return run_import(ctx, path);
+    }
     let body = fetch::get_plain(ctx, LIST_URL).await?;
     let stations = parse_station_list(&String::from_utf8_lossy(&body))?;
     if stations.is_empty() {
@@ -237,23 +255,16 @@ pub async fn run(ctx: &Ctx) -> Result<bool> {
         };
         let idx = depts.iter().position(|d| d.code == dept.code).expect("department in list");
         let id = station_series_id(&st.cod);
-        ctx.db.get()?.execute(
-            "INSERT INTO station (id, source_id, code, name, kind, dept, lat, lon, updated)
-             VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9)
-             ON CONFLICT(id) DO UPDATE SET name=excluded.name, kind=excluded.kind, dept=excluded.dept,
-               lat=excluded.lat, lon=excluded.lon, updated=excluded.updated",
-            params![
-                id,
-                DATASET,
-                st.cod,
-                st.nom,
-                if st.is_automatic() { "automatic" } else { "conventional" },
-                dept.code,
-                st.lat,
-                st.lon,
-                db::now()
-            ],
-        )?;
+        let station = ExportStation {
+            id: id.clone(),
+            code: st.cod.clone(),
+            name: st.nom.clone(),
+            kind: if st.is_automatic() { "automatic" } else { "conventional" }.to_string(),
+            dept: dept.code.clone(),
+            lat: st.lat,
+            lon: st.lon,
+        };
+        upsert_station(&*ctx.db.get()?, &station)?;
         // A station that fails this time still counts with the days we already have.
         members[idx].push(id);
         tokio::time::sleep(PAUSE).await;
@@ -292,6 +303,158 @@ pub async fn run(ctx: &Ctx) -> Result<bool> {
 }
 
 type Points = Vec<(String, f64)>;
+
+// ---------------------------------------------------------------- relay export / import
+
+const EXPORT_VERSION: u32 = 1;
+/// An imported export older than this means the relay has stopped.
+const EXPORT_MAX_AGE_DAYS: i64 = 3;
+const MAX_STATIONS_PER_DAY: f64 = 2000.0;
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct Export {
+    pub version: u32,
+    pub generated: String,
+    pub stations: Vec<ExportStation>,
+    pub series: Vec<ExportSeries>,
+}
+
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+pub struct ExportStation {
+    pub id: String,
+    pub code: String,
+    pub name: String,
+    pub kind: String,
+    pub dept: String,
+    pub lat: f64,
+    pub lon: f64,
+}
+
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+pub struct ExportSeries {
+    pub id: String,
+    pub unit: String,
+    pub points: Points,
+}
+
+/// Stations and daily series (station, department mean, station count) since `since`.
+/// Hourly readings stay with the fetcher.
+pub fn export(conn: &rusqlite::Connection, since: &str) -> Result<Export> {
+    let mut stmt = conn.prepare(
+        "SELECT id, code, name, kind, COALESCE(dept, ''), lat, lon FROM station WHERE source_id=?1 ORDER BY id",
+    )?;
+    let stations = stmt
+        .query_map([DATASET], |r| {
+            Ok(ExportStation {
+                id: r.get(0)?,
+                code: r.get(1)?,
+                name: r.get(2)?,
+                kind: r.get(3)?,
+                dept: r.get(4)?,
+                lat: r.get(5)?,
+                lon: r.get(6)?,
+            })
+        })?
+        .collect::<rusqlite::Result<Vec<_>>>()?;
+    let mut stmt = conn.prepare(
+        "SELECT o.series_id, s.unit, o.t, o.value FROM observation o JOIN series s ON s.id = o.series_id
+         WHERE (o.series_id GLOB 'senamhi_st_*' OR o.series_id GLOB 'senamhi_precip_*'
+                OR o.series_id GLOB 'senamhi_n_*') AND o.t >= ?1
+         ORDER BY o.series_id, o.t",
+    )?;
+    let rows = stmt.query_map([since], |r| {
+        Ok((r.get::<_, String>(0)?, r.get::<_, String>(1)?, r.get::<_, String>(2)?, r.get::<_, f64>(3)?))
+    })?;
+    let mut series: Vec<ExportSeries> = Vec::new();
+    for row in rows {
+        let (id, unit, t, v) = row?;
+        match series.last_mut() {
+            Some(s) if s.id == id => s.points.push((t, v)),
+            _ => series.push(ExportSeries { id, unit, points: vec![(t, v)] }),
+        }
+    }
+    Ok(Export { version: EXPORT_VERSION, generated: db::now(), stations, series })
+}
+
+/// Checks an export from the relay before anything is written: it arrives over the
+/// network, so every id, date and value must look like what `export` produces.
+fn validate(e: &Export) -> Result<()> {
+    if e.version != EXPORT_VERSION {
+        bail!("unsupported SENAMHI export version {}", e.version);
+    }
+    chrono::DateTime::parse_from_rfc3339(&e.generated).context("export timestamp")?;
+    let dept_ok = |code: &str| chirps::departments().iter().any(|d| d.code == code);
+    let code_ok = |c: &str| !c.is_empty() && c.len() <= 16 && c.chars().all(|c| c.is_ascii_alphanumeric());
+    for st in &e.stations {
+        let ok = st.id.strip_prefix("senamhi_st_") == Some(st.code.as_str())
+            && code_ok(&st.code)
+            && matches!(st.kind.as_str(), "conventional" | "automatic")
+            && dept_ok(&st.dept)
+            && !st.name.is_empty()
+            && st.name.len() <= 80
+            && (-20.0..=1.0).contains(&st.lat)
+            && (-82.0..=-68.0).contains(&st.lon);
+        if !ok {
+            bail!("invalid station in SENAMHI export: {st:?}");
+        }
+    }
+    for s in &e.series {
+        let max = if let Some(code) = s.id.strip_prefix("senamhi_st_") {
+            code_ok(code).then_some(MAX_DAILY_MM)
+        } else if let Some(dept) = s.id.strip_prefix("senamhi_precip_") {
+            dept_ok(dept).then_some(MAX_DAILY_MM)
+        } else if let Some(dept) = s.id.strip_prefix("senamhi_n_") {
+            dept_ok(dept).then_some(MAX_STATIONS_PER_DAY)
+        } else {
+            None
+        };
+        let unit = if s.id.starts_with("senamhi_n_") { "stations" } else { "mm" };
+        let Some(max) = max.filter(|_| s.unit == unit) else {
+            bail!("invalid series {:?} ({}) in SENAMHI export", s.id, s.unit);
+        };
+        for (t, v) in &s.points {
+            if NaiveDate::parse_from_str(t, "%Y-%m-%d").is_err() || !(0.0..=max).contains(v) {
+                bail!("invalid point ({t:?}, {v}) in SENAMHI export series {}", s.id);
+            }
+        }
+    }
+    Ok(())
+}
+
+/// Writes a validated export into the database; returns how many values changed.
+/// Re-importing the same file changes nothing.
+pub fn import(conn: &mut rusqlite::Connection, e: &Export) -> Result<usize> {
+    validate(e)?;
+    for st in &e.stations {
+        upsert_station(conn, st)?;
+    }
+    let mut changed = 0;
+    for s in &e.series {
+        changed += db::upsert_series(conn, &s.id, DATASET, &s.unit, "daily", &s.points)?;
+    }
+    Ok(changed)
+}
+
+pub fn read_export(path: &std::path::Path) -> Result<Export> {
+    let body = std::fs::read(path).with_context(|| format!("reading {}", path.display()))?;
+    serde_json::from_slice(&body).with_context(|| format!("parsing {}", path.display()))
+}
+
+fn run_import(ctx: &Ctx, path: &std::path::Path) -> Result<bool> {
+    if !path.exists() {
+        bail!("no SENAMHI export received yet at {}", path.display());
+    }
+    let e = read_export(path)?;
+    let generated = chrono::DateTime::parse_from_rfc3339(&e.generated).context("export timestamp")?;
+    let age = chrono::Utc::now() - generated.to_utc();
+    if age > Duration::days(EXPORT_MAX_AGE_DAYS) {
+        bail!("SENAMHI export is {} days old (relay down?)", age.num_days());
+    }
+    let mut conn = ctx.db.get()?;
+    let changed = import(&mut conn, &e)?;
+    tracing::info!(generated = e.generated, stations = e.stations.len(), changed, "SENAMHI export imported");
+    Ok(changed > 0)
+}
 
 /// Per day since `since`: mean precipitation over the given station series that have a
 /// value that day, and how many of them do.
@@ -392,6 +555,84 @@ mod tests {
         assert_eq!(daily_from_hourly(&hours), vec![("2026-10-28".to_string(), 24.0)]);
         hours.remove(3);
         assert!(daily_from_hourly(&hours).is_empty());
+    }
+
+    fn test_db() -> rusqlite::Connection {
+        let conn = rusqlite::Connection::open_in_memory().unwrap();
+        conn.execute_batch(include_str!("../../migrations/0001_init.sql")).unwrap();
+        conn.execute_batch(include_str!("../../migrations/0002_station.sql")).unwrap();
+        conn
+    }
+
+    fn sample_db() -> rusqlite::Connection {
+        let mut conn = test_db();
+        let st = |code: &str, name: &str, kind: &str| ExportStation {
+            id: station_series_id(code),
+            code: code.into(),
+            name: name.into(),
+            kind: kind.into(),
+            dept: "piura".into(),
+            lat: -5.56,
+            lon: -79.52,
+        };
+        upsert_station(&conn, &st("105064", "HUARMACA", "conventional")).unwrap();
+        upsert_station(&conn, &st("472FC5B8", "PAIMAS", "automatic")).unwrap();
+        let day = |d: &str, v: f64| (d.to_string(), v);
+        db::upsert_series(&mut conn, "senamhi_st_105064", DATASET, "mm", "daily", &[day("2026-10-27", 17.5), day("2026-10-28", 72.0)]).unwrap();
+        db::upsert_series(&mut conn, "senamhi_st_472FC5B8", DATASET, "mm", "daily", &[day("2026-10-28", 0.7)]).unwrap();
+        db::upsert_series(&mut conn, "senamhi_precip_piura", DATASET, "mm", "daily", &[day("2026-10-28", 36.35)]).unwrap();
+        db::upsert_series(&mut conn, "senamhi_n_piura", DATASET, "stations", "daily", &[day("2026-10-28", 2.0)]).unwrap();
+        // Hourly readings and old days stay behind.
+        db::upsert_series(&mut conn, "senamhi_hr_472FC5B8", DATASET, "mm", "hourly", &[day("2026-10-28T09", 0.3)]).unwrap();
+        db::upsert_series(&mut conn, "senamhi_st_105064", DATASET, "mm", "daily", &[day("2026-08-01", 1.0)]).unwrap();
+        conn
+    }
+
+    #[test]
+    fn export_import_round_trip() {
+        let e = export(&sample_db(), "2026-09-14").unwrap();
+        assert_eq!(e.stations.len(), 2);
+        let ids: Vec<&str> = e.series.iter().map(|s| s.id.as_str()).collect();
+        assert_eq!(ids, ["senamhi_n_piura", "senamhi_precip_piura", "senamhi_st_105064", "senamhi_st_472FC5B8"]);
+        let huarmaca = e.series.iter().find(|s| s.id == "senamhi_st_105064").unwrap();
+        assert_eq!(huarmaca.points, vec![("2026-10-27".to_string(), 17.5), ("2026-10-28".to_string(), 72.0)]);
+
+        // Through JSON, as the relay sends it, into an empty database.
+        let e: Export = serde_json::from_str(&serde_json::to_string(&e).unwrap()).unwrap();
+        let mut conn = test_db();
+        assert_eq!(import(&mut conn, &e).unwrap(), 5);
+        assert_eq!(import(&mut conn, &e).unwrap(), 0, "re-import changes nothing");
+        assert_eq!(export(&conn, "2026-09-14").unwrap().series, e.series);
+        let (name, kind, dept): (String, String, String) = conn
+            .query_row("SELECT name, kind, dept FROM station WHERE id='senamhi_st_472FC5B8'", [], |r| {
+                Ok((r.get(0)?, r.get(1)?, r.get(2)?))
+            })
+            .unwrap();
+        assert_eq!((name.as_str(), kind.as_str(), dept.as_str()), ("PAIMAS", "automatic", "piura"));
+    }
+
+    #[test]
+    fn import_rejects_bad_exports_without_writing() {
+        let good = export(&sample_db(), "2026-09-14").unwrap();
+        let cases: Vec<(&str, Box<dyn Fn(&mut Export)>)> = vec![
+            ("version", Box::new(|e| e.version = 2)),
+            ("series id", Box::new(|e| e.series[0].id = "precip_piura".into())),
+            ("department", Box::new(|e| e.series[1].id = "senamhi_precip_atlantis".into())),
+            ("negative value", Box::new(|e| e.series[2].points[0].1 = -1.0)),
+            ("date", Box::new(|e| e.series[2].points[0].0 = "2026-13-01".into())),
+            ("unit", Box::new(|e| e.series[3].unit = "stations".into())),
+            ("station dept", Box::new(|e| e.stations[0].dept = "atlantis".into())),
+            ("station id", Box::new(|e| e.stations[1].id = "senamhi_st_other".into())),
+        ];
+        for (what, break_it) in cases {
+            let mut e: Export = serde_json::from_str(&serde_json::to_string(&good).unwrap()).unwrap();
+            break_it(&mut e);
+            let mut conn = test_db();
+            assert!(import(&mut conn, &e).is_err(), "accepted bad {what}");
+            let rows: i64 = conn.query_row("SELECT COUNT(*) FROM observation", [], |r| r.get(0)).unwrap();
+            let stations: i64 = conn.query_row("SELECT COUNT(*) FROM station", [], |r| r.get(0)).unwrap();
+            assert_eq!((rows, stations), (0, 0), "wrote data for bad {what}");
+        }
     }
 
     #[test]

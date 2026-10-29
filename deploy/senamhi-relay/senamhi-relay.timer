@@ -1,0 +1,11 @@
+[Unit]
+Description=Daily SENAMHI relay run, after SENAMHI's morning update
+
+[Timer]
+OnCalendar=*-*-* 09:30:00 America/Lima
+RandomizedDelaySec=10min
+# Run at the next boot if the box was off at 09:30.
+Persistent=true
+
+[Install]
+WantedBy=timers.target

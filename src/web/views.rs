@@ -351,16 +351,17 @@ pub fn peru_precip(conn: &Connection, l: &L) -> Result<Value> {
                 Ok(conn
                     .query_row(sql, p, |r| Ok((r.get::<_, String>(0)?, r.get::<_, f64>(1)?)))
                     .optional()?
-                    .map(|(name, v)| json!({ "name": station_name(&name), "mm": mm(v) })))
+                    // With no rain anywhere there is no wettest station to name.
+                    .map(|(name, v)| json!({ "name": (v > 0.0).then(|| station_name(&name)), "mm": mm(v) })))
             };
             row["wettest_day"] = json!(wettest(
                 "SELECT s.name, o.value FROM station s JOIN observation o ON o.series_id = s.id
-                 WHERE s.dept = ?1 AND o.t = ?2 ORDER BY o.value DESC LIMIT 1",
+                 WHERE s.dept = ?1 AND o.t = ?2 ORDER BY o.value DESC, s.name LIMIT 1",
                 &[&d.code, &end],
             )?);
             row["wettest_7d"] = json!(wettest(
                 "SELECT s.name, SUM(o.value) AS total FROM station s JOIN observation o ON o.series_id = s.id
-                 WHERE s.dept = ?1 AND o.t > ?2 AND o.t <= ?3 GROUP BY s.id ORDER BY total DESC LIMIT 1",
+                 WHERE s.dept = ?1 AND o.t > ?2 AND o.t <= ?3 GROUP BY s.id ORDER BY total DESC, s.name LIMIT 1",
                 &[&d.code, &days_before(end, 7), &end],
             )?);
         }

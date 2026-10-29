@@ -14,7 +14,10 @@ pub fn spawn(ctx: Ctx) {
             tokio::time::sleep(initial_wait(&ctx, def)).await;
             loop {
                 let next = match sources::run_and_record(&ctx, def.id).await {
-                    Ok(_) => Duration::from_secs(def.poll) + jitter(def.poll / 10),
+                    Ok(_) => {
+                        let poll = sources::poll_secs(&ctx.cfg, def);
+                        Duration::from_secs(poll) + jitter(poll / 10)
+                    }
                     Err(_) => backoff(&ctx, def),
                 };
                 tokio::time::sleep(next).await;
@@ -35,7 +38,7 @@ fn initial_wait(ctx: &Ctx, def: &SourceDef) -> Duration {
         return Duration::ZERO;
     };
     let elapsed = (chrono::Utc::now() - last.to_utc()).num_seconds().max(0) as u64;
-    Duration::from_secs(def.poll.saturating_sub(elapsed))
+    Duration::from_secs(sources::poll_secs(&ctx.cfg, def).saturating_sub(elapsed))
 }
 
 /// 5 min, 10, 20, ... capped at the source's poll interval.
@@ -50,7 +53,7 @@ fn backoff(ctx: &Ctx, def: &SourceDef) -> Duration {
         })
         .unwrap_or(1);
     let secs = 300u64.saturating_mul(1 << fails.saturating_sub(1).min(8));
-    Duration::from_secs(secs.min(def.poll)) + jitter(60)
+    Duration::from_secs(secs.min(sources::poll_secs(&ctx.cfg, def))) + jitter(60)
 }
 
 fn jitter(max_secs: u64) -> Duration {
