@@ -25,7 +25,7 @@ animations, and the last lessons use the live data from the database.
 | NOAA NCEI | Daily OISST v2.1 (preliminary) anomaly via CoastWatch ERDDAP, 1° | 6 h |
 | NOAA NCEI | Global land+ocean temperature anomaly (Climate at a Glance) | 12 h |
 | UCSB CHC | Daily precipitation (CHIRPS v3.0 preliminary), 0.05°, Peru departments | 12 h |
-| SENAMHI | Daily rain-gauge precipitation, ~310 real-time conventional stations → department means | 24 h |
+| SENAMHI | Daily rain-gauge precipitation, ~310 real-time conventional + ~135 automatic stations → department means and wettest station | 24 h |
 | IGP / ENFEN | ICEN (Índice Costero El Niño) | 12 h |
 | ENFEN | Comunicados oficiales (WordPress API + homepage PDF list) | 6 h |
 | GDACS | Orange/red flood, drought, cyclone and wildfire alerts | 30 min |
@@ -103,14 +103,19 @@ templates/learn/  lesson content for the Learn page, one file per language
   committed as `static/geo/peru_mask.bin`); tiny departments (e.g. Callao) cover very few
   grid cells. Backfilling history from the CHIRPS v3.0 final archive is planned for later.
 - SENAMHI station rainfall has no open API, and the station data tables are behind a
-  CAPTCHA, which we never touch. Once a day we read the 30-day chart that the station
-  map embeds for each real-time conventional station (`map_red_graf.php`, one request
-  every 2 s, ~20 min per run). Values are provisional and unvalidated. Stations are
+  CAPTCHA, which we never touch. Once a day we read the chart that the station map embeds
+  for each station (`map_red_graf.php`, one request every 2 s, ~30 min per run). Real-time
+  conventional stations chart 30 days of daily totals; automatic stations chart the last
+  48 hours, hourly, which we keep for 10 days and add up into SENAMHI's day (07:00 to
+  07:00 local time, labelled with the first date), counting only days with all 24 hours.
+  Automatic stations within 3.5 km of a conventional one are skipped so a site is not
+  counted twice. Values are provisional and unvalidated. Stations (table `station`) are
   placed in departments with the CHIRPS mask (snapping up to 0.2° for coastal stations).
-  Department values are the mean of the stations reporting that day. In the Peru table the
-  SENAMHI columns end at the latest gauge day, usually a few days after the CHIRPS columns
-  (each date is in the header). History builds up from the first run, which covers only
-  the last 30 days.
+  Department values are the mean of the stations reporting that day; the Peru table also
+  names the wettest single station, since a mean hides local downpours. The SENAMHI
+  columns end at the latest gauge day, usually a few days after the CHIRPS columns (each
+  date is in the header). History builds up from the first run, which covers only the
+  last 30 days.
 - ENFEN publishes recent comunicados only as PDFs; their alert state is taken from the
   latest comunicado that states it in its title, and the UI says which one.
 - The typical-impact map is a deliberately coarse sketch (ellipses), labelled as such.

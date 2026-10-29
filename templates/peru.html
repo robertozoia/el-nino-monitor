@@ -79,6 +79,7 @@
           <th colspan="2" class="num">{{ t.precip_7d }}</th>
           <th colspan="2" class="num">{{ t.precip_30d }}</th>
           <th rowspan="2" class="num">{{ t.precip_stations }}</th>
+          <th rowspan="2">{{ t.precip_wettest }}</th>
           <th rowspan="2" class="num">{{ t.precip_trend }}</th>
         </tr>
         <tr>
@@ -109,7 +110,9 @@
           {% if d.precip.gauges %}<td class="num">{% if row.gauge7 %}{{ row.gauge7 }}{% else %}—{% endif %}</td>{% endif %}
           <td class="num">{% if row.last30 %}{{ row.last30 }}{% else %}—{% endif %}</td>
           {% if d.precip.gauges %}<td class="num">{% if row.gauge30 %}{{ row.gauge30 }}{% else %}—{% endif %}</td>
-          <td class="num">{% if row.stations %}{{ row.stations }}{% else %}—{% endif %}</td>{% endif %}
+          <td class="num">{% if row.stations %}{{ row.stations }}{% else %}—{% endif %}</td>
+          <td class="wettest">{% if row.wettest_day %}<span class="num">{{ row.wettest_day.mm }}</span> · {{ row.wettest_day.name }}{% else %}—{% endif %}
+            {% if row.wettest_7d %}<div class="muted small">{{ t.precip_7d_short }}: <span class="num">{{ row.wettest_7d.mm }}</span> · {{ row.wettest_7d.name }}</div>{% endif %}</td>{% endif %}
           <td class="num">{% if row.spark %}
             <svg class="precip-spark" viewBox="0 0 {{ row.spark.w }} {{ row.spark.h }}" aria-hidden="true">
               <line class="zero" x1="0" x2="{{ row.spark.w }}" y1="{{ row.spark.zero }}" y2="{{ row.spark.zero }}"/>

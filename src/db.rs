@@ -5,7 +5,10 @@ use std::path::Path;
 
 pub type Pool = r2d2::Pool<SqliteConnectionManager>;
 
-const MIGRATIONS: &[&str] = &[include_str!("../migrations/0001_init.sql")];
+const MIGRATIONS: &[&str] = &[
+    include_str!("../migrations/0001_init.sql"),
+    include_str!("../migrations/0002_station.sql"),
+];
 
 pub fn open(path: &Path) -> Result<Pool> {
     // Switch to WAL once, before the pool opens connections concurrently.

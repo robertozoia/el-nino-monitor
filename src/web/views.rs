@@ -346,6 +346,23 @@ pub fn peru_precip(conn: &Connection, l: &L) -> Result<Value> {
             row["gauge7"] = json!(total(7)?.map(mm));
             row["gauge30"] = json!(total(30)?.map(mm));
             row["stations"] = json!(stations.map(|n| n as i64));
+            // Department means hide local downpours, so name the wettest gauge too.
+            let wettest = |sql: &str, p: &[&dyn rusqlite::ToSql]| -> Result<Option<Value>> {
+                Ok(conn
+                    .query_row(sql, p, |r| Ok((r.get::<_, String>(0)?, r.get::<_, f64>(1)?)))
+                    .optional()?
+                    .map(|(name, v)| json!({ "name": station_name(&name), "mm": mm(v) })))
+            };
+            row["wettest_day"] = json!(wettest(
+                "SELECT s.name, o.value FROM station s JOIN observation o ON o.series_id = s.id
+                 WHERE s.dept = ?1 AND o.t = ?2 ORDER BY o.value DESC LIMIT 1",
+                &[&d.code, &end],
+            )?);
+            row["wettest_7d"] = json!(wettest(
+                "SELECT s.name, SUM(o.value) AS total FROM station s JOIN observation o ON o.series_id = s.id
+                 WHERE s.dept = ?1 AND o.t > ?2 AND o.t <= ?3 GROUP BY s.id ORDER BY total DESC LIMIT 1",
+                &[&d.code, &days_before(end, 7), &end],
+            )?);
         }
     }
     let lag_days = latest_all.as_deref().and_then(parse_date).map(|d| (today - d).num_days());
@@ -359,6 +376,22 @@ pub fn peru_precip(conn: &Connection, l: &L) -> Result<Value> {
         "series": series,
         "rows": rows,
     }))
+}
+
+/// SENAMHI prints station names in capitals: "SAN JUAN DE LA VIRGEN" -> "San Juan de la Virgen".
+fn station_name(raw: &str) -> String {
+    raw.split_whitespace()
+        .enumerate()
+        .map(|(i, w)| {
+            let w = w.to_lowercase();
+            if i > 0 && matches!(w.as_str(), "de" | "del" | "la" | "las" | "los" | "el" | "y") {
+                return w;
+            }
+            let mut c = w.chars();
+            c.next().map_or_else(String::new, |f| f.to_uppercase().chain(c).collect())
+        })
+        .collect::<Vec<_>>()
+        .join(" ")
 }
 
 fn days_before(iso: &str, days: i64) -> String {
@@ -655,6 +688,8 @@ mod tests {
         assert_eq!(fmt_date(&es, "2026-10-14"), "14 oct 2026");
         assert_eq!(fmt_month(&en, "2026-08-01"), "Aug 2026");
         assert_eq!(fmt_day_month(&en, "2026-10-27"), "27 Oct");
+        assert_eq!(station_name("SAN JUAN DE LA VIRGEN"), "San Juan de la Virgen");
+        assert_eq!(station_name("CAÑAVERAL"), "Cañaveral");
         assert_eq!(season_label(&en, "2026-08-01"), "JAS 2026");
         assert_eq!(season_label(&es, "2027-01-01"), "DEF 2027");
         assert_eq!(fmt_signed(3.3, 1), "+3.3");
