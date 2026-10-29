@@ -12,9 +12,16 @@ mkdir -p "$DATA_DIR"
 
 "$ELNINO_BIN" export-senamhi "$DATA_DIR/senamhi.json"
 
-# The VPS key only allows rrsync writes into the inbox, so the destination is a bare
-# file name. rsync writes a temp file and renames it: the server never reads half a file.
-rsync -z --timeout=120 \
-  -e "ssh -i $SSH_KEY -o BatchMode=yes -o StrictHostKeyChecking=accept-new" \
-  "$DATA_DIR/senamhi.json" "$VPS:senamhi.json"
-echo "SENAMHI export uploaded to $VPS"
+# INBOX is the inbox path on the VPS (default /opt/el-nino/inbox). Set it empty when the
+# key is restricted with rrsync, which already roots paths at the inbox. SSH_KEY is
+# optional: without it ssh uses your usual keys (which must not need a passphrase
+# prompt, since the timer runs without a terminal or agent).
+INBOX="${INBOX-/opt/el-nino/inbox}"
+DEST="${INBOX:+$INBOX/}senamhi.json"
+SSH="ssh -o BatchMode=yes -o StrictHostKeyChecking=accept-new"
+if [ -n "${SSH_KEY:-}" ]; then
+  SSH="$SSH -i $SSH_KEY"
+fi
+# rsync writes a temp file and renames it: the server never reads half a file.
+rsync -z --timeout=120 -e "$SSH" "$DATA_DIR/senamhi.json" "$VPS:$DEST"
+echo "SENAMHI export uploaded to $VPS:$DEST"

@@ -94,9 +94,12 @@ echo 'SENAMHI_INBOX=/inbox/senamhi.json' >> .env
 docker compose up -d
 ```
 
-Then add the relay's public key to `~/.ssh/authorized_keys`, restricted to writing
-files into the inbox (no shell, no forwarding). `rrsync` ships with rsync: it is in
-`/usr/bin` on recent Debian/Ubuntu, and older releases keep it in
+The relay copies the file with rsync over SSH, by default with your usual SSH key
+into `INBOX=/opt/el-nino/inbox`. The key must work without a passphrase prompt, since
+the timer runs with no terminal or agent. Optionally, give the relay a dedicated key
+(`SSH_KEY`) restricted to writing files into the inbox (no shell, no forwarding), and
+set `INBOX=` empty, because rrsync roots paths at the inbox. `rrsync` ships with
+rsync: it is in `/usr/bin` on recent Debian/Ubuntu, and older releases keep it in
 `/usr/share/doc/rsync/scripts/` to copy into place.
 
 ```
@@ -110,7 +113,7 @@ cargo build --release && install -Dm755 target/release/elnino ~/.local/bin/elnin
 install -Dm755 deploy/senamhi-relay/senamhi-relay.sh ~/.local/bin/senamhi-relay.sh
 install -Dm644 deploy/senamhi-relay/senamhi-relay.env.example ~/.config/elnino-relay.env  # edit it
 install -Dm644 -t ~/.config/systemd/user deploy/senamhi-relay/senamhi-relay.{service,timer}
-ssh-keygen -t ed25519 -f ~/.ssh/elnino-relay -N '' -C senamhi-relay   # key for the VPS
+ssh -o BatchMode=yes moc0@your-vps true          # must succeed without a prompt
 systemctl --user daemon-reload
 systemctl --user start senamhi-relay.service     # first run (~40 min); then check:
 journalctl --user -u senamhi-relay -e
