@@ -17,7 +17,7 @@ use std::sync::LazyLock;
 pub const DATASET: &str = "senamhi";
 const LIST_URL: &str = "https://www.senamhi.gob.pe/?p=estaciones";
 const CHART_URL: &str = "https://www.senamhi.gob.pe/mapas/mapa-estaciones-ms/map_red_graf.php";
-/// Pause between station requests: ~310 stations take about 10 minutes.
+/// Pause between station requests: ~310 stations take about 20 minutes in all.
 const PAUSE: std::time::Duration = std::time::Duration::from_secs(2);
 /// Department means are recomputed for this many recent days on every run.
 const RECOMPUTE_DAYS: i64 = 45;

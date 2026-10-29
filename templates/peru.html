@@ -75,13 +75,15 @@
         {% if d.precip.gauges %}
         <tr>
           <th rowspan="2">{{ t.department }}</th>
-          <th rowspan="2" class="num">{{ t.precip_last }}{% if d.precip.latest %} · {{ d.precip.latest }}{% endif %}</th>
+          <th colspan="2" class="num">{{ t.precip_last }}</th>
           <th colspan="2" class="num">{{ t.precip_7d }}</th>
           <th colspan="2" class="num">{{ t.precip_30d }}</th>
           <th rowspan="2" class="num">{{ t.precip_stations }}</th>
           <th rowspan="2" class="num">{{ t.precip_trend }}</th>
         </tr>
         <tr>
+          <th class="num">{{ t.precip_sat }}{% if d.precip.latest_short %} · {{ d.precip.latest_short }}{% endif %}</th>
+          <th class="num">SENAMHI · {{ d.precip.gauge_latest_short }}</th>
           <th class="num">{{ t.precip_sat }}</th>
           <th class="num">SENAMHI</th>
           <th class="num">{{ t.precip_sat }}</th>
@@ -102,6 +104,7 @@
         <tr>
           <td>{{ row.name }}</td>
           <td class="num">{% if row.latest %}{{ row.latest }}{% else %}—{% endif %}</td>
+          {% if d.precip.gauges %}<td class="num">{% if row.gauge_last %}{{ row.gauge_last }}{% else %}—{% endif %}</td>{% endif %}
           <td class="num">{% if row.last7 %}{{ row.last7 }}{% else %}—{% endif %}</td>
           {% if d.precip.gauges %}<td class="num">{% if row.gauge7 %}{{ row.gauge7 }}{% else %}—{% endif %}</td>{% endif %}
           <td class="num">{% if row.last30 %}{{ row.last30 }}{% else %}—{% endif %}</td>

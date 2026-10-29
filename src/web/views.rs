@@ -47,6 +47,14 @@ pub fn fmt_date(l: &L, iso: &str) -> String {
     }
 }
 
+/// Day and month only, for compact table headers.
+pub fn fmt_day_month(l: &L, iso: &str) -> String {
+    match parse_date(iso) {
+        Some(d) => format!("{} {}", d.day(), month_name(l, d.month())),
+        None => iso.to_string(),
+    }
+}
+
 pub fn fmt_month(l: &L, iso: &str) -> String {
     match parse_date(iso) {
         Some(d) => format!("{} {}", month_name(l, d.month()), d.year()),
@@ -311,22 +319,30 @@ pub fn peru_precip(conn: &Connection, l: &L) -> Result<Value> {
             "spark": sparkline(&spark_pts),
         }));
     }
-    // SENAMHI gauge totals cover the same days as the CHIRPS columns so the two compare
-    // directly; without CHIRPS data they end at the latest gauge day instead.
+    // SENAMHI gauges usually run days ahead of CHIRPS, so their columns end at the
+    // latest gauge day rather than at the satellite's.
     let gauge_latest: Option<String> = conn.query_row(
         "SELECT MAX(t) FROM observation WHERE series_id LIKE 'senamhi_precip_%'",
         [],
         |r| r.get(0),
     )?;
-    let gauge_end = latest_all.clone().or_else(|| gauge_latest.clone());
-    if let Some(end) = gauge_end.as_deref() {
+    if let Some(end) = gauge_latest.as_deref() {
         for (row, d) in rows.iter_mut().zip(depts) {
-            let total = |days| gauge_total(conn, &senamhi::dept_series_id(d), end, days);
+            let id = senamhi::dept_series_id(d);
+            let total = |days| gauge_total(conn, &id, end, days);
+            let last: Option<f64> = conn
+                .query_row(
+                    "SELECT value FROM observation WHERE series_id=?1 AND t=?2",
+                    params![id, end],
+                    |r| r.get(0),
+                )
+                .optional()?;
             let stations: Option<f64> = conn.query_row(
                 "SELECT MAX(value) FROM observation WHERE series_id=?1 AND t > ?2 AND t <= ?3",
                 params![senamhi::count_series_id(d), days_before(end, 30), end],
                 |r| r.get(0),
             )?;
+            row["gauge_last"] = json!(last.map(mm));
             row["gauge7"] = json!(total(7)?.map(mm));
             row["gauge30"] = json!(total(30)?.map(mm));
             row["stations"] = json!(stations.map(|n| n as i64));
@@ -338,6 +354,8 @@ pub fn peru_precip(conn: &Connection, l: &L) -> Result<Value> {
         "lag_days": lag_days,
         "gauges": gauge_latest.is_some(),
         "gauge_latest": gauge_latest.as_deref().map(|t| fmt_date(l, t)),
+        "latest_short": latest_all.as_deref().map(|t| fmt_day_month(l, t)),
+        "gauge_latest_short": gauge_latest.as_deref().map(|t| fmt_day_month(l, t)),
         "series": series,
         "rows": rows,
     }))
@@ -636,6 +654,7 @@ mod tests {
         let en = L { code: "en", t: &t };
         assert_eq!(fmt_date(&es, "2026-10-14"), "14 oct 2026");
         assert_eq!(fmt_month(&en, "2026-08-01"), "Aug 2026");
+        assert_eq!(fmt_day_month(&en, "2026-10-27"), "27 Oct");
         assert_eq!(season_label(&en, "2026-08-01"), "JAS 2026");
         assert_eq!(season_label(&es, "2027-01-01"), "DEF 2027");
         assert_eq!(fmt_signed(3.3, 1), "+3.3");
